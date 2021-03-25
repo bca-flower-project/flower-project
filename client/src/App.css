@@ -24,71 +24,28 @@
   color: white;
 }
 
-
-
-/* #tv {
-  position: relative;
-  width: 200px;
-  height: 150px;
-  margin: 20px 0;
-  background: red;
-  border-radius: 50% / 10%;
-  color: white;
-  text-align: center;
-  text-indent: .1em;
-  margin-left: 10px;
-  /* transform: rotate(60deg);} */
-
-/* #tv:before {
-  content: '';
-  position: absolute;
-  top: 10%;
-  bottom: 10%;
-  right: -5%;
-  left: -5%;
-  background: inherit;
-  border-radius: 5% / 50%;
-  /* transform: rotate(60deg); */
-/* 
-  .teardrop {
-    background-color: darkviolet;
-    display: block;
-    width: 120px;
-    padding: 30px 20px 50px 20px;
-    height: 80px;
-    border-top-left-radius: 90px;
-    border-bottom-left-radius: 110px;
-    border-bottom-right-radius: 90px;
-    position: relative;
-    cursor: pointer;
-    /* transform: rotate(60deg); */
-  /* }
-  #peaks{
-    transform:rotate(120deg);
-  }
-  #challenges{
-    transform:rotate(180deg);
-  }
-  #people{
-    transform:rotate(240deg);
-  }
-  #principles{
-    transform:rotate(300deg);
-  }
-  #power{
-    transform:rotate(360deg);
-  }
-  #aspirations{
-    transform:rotate(60deg);
-  }
-  .teardrop span.firsttext {
-    width: 100%;
-    display: block;
-    text-align: center;
-    font-size: 40px;
-    font-weight: 600;
-    color: violet;
-    margin-top: 6px;
-  } */
-   
+.petal{
+  width: 1000px;
+}
  
+#peaks{
+  transform: rotate(60deg)
+}
+
+#challenges{
+  transform: rotate(120deg)
+}
+
+#people{
+  transform: rotate(180deg)
+}
+
+#principles{
+  transform: rotate(240deg)
+}
+
+#power{
+  transform: rotate(300deg)
+}
+
+/* #aspirations{} */
