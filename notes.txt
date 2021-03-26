@@ -1,0 +1,114 @@
+-firebase saves authentication credentials in it's own database -- that does not need to go to mongodb
+--we need sign-up information to also go to mongodb so that it creates a UID for that user, so that every time the user logs in they are saving their new flowers as new objects under that UID.
+----each flower petal and it's information will be a key value pair, and each flower will be an objects
+
+
+//-------DB FOR EMAIL/PW -  NOT USING-----//
+
+const mongoose = require("mongoose");
+
+//always needs a url, and / connects it to that db
+//this connects to our database
+mongoose.connect("mongodb://localhost:27017/flower-project", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+//connects it to the FP database
+const flowerDB = mongoose.connection;
+
+//if we don't set up an error output, mongoose may just exit if there is an error
+const db = flowerDB;
+db.on("error", console.error.bind(console, "connection error"));
+
+
+//creating a schema. Schema is a class, so the S is capitalized
+//adding in data-types
+//this is the entrySchema Model -- this is what writes to specific collection /enforces shape
+const loginSchema = new mongoose.Schema({
+  email: String,
+  password: String,
+});
+
+
+//Google login Schema??
+
+
+
+//the first argument for model is what you want to connect to, the second is the schema you have set up
+//LoginModel is the reference to the model.
+const LoginModel = mongoose.model("login", loginSchema);
+app.use(express.static(staticDir));
+app.use(express.urlencoded({ extended: true }));
+
+//adding a new login
+app.post("/add", async (req, res) => {
+  let newLogin = new LoginModel({
+    email: req.body.email,
+    password: req.body.password,
+  });
+  await newLogin.save();
+  res.redirect("/");
+});
+
+//function to update a login, gets called below
+async function updateLogin(id, update) {
+  let updateObj = {
+    $set: update,
+  };
+  await LoginModel.updateOne({ _id: ObjectId(id) }, updateObj);
+}
+
+
+//updating a login
+//call updateLogin function
+app.post(
+  "/Edit/:_id",
+  express.urlencoded({ extended: true }),
+  async (req, res) => {
+    let id = req.params._id;
+    let data = req.body;
+    await updateLogin(id, data);
+    res.redirect("/");
+  }
+);
+
+app.get("/api", async (req, res) => {
+  //get everything
+  const cursor = await LoginModel.find({});
+  //create an array to hold it
+  let results = [];
+  //iterate over cursor obj
+  await cursor.forEach((login) => {
+    results.push(login);
+  });
+
+  res.json(results);
+});
+
+// give it an error callback first, then object itself
+// call save method to put the data into the database
+NewLogin1.save((err, data) => {
+  if (err) {
+    console.log(err.message);
+  } else {
+    console.log("successfully added: ", data);
+  }
+});
+
+
+-------------------usestate for nav--------------------
+  //setting what shows for the nav bar
+  //only takes single argument
+  const [showNav, setShowNav] = useState([]);
+  const [currentPage, setCurrentPage] = useState()
+
+  useEffect(() => {
+    if (currentPage === '/PastFlowers') {
+      setShowNav(['/Create', '/Global'])
+    } else if (currentPage === '/Global') {
+      setShowNav(['/Create', '/PastFlowers'])
+    } else if (currentPage === '/Create') {
+      setShowNav(['/Global', '/PastFlowers'])
+    }
+  });

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react'
 import { Form, Button, Card } from "react-bootstrap";
 
@@ -35,24 +34,10 @@ export default function Login() {
 
         </div>
     )
-=======
-import React from "react";
-
-export default function Login() {
-  return (
-    <div>
-      <h1>This is the login page</h1>
-    </div>
-  );
->>>>>>> 2578fd910873dc36f32813305ff5156ce472efa8
 }
 
 //login page will have entry form for inputting username & password & will connect to firebase or mongo for login authentication
 //authenticate and login through google and facebook
 //modal window for login
 
-<<<<<<< HEAD
 //make sure user is logged into entire site, not just one page
-=======
-//make sure
->>>>>>> 2578fd910873dc36f32813305ff5156ce472efa8

@@ -12,19 +12,47 @@ import Nav from './components/Nav';
 import PastFlowers from './components/PastFlowers';
 import Settings from './components/Settings';
 import Signup from './components/Signup'
+import { useState, useEffect } from 'react'
 
-import { BrowserRouter } from 'react-router-dom'
-import {firebaseApp, auth, googleProvider, facebookProvider} from './fire.js'
+import {firebaseApp, auth, googleProvider } from './fire.js'
 
 
 //write all login functionality on app
 
 
 function App() {
+const [googleUser, setGoogleUser] = useState()
+//useEffect to get if user exists/signed in, then pull info from database based on what user is signed in
+//useeffect will ping db then send back info on what user is logged in
+
+  function googleLogin (props) {
+  firebaseApp.auth()
+  .signInWithPopup(googleProvider)
+  .then((result) => {
+    // /** @type {firebase.auth.OAuthCredential} */
+    const credential = result.credential;
+
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    const credential = error.credential;
+  });
+//you get firebase.auth().currentUser -- keeps the user signed in, if no user - is null. you can call this anywhere firebase is imported!!! just use firebase.auth().currentUser: use as stateful property in components that need auth
+  }
+
+
   return (
     <div className="App">
       
-      <BrowserRouter>
       <Nav/>
       <Switch>
         <Route exact path={"/"}  component={Home}/>
@@ -37,7 +65,7 @@ function App() {
         <Route path={"/PastFlowers"} component={PastFlowers}/>
         <Route path={"/Settings"} component={Settings}/>
       </Switch>
-      </BrowserRouter>
+      
     </div>
   );
 }

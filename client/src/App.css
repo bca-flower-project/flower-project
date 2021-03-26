@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+h1 {
+  font-family: "Poppins", sans-serif;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -24,28 +28,49 @@
   color: white;
 }
 
-.petal{
+.petal {
   width: 1000px;
 }
- 
-#peaks{
-  transform: rotate(60deg)
+
+#peaks {
+  transform: rotate(60deg);
 }
 
-#challenges{
-  transform: rotate(120deg)
+#challenges {
+  transform: rotate(120deg);
 }
 
-#people{
-  transform: rotate(180deg)
+#people {
+  transform: rotate(180deg);
 }
 
-#principles{
-  transform: rotate(240deg)
+#principles {
+  transform: rotate(240deg);
 }
 
-#power{
-  transform: rotate(300deg)
+#power {
+  transform: rotate(300deg);
 }
 
 /* #aspirations{} */
+
+/* ---------navbar css------------ */
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-between;
+}
+
+#navflower,
+#navspiral,
+#navglobe {
+  height: 13vh;
+}
+
+/* 
+
+FONT SELECTIONS
+font-family: 'Karla', sans-serif; ----- BODY
+font-family: 'Poppins', sans-serif; -----HEADER */

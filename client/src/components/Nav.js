@@ -1,20 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import blackflower from './icons/black-flower.png'
+import blackglobe from './icons/black-globe.png'
+import spiral from './icons/spiral.png'
+
 
 export default function Nav() {
+
   return (
-    <div>
-      <Link to="/">Home</Link>
-      <Link to={"/Connect"}>Connect</Link>
-      <Link to={"/Create"}>Create</Link>
-      <Link to={"/Global"}>Global</Link>
-      <Link to={"/Login"}>Login</Link>
-      <Link to={"/PastFlowers"}>Past Flowers</Link>
+
+    <div id="navbar">
+      {/* <Link to="/">Home</Link> */}
+
+       <Link to={"/PastFlowers"}><img src={spiral} id="navspiral"/></Link>
+      <Link to={"/Create"}><img src={blackflower} id="navflower"/></Link>
+      <Link to={"/Global"}><img src={blackglobe} id="navglobe"/></Link>
+      {/* <Link to={"/Login"}>Login</Link>
+     <Link to={"/Connect"}>Connect</Link>
       <Link to={"/Profile"}>Profile</Link>
-      <Link to={"Settings"}>Settings</Link>
+      <Link to={"Settings"}>Settings</Link> */}
     </div>
   );
 }
+
 //we will need some sort of function because the options and positions in the top corners will change:
 // ----- on CREATE (create is center) page: past flowers on left /// global on right
 //------ on GLOBAL (globe is center) page: past flowers on left // create on right

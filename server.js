@@ -16,47 +16,13 @@ app.get("*", (req, res) => {
 });
 
 // -----------MONGOOSE----------//
-
-const mongoose = require("mongoose");
-
-//always needs a url, and / connects it to that db
-//this connects to our database
-mongoose.connect("mongodb://localhost:27017/flower-project", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-//connects it to the FP database
-const flowerDB = mongoose.connection;
-
-//if we don't set up an error output, mongoose may just exit if there is an error
-const db = flowerDB;
-db.on("error", console.error.bind(console, "connection error"));
+// see notes in notes.txt
+//only store the userID; all emails and passwords should be stored in the authentication/firebase
 
 
-//creating a schema. Schema is a class, so the S is capitalized
-//adding in data-types
-//this is the entrySchema Model -- this is what writes to specific collection /enforces shape
-const loginSchema = new mongoose.Schema({
-  email: String,
-  password: String,
-});
+// ------------DB FOR PETALS/FLOWERS----------//
 
-//the first argument for model is what you want to connect to, the second is the schema you have set up
-//LoginModel is the reference to the model.
-const LoginModel = mongoose.model("login", loginSchema);
-app.use(express.static(staticDir));
-app.use(express.urlencoded({ extended: true }));
 
-//adding a new login
-app.post("/add", async (req, res) => {
-  let newLogin = new LoginModel({
-    email: req.body.email,
-    password: req.body.password,
-  });
-  await newLogin.save();
-  res.redirect("/");
-});
 
 
 //-------------PORT------------//
