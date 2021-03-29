@@ -1,4 +1,21 @@
 import React from "react";
+import petal1 from "./images/powers.svg";
+import petal2 from "./images/interests.svg";
+import petal3 from './images/people.svg';
+import petal4 from "./images/aspirations.svg";
+import petal5 from "./images/challenges.svg";
+import petal6 from "./images/peaks.svg";
+import blank from "./images/blank.svg"
+import {useState} from 'react';
+
+
+let petalPic1 = petal1;
+let petalPic2 = petal2;
+let petalPic3 = petal3;
+let petalPic4 = petal4;
+let petalPic5 = petal5;
+let petalPic6 = petal6;
+let box1 = blank;
 
 export default function Create(props) {
 const [pickQuestions, setPickQuestions] = useState()
@@ -12,39 +29,52 @@ const [powerQuestion, setPowerQuestion] = useState()
 const [aspirationsQuestion, setAspirationsQuestion] = useState()
 
   return (
-    <div>
+  
+    <div id="flower-outer">
       <h1>Create!!!</h1>
+<img id ="blank" src={box1} alt="blank"/>
+
+      {/* <div id="flower-wrapper">
       <div class="middle" id="name">
         Name
       </div>
-      <div class="teardrop" id="peaks">
-        Peaks 
-        {/* <select name="peaks" onChange = {peaksQuestion}>
+      <div class="flower" id="peaks">
+        POWERS 
+        <img id="powers" src={petalPic1} alt="petal"/>  
+      </div>
+      <div class="flower" id="challenges">
+        <img id="interests" src={petalPic2} alt="petal"/>
+        INTERESTS
+      </div>
+      <div class="flower" id="people">
+        <img id="people" src={petalPic3} alt="petal"/>
+        PEOPLE
+      </div>
+      <div class="flower" id="principles">
+        <img id="aspirations" src={petalPic4} alt="petal"/>
+        ASPIRATIONS
+      </div>
+      <div class="flower" id="power">
+        <img id="challenges" src={petal5} alt="petal"/>
+        CHALLENGES
+      </div>
+      <div class="flower" id="aspirations">
+        <img id="peaks" src={petalPic6} alt="petal"/>
+        PEAKS
+        </div> */}
+      {/* </div> */}
+    </div>
+  );
+}
+
+
+
+{/* <select name="peaks" onChange = {peaksQuestion}>
 <option
 <option 
 <option
         </select>
         <button onClick = {submitAnswer}> Submit</button> */}
-      </div>
-      <div class="teardrop" id="challenges">
-        Challenges
-      </div>
-      <div class="teardrop" id="people">
-        People
-      </div>
-      <div class="teardrop" id="principles">
-        Principles
-      </div>
-      <div class="teardrop" id="power">
-        Power
-      </div>
-      <div class="teardrop" id="aspirations">
-        Aspirations
-      </div>
-    </div>
-  );
-}
-
 //when create is clicked, first petal is zoomed in.
 //user is prompted to select one of 3 questions from drop down menu -> when selected
 //will be either button or text area (within/outlined as a flex box? questions will always be top section: text area always below. this way all petals are equal size/proportions)

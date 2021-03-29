@@ -1,21 +1,21 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 h1 {
   font-family: "Poppins", sans-serif;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -28,7 +28,7 @@ h1 {
   color: white;
 }
 
-.petal {
+/* .petal {
   width: 1000px;
 }
 
@@ -50,7 +50,7 @@ h1 {
 
 #power {
   transform: rotate(300deg);
-}
+} */
 
 /* #aspirations{} */
 
@@ -68,6 +68,44 @@ h1 {
 #navglobe {
   height: 13vh;
 }
+
+
+/* -----------flower /create css */
+
+#flower-wrapper {
+  display: flex;
+ justify-content: space-evenly;
+ height: 87vh;
+ width: 100vw;
+  
+}
+
+#powers{
+  width: 8vw;
+}
+#interests{
+  width: 10vw;
+}
+#people{
+  width: 12vw;
+}
+#aspirations{
+  width: 8vw;
+}
+#challenges{
+  width: 12vw;
+}
+#peaks{
+  width: 10vw;
+}
+
+
+
+
+
+
+
+
 
 /* 
 
