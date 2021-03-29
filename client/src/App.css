@@ -73,13 +73,15 @@ h1 {
 /* -----------flower /create css */
 
 #flower-wrapper {
-  display: flex;
- justify-content: space-evenly;
+  /* display: flex;
+flex-direction: row;
+align-items: center;
+ justify-self: center; */
+ 
  height: 87vh;
  width: 100vw;
-  
 }
-
+/* 
 #powers{
   width: 8vw;
 }
@@ -97,7 +99,7 @@ h1 {
 }
 #peaks{
   width: 10vw;
-}
+} */
 
 
 

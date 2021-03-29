@@ -32,8 +32,9 @@ const [aspirationsQuestion, setAspirationsQuestion] = useState()
   
     <div id="flower-outer">
       <h1>Create!!!</h1>
+      <div id="flower-wrapper">
 <img id ="blank" src={box1} alt="blank"/>
-
+</div>
       {/* <div id="flower-wrapper">
       <div class="middle" id="name">
         Name
