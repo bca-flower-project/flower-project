@@ -2,7 +2,7 @@
   text-align: center;
 } */
 
-body: {
+body {
   margin:0;
   padding: 0;
 }
@@ -35,44 +35,28 @@ h1 {
   color: white;
 }
 
-/* #flower-outline {
-  width:24vw;
-  z-index: -100;
-  position: relative;
-} */
-
-/* .petal {
-  width: 1000px;
+#flower-outer {
+  position: relative; 
 }
 
-#peaks {
-  transform: rotate(60deg);
+#flower-outline {
+  width:30vw;
+  z-index: -9999;
+  position: absolute;
+top: 295px;
+left: 534px;
+  /* padding-left: 500px;
+  padding-top: 500px; */
 }
 
-#challenges {
-  transform: rotate(120deg);
-}
 
-#people {
-  transform: rotate(180deg);
-}
-
-#principles {
-  transform: rotate(240deg);
-}
-
-#power {
-  transform: rotate(300deg);
-} */
-
-/* #aspirations{} */
 
 /* ---------navbar css------------ */
 
 #navbar {
   display: flex;
   flex-direction: row;
-  width: 100vw;
+  width: 100vw; 
   justify-content: space-between;
 }
 
@@ -90,31 +74,18 @@ h1 {
 flex-direction: row;
 align-items: center;
  justify-self: center; */
-
+ position: absolute;
+ z-index: 1000;
  height: 87vh;
  width: 100vw;
+ top: 300px;
+ 
+ /* padding-bottom: 300px; */
 }
-/* 
-#powers{
-  width: 8vw;
-}
-#interests{
-  width: 10vw;
-}
-#people{
-  width: 12vw;
-}
-#aspirations{
-  width: 8vw;
-}
-#challenges{
-  width: 12vw;
-}
-#peaks{
-  width: 10vw;
-} */
 
-
+path {
+  fill: blue
+}
 
 
 

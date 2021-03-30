@@ -11,10 +11,17 @@ import Login from './components/Login';
 import Nav from './components/Nav';
 import PastFlowers from './components/PastFlowers';
 import Settings from './components/Settings';
-import Signup from './components/Signup'
-import { useState, useEffect } from 'react'
+import Signup from './components/Signup';
+import React, { useState, useEffect } from 'react';
 
 import {firebaseApp, auth, googleProvider } from './fire.js'
+
+//darkmode
+
+// import { ThemeProvider } from 'styled-components';
+// import { lightTheme, darkTheme } from './components/theme';
+// import { GlobalStyles } from './global'; 
+// import './App.css';
 
 
 //write all login functionality on app
@@ -24,6 +31,17 @@ function App() {
 const [googleUser, setGoogleUser] = useState()
 //useEffect to get if user exists/signed in, then pull info from database based on what user is signed in
 //useeffect will ping db then send back info on what user is logged in
+
+//color clicker/dark mode functionality
+// const [ theme, setTheme] = useState('light');
+// //function that toggles between the theme colors
+// const toggleTheme = () => {
+//   if (theme === 'light') {
+//     setTheme('dark');
+//   } else {
+//     setTheme('light');
+//   }
+// }
 
   function googleLogin (props) {
   firebaseApp.auth()
@@ -65,8 +83,17 @@ const [googleUser, setGoogleUser] = useState()
         <Route path={"/PastFlowers"} component={PastFlowers}/>
         <Route path={"/Settings"} component={Settings}/>
       </Switch>
-      
+      {/* <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <>
+          <GlobalStyles /> */}
+          {/* pass toggle functionality */}
+          {/* <button onClick={toggleTheme}>Toggle Theme</button>
+          {/* <footer></footer> */}
+        {/* </>
+      </ThemeProvider> */}
+       
     </div>
+    
   );
 }
 export default App;

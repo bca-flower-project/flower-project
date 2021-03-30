@@ -1,14 +1,14 @@
 import React from "react";
 import petal1 from "./images/powers.svg";
 import petal2 from "./images/interests.svg";
-import petal3 from './images/people.svg';
+import petal3 from "./images/people.svg";
 import petal4 from "./images/aspirations.svg";
 import petal5 from "./images/challenges.svg";
 import petal6 from "./images/peaks.svg";
-import blank from "./images/blank.svg"
-// import blanktwo from "./images/blanktwo.svg"
-import {useState} from 'react';
-import flower from './icons/ok-flower.png'
+import blank from "./images/blank.svg";
+import blanktwo from "./images/blanktwo.svg";
+import { useState } from "react";
+import flower from "./icons/ok-flower.png";
 
 let petalPic1 = petal1;
 let petalPic2 = petal2;
@@ -18,28 +18,28 @@ let petalPic5 = petal5;
 let petalPic6 = petal6;
 let box1 = blank;
 // let box2 = blanktwo
-let outline = flower
+let outline = flower;
 
 export default function Create(props) {
-const [pickQuestions, setPickQuestions] = useState()
+  const [pickQuestions, setPickQuestions] = useState();
 
-//this will set question to one chosen with on submit later on
-const [peaksQuestion, setPeaksQuestion] = useState()
-const [challengesQuestion, setChallengesQuestion] = useState()
-const [peopleQuestion, setPeopleQuestion] = useState()
-const [principlesQuestion, setPrinciplesQuestion] = useState()
-const [powerQuestion, setPowerQuestion] = useState()
-const [aspirationsQuestion, setAspirationsQuestion] = useState()
+  //this will set question to one chosen with on submit later on
+  const [peaksQuestion, setPeaksQuestion] = useState();
+  const [challengesQuestion, setChallengesQuestion] = useState();
+  const [peopleQuestion, setPeopleQuestion] = useState();
+  const [principlesQuestion, setPrinciplesQuestion] = useState();
+  const [powerQuestion, setPowerQuestion] = useState();
+  const [aspirationsQuestion, setAspirationsQuestion] = useState();
 
   return (
-  
-    <div id="flower-outer">
+    <div>
       <h1>Create!!!</h1>
-      {/* <img id="flower-outline" src={outline} alt="outline"/> */}
-      <div id="flower-wrapper">
-<img id ="blank" src={box1} alt="blank"/>
-
-</div>
+      <div id="flower-outer">
+        <img id="flower-outline" src={outline} alt="outline" />
+        <div id="flower-wrapper">
+          <img id="blank" src={box1} alt="blank" />
+        </div>
+      </div>
       {/* <div id="flower-wrapper">
       <div class="middle" id="name">
         Name
@@ -73,14 +73,14 @@ const [aspirationsQuestion, setAspirationsQuestion] = useState()
   );
 }
 
-
-
-{/* <select name="peaks" onChange = {peaksQuestion}>
+{
+  /* <select name="peaks" onChange = {peaksQuestion}>
 <option
 <option 
 <option
         </select>
-        <button onClick = {submitAnswer}> Submit</button> */}
+        <button onClick = {submitAnswer}> Submit</button> */
+}
 //when create is clicked, first petal is zoomed in.
 //user is prompted to select one of 3 questions from drop down menu -> when selected
 //will be either button or text area (within/outlined as a flex box? questions will always be top section: text area always below. this way all petals are equal size/proportions)
