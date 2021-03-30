@@ -6,8 +6,9 @@ import petal4 from "./images/aspirations.svg";
 import petal5 from "./images/challenges.svg";
 import petal6 from "./images/peaks.svg";
 import blank from "./images/blank.svg"
+// import blanktwo from "./images/blanktwo.svg"
 import {useState} from 'react';
-
+import flower from './icons/ok-flower.png'
 
 let petalPic1 = petal1;
 let petalPic2 = petal2;
@@ -16,6 +17,8 @@ let petalPic4 = petal4;
 let petalPic5 = petal5;
 let petalPic6 = petal6;
 let box1 = blank;
+// let box2 = blanktwo
+let outline = flower
 
 export default function Create(props) {
 const [pickQuestions, setPickQuestions] = useState()
@@ -32,8 +35,10 @@ const [aspirationsQuestion, setAspirationsQuestion] = useState()
   
     <div id="flower-outer">
       <h1>Create!!!</h1>
+      {/* <img id="flower-outline" src={outline} alt="outline"/> */}
       <div id="flower-wrapper">
 <img id ="blank" src={box1} alt="blank"/>
+
 </div>
       {/* <div id="flower-wrapper">
       <div class="middle" id="name">

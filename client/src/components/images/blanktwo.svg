@@ -2,8 +2,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
     viewBox="0 0 1300 1300" width="1300" height="1300" id="flower-box">
 
-<svg version="1.1" id="peaks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="50vw" y="0px"
-	 viewBox="0 0 460 486" width="12vw" height="12vh" style="enable-background:new 0 0 460 486;" xml:space="preserve">
+<svg version="1.1" id="peaks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="50.4vw" y="16.25vh"
+	 viewBox="0 0 540 486" width="12vw" height="12vh" style="enable-background:new 0 0 540 486;" xml:space="preserve">
 
 <style type="text/css">
 .title { font: 4.5vh sans-serif; }
@@ -26,8 +26,8 @@
 	
 </svg>
 
-<svg version="1.1" id="aspiration" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="58vw" y="3.8vh"
-	 viewBox="0 0 340 497.4"  width="12vw" height="13vh" style="enable-background:new 0 0 392 497.4;" xml:space="preserve">
+<svg version="1.1" id="aspiration" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="58.7vw" y="20vh"
+ viewBox="0 0 540 503"  width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve" transform="rotate(12)">
 <style type="text/css">
 .title { font: 4.5vh sans-serif; }
 	.st0{fill:#010101;}
@@ -46,8 +46,8 @@
 	c1.5,27.1-3.6,52.9-16.4,77.2c-9.4,17.8-21.9,33-36.8,46.5C294.4,380,274.2,393.3,250.4,406.6z"/>
 </svg>
 
-<svg version="1.1" id="people" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="55.75vw" y="11.5vh"
-	 viewBox="0 0 540.4 422" width="13.5vw" height="15.5vh" style="enable-background:new 0 0 540.4 422;" xml:space="preserve">
+<svg version="1.1" id="people" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="54.95vw" y="27.95vh"
+	 viewBox="0 0 540 503" width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#010101;}
 </style>
@@ -66,8 +66,8 @@
 	C246.3,385.5,224.6,374.6,201.2,360.7z"/>
 	</svg>
 
-<svg version="1.1" id="interests" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="50vw" y="16.1vh"
-	 viewBox="0 0 445 486"  width="12vw" height="13vh" style="enable-background:new 0 0 445 486;" xml:space="preserve">
+<svg version="1.1" id="interests" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="50.75vw" y="30.1vh"
+	 viewBox="0 0 540 503"  width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#010101;}
 </style>
@@ -85,8 +85,8 @@
 	c-44.7,2.5-87.4-5.3-127.5-25.6c-24.2-12.2-44-29.6-58.7-52.8c-10.7-17-17.6-35.5-21.9-55.1C22.8,307.6,21.4,283.4,21.7,256.2z"/>
 </svg>
 
-<svg version="1.1" id="powers" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="41vw" y="11vh"
-	 viewBox="0 0 379.6 503"  width="12vw" height="13vh" style="enable-background:new 0 0 379.6 503;" xml:space="preserve">
+<svg version="1.1" id="powers" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="44.2vw" y="26.5vh"
+	 viewBox="0 0 540 503"  width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#010101;}
 </style>
@@ -104,8 +104,8 @@
 	c-1.5-27.1,3.6-52.9,16.4-77.2c9.4-17.8,21.9-33,36.8-46.5C86.1,123.1,106.3,109.8,130,96.4z"/>
 </svg> 
 
-<svg version="1.1" id="challenges" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="43vw" y="3vh"
-	 viewBox="0 0 537 426"  width="13vw" height="13vh" style="enable-background:new 0 0 537 426;" xml:space="preserve">
+<svg version="1.1" id="challenges" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="43.65vw" y="20vh"
+	 viewBox="0 0 540 503"  width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve">
 	 
 <style type="text/css">
 	.st0{fill:#010101;}
@@ -130,10 +130,10 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="14vw"
-   height="14vh"
+   width="11vw"
+   height="11vh"
    viewBox="0 0 210 297"
-   x="48.8vw" y="9vh"
+   x="50vw" y="25vh"
  >
  
   <g id="circle1">
