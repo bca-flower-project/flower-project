@@ -1,19 +1,19 @@
 import React from 'react'
-import './flower.css'
+import "./flower.css"
 
-
-export default function FlowerImg(props) {
+export default function Flower(props) {
     return (
-        <div>
-            {/* <?xml version="1.0" encoding="UTF-8" standalone="no"?> */}
-           
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-    viewBox="0 0 1300 1300" width="1300" height="1300" id="flower-box">
+        <div id="flower-wrap">
+
+           {/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+    viewBox="0 0 1300 1300" width="1300" height="1300" id="flower-box"> */}
 
 <svg version="1.1" id="peaks" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="49.9vw" y="-.05vh"
-	 viewBox="0 0 460 486" width="12vw" height="12.1vh" style={{"enable-background" : "new 0 0 203 199"}} xmlSpace="preserve">
+	 viewBox="0 0 460 486" width="12vw" height="12.1vh"  xmlSpace="preserve">
 
-
+{/* <style type="text/css">
+	
+</style> */}
 <text x="12vw" y="12vh" class="title">Peaks</text>
 <path class="st0" d="M434.9,151.7c-4.8-24.5-13.2-47.5-27.8-67.9c-16.6-23.1-38.5-39.3-63.9-51c-40-18.4-82.5-23.4-125.7-24
 	c-11.8-0.2-23.5,2.8-35.3,3.5c-4.2,0.3-8.4,0.5-12.5,1.3c-12.2,2.2-24.1,5.6-35.8,9.3c-19.7,6.2-38,15.3-54.6,27.8
@@ -31,7 +31,7 @@ export default function FlowerImg(props) {
 </svg>
 
 <svg version="1.1" id="aspiration" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="57.9vw" y="4.25vh"
-	 viewBox="0 0 340 497.4"  width="12vw" height="12vh" style={{"enable-background" : "new 0 0 203 199"}} xmlSpace="preserve">
+	 viewBox="0 0 340 497.4"  width="12vw" height="12vh" xmlSpace="preserve">
 
 <text x="12vw" y="-5vh" transform="rotate(60)" class="title">Aspiration</text>
 <path class="st0" d="M322.5,375.1c18.8-16.4,34.5-35.2,44.9-58c11.7-25.9,14.8-53,12.2-80.8c-4.1-43.8-21-83.1-42.1-120.9
@@ -48,7 +48,7 @@ export default function FlowerImg(props) {
 </svg>
 
 <svg version="1.1" id="people" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="55.75vw" y="11.45vh"
-	 viewBox="0 0 540.4 422" width="13.5vw" height="15.5vh" style={{"enable-background" : "new 0 0 203 199"}} xmlSpace="preserve">
+	 viewBox="0 0 540.4 422" width="13.5vw" height="15.5vh"  xmlSpace="preserve">
 
 <text x="-8vw" y="-32vh" transform="rotate(120)" class="title">People</text>
 <path class="st0" d="M264.6,407.4c23.6,8.1,47.7,12.3,72.7,9.9c28.3-2.8,53.3-13.7,76.1-29.8c35.9-25.4,61.5-59.7,83.6-96.9
@@ -66,7 +66,7 @@ export default function FlowerImg(props) {
 	</svg>
 
 <svg version="1.1" id="principles" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="49.9vw" y="16.7vh"
-	 viewBox="0 0 445 486"  width="12vw" height="12vh" style={{"enable-background" : "new 0 0 203 199"}} xmlSpace="preserve">
+	 viewBox="0 0 445 486"  width="12vw" height="12vh" xmlSpace="preserve">
 
 <text x="-23vw" y="-28vh" transform="rotate(180)" class="title">Principles</text>
 <path class="st0" d="M13,334.4c4.8,24.5,13.2,47.5,27.8,67.9c16.6,23.1,38.5,39.3,63.9,51c40,18.4,82.5,23.4,125.7,24
@@ -83,7 +83,7 @@ export default function FlowerImg(props) {
 </svg>
 
 <svg version="1.1" id="powers" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="41.2vw" y="12.12vh"
-	 viewBox="0 0 379.6 503"  width="12.3vw" height="12.5vh" style={{"enable-background" : "new 0 0 203 199"}} xmlSpace="preserve">
+	 viewBox="0 0 379.6 503"  width="12.3vw" height="12.5vh"  xmlSpace="preserve">
 
 <text x="-32vw" y="-6vh" transform="rotate(240)" class="title">Powers</text>
 <path class="st0" d="M58,128c-18.8,16.4-34.5,35.2-44.9,58C1.4,212-1.7,239,0.8,266.9c4.1,43.8,21,83.1,42.1,120.9
@@ -100,13 +100,11 @@ export default function FlowerImg(props) {
 </svg> 
 
 <svg version="1.1" id="challenges" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="42.4vw" y="2.9vh"
-	 viewBox="0 0 537 426"  width="13.25vw" height="13vh" style={{"enable-background" : "new 0 0 203 199"}} xmlSpace="preserve">
+	 viewBox="0 0 537 426"  width="13.25vw" height="13vh" xmlSpace="preserve">
 	 
 
 <text x="-18vw" y="15vh" transform="rotate(300)" class="title">Challenges</text>
-<path 
-// fill = {props.color}
- class="st0" d="M273.6,16.6c-23.6-8.1-47.7-12.3-72.7-9.9c-28.3,2.8-53.3,13.7-76.1,29.8C88.8,62,63.2,96.3,41.1,133.4
+<path class="st0" d="M273.6,16.6c-23.6-8.1-47.7-12.3-72.7-9.9c-28.3,2.8-53.3,13.7-76.1,29.8C88.8,62,63.2,96.3,41.1,133.4
 	c-6.1,10.1-9.3,21.8-14.6,32.3c-1.8,3.8-3.8,7.5-5.1,11.5c-4.2,11.7-7.2,23.7-9.8,35.7C7,233,5.8,253.4,8.3,274
 	c4.3,34.1,19.4,63.3,42.3,88.7c16.2,17.9,34.8,33.1,54.4,47c1.9,1.3,3.7,2.6,4.9,4.7c1.9,3.2,4.7,4.3,8.3,3.5c1.9-0.4,3.4-1.4,5-2.3
 	c27.9-16.5,56.7-31,87-42.6c42.2-16.3,85.6-28.4,129.8-38c6.9-1.5,13.8-3,20.7-4c2.5-0.4,4.1-1.1,5.1-3.2c2.3-4.9,5.3-9.4,8-13.9
@@ -121,20 +119,21 @@ export default function FlowerImg(props) {
 </svg>
 
 
-
-
+{/* 
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="50.4vw" y="8.8vh"
-	 viewBox="0 0 203 199" width="11vw" height="11vh" style={{"enable-background" : "new 0 0 203 199"}} xmlSpace="preserve">
+	 viewBox="0 0 203 199" width="11vw" height="11vh" style="enable-background:new 0 0 203 199;" xmlSpace="preserve">
 <path d="M172.6,37.8c-13.8-14.7-31.1-23.7-51.1-27.9c-11.9-2.4-24-2.7-36-0.7C62,13.2,42.8,24.1,27.9,41.9
 	C14.9,57.4,7.9,75.2,7,95.1c-0.9,19.8,4.3,38.1,15.8,54.5c18.8,26.8,45.2,40.5,78.7,41.5c7.1-0.1,13.9-0.8,20.4-2.4
 	c17.8-4.1,33.1-12.7,45.7-25.4c17.3-17.4,27.2-38.1,28.3-62.2C197.1,77.1,189.4,55.8,172.6,37.8z M139.2,174.3
 	c-25.9,12.7-52.3,12.5-77.8-0.6c-27.1-14-42.2-36.4-46.2-65.7c-0.2-1.8-0.4-3.6-0.4-5.4c-0.1-1.4,0-2.8,0-4.3
 	c0.3-32.4,19.8-61.7,50.3-75.3c17.7-7.9,36.3-9.8,55.3-5.7c24.8,5.3,44,18.3,56.8,39.6c6.5,10.8,10,22.6,10.8,35.1
 	C190.2,125.4,170.9,158.8,139.2,174.3z"/>
-</svg>
-</svg>
-</div>
-    )}
+</svg> */}
 
 
-// .st0{fill:#010101;}
+
+{/* </svg>   */}
+        </div>
+    )
+}
+

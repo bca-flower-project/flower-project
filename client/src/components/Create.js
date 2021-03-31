@@ -7,10 +7,13 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from '../global'; 
 import '../App.css';
-import FlowerImg from "./FlowerImg"
+import Flower from "./Flower";
+import Petal from './Petal';
+import FlowerImg from './FlowerImg'
 let box1 = blank;
 // let box2 = blanktwo
 // let outline = flower;
+
 
 
 
@@ -49,8 +52,19 @@ export default function Create(props) {
         {/* <img id="flower-outline" src={outline} alt="outline" /> */}
         <div id="flower-wrapper">
           <img id="blank" src={box1} alt="blank" />
-          {/* <FlowerImg/> */}
+          
+          <FlowerImg/>
+          {/* <FlowerBox>
+<Petal
+x={"49.9vw"} y={"-.05vh"}
+/>
+<Petal
+x={"9vw"} y={"5vh"}
+transform ="rotate(120)"
+/></FlowerBox> */}
+
         </div>
+
 
 
 
