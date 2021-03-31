@@ -1,7 +1,7 @@
 import React from "react";
 import blank from "./images/blank.svg";
 import blanktwo from "./images/blanktwo.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import flower from "./icons/ok-flower.png";
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './theme';
@@ -65,7 +65,7 @@ export default function Create(props) {
           </Modal>
         )} */}
         
-        {/*modal, passed setdisplay function*/}
+        {/*modal, passed setDisplay function*/}
         {/* </div> */}
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>

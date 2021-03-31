@@ -3,32 +3,21 @@ import { useState, useEffect } from "react";
 function Modal(props) {
   const [chosen, setChosen] = useState(null); // what is chosen state
   const [selected, setSelected] = useState(""); // what is selected state
-
-  // when submitted... update chosen state with currently selected
-  function submitForm(evt) {
-    evt.preventDefault();
-    setChosen(selected);
-  }
-
-  // when option is selected save it in selected state
-  function handleChange(evt) {
-    let target = evt.target;
-    setSelected(target.value);
-  }
+  const [question, setQuestion] = useState(""); //which petal they select determines which questions show
 
   //fetch 
   //fetch a route on backend, backend is going to hit your api endpoint, that will send back your questionsjson, save your response to state, console.log state 
-  // const [petal, setPetal] = useState([]);
-  // //use state for questions for each petal 
-  // useEffect(() => {
-  //   if (petal.id === "") {
-  //     fetch(`/api/${props.match.params.id}`)
-  //       .then((res) => res.json())
-  //       .then((questionsList) => {
-  //         setPetal(questionsList);
-  //       });
-  //   }
-  // });
+  const [petal, setPetal] = useState([]);
+  //use state for questions for each petal 
+  useEffect(() => {
+    if (petal.id === "") {
+      fetch(`/api`)
+        .then((res) => res.json())
+        .then((questionsList) => {
+          setPetal(questionsList);
+        });
+    }
+  });
 //do we need to make it questions.length or id 
   
   return (
