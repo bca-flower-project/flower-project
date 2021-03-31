@@ -3,13 +3,81 @@ import Modal from 'react-modal';
 //import Create from './Create';
 
 function PetalModal(props) {
-  const [chosen, setChosen] = useState(null); // what is chosen state
+  const questions = [
+    {
+      petal: "Peaks",
+      questionOptions: [
+        //array of possible questions
+         "What have been the peak moments of your life?",
+         "What are your biggest accomplishments?",
+         "What are your happiest memories?" 
+      ],
+    },
+    {
+      petal: "Pspirations",
+      questionOptions: [
+        "What is your intention for the future?",
+        "What are your aspirations?",
+        "What are your goals?"
+      ],
+    },
+    {
+      petal: "People",
+      questionOptions: [
+        "Who do you care about the most?",
+        "Who are the people that care for you?",
+        "Who are the most influential people in your life?",
+      ],
+    },
+    {
+      petal: "Principles",
+      questionOptions: [
+        "What are your principles?",
+        "What do you care about most in life?",
+        "What are your most deeply held beliefs?"
+      ],
+    },
+    {
+      petal: "Powers",
+      questionOptions: [
+        "What do you feel you are good at?",
+        "What do you love to do?",
+        "What are your powers?"
+      ],
+    },
+    {
+      petal: "Challenges",
+      questionOptions: [
+        "What do you struggle with the most?",
+        "What are the biggest challenges you've faced?",
+        "What have been the hardest times of your life?"
+      ],
+    },
+    
+  ];
+  const [chosen, setChosen] = useState(0); // what is chosen state
   const [selected, setSelected] = useState(""); // what is selected state
   //const [question, setQuestion] = useState(""); //which petal they select determines which questions show
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
+function handleNextPetal() {
+    
+    let nextPetal = chosen + 1;
+    //if the question # is bigger than the length of the array, it stops bc petals are complete
+    if (nextPetal < questions.length) {
+      setChosen(nextPetal);
+    } else {
+      setModalIsOpen(false)
+    }
+  }
 
-
+  const setModalIsOpenToTrue =()=>{
+    setModalIsOpen(true)
+  }
+  const setModalIsOpenToFalse=()=>{
+    setModalIsOpen(false)
+  }
+  console.log(questions[1])
 
  // when submitted... update chosen state with currently selected
  function submitForm(evt) {
@@ -29,7 +97,7 @@ function handleChange(evt) {
   const [petal, setPetal] = useState([]);
   //use state for questions for each petal 
   useEffect(() => {
-    if (petal === "") {
+    if (petal === "peaks") {
       fetch(`/api`)
         .then((res) => res.json())
         .then((questionsList) => {
@@ -40,49 +108,42 @@ function handleChange(evt) {
 //do we need to make it questions.length or id 
   
   return (
-    <div
-      style={{
-        height: "200px",
-        width: "200px",
-        border: "1px solid black",
-        backgroundColor: "pink",
-        position: "absolute",
-        zIndex: 600,
-      }}
-    >
-      Choose your prompt
-      <ul></ul>
+    <>
+      <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
 
-      <div>
-        {/* <h4>{chosen ? `You guessed ${chosen}` : "Guess a County"}</h4> update header with selected county */}
-        {/* {chosen && <h4>{props.fetched.county === chosen ? win() : wrong()}</h4>} */}
-        <form onSubmit={submitForm}> 
-          <select
+      
+      <Modal isOpen={modalIsOpen}>  
+          <button onClick={setModalIsOpenToFalse}>x</button>
+          <div className="question-text">
+          <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
+          <form onSubmit={submitForm}>
+            <select
             name="question-selection"
             value={selected}
             onChange={handleChange}
-          >
-            <option value="Question 1">{petal.questionOne}</option>
-            <option value="Question 2">{petal.questionTwo}</option>
-            <option value="Question 3">{petal.questionThree}</option>
-            
-          </select>
+            >
+              {questions[chosen].questionOptions.map((question, index) => {
+                return (
+                  <option value={`Question ${index}`}>{question}</option>
+                )
+              })
+            }
+            </select><br></br>
+            <textarea placeholder="enter your answer here"></textarea><br></br>
+            <input type="submit"/>
+          </form><br></br>
+          <button onClick={handleNextPetal}>Next Petal</button>
+
+             
+          </div>
+            {/* text area */}
+
+
+
           
-          <textarea placeholder="enter answer here"></textarea>
-          <input type="submit" />
-        </form>
-        
-      </div>
-      <button
-        onClick={(evt) => {
-          props.display(false); // Cancel button
-        }}
-      >
-        Cancel
-      </button>
-      <button>Next Petal</button> 
-      {/* button to move to next flower petal and questions */}
-    </div>
+      </Modal>
+    
+    </>
   );
 }
 

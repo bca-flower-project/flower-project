@@ -95,7 +95,7 @@ transform ="rotate(120)"
         <footer></footer>
       </>
     </ThemeProvider>
-    <button disabled={props.disabledState} onClick={() => {props.setDisabled(false); props.display(true)}} >Show Modal</button> {/*Activates guess modal*/}
+    {/* <button disabled={props.disabledState} onClick={() => {props.setDisabled(false); props.display(true)}} >Show Modal</button> Activates guess modal */}
       </div>
       
     </div>
