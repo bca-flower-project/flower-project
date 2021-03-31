@@ -2,8 +2,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
     viewBox="0 0 1300 1300" width="1300" height="1300" id="flower-box">
 
-<svg version="1.1" id="peaks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="50.4vw" y="16.25vh"
-	 viewBox="0 0 540 486" width="12vw" height="12vh" style="enable-background:new 0 0 540 486;" xml:space="preserve">
+<svg version="1.1" id="peaks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="49.9vw" y="-.05vh"
+	 viewBox="0 0 460 486" width="12vw" height="12.1vh" style="enable-background:new 0 0 460 486;" xml:space="preserve">
 
 <style type="text/css">
 .title { font: 4.5vh sans-serif; }
@@ -26,8 +26,8 @@
 	
 </svg>
 
-<svg version="1.1" id="aspiration" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="58.7vw" y="20vh"
- viewBox="0 0 540 503"  width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve" transform="rotate(12)">
+<svg version="1.1" id="aspiration" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="57.9vw" y="4.25vh"
+	 viewBox="0 0 340 497.4"  width="12vw" height="12vh" style="enable-background:new 0 0 392 497.4;" xml:space="preserve">
 <style type="text/css">
 .title { font: 4.5vh sans-serif; }
 	.st0{fill:#010101;}
@@ -46,8 +46,8 @@
 	c1.5,27.1-3.6,52.9-16.4,77.2c-9.4,17.8-21.9,33-36.8,46.5C294.4,380,274.2,393.3,250.4,406.6z"/>
 </svg>
 
-<svg version="1.1" id="people" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="54.95vw" y="27.95vh"
-	 viewBox="0 0 540 503" width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve">
+<svg version="1.1" id="people" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="55.75vw" y="11.45vh"
+	 viewBox="0 0 540.4 422" width="13.5vw" height="15.5vh" style="enable-background:new 0 0 540.4 422;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#010101;}
 </style>
@@ -66,12 +66,12 @@
 	C246.3,385.5,224.6,374.6,201.2,360.7z"/>
 	</svg>
 
-<svg version="1.1" id="interests" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="50.75vw" y="30.1vh"
-	 viewBox="0 0 540 503"  width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve">
+<svg version="1.1" id="principles" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="49.9vw" y="16.7vh"
+	 viewBox="0 0 445 486"  width="12vw" height="12vh" style="enable-background:new 0 0 445 486;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#010101;}
 </style>
-<text x="-23vw" y="-28vh" transform="rotate(180)" class="title">Interests</text>
+<text x="-23vw" y="-28vh" transform="rotate(180)" class="title">Principles</text>
 <path class="st0" d="M13,334.4c4.8,24.5,13.2,47.5,27.8,67.9c16.6,23.1,38.5,39.3,63.9,51c40,18.4,82.5,23.4,125.7,24
 	c11.8,0.2,23.5-2.8,35.3-3.5c4.2-0.3,8.4-0.5,12.5-1.3c12.2-2.2,24.1-5.6,35.8-9.3c19.7-6.2,38-15.3,54.6-27.8
 	c27.4-20.8,45.1-48.4,55.7-81c7.4-23,11.3-46.7,13.5-70.6c0.2-2.3,0.4-4.5,1.6-6.6c1.8-3.2,1.4-6.2-1.1-8.9
@@ -85,8 +85,8 @@
 	c-44.7,2.5-87.4-5.3-127.5-25.6c-24.2-12.2-44-29.6-58.7-52.8c-10.7-17-17.6-35.5-21.9-55.1C22.8,307.6,21.4,283.4,21.7,256.2z"/>
 </svg>
 
-<svg version="1.1" id="powers" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="44.2vw" y="26.5vh"
-	 viewBox="0 0 540 503"  width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve">
+<svg version="1.1" id="powers" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="41.2vw" y="12.12vh"
+	 viewBox="0 0 379.6 503"  width="12.3vw" height="12.5vh" style="enable-background:new 0 0 379.6 503;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#010101;}
 </style>
@@ -104,8 +104,8 @@
 	c-1.5-27.1,3.6-52.9,16.4-77.2c9.4-17.8,21.9-33,36.8-46.5C86.1,123.1,106.3,109.8,130,96.4z"/>
 </svg> 
 
-<svg version="1.1" id="challenges" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="43.65vw" y="20vh"
-	 viewBox="0 0 540 503"  width="12vw" height="12vh" style="enable-background:new 0 0 540 503;" xml:space="preserve">
+<svg version="1.1" id="challenges" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="42.4vw" y="2.9vh"
+	 viewBox="0 0 537 426"  width="13.25vw" height="13vh" style="enable-background:new 0 0 537 426;" xml:space="preserve">
 	 
 <style type="text/css">
 	.st0{fill:#010101;}
@@ -126,31 +126,17 @@
 </svg>
 
 
-<svg  version="1.1" id= "circle" xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="11vw"
-   height="11vh"
-   viewBox="0 0 210 297"
-   x="50vw" y="25vh"
- >
- 
-  <g id="circle1">
-    <ellipse
-       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:9.1896;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path1436"
-       cx="105.07738"
-       cy="108.85713"
-       rx="102.05357"
-       ry="97.51786" />
-    <circle
-       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:5.87375;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path1448"
-       cx="-24.568451"
-       cy="1022.4255"
-       r="140.98511" />
-  </g>
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="50.4vw" y="8.8vh"
+	 viewBox="0 0 203 199" width="11vw" height="11vh" style="enable-background:new 0 0 203 199;" xml:space="preserve">
+<path d="M172.6,37.8c-13.8-14.7-31.1-23.7-51.1-27.9c-11.9-2.4-24-2.7-36-0.7C62,13.2,42.8,24.1,27.9,41.9
+	C14.9,57.4,7.9,75.2,7,95.1c-0.9,19.8,4.3,38.1,15.8,54.5c18.8,26.8,45.2,40.5,78.7,41.5c7.1-0.1,13.9-0.8,20.4-2.4
+	c17.8-4.1,33.1-12.7,45.7-25.4c17.3-17.4,27.2-38.1,28.3-62.2C197.1,77.1,189.4,55.8,172.6,37.8z M139.2,174.3
+	c-25.9,12.7-52.3,12.5-77.8-0.6c-27.1-14-42.2-36.4-46.2-65.7c-0.2-1.8-0.4-3.6-0.4-5.4c-0.1-1.4,0-2.8,0-4.3
+	c0.3-32.4,19.8-61.7,50.3-75.3c17.7-7.9,36.3-9.8,55.3-5.7c24.8,5.3,44,18.3,56.8,39.6c6.5,10.8,10,22.6,10.8,35.1
+	C190.2,125.4,170.9,158.8,139.2,174.3z"/>
 </svg>
+
+
 
 </svg> 

@@ -9,9 +9,12 @@ import { GlobalStyles } from '../global';
 import '../App.css';
 import FlowerImg from "./FlowerImg";
 import PetalModal from "./PetalModal";
+import Flower from "./Flower";
+import Petal from './Petal';
 let box1 = blank;
 // let box2 = blanktwo
 // let outline = flower;
+
 
 
 
@@ -53,11 +56,37 @@ export default function Create(props) {
         {/* <img id="flower-outline" src={outline} alt="outline" /> */}
         <div id="flower-wrapper">
           <img id="blank" src={box1} alt="blank" />
-          {/* <FlowerImg/> */}
+          
+          <FlowerImg/>
+          {/* <FlowerBox>
+<Petal
+x={"49.9vw"} y={"-.05vh"}
+/>
+<Petal
+x={"9vw"} y={"5vh"}
+transform ="rotate(120)"
+/></FlowerBox> */}
+
         </div>
 
       {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
     <PetalModal/>
+
+
+
+
+        {/*Modal Div*/}
+      {/* <button onClick={setDisplay}>Show Modal</button> */}
+      {/* <div className="modal" style={{ display: "block", position: "fixed" }}>
+        {display && (
+          <Modal>
+            display={setDisplay}
+            
+          </Modal>
+        )} */}
+        
+        {/*modal, passed setDisplay function*/}
+        {/* </div> */}
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
