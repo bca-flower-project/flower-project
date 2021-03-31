@@ -1,26 +1,37 @@
 import React from "react";
-import petal1 from "./images/powers.svg";
-import petal2 from "./images/interests.svg";
-import petal3 from "./images/people.svg";
-import petal4 from "./images/aspirations.svg";
-import petal5 from "./images/challenges.svg";
-import petal6 from "./images/peaks.svg";
 import blank from "./images/blank.svg";
 import blanktwo from "./images/blanktwo.svg";
 import { useState } from "react";
 import flower from "./icons/ok-flower.png";
-
-let petalPic1 = petal1;
-let petalPic2 = petal2;
-let petalPic3 = petal3;
-let petalPic4 = petal4;
-let petalPic5 = petal5;
-let petalPic6 = petal6;
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './theme';
+import { GlobalStyles } from '../global'; 
+import '../App.css';
+import FlowerImg from "./FlowerImg"
 let box1 = blank;
 // let box2 = blanktwo
-let outline = flower;
+// let outline = flower;
+
+
+
+
+
+
+// import Modal from './Modal';
 
 export default function Create(props) {
+  const [theme, setTheme] = useState('light');
+  const [display, setDisplay] = useState(false); // is the modal displayed or not
+
+  //function that toggles between themes
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }
+
   const [pickQuestions, setPickQuestions] = useState();
 
   //this will set question to one chosen with on submit later on
@@ -35,43 +46,46 @@ export default function Create(props) {
     <div>
       <h1>Create!!!</h1>
       <div id="flower-outer">
-        <img id="flower-outline" src={outline} alt="outline" />
+        {/* <img id="flower-outline" src={outline} alt="outline" /> */}
         <div id="flower-wrapper">
           <img id="blank" src={box1} alt="blank" />
+          {/* <FlowerImg/> */}
         </div>
+
+
+
+
+        {/*Modal Div*/}
+      {/* <button onClick={setDisplay}>Show Modal</button> */}
+      {/* <div className="modal" style={{ display: "block", position: "fixed" }}>
+        {display && (
+          <Modal>
+            display={setDisplay}
+            
+          </Modal>
+        )} */}
+        
+        {/*modal, passed setdisplay function*/}
+        {/* </div> */}
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <>
+        <GlobalStyles />
+        
+        <button onClick={toggleTheme}>Toggle Theme</button>
+        <h1>It's a light theme!</h1>
+        <footer></footer>
+      </>
+    </ThemeProvider>
       </div>
-      {/* <div id="flower-wrapper">
-      <div class="middle" id="name">
-        Name
-      </div>
-      <div class="flower" id="peaks">
-        POWERS 
-        <img id="powers" src={petalPic1} alt="petal"/>  
-      </div>
-      <div class="flower" id="challenges">
-        <img id="interests" src={petalPic2} alt="petal"/>
-        INTERESTS
-      </div>
-      <div class="flower" id="people">
-        <img id="people" src={petalPic3} alt="petal"/>
-        PEOPLE
-      </div>
-      <div class="flower" id="principles">
-        <img id="aspirations" src={petalPic4} alt="petal"/>
-        ASPIRATIONS
-      </div>
-      <div class="flower" id="power">
-        <img id="challenges" src={petal5} alt="petal"/>
-        CHALLENGES
-      </div>
-      <div class="flower" id="aspirations">
-        <img id="peaks" src={petalPic6} alt="petal"/>
-        PEAKS
-        </div> */}
-      {/* </div> */}
+      
     </div>
   );
 }
+
+
+
+
+
 
 {
   /* <select name="peaks" onChange = {peaksQuestion}>
