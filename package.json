@@ -18,6 +18,7 @@
     "firebase": "^8.3.1",
     "mongodb": "^3.6.5",
     "mongoose": "^5.12.2",
+    "react-modal": "^3.12.1",
     "styled": "^1.0.0"
   }
 }
