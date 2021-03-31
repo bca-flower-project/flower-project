@@ -1,43 +1,86 @@
-import React from 'react'
-import { Form, Button, Card } from "react-bootstrap";
+//setting up the  sign up with bootstrap
+import React from "react";
+import { useRef } from "react";
+import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Link, Redirect } from "react-router-dom";
+import { useState } from "react";
+// import { useAuth } from "./contexts/AuthContext"
+export default function Login(props) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  // This is so we can receive error's if something is going wrong
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
+  const [emailVal, setEmailVal] = useState("");
+  const [passVal, setPassVal] = useState("");
 
-export default function Login() {
-    // const emailRef = useRef()
-    // const passwordRef = useRef()
-    // const passwordConfirmRef = useRef()
-    return (
-        <div>
-            <h1>This is the login page</h1>
-            {/* put in login forms here, so we can test database */}
-            <Card>
+  function handleInput(evt) {
+    if (evt.target.type === "email") {
+      setEmailVal(evt.target.value);
+    } else {
+      setPassVal(evt.target.value);
+    }
+  }
+  console.log(props);
+  return (
+    <>
+      {/* This is creating the signup form  */}
+      <Card>
         <Card.Body>
-          <h2> Sign Up </h2>
+          <h2 text-center mb-4>
+            Log In
+          </h2>
+          {/* {currentUser.email} */}
+          {error && <Alert variant="danger">{error}</Alert>}
           <Form>
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
-              <Form.Control type="email" required />
+              <Form.Control
+                onChange={handleInput}
+                type="email"
+                ref={emailRef}
+                required
+              />
             </Form.Group>
             <Form.Group id="password">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" required />
+              <Form.Control
+                onChange={handleInput}
+                type="password"
+                ref={passwordRef}
+                required
+              />
             </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" required />
-            </Form.Group>
-            <Button id= 'signUpSubmit' type="submit">Sign Up</Button>
           </Form>
+          {/* <Button
+            disabled={loading}
+            className="w-100"
+            style={{ background: "black" }}
+            type="submit"
+            onClick={(evt) => {
+              evt.preventDefault();
+              props.loginPass(emailVal, passVal);
+              console.log("submit form");
+            }}
+          >
+            Log In
+          </Button> */}
+          <Button
+            onClick={props.googleLogin}
+            className="w-100"
+            style={{ background: "black" }}
+            type="submit"
+          >
+            Google Login
+          </Button>
+          {props.user && <Redirect to="/Dashboard" />}
         </Card.Body>
       </Card>
-
-
-        </div>
-    )
+      <div className="w-100 text-center mt-2">
+        Already have an account?<Link to="/Signup"> Sign Up</Link>
+        {/* wrap the words Log In in a <Link> to the log */}
+      </div>
+    </>
+  );
 }
-
-//login page will have entry form for inputting username & password & will connect to firebase or mongo for login authentication
-//authenticate and login through google and facebook
-//modal window for login
-
-//make sure user is logged into entire site, not just one page
