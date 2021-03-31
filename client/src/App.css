@@ -35,11 +35,11 @@ h1 {
   color: white;
 }
 
-#flower-outer {
+/* #flower-outer {
   position: relative; 
-}
+} */
 
-#flower-outline {
+/* #flower-outline {
   width:30vw;
   z-index: -9999;
   position: absolute;
@@ -47,7 +47,7 @@ top: 295px;
 left: 534px;
   /* padding-left: 500px;
   padding-top: 500px; */
-}
+
 
 
 
@@ -75,7 +75,7 @@ flex-direction: row;
 align-items: center;
  justify-self: center; */
  position: absolute;
- z-index: 1000;
+ /* z-index: 1000; */
  height: 87vh;
  width: 100vw;
  top: 300px;

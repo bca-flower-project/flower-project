@@ -1,39 +1,28 @@
 import React from "react";
 import blank from "./images/blank.svg";
+// import { ReactComponent as Petal } from "./images/petal.svg";
+// import { ReactComponent as Blank } from "./images/blank.svg";
 import blanktwo from "./images/blanktwo.svg";
 import { useState, useEffect } from "react";
 import flower from "./icons/ok-flower.png";
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './theme';
-import { GlobalStyles } from '../global'; 
-import '../App.css';
-import Flower from "./Flower";
-import Petal from './Petal';
-import FlowerImg from './FlowerImg'
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./theme";
+import { GlobalStyles } from "../global";
+import "../App.css";
 let box1 = blank;
-// let box2 = blanktwo
-// let outline = flower;
-
-
-
-
-
-
-
-// import Modal from './Modal';
 
 export default function Create(props) {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState("light");
   const [display, setDisplay] = useState(false); // is the modal displayed or not
 
   //function that toggles between themes
   const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
+    if (theme === "light") {
+      setTheme("dark");
     } else {
-      setTheme('light');
+      setTheme("light");
     }
-  }
+  };
 
   const [pickQuestions, setPickQuestions] = useState();
 
@@ -52,54 +41,23 @@ export default function Create(props) {
         {/* <img id="flower-outline" src={outline} alt="outline" /> */}
         <div id="flower-wrapper">
           <img id="blank" src={box1} alt="blank" />
-          
-          <FlowerImg/>
-          {/* <FlowerBox>
-<Petal
-x={"49.9vw"} y={"-.05vh"}
-/>
-<Petal
-x={"9vw"} y={"5vh"}
-transform ="rotate(120)"
-/></FlowerBox> */}
-
         </div>
+        {/* 
+<Blank />         */}
 
+        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+          <>
+            <GlobalStyles />
 
-
-
-
-        {/*Modal Div*/}
-      {/* <button onClick={setDisplay}>Show Modal</button> */}
-      {/* <div className="modal" style={{ display: "block", position: "fixed" }}>
-        {display && (
-          <Modal>
-            display={setDisplay}
-            
-          </Modal>
-        )} */}
-        
-        {/*modal, passed setDisplay function*/}
-        {/* </div> */}
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles />
-        
-        <button onClick={toggleTheme}>Toggle Theme</button>
-        <h1>It's a light theme!</h1>
-        <footer></footer>
-      </>
-    </ThemeProvider>
+            <button onClick={toggleTheme}>Toggle Theme</button>
+            <h1>It's a light theme!</h1>
+            <footer></footer>
+          </>
+        </ThemeProvider>
       </div>
-      
     </div>
   );
 }
-
-
-
-
-
 
 {
   /* <select name="peaks" onChange = {peaksQuestion}>
