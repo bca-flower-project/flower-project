@@ -1,35 +1,26 @@
 import React from "react";
+import {Route} from "react-router-dom";
 import blank from "./images/blank.svg";
+import {App} from 'react';
+// import {Create} from 'react';
 // import { ReactComponent as Petal } from "./images/petal.svg";
 // import { ReactComponent as Blank } from "./images/blank.svg";
 import blanktwo from "./images/blanktwo.svg";
 import { useState, useEffect } from "react";
 import flower from "./icons/ok-flower.png";
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './theme';
-import { GlobalStyles } from '../global'; 
 import '../App.css';
-import FlowerImg from "./FlowerImg";
+// import FlowerImg from "./FlowerImg";
 import PetalModal from "./PetalModal";
-import Flower from "./Flower";
-import Petal from './Petal';
+// import Flower from "./Flower";
+// import Petal from './Petal';
 let box1 = blank;
 
 export default function Create(props) {
-  const [theme, setTheme] = useState("light");
+  
   const [display, setDisplay] = useState(false); // is the modal displayed or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  
 
-  //function that toggles between themes
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
 
   const [pickQuestions, setPickQuestions] = useState();
 
@@ -47,36 +38,9 @@ export default function Create(props) {
       <div id="flower-outer">
         {/* <img id="flower-outline" src={outline} alt="outline" /> */}
         <div id="flower-wrapper">
-          <img id="blank" src={box1} alt="blank" />
+          
         </div>
-
-      {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
-    <PetalModal/>
-
-
-
-
-        {/*Modal Div*/}
-      {/* <button onClick={setDisplay}>Show Modal</button> */}
-      {/* <div className="modal" style={{ display: "block", position: "fixed" }}>
-        {display && (
-          <Modal>
-            display={setDisplay}
-            
-          </Modal>
-        )} */}
-        
-        {/*modal, passed setDisplay function*/}
-        {/* </div> */}
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles />
-        
-        <button onClick={toggleTheme}>Toggle Theme</button>
-        <footer></footer>
-      </>
-    </ThemeProvider>
-    {/* <button disabled={props.disabledState} onClick={() => {props.setDisabled(false); props.display(true)}} >Show Modal</button> Activates guess modal */}
+        <PetalModal theme={props.theme} />
       </div>
     </div>
   );
