@@ -4,6 +4,7 @@ import blank from "./images/blank.svg";
 import Flower from "./flower.jsx";
 import { useState, useEffect } from "react";
 import outline from "./icons/ok-flower.png";
+import DarkModeNav from './components/DarkModeNav';
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "../global";
@@ -17,7 +18,7 @@ export default function Create(props) {
   
   const [display, setDisplay] = useState(false); // is the modal displayed or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  const [theme, setTheme] = useState("light");
   //function that toggles between themes
   const toggleTheme = () => {
     if (theme === "light") {
