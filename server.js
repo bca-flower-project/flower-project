@@ -3,10 +3,11 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 5000;
+require('dotenv').config()
 
 
 //Set up static file server
-const staticDir = path.resolve("./client/public");
+const staticDir = process.env.PRODUCTION ? path.resolve("./client/build") : path.resolve('./client/public')
 
 //path for petal questions to populate the modals
 
