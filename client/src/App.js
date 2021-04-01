@@ -72,7 +72,7 @@ const [theme, setTheme] = useState("light");
     <div className="App">
     {theme === "dark" ? <DarkModeNav/> : <Nav/> }
 
-     
+    <button onClick={toggleTheme}>Toggle Theme</button>
       <Switch>
         <Route exact path={"/"}  component={Home}/>
         <Route path={"/Profile"} component={Profile}/>
@@ -90,7 +90,7 @@ const [theme, setTheme] = useState("light");
       <>
         <GlobalStyles />
         
-        <button onClick={toggleTheme}>Toggle Theme</button>
+        
         <footer></footer>
       </>
     </ThemeProvider>
