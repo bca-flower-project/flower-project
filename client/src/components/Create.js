@@ -1,4 +1,5 @@
 import React from "react";
+import {Route} from "react-router-dom";
 import blank from "./images/blank.svg";
 import Flower from "./flower.jsx";
 import { useState, useEffect } from "react";
@@ -13,7 +14,7 @@ import PetalModal from "./PetalModal";
 let box1 = blank;
 
 export default function Create(props) {
-  const [theme, setTheme] = useState("light");
+  
   const [display, setDisplay] = useState(false); // is the modal displayed or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from 'react-modal';
-//import Create from './Create';
+import {Create} from 'react';
 
 function PetalModal(props) {
   const questions = [
@@ -14,7 +14,7 @@ function PetalModal(props) {
       ],
     },
     {
-      petal: "Pspirations",
+      petal: "Aspirations",
       questionOptions: [
         "What is your intention for the future?",
         "What are your aspirations?",
@@ -106,18 +106,24 @@ function handleChange(evt) {
     }
   });
 //do we need to make it questions.length or id 
-  
+  console.log(props.theme);
   return (
     <>
       <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
 
       
-      <Modal isOpen={modalIsOpen}>  
-          <button onClick={setModalIsOpenToFalse}>x</button>
+      <Modal isOpen={modalIsOpen} 
+      style={props.theme === "dark" ? {content: { background: '#363537'}} : {content: { background: '#fff'}}}
+      
+  >
+    {/* ternary for button color: */}
+    {/* style={props.theme === "dark" ? {content: { background: '#fff'}} : {content: { background: '#363537'}}} */}
+          <button className="button" onClick={setModalIsOpenToFalse}>x</button >
           <div className="question-text">
           <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
           <form onSubmit={submitForm}>
             <select
+            className="button"
             name="question-selection"
             value={selected}
             onChange={handleChange}
@@ -129,15 +135,14 @@ function handleChange(evt) {
               })
             }
             </select><br></br>
-            <textarea placeholder="enter your answer here"></textarea><br></br>
-            <input type="submit"/>
+            <textarea className="placeholder" placeholder="enter your answer here"></textarea><br></br>
+            <input className="button"type="submit"/>
           </form><br></br>
-          <button onClick={handleNextPetal}>Next Petal</button>
+          <button className="button" onClick={handleNextPetal}>Next Petal</button>
 
              
           </div>
-            {/* text area */}
-
+           
 
 
           
