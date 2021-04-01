@@ -116,8 +116,6 @@ function handleChange(evt) {
       style={props.theme === "dark" ? {content: { background: '#363537'}} : {content: { background: '#fff'}}}
       
   >
-    {/* ternary for button color: */}
-    {/* style={props.theme === "dark" ? {content: { background: '#fff'}} : {content: { background: '#363537'}}} */}
           <button className="button" onClick={setModalIsOpenToFalse}>x</button >
           <div className="question-text">
           <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>

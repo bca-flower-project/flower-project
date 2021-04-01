@@ -3,18 +3,16 @@ import {Route} from "react-router-dom";
 import blank from "./images/blank.svg";
 import Flower from "./flower.jsx";
 import { useState, useEffect } from "react";
-import outline from "./icons/ok-flower.png";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "../global";
 import "../App.css";
-
 import PetalModal from "./PetalModal";
 
-let box1 = blank;
+
 
 export default function Create(props) {
-  
+  const [theme, setTheme] = useState("light");
   const [display, setDisplay] = useState(false); // is the modal displayed or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -40,7 +38,7 @@ export default function Create(props) {
   return (
     <div>
       <h1>Create!!!</h1>
-
+      
       <PetalModal />
       {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
       {/* <button disabled={props.disabledState} onClick={() => {props.setDisabled(false); props.display(true)}} >Show Modal</button> Activates guess modal */}
@@ -48,7 +46,7 @@ export default function Create(props) {
         <>
           <GlobalStyles />
 
-          <button onClick={toggleTheme}>Toggle Theme</button>
+          
           <footer></footer>
         </>
       </ThemeProvider>
