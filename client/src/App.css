@@ -39,15 +39,13 @@ h1 {
   position: relative; 
 } */
 
-/* #flower-outline {
-  width:30vw;
+#flower-outline {
+  width:33.3vw;
   z-index: -9999;
   position: absolute;
-top: 295px;
-left: 534px;
-  /* padding-left: 500px;
-  padding-top: 500px; */
-
+top: 33%;
+left: 33%;
+}
 
 
 
@@ -70,27 +68,12 @@ left: 534px;
 /* -----------flower /create css */
 
 #flower-wrapper {
-  /* display: flex;
-flex-direction: row;
-align-items: center;
- justify-self: center; */
- position: absolute;
- /* z-index: 1000; */
+  
  height: 87vh;
  width: 100vw;
  top: 300px;
  
- /* padding-bottom: 300px; */
 }
-
-path {
-  fill: blue
-}
-
-
-
-
-
 
 
 /* 
