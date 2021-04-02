@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import {Create} from 'react';
+import { CirclePicker } from 'react-color';
+import App from '../App';
+import Flower from './Flower.jsx'
+
+
 
 function PetalModal(props) {
   const questions = [
@@ -59,13 +64,21 @@ function PetalModal(props) {
   const [selected, setSelected] = useState(""); // what is selected state
   //const [question, setQuestion] = useState(""); //which petal they select determines which questions show
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [question, setQuestion] = useState([])
 
-function handleNextPetal() {
-    
-    let nextPetal = chosen + 1;
+function handleNextQuestion() {
+    // let petalArray = petal  
+
+    let nextQuestion = chosen + 1;
     //if the question # is bigger than the length of the array, it stops bc petals are complete
-    if (nextPetal < questions.length) {
-      setChosen(nextPetal);
+    //petal[chosen] = {
+    // question[chosen] 
+    // answer[chosen]
+    //  color[chosen] 
+    // }
+    //^^this will go to firestore
+    if (nextQuestion < questions.length) {
+      setChosen(nextQuestion);
     } else {
       setModalIsOpen(false)
     }
@@ -105,6 +118,19 @@ function handleChange(evt) {
         });
     }
   });
+
+
+const [colorPicked, setColorPicked] = useState("yellow");
+const handleColor = (evt) => {
+  // setColorPicked({fill: color.hex})
+  setColorPicked(evt.target.value);
+};
+
+const handleColorChange = (color, evt) => {
+  setColorPicked(color.hex);
+  console.log(color.hex);
+};
+
 //do we need to make it questions.length or id 
   console.log(props.theme);
   return (
@@ -113,7 +139,7 @@ function handleChange(evt) {
 
       
       <Modal isOpen={modalIsOpen} 
-      style={props.theme === "dark" ? {content: { background: '#363537'}} : {content: { background: '#fff'}}}
+      style={{content : {background: props.theme.body}}}
       
   >
           <button className="button" onClick={setModalIsOpenToFalse}>x</button >
@@ -136,13 +162,27 @@ function handleChange(evt) {
             <textarea className="placeholder" placeholder="enter your answer here"></textarea><br></br>
             <input className="button"type="submit"/>
           </form><br></br>
-          <button className="button" onClick={handleNextPetal}>Next Petal</button>
+          <button className="button" onClick={handleNextQuestion}>Next Petal</button>
 
              
           </div>
            
-
-
+          <CirclePicker
+        onChange={handleColorChange}
+        colors={[
+          "#f44336",
+          "#e91e63",
+          "#9c27b0",
+          "#673ab7",
+          "#3f51b5",
+          "#2196f3",
+          "#03a9f4",
+          "#00bcd4",
+          "#009688",
+        ]}
+      />
+<Flower color={colorPicked} 
+        />
           
       </Modal>
     
