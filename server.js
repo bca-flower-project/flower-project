@@ -11,6 +11,8 @@ const staticDir = process.env.PRODUCTION ? path.resolve("./client/build") : path
 
 //path for petal questions to populate the modals
 
+app.use(express.static(staticDir))
+
 //shows api
 app.get("/api", (req, res) => {
   res.sendFile(path.resolve("./api/questions.json"));
