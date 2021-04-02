@@ -14,7 +14,7 @@ import Settings from "./components/Settings";
 import Signup from "./components/Signup";
 import React, { useState, useEffect } from "react";
 import PetalModal from './components/PetalModal';
-import Flower from './components/Flower'
+import Flower from './components/Flower.jsx';
 import { firebaseApp, auth, googleProvider } from "./fire.js";
 
 //darkmode
