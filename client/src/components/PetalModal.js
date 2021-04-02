@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import Modal from 'react-modal';
 import {Create} from 'react';
-import { CirclePicker } from 'react-color';
+import { CirclePicker, HuePicker } from 'react-color';
 import App from '../App';
 import Flower from './Flower.js'
+import "../App.css";
 
 
 
@@ -166,23 +167,16 @@ const handleColorChange = (color, evt) => {
 
              
           </div>
-           
-          <CirclePicker
+           <div id="hue">
+          <HuePicker height="300px" width="20px"
         onChange={handleColorChange}
-        colors={[
-          "#f44336",
-          "#e91e63",
-          "#9c27b0",
-          "#673ab7",
-          "#3f51b5",
-          "#2196f3",
-          "#03a9f4",
-          "#00bcd4",
-          "#009688",
-        ]}
+        direction="vertical"
+        pointer="none"
       />
-<Flower color={colorPicked} 
+      <Flower color={colorPicked} 
         />
+      </div>
+
           
       </Modal>
     
