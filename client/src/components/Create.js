@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import blank from "./images/blank.svg";
-import Flower from "./Flower.jsx";
+import Flower from "./Flower.js";
 import { useState, useEffect } from "react";
 import outline from "./icons/ok-flower.png";
 import DarkModeNav from "./DarkModeNav";
