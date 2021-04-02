@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import {Create} from 'react';
 import { CirclePicker } from 'react-color';
 import App from '../App';
-import Flower from './Flower.jsx'
+import Flower from './Flower.js'
 
 
 
