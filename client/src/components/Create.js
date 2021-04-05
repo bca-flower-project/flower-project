@@ -10,7 +10,8 @@ import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "../global";
 import "../App.css";
 import PetalModal from "./PetalModal";
-// import { CirclePicker } from "react-color";
+import { HuePicker } from "react-color";
+import CustomPointer from './CustomPicker'
 
 export default function Create(props) {
   // const [theme, setTheme] = useState("light");
@@ -64,6 +65,12 @@ export default function Create(props) {
           <footer></footer>
         </>
       </ThemeProvider>
+
+<HuePicker 
+slider= {CustomPointer}
+pointer= {CustomPointer}/>
+
+
       {/* <CirclePicker
         onChange={props.handleColorChange}
        
