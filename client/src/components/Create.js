@@ -74,14 +74,18 @@ export default function Create(props) {
           "#9c27b0",
           "#673ab7",
           "#3f51b5",
-          "#2196f3",
+          "#2196
+        // f3",
+        
           "#03a9f4",
           "#00bcd4",
           "#009688",
         ]}
       /> */}
       <div id="flower-wrapper">
-        <Flower color={colorPicked} 
+        <Flower 
+        color={colorPicked} 
+        
         />
       </div>
     </div>
