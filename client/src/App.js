@@ -13,12 +13,13 @@ import PastFlowers from "./components/PastFlowers";
 import Settings from "./components/Settings";
 import Signup from "./components/Signup";
 import React, { useState, useEffect } from "react";
-import PetalModal from './components/PetalModal';
-import Flower from './components/Flower.js';
-import { firebaseApp, auth, googleProvider } from "./fire.js";
+import PetalModal from "./components/PetalModal";
+import Flower from "./components/Flower.js";
+import { firebaseApp, auth, googleProvider } from "./firebaseApp.js";
+import "./App.css";
+import { database } from "./firebaseApp";
 
 //darkmode
-
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./components/theme";
 import { GlobalStyles } from "./global";
@@ -31,11 +32,10 @@ function App() {
   //useEffect to get if user exists/signed in, then pull info from database based on what user is signed in
   //useEffect will ping db then send back info on what user is logged in
   const [colorPicked, setColorPicked] = useState("yellow");
-  
+
   const handleColor = (evt) => {
     // setColorPicked({fill: color.hex})
     setColorPicked(evt.target.value);
-    
   };
 
   const handleColorChange = (color, evt) => {
@@ -43,7 +43,7 @@ function App() {
     console.log(color.hex);
   };
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   //use state for this, starting as false(ie, light mode) and upon pressing button for dark mode, it changes to true. depending on false/true, write ternary which will determine which is rendered based on state
   //function that toggles between themes
   const toggleTheme = () => {
@@ -53,31 +53,161 @@ function App() {
       setTheme("light");
     }
   };
-  function googleLogin(props) {
-    firebaseApp
-      .auth()
-      .signInWithPopup(googleProvider)
-      .then((result) => {
-        // /** @type {firebase.auth.OAuthCredential} */
-        const credential = result.credential;
 
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        const credential = error.credential;
+  class App extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        user: firebaseApp.auth().currentUser,
+        database: null,
+      };
+    }
+    loginHandler = async (event) => {
+      event.preventDefault();
+      let password = event.target.password.value;
+      let email = event.target.email.value;
+      event.target.password.value = "";
+      event.target.email.value = "";
+      firebaseApp
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .catch(function (err) {
+          let message = err.message;
+          alert(message);
+        });
+      firebaseApp.auth().onAuthStateChanged(async (user) => {
+        if (user) {
+          await this.state.database
+            .ref("/")
+            .once("value")
+            .then((snapshot) => {
+              let response = snapshot.val().response;
+              this.setState({
+                greeting: response,
+              });
+            });
+          this.setState({
+            user: firebaseApp.auth().currentUser,
+          });
+          alert("signed in!");
+        }
       });
-    //you get firebase.auth().currentUser -- keeps the user signed in, if no user - is null. you can call this anywhere firebase is imported!!! just use firebase.auth().currentUser: use as stateful property in components that need auth
+    };
+    signupHandler = async (event) => {
+      event.preventDefault();
+      let password = event.target.password.value;
+      let email = event.target.email.value;
+      firebaseApp
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("signed up");
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+      firebaseApp.auth().onAuthStateChanged(async (user) => {
+        if (user) {
+          await this.state.database
+            .ref("/")
+            .once("value")
+            .then((snapshot) => {
+              let response = snapshot.val().response;
+              this.setState({
+                greeting: response,
+              });
+            });
+          this.setState({
+            user: firebaseApp.auth().currentUser,
+          });
+          alert("signed in!");
+        }
+      });
+    };
+    logOut = async () => {
+      await firebaseApp.auth().signOut();
+      this.setState({
+        user: firebaseApp.auth().currentUser,
+      });
+    };
+    googleHandler = async () => {
+      googleProvider.addScope("profile");
+      googleProvider.addScope("email");
+      await firebaseApp
+        .auth()
+        .signInWithPopup(googleProvider)
+        .then(() => {
+          alert("signed in with google");
+          this.setState({ user: firebaseApp.auth().currentUser });
+        });
+      await this.state.database
+        .ref("/")
+        .once("value")
+        .then((snapshot) => {
+          let response = snapshot.val().response;
+          this.setState({
+            greeting: response,
+          });
+        });
+    };
+    componentDidMount() {
+      firebaseApp.auth().signOut();
+      if (!this.state.database) {
+        this.setState({
+          database: database,
+        });
+      }
+    }
+    render() {
+      console.log(this.state.user);
+      return (
+        <div>
+          <h1>{this.state.user ? this.state.greeting : "Please log in"}</h1>
+          <h2>Log In</h2>
+          <form onSubmit={this.loginHandler}>
+            <input type="email" name="email" />
+            <input type="password" name="password" />
+            <input type="submit" />
+          </form>
+          <button onClick={this.logOut}>Sign Out</button>
+          <button onClick={this.googleHandler}>Sign in with Google</button>
+          <h2>Sign Up</h2>
+          <form onSubmit={this.signupHandler}>
+            <input type="email" name="email" />
+            <input type="password" name="password" />
+            <input type="submit" />
+          </form>
+        </div>
+      );
+    }
   }
+  // export default App;
+  //commented out current login functionality
+  // function googleLogin(props) {
+  //   firebaseApp
+  //     .auth()
+  //     .signInWithPopup(googleProvider)
+  //     .then((result) => {
+  //       // /** @type {firebase.auth.OAuthCredential} */
+  //       const credential = result.credential;
+
+  //       // This gives you a Google Access Token. You can use it to access the Google API.
+  //       const token = credential.accessToken;
+  //       // The signed-in user info.
+  //       const user = result.user;
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       // Handle Errors here.
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // The email of the user's account used.
+  //       const email = error.email;
+  //       // The firebase.auth.AuthCredential type that was used.
+  //       const credential = error.credential;
+  //     });
+  //   //you get firebase.auth().currentUser -- keeps the user signed in, if no user - is null. you can call this anywhere firebase is imported!!! just use firebase.auth().currentUser: use as stateful property in components that need auth
+  // }
 
   return (
     <div className="App">
@@ -91,11 +221,13 @@ function App() {
         <Route
           path={"/Create"}
           render={(props) => {
-            
-            return <><Create theme={theme} />
-            <Flower color={props.colorPicked}/> 
-         </> }}
-          
+            return (
+              <>
+                <Create theme={theme} />
+                <Flower color={props.colorPicked} />
+              </>
+            );
+          }}
         />
         <Route path={"/Global"} component={Global} />
         <Route path={"/Signup"} component={Signup} />
