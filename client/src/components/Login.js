@@ -1,16 +1,15 @@
-import React from 'react'
+import React from "react";
 import { Form, Button, Card } from "react-bootstrap";
 
-
 export default function Login() {
-    // const emailRef = useRef()
-    // const passwordRef = useRef()
-    // const passwordConfirmRef = useRef()
-    return (
-        <div>
-            <h1>This is the login page</h1>
-            {/* put in login forms here, so we can test database */}
-            <Card>
+  //const emailRef = useRef()
+  //const passwordRef = useRef()
+  //const passwordConfirmRef = useRef()
+  return (
+    <div>
+      <h1>This is the login page</h1>
+      {/* put in login forms here, so we can test database */}
+      <Card>
         <Card.Body>
           <h2> Sign Up </h2>
           <Form>
@@ -26,14 +25,14 @@ export default function Login() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" required />
             </Form.Group>
-            <Button id= 'signUpSubmit' type="submit">Sign Up</Button>
+            <Button id="signUpSubmit" type="submit">
+              Sign Up
+            </Button>
           </Form>
         </Card.Body>
       </Card>
-
-
-        </div>
-    )
+    </div>
+  );
 }
 
 //login page will have entry form for inputting username & password & will connect to firebase or mongo for login authentication

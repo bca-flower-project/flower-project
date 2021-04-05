@@ -595,6 +595,7 @@ function Flower(props) {
             ry="35.141"
           ></ellipse>
           <path id="one"
+          //i think we make these props.target.color??
             fill={props.color}
             stroke="#000"
             strokeWidth="6.633"

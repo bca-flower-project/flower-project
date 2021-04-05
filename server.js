@@ -3,32 +3,48 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 5000;
-require('dotenv').config()
-
+require("dotenv").config();
 
 //Set up static file server
-const staticDir = process.env.PRODUCTION ? path.resolve("./client/build") : path.resolve('./client/public')
+const staticDir = process.env.PRODUCTION
+  ? path.resolve("./client/build")
+  : path.resolve("./client/public");
 
 //path for petal questions to populate the modals
 
-app.use(express.static(staticDir))
+app.use(express.static(staticDir));
 
 //shows api
 app.get("/api", (req, res) => {
   res.sendFile(path.resolve("./api/questions.json"));
 });
 
-
 //Create path to './index.html' page and use * to direct all paths to index.html
 app.get("*", (req, res) => {
   res.sendFile(staticDir + "/index.html");
 });
 
+// ------------DB FOR PETALS/FLOWERS/COLORS----------//
 
-// ------------DB FOR PETALS/FLOWERS----------//
-
-
-
+//adding a new flower
+db.collection("flowers")
+  .doc("flower")
+  .set({
+    //pull in uid,
+    UID: "",
+    peaks: "fdafdaf",
+    challenges: "kjsfkjenf",
+    people: "wefewf",
+    principles: "fdjfalsjfldksjf",
+    powers: "jfkdsjflaksjfklds",
+    aspirations: "jdfklajdflkjda",
+  })
+  .then(() => {
+    console.log("Document successfully written!");
+  })
+  .catch((error) => {
+    console.error("Error writing document: ", error);
+  });
 
 //-------------PORT------------//
 //Tell the express server to listen and to console.log inside Node what server it is listening on
