@@ -149,7 +149,7 @@ function PetalModal(props) {
 
       <Modal 
         isOpen={modalIsOpen}
-        style={{ content: { background: props.theme.body , width: "70vw", height: "70vh", left: "14vw", right: "14vw" }}}
+        style={{ content: { background: props.theme.body , width: "70vw", height: "70vh", left: "14vw", right: "14vw", top: "17vh" }}}
       >
         <button className="button" onClick={setModalIsOpenToFalse}>
           x
@@ -188,7 +188,9 @@ function PetalModal(props) {
             direction="vertical"
             pointer="none"
           />
-          <Flower color={colorPicked} />
+          <div id="flower-wrapper">
+          <Flower color={colorPicked}
+          /></div>
         </div>
       </Modal>
     </>

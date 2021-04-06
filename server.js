@@ -27,7 +27,7 @@ app.get("*", (req, res) => {
 // ------------DB FOR PETALS/FLOWERS/COLORS----------//
 
 //adding a new flower
-db.collection("flowers")
+db.collection('users')
   .doc("flower")
   .set({
     //pull in uid,

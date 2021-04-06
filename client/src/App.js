@@ -14,7 +14,7 @@ import Dashboard from "./components/Dashboard";
 import Signup from "./components/Signup";
 import { Container } from "react-bootstrap";
 import firebase from "firebase/app";
-// import "firebase/auth";
+import "firebase/auth";
 import { useHistory } from "react-router-dom";
 
 //darkmode
@@ -23,9 +23,9 @@ import DarkModeNav from "./components/DarkModeNav";
 import React, { useState, useEffect } from "react";
 import PetalModal from "./components/PetalModal";
 import Flower from "./components/Flower.js";
-import { firebaseApp, auth, googleProvider } from "./firebaseApp.js";
+import { auth, googleProvider, database } from "./components/fire.js";
 import "./App.css";
-import { database } from "./firebaseApp";
+// import { database } from "./components/fire.js";
 
 //darkmode
 import { ThemeProvider } from "styled-components";
@@ -60,7 +60,7 @@ function App() {
       });
   }
   function googleLogin(props) {
-    firebaseApp
+    firebase
       .auth()
       .signInWithPopup(googleProvider)
       .then((result) => {
