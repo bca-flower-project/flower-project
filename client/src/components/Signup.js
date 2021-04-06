@@ -29,14 +29,14 @@ export default function Signup(props) {
       {/* This is creating the signup form  */}
       <Card>
         <Card.Body>
-          <h2 text-center mb-4>
+          <h2 text-center mb-4 style={{ color: "black"}}>
             Sign Up
           </h2>
           {/* {currentUser.email} */}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <Form.Label style={{ color: "black"}}>Email</Form.Label>
               <Form.Control
                 onChange={handleInput}
                 type="email"
@@ -45,7 +45,7 @@ export default function Signup(props) {
               />
             </Form.Group>
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label style={{ color: "black"}}>Password</Form.Label>
               <Form.Control
                 onChange={handleInput}
                 type="password"
@@ -54,7 +54,7 @@ export default function Signup(props) {
               />
             </Form.Group>
             <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>{" "}
+              <Form.Label style={{ color: "black"}}>Password Confirmation</Form.Label>{" "}
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
           </Form>

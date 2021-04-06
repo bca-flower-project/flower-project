@@ -14,7 +14,7 @@ import Dashboard from "./components/Dashboard";
 import Signup from "./components/Signup";
 import { Container } from "react-bootstrap";
 import firebase from "firebase/app";
-import "firebase/auth";
+// import "firebase/auth";
 import { useHistory } from "react-router-dom";
 
 //darkmode
