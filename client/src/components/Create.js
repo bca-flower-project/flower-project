@@ -1,33 +1,30 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import blank from "./images/blank.svg";
-// import { ReactComponent as Petal } from "./images/petal.svg";
-// import { ReactComponent as Blank } from "./images/blank.svg";
-import blanktwo from "./images/blanktwo.svg";
+import Flower from "./Flower.js";
 import { useState, useEffect } from "react";
-import flower from "./icons/ok-flower.png";
+import outline from "./icons/ok-flower.png";
+import DarkModeNav from "./DarkModeNav";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "../global";
 import "../App.css";
-import FlowerImg from "./FlowerImg";
 import PetalModal from "./PetalModal";
-import Flower from "./Flower";
-import Petal from "./Petal";
-let box1 = blank;
+import { HuePicker } from "react-color";
 
 export default function Create(props) {
-  const [theme, setTheme] = useState("light");
+  // const [theme, setTheme] = useState("light");
   const [display, setDisplay] = useState(false); // is the modal displayed or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   //function that toggles between themes
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
+  // const toggleTheme = () => {
+  //   if (props.theme === "light") {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
 
   const [pickQuestions, setPickQuestions] = useState();
 
@@ -39,43 +36,64 @@ export default function Create(props) {
   const [powerQuestion, setPowerQuestion] = useState();
   const [aspirationsQuestion, setAspirationsQuestion] = useState();
 
+  // function ColorPicker {
+  const [colorPicked, setColorPicked] = useState("yellow");
+  
+  // const handleColor = (evt) => {
+  //   // setColorPicked({fill: color.hex})
+  //   setColorPicked(evt.target.value);
+  // };
+  
+  // const handleColorChange = (color, evt) => {
+  //   setColorPicked(color.hex);
+  //   console.log(color.hex);
+  // };
+ 
+
   return (
     <div>
       <h1>Create!!!</h1>
-      <div id="flower-outer">
-        {/* <img id="flower-outline" src={outline} alt="outline" /> */}
-        <div id="flower-wrapper">
-          <img id="blank" src={box1} alt="blank" />
-        </div>
 
-        {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
-        <PetalModal />
+      <PetalModal theme={props.theme === "light" ? lightTheme : darkTheme}/>
+      {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
+      {/* <button disabled={props.disabledState} onClick={() => {props.setDisabled(false); props.display(true)}} >Show Modal</button> Activates guess modal */}
+      <ThemeProvider theme={props.theme === "light" ? lightTheme : darkTheme}>
+        <>
+          <GlobalStyles />
 
-        {/*Modal Div*/}
-        {/* <button onClick={setDisplay}>Show Modal</button> */}
-        {/* <div className="modal" style={{ display: "block", position: "fixed" }}>
-        {display && (
-          <Modal>
-            display={setDisplay}
-            
-          </Modal>
-        )} */}
+          <footer></footer>
+        </>
+      </ThemeProvider>
 
-        {/*modal, passed setDisplay function*/}
-        {/* </div> */}
-        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-          <>
-            <GlobalStyles />
-
-            <button onClick={toggleTheme}>Toggle Theme</button>
-            <footer></footer>
-          </>
-        </ThemeProvider>
-        {/* <button disabled={props.disabledState} onClick={() => {props.setDisabled(false); props.display(true)}} >Show Modal</button> Activates guess modal */}
+      {/* <CirclePicker
+        onChange={props.handleColorChange}
+       
+        colors={[
+          "#f44336",
+          "#e91e63",
+          "#9c27b0",
+          "#673ab7",
+          "#3f51b5",
+          "#2196
+        // f3",
+        
+          "#03a9f4",
+          "#00bcd4",
+          "#009688",
+        ]}
+      /> */}
+      <div id="flower-wrapper">
+        <Flower 
+        color={colorPicked} 
+        
+        />
       </div>
     </div>
   );
 }
+
+//style as JS object (stored in state), pass style object through and use it and target it
+//color choices in array(store in state), pass array through to petals - in petal SVG, we can escape to javascript (props.color[0], props.color[1],etc)
 
 //when create is clicked, first petal is zoomed in.
 //user is prompted to select one of 3 questions from drop down menu -> when selected
