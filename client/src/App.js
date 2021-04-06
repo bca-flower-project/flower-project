@@ -11,7 +11,6 @@ import Nav from "./components/Nav";
 import PastFlowers from "./components/PastFlowers";
 import Settings from "./components/Settings";
 import Dashboard from "./components/Dashboard";
-import Signup from "./components/Signup";
 import { Container } from "react-bootstrap";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -207,18 +206,6 @@ function App() {
           }}
         />
         <Route path={"/Global"} component={Global} />
-        {/* <Route
-              path={"/Signup"}
-              render={(props) => {
-                return (
-                  <Signup
-                    SignupPass={SignupPass}
-                    user={user}
-                    googleLogin={googleLogin}
-                  />
-                );
-              }}
-            /> */}
         <Route
               exact
               path="/"
