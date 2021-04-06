@@ -29,7 +29,7 @@ export default function Signup(props) {
       {/* This is creating the signup form  */}
       <Card>
         <Card.Body>
-          <h2 text-center mb-4>
+          <h2 text-center mb-4 >
             Sign Up
           </h2>
           {/* {currentUser.email} */}
