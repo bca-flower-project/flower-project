@@ -5,8 +5,10 @@ function Flower(props) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsOsb="http://www.openswatchbook.org/uri/2009/osb"
-      width="575.36"
-      height="577.6"
+      width={props.width}
+      height={props.height}
+      // width="100vw"
+      // height="auto"
       version="1.1"
       viewBox="0 0 575.36 577.6"
     >

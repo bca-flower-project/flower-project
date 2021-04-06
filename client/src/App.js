@@ -23,9 +23,9 @@ import DarkModeNav from "./components/DarkModeNav";
 import React, { useState, useEffect } from "react";
 import PetalModal from "./components/PetalModal";
 import Flower from "./components/Flower.js";
-import { firebaseApp, auth, googleProvider } from "./firebaseApp.js";
+import { auth, googleProvider, database } from "./components/fire.js";
 import "./App.css";
-import { database } from "./firebaseApp";
+// import { database } from "./components/fire.js";
 
 //darkmode
 import { ThemeProvider } from "styled-components";
@@ -60,7 +60,7 @@ function App() {
       });
   }
   function googleLogin(props) {
-    firebaseApp
+    firebase
       .auth()
       .signInWithPopup(googleProvider)
       .then((result) => {
@@ -201,13 +201,13 @@ function App() {
             return (
               <>
                 <Create theme={theme} />
-                <Flower color={props.colorPicked} />
+                {/* <Flower color={props.colorPicked} /> */}
               </>
             );
           }}
         />
         <Route path={"/Global"} component={Global} />
-        <Route
+        {/* <Route
               path={"/Signup"}
               render={(props) => {
                 return (
@@ -218,7 +218,7 @@ function App() {
                   />
                 );
               }}
-            />
+            /> */}
         <Route
               exact
               path="/"

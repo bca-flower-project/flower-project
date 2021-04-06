@@ -24,5 +24,8 @@
     "react-color": "^2.19.3",
     "react-modal": "^3.12.1",
     "styled": "^1.0.0"
+  },
+  "engines": {
+    "node": "15.x"
   }
 }

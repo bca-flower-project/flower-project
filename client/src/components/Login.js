@@ -28,14 +28,14 @@ export default function Login(props) {
       {/* This is creating the signup form  */}
       <Card>
         <Card.Body>
-          <h2 text-center mb-4>
+          <h2 text-center mb-4 style={{ color: "black"}}>
             Log In
           </h2>
           {/* {currentUser.email} */}
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form>
+          {/* <Form>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <Form.Label style={{ color: "black"}}>Email</Form.Label>
               <Form.Control
                 onChange={handleInput}
                 type="email"
@@ -44,7 +44,7 @@ export default function Login(props) {
               />
             </Form.Group>
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label style={{ color: "black"}}>Password</Form.Label>
               <Form.Control
                 onChange={handleInput}
                 type="password"
@@ -52,7 +52,7 @@ export default function Login(props) {
                 required
               />
             </Form.Group>
-          </Form>
+          </Form> */}
           {/* <Button
             disabled={loading}
             className="w-100"
@@ -77,10 +77,6 @@ export default function Login(props) {
           {props.user && <Redirect to="/Dashboard" />}
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        Already have an account?<Link to="/Signup"> Sign Up</Link>
-        {/* wrap the words Log In in a <Link> to the log */}
-      </div>
     </>
   );
 }

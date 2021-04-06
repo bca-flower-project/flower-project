@@ -10,7 +10,7 @@ import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "../global";
 import "../App.css";
 import PetalModal from "./PetalModal";
-import { HuePicker } from "react-color";
+
 
 export default function Create(props) {
   // const [theme, setTheme] = useState("light");
@@ -65,27 +65,12 @@ export default function Create(props) {
         </>
       </ThemeProvider>
 
-      {/* <CirclePicker
-        onChange={props.handleColorChange}
-       
-        colors={[
-          "#f44336",
-          "#e91e63",
-          "#9c27b0",
-          "#673ab7",
-          "#3f51b5",
-          "#2196
-        // f3",
-        
-          "#03a9f4",
-          "#00bcd4",
-          "#009688",
-        ]}
-      /> */}
+   
       <div id="flower-wrapper">
         <Flower 
         color={colorPicked} 
-        
+        height="auto"
+        width="76vw"
         />
       </div>
     </div>
