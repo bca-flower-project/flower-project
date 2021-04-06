@@ -75,15 +75,17 @@ left: 33%;
    width: 86vw
 } */
 
+#modalwindow {
+  display: flex;
+  flex-direction: row;
+}
 
-
-#flower-wrapper {
-  
+/* #flower-wrapper {
  height: 87vh;
  width: 100vw;
  top: 300px;
  
-} 
+}  */
 
 
 /* 

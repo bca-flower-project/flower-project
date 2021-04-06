@@ -34,7 +34,7 @@ export default function Signup(props) {
           </h2>
           {/* {currentUser.email} */}
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form>
+          {/* <Form>
             <Form.Group id="email">
               <Form.Label style={{ color: "black"}}>Email</Form.Label>
               <Form.Control
@@ -57,7 +57,7 @@ export default function Signup(props) {
               <Form.Label style={{ color: "black"}}>Password Confirmation</Form.Label>{" "}
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-          </Form>
+          </Form> */}
           {/* <Button
             disabled={loading}
             className="w-100"

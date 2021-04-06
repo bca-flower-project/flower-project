@@ -144,56 +144,69 @@ function PetalModal(props) {
   //do we need to make it questions.length or id
   console.log(props.theme);
   return (
-    <>
+    <div>
       <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
 
-      <Modal 
+      <Modal
         isOpen={modalIsOpen}
-        style={{ content: { background: props.theme.body , width: "70vw", height: "70vh", left: "14vw", right: "14vw", top: "17vh" }}}
+        style={{
+          content: {
+            background: props.theme.body,
+            width: "70vw",
+            height: "70vh",
+            left: "14vw",
+            right: "14vw",
+            top: "17vh",
+            overflow: "hidden",
+          },
+        }}
       >
         <button className="button" onClick={setModalIsOpenToFalse}>
           x
         </button>
-        <div className="question-text">
-          <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
-          <form onSubmit={submitForm}>
-            <select
-              className="button"
-              name="question-selection"
-              value={selected}
-              onChange={handleChange}
-            >
-              {questions[chosen].questionOptions.map((question, index) => {
-                return <option value={`Question ${index}`}>{question}</option>;
-              })}
-            </select>
+        <div id="modalwindow">
+          <div className="question-text">
+            <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
+            <form onSubmit={submitForm}>
+              <select
+                className="button"
+                name="question-selection"
+                value={selected}
+                onChange={handleChange}
+              >
+                {questions[chosen].questionOptions.map((question, index) => {
+                  return (
+                    <option value={`Question ${index}`}>{question}</option>
+                  );
+                })}
+              </select>
+              <br></br>
+              <textarea
+                className="placeholder"
+                placeholder="enter your answer here"
+              ></textarea>
+              <br></br>
+              {showSubmit()}
+            </form>
             <br></br>
-            <textarea
-              className="placeholder"
-              placeholder="enter your answer here"
-            ></textarea>
-            <br></br>
-            {showSubmit()}
-          </form>
-          <br></br>
-          <button className="button" onClick={handleNextQuestion}>
-            Next Petal
-          </button>
-        </div>
-        <div id="hue">
-          <HuePicker
-            height="300px"
-            width="18px"
-            onChange={handleColorChange}
-            direction="vertical"
-            pointer="none"
-          />
-          <div id="flower-wrapper">
-          <Flower color={colorPicked}
-          /></div>
+            <button className="button" onClick={handleNextQuestion}>
+              Next Petal
+            </button>
+            <HuePicker
+              height="18px"
+              width="300px"
+              onChange={handleColorChange}
+              direction="horizontal"
+              pointer="none"
+            />
+          </div>
+
+          <div id="hue">
+            <Flower color={colorPicked} height="90vh" width="50vw" />
+          </div>
         </div>
       </Modal>
-    </>
+    </div>
   );
 }
 

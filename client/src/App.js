@@ -201,7 +201,7 @@ function App() {
             return (
               <>
                 <Create theme={theme} />
-                <Flower color={props.colorPicked} />
+                {/* <Flower color={props.colorPicked} /> */}
               </>
             );
           }}

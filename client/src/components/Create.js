@@ -66,12 +66,13 @@ export default function Create(props) {
       </ThemeProvider>
 
    
-      {/* <div id="flower-wrapper"> */}
+      <div id="flower-wrapper">
         <Flower 
         color={colorPicked} 
-        
+        height="auto"
+        width="76vw"
         />
-      {/* </div> */}
+      </div>
     </div>
   );
 }
