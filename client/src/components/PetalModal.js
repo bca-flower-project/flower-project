@@ -149,7 +149,7 @@ function PetalModal(props) {
 
       <Modal 
         isOpen={modalIsOpen}
-        style={{ content: { background: props.theme.body , width: "70vw", height: "70vh", left: "10vw", right: "10vw" }}}
+        style={{ content: { background: props.theme.body , width: "70vw", height: "70vh", left: "14vw", right: "14vw" }}}
       >
         <button className="button" onClick={setModalIsOpenToFalse}>
           x
