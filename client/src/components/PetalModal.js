@@ -63,6 +63,7 @@ function PetalModal(props) {
   //const [question, setQuestion] = useState(""); //which petal they select determines which questions show
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [question, setQuestion] = useState([]);
+  const [userInput, setUserInput] = useState();
 
   function handleNextQuestion() {
     // let petalArray = petal
@@ -88,7 +89,7 @@ function PetalModal(props) {
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
   };
-  console.log(questions[1]);
+  console.log(questions[chosen]);
 
   // when submitted... update chosen state with currently selected
   function submitForm(evt) {
@@ -100,6 +101,23 @@ function PetalModal(props) {
   function handleChange(evt) {
     let target = evt.target;
     setSelected(target.value);
+  }
+
+  function handleUserInput() {
+    console.log(chosen);
+    if (chosen === 0) {
+      return <textarea placeholder="Enter your response here" />;
+    } else if (chosen === 2) {
+      return <textarea placeholder="Enter your response here" />;
+    } else if (chosen === 3) {
+      return <textarea placeholder="Enter your response here" />;
+    } else if (chosen === 4) {
+      return <textarea placeholder="Enter your response here" />;
+    } else if (chosen === 5) {
+      return <textarea placeholder="Enter your response here" />;
+    } else if (chosen === 1) {
+      return <textarea placeholder="Enter your response here" />;
+    }
   }
   //
   //fetch
@@ -181,18 +199,26 @@ function PetalModal(props) {
                 })}
               </select>
               <br></br>
-              <textarea
+              {handleUserInput()}
+              {/* <textarea
+                id="textarea"
+                value={userInput}
                 className="placeholder"
                 placeholder="enter your answer here"
-              ></textarea>
+              ></textarea> */}
               <br></br>
               {showSubmit()}
             </form>
             <br></br>
-            <button className="button" onClick={handleNextQuestion}>
+            <button
+              type="submit"
+              className="button"
+              onClick={handleNextQuestion}
+            >
               Next Petal
             </button>
             <HuePicker
+              id="hue"
               height="18px"
               width="300px"
               onChange={handleColorChange}
@@ -201,7 +227,7 @@ function PetalModal(props) {
             />
           </div>
 
-          <div id="hue">
+          <div id="flower">
             <Flower color={colorPicked} height="90vh" width="50vw" />
           </div>
         </div>
