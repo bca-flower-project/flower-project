@@ -3,21 +3,23 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const port = process.env.PORT || 5000;
-const staticDir = path.resolve("./build");
-const { ObjectId } = require("mongodb");
 
 
 //Set up static file server
 const staticDir = path.resolve("./client/public");
 
+//path for petal questions to populate the modals
+
+//shows api
+app.get("/api", (req, res) => {
+  res.sendFile(path.resolve("./api/questions.json"));
+});
+
+
 //Create path to './index.html' page and use * to direct all paths to index.html
 app.get("*", (req, res) => {
   res.sendFile(staticDir + "/index.html");
 });
-
-// -----------MONGOOSE----------//
-// see notes in notes.txt
-//only store the userID; all emails and passwords should be stored in the authentication/firebase
 
 
 // ------------DB FOR PETALS/FLOWERS----------//

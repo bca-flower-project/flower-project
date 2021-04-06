@@ -18,10 +18,22 @@ import { firebaseApp, auth, googleProvider } from "./components/fire";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { useHistory } from "react-router-dom";
+
+//darkmode
+
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./components/theme";
+import { GlobalStyles } from "./global";
+import "./App.css";
 let provider = new firebase.auth.GoogleAuthProvider();
 
+//write all login functionality on app
+
 function App() {
-  //Buttons can live on thew pages and pass props but the main functionality must be in app.js
+  const [googleUser, setGoogleUser] = useState();
+  //useEffect to get if user exists/signed in, then pull info from database based on what user is signed in
+  //useeffect will ping db then send back info on what user is logged in
+
   const [user, setUser] = useState(null);
   let history = useHistory();
   function loginPass(email, password) {
@@ -39,6 +51,31 @@ function App() {
         let errorMessage = error.message;
         console.log(errorMessage);
       });
+  }
+  function googleLogin(props) {
+    firebaseApp
+      .auth()
+      .signInWithPopup(googleProvider)
+      .then((result) => {
+        // /** @type {firebase.auth.OAuthCredential} */
+        const credential = result.credential;
+
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        const credential = error.credential;
+      });
+    //you get firebase.auth().currentUser -- keeps the user signed in, if no user - is null. you can call this anywhere firebase is imported!!! just use firebase.auth().currentUser: use as stateful property in components that need auth
   }
 
   function googleLogin() {
@@ -76,7 +113,7 @@ function App() {
         console.log(errorMessage);
       });
   }
-  
+
   // function signIn() {
   //   if email doesnt exist and passwords match setSignedIn()
   // }
@@ -144,6 +181,7 @@ function App() {
     </div>
   );
 }
+
 export default App;
 
 //manage user login in app. pass props to whatever page we need to use them too

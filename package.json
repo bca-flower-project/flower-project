@@ -11,11 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@svgr/core": "^5.5.0",
+    "components": "^0.1.0",
     "create-react-app": "^4.0.3",
     "express": "^4.17.1",
     "firebase": "^8.3.1",
     "install": "^0.13.0",
     "mongodb": "^3.6.5",
-    "mongoose": "^5.12.2"
+    "mongoose": "^5.12.2",
+    "react-modal": "^3.12.1",
+    "styled": "^1.0.0"
   }
 }
