@@ -68,6 +68,30 @@ left: 33%;
   height: 13vh;
 }
 
+/* 
+--------------modal window css---------- */
+
+#modalwindow {
+  display: flex;
+  flex-direction: row;
+}
+
+#textarea {
+  margin-top: 2vh;
+  width: 23vw;
+  height: 17vh;
+  /* margin-bottom: 0  */
+}
+
+#hue {
+  margin-top: 2vh;
+}
+
+#flower {
+  height:100vh;
+  width: auto;
+}
+
 
 /* -----------flower /create css */
 /* #hue {
@@ -75,10 +99,7 @@ left: 33%;
    width: 86vw
 } */
 
-#modalwindow {
-  display: flex;
-  flex-direction: row;
-}
+
 
 /* #flower-wrapper {
  height: 87vh;
