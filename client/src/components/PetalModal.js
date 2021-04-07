@@ -121,15 +121,15 @@ function PetalModal(props) {
     console.log(chosen);
     console.log(userInput);
     if (chosen === 0) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPeaks(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPeaks(evt.target.value)} value={peaks}/>;
     } else if (chosen === 1) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setAspirations(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setAspirations(evt.target.value)} value={aspirations}/>;
     } else if (chosen === 2) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPeople(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPeople(evt.target.value)} value={people}/>;
     } else if (chosen === 3) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPrinciples(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPrinciples(evt.target.value)} value={principles}/>;
     } else if (chosen === 4) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPowers(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPowers(evt.target.value)} value={powers}/>;
     } else if (chosen === 5) {
       return <textarea placeholder="Enter your response here" onChange={evt => setChallenges(evt.target.value)}/>;
     }
@@ -154,7 +154,33 @@ function PetalModal(props) {
     }
   });
 
+  const [chosenPetal, setChosenPetal] = useState([]);
+  function handleChosenPetal(evt) {
+    // let petalArray = petal
+    setSaveChange(evt.target.value)
+
+
+    let nextQuestion = chosenPetal + 1;
+    //if the question # is bigger than the length of the array, it stops bc petals are complete
+    //petal[chosen] = {
+    // question[chosen]
+    // answer[chosen]
+    //  color[chosen]
+    // }
+    //^^this will go to firestore
+    if (nextQuestion < questions.length) {
+      setChosen(nextQuestion);
+    } else {
+      setModalIsOpen(false);
+    }
+  }
+
+
   const [colorPicked, setColorPicked] = useState("yellow");
+
+
+
+
   const handleColor = (evt) => {
     // setColorPicked({fill: color.hex})
     setColorPicked(evt.target.value);
@@ -164,6 +190,9 @@ function PetalModal(props) {
     setColorPicked(color.hex);
     console.log(color.hex);
   };
+
+
+
   function showSubmit() {
     if (chosen !== 5) {
       return (
@@ -240,7 +269,7 @@ function PetalModal(props) {
           </div>
 
           <div id="flower">
-            <Flower color={colorPicked} height="90vh" width="50vw" />
+            <Flower icolor={colorPicked} height="90vh" width="50vw" />
           </div>
         </div>
       </Modal>

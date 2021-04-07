@@ -120,17 +120,17 @@ function App() {
       });
   }
   //useEffect will ping db then send back info on what user is logged in
-  const [colorPicked, setColorPicked] = useState("yellow");
+  // const [colorPicked, setColorPicked] = useState("yellow");
 
-  const handleColor = (evt) => {
-    // setColorPicked({fill: color.hex})
-    setColorPicked(evt.target.value);
-  };
+  // const handleColor = (evt) => {
+  //   // setColorPicked({fill: color.hex})
+  //   setColorPicked(evt.target.value);
+  // };
 
-  const handleColorChange = (color, evt) => {
-    setColorPicked(color.hex);
-    console.log(color.hex);
-  };
+  // const handleColorChange = (color, evt) => {
+  //   setColorPicked(color.hex);
+  //   console.log(color.hex);
+  // };
 
   const [theme, setTheme] = useState("dark");
   //use state for this, starting as false(ie, light mode) and upon pressing button for dark mode, it changes to true. depending on false/true, write ternary which will determine which is rendered based on state
