@@ -159,7 +159,12 @@ function PetalModal(props) {
     }
   });
 
+  const [chosenPetal, setChosenPetal] = useState([]);
   const [colorPicked, setColorPicked] = useState("yellow");
+
+
+
+
   const handleColor = (evt) => {
     // setColorPicked({fill: color.hex})
     setColorPicked(evt.target.value);
@@ -169,6 +174,9 @@ function PetalModal(props) {
     setColorPicked(color.hex);
     console.log(color.hex);
   };
+
+
+
   function showSubmit() {
     if (chosen !== 5) {
       return (
