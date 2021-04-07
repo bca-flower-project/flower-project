@@ -133,8 +133,9 @@ function PetalModal(props) {
     } else if (chosen === 5) {
       return <textarea placeholder="Enter your response here" onChange={evt => setChallenges(evt.target.value)}/>;
     }
+    
   }
-  console.log(peaks.value);
+  ;
 
   //
   //fetch
