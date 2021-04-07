@@ -63,7 +63,14 @@ function PetalModal(props) {
   //const [question, setQuestion] = useState(""); //which petal they select determines which questions show
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [question, setQuestion] = useState([]);
-  const [userInput, setUserInput] = useState();
+  //state to save userInput for each input of the petals
+  const [userInput, setUserInput] = useState('');
+  const [peaks, setPeaks] =useState('');
+  const [aspirations, setAspirations] =useState('');
+  const [people, setPeople] =useState('');
+  const [principles, setPrinciples] =useState('');
+  const [powers, setPowers] =useState('');
+  const [challenges, setChallenges] =useState('');
 
   function handleNextQuestion() {
     // let petalArray = petal
@@ -103,20 +110,21 @@ function PetalModal(props) {
     setSelected(target.value);
   }
 
-  function handleUserInput() {
+  function handleUserInput(e) {
     console.log(chosen);
+    console.log(userInput);
     if (chosen === 0) {
-      return <textarea placeholder="Enter your response here" />;
-    } else if (chosen === 2) {
-      return <textarea placeholder="Enter your response here" />;
-    } else if (chosen === 3) {
-      return <textarea placeholder="Enter your response here" />;
-    } else if (chosen === 4) {
-      return <textarea placeholder="Enter your response here" />;
-    } else if (chosen === 5) {
-      return <textarea placeholder="Enter your response here" />;
+      return <textarea placeholder="Enter your response here" onChange={e => setPeaks(e.target.value)}/>;
     } else if (chosen === 1) {
-      return <textarea placeholder="Enter your response here" />;
+      return <textarea placeholder="Enter your response here" onChange={e => setAspirations(e.target.value)}/>;
+    } else if (chosen === 2) {
+      return <textarea placeholder="Enter your response here" onChange={e => setPeople(e.target.value)}/>;
+    } else if (chosen === 3) {
+      return <textarea placeholder="Enter your response here" onChange={e => setPrinciples(e.target.value)}/>;
+    } else if (chosen === 4) {
+      return <textarea placeholder="Enter your response here" onChange={e => setPowers(e.target.value)}/>;
+    } else if (chosen === 5) {
+      return <textarea placeholder="Enter your response here" onChange={e => setChallenges(e.target.value)}/>;
     }
   }
   //
