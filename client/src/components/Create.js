@@ -29,12 +29,12 @@ export default function Create(props) {
   const [pickQuestions, setPickQuestions] = useState();
 
   //this will set question to one chosen with on submit later on
-  const [peaksQuestion, setPeaksQuestion] = useState();
-  const [challengesQuestion, setChallengesQuestion] = useState();
-  const [peopleQuestion, setPeopleQuestion] = useState();
-  const [principlesQuestion, setPrinciplesQuestion] = useState();
-  const [powerQuestion, setPowerQuestion] = useState();
-  const [aspirationsQuestion, setAspirationsQuestion] = useState();
+  // const [peaksQuestion, setPeaksQuestion] = useState();
+  // const [challengesQuestion, setChallengesQuestion] = useState();
+  // const [peopleQuestion, setPeopleQuestion] = useState();
+  // const [principlesQuestion, setPrinciplesQuestion] = useState();
+  // const [powerQuestion, setPowerQuestion] = useState();
+  // const [aspirationsQuestion, setAspirationsQuestion] = useState();
 
   // function ColorPicker {
   const [colorPicked, setColorPicked] = useState("yellow");

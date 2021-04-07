@@ -4,6 +4,7 @@ import "firebase/database";
 
 const credentials = {
   apiKey: "AIzaSyA7mxsDElsxmGLruz5UIcrxywn7KplB1Jw",
+  databaseURL: "https://flower-power-58381-default-rtdb.firebaseio.com",
   authDomain: "flower-power-58381.firebaseapp.com",
   projectId: "flower-power-58381",
   storageBucket: "flower-power-58381.appspot.com",

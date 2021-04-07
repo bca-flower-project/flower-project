@@ -71,9 +71,11 @@ function PetalModal(props) {
   const [principles, setPrinciples] =useState('');
   const [powers, setPowers] =useState('');
   const [challenges, setChallenges] =useState('');
-
-  function handleNextQuestion() {
+  const [saveChange, setSaveChange] = useState()
+  function handleNextQuestion(evt) {
     // let petalArray = petal
+    setSaveChange(evt.target.value)
+
 
     let nextQuestion = chosen + 1;
     //if the question # is bigger than the length of the array, it stops bc petals are complete
@@ -109,24 +111,31 @@ function PetalModal(props) {
     let target = evt.target;
     setSelected(target.value);
   }
+//   let changeHandler = e => {
+//     props.setState({
+//       Id:e.target.value
+//     });
+// }
 
-  function handleUserInput(e) {
+  function handleUserInput(evt) {
     console.log(chosen);
     console.log(userInput);
     if (chosen === 0) {
-      return <textarea placeholder="Enter your response here" onChange={e => setPeaks(e.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPeaks(evt.target.value)}/>;
     } else if (chosen === 1) {
-      return <textarea placeholder="Enter your response here" onChange={e => setAspirations(e.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setAspirations(evt.target.value)}/>;
     } else if (chosen === 2) {
-      return <textarea placeholder="Enter your response here" onChange={e => setPeople(e.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPeople(evt.target.value)}/>;
     } else if (chosen === 3) {
-      return <textarea placeholder="Enter your response here" onChange={e => setPrinciples(e.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPrinciples(evt.target.value)}/>;
     } else if (chosen === 4) {
-      return <textarea placeholder="Enter your response here" onChange={e => setPowers(e.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPowers(evt.target.value)}/>;
     } else if (chosen === 5) {
-      return <textarea placeholder="Enter your response here" onChange={e => setChallenges(e.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setChallenges(evt.target.value)}/>;
     }
   }
+  console.log(peaks.value);
+
   //
   //fetch
   // save your response to state, console.log state
@@ -208,12 +217,6 @@ function PetalModal(props) {
               </select>
               <br></br>
               {handleUserInput()}
-              {/* <textarea
-                id="textarea"
-                value={userInput}
-                className="placeholder"
-                placeholder="enter your answer here"
-              ></textarea> */}
               <br></br>
               {showSubmit()}
             </form>
