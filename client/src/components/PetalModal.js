@@ -121,20 +121,26 @@ function PetalModal(props) {
     console.log(chosen);
     console.log(userInput);
     if (chosen === 0) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPeaks(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPeaks(evt.target.value)} value={peaks}/>;
     } else if (chosen === 1) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setAspirations(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setAspirations(evt.target.value)} value={aspirations}/>;
     } else if (chosen === 2) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPeople(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPeople(evt.target.value)} value={people}/>;
     } else if (chosen === 3) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPrinciples(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPrinciples(evt.target.value)} value={principles}/>;
     } else if (chosen === 4) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPowers(evt.target.value)}/>;
+      return <textarea placeholder="Enter your response here" onChange={evt => setPowers(evt.target.value)} value={powers}/>;
     } else if (chosen === 5) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setChallenges(evt.target.value)}/>;
-    }
+      return <textarea placeholder="Enter your response here" onChange={evt => setChallenges(evt.target.value)} value={challenges}/>;
+    } ;
   }
-  console.log(peaks.value);
+  console.log(peaks);
+  console.log(aspirations);
+  console.log(people);
+  console.log(principles);
+  console.log(powers);
+  console.log(challenges);
+
 
   //
   //fetch
@@ -153,7 +159,12 @@ function PetalModal(props) {
     }
   });
 
+  const [chosenPetal, setChosenPetal] = useState([]);
   const [colorPicked, setColorPicked] = useState("yellow");
+
+
+
+
   const handleColor = (evt) => {
     // setColorPicked({fill: color.hex})
     setColorPicked(evt.target.value);
@@ -163,6 +174,9 @@ function PetalModal(props) {
     setColorPicked(color.hex);
     console.log(color.hex);
   };
+
+
+
   function showSubmit() {
     if (chosen !== 5) {
       return (
