@@ -131,16 +131,11 @@ function PetalModal(props) {
     } else if (chosen === 4) {
       return <textarea placeholder="Enter your response here" onChange={evt => setPowers(evt.target.value)} value={powers}/>;
     } else if (chosen === 5) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setChallenges(evt.target.value)} value={challenges}/>;
-    } ;
+      return <textarea placeholder="Enter your response here" onChange={evt => setChallenges(evt.target.value)}/>;
+    }
+    
   }
-  console.log(peaks);
-  console.log(aspirations);
-  console.log(people);
-  console.log(principles);
-  console.log(powers);
-  console.log(challenges);
-
+  ;
 
   //
   //fetch
