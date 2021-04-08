@@ -42,35 +42,38 @@ function App() {
 
   const [user, setUser] = useState(null);
   let history = useHistory();
-  function loginPass(email, password) {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userObj) => {
-        // Signed in
-        setUser(userObj);
-        // ...
-        history.push("/Dashboard");
-      })
-      .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        console.log(errorMessage);
-      });
-  }
-  function googleLogin(props) {
+  async function googleLogin(props) {
+    
     firebase
       .auth()
       .signInWithPopup(googleProvider)
-      .then((result) => {
-        // /** @type {firebase.auth.OAuthCredential} */
+      .then(async (result) => {
         const credential = result.credential;
 
         // This gives you a Google Access Token. You can use it to access the Google API.
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+
+        let userObj = {
+          name: user.displayName,
+          email: user.email,
+          uid: user.uid,
+        };
+        
+        console.log(userObj);
+        async function addUser(data) {
+          let collection = await database.collection("user");
+          return await collection.add(data);
+        }
+        await addUser(userObj)
+        // await addUser(userObj);
+        // database.prototype.addUser = function(data) {
+        //   let collection = firebase.firestore().collection('user');
+        //   return collection.add(data);
+        // };
         // ...
+        history.push("/Create");
       })
       .catch((error) => {
         // Handle Errors here.
@@ -82,42 +85,6 @@ function App() {
         const credential = error.credential;
       });
     //you get firebase.auth().currentUser -- keeps the user signed in, if no user - is null. you can call this anywhere firebase is imported!!! just use firebase.auth().currentUser: use as stateful property in components that need auth
-  }
-
-  function googleLogin() {
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        setUser(result.user);
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        // The email of the user's account used.
-        let email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        let credential = error.credential;
-        // ...
-        console.log(errorMessage);
-      });
-  }
-  function SignupPass(email, password) {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userObj) => {
-        // Signed in
-        setUser(userObj);
-        // ...
-        history.push("/Dashboard");
-      })
-      .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        console.log(errorMessage);
-      });
   }
   //useEffect will ping db then send back info on what user is logged in
   // const [colorPicked, setColorPicked] = useState("yellow");
@@ -143,7 +110,6 @@ function App() {
     }
   };
 
-  
   // export default App;
   //commented out current login functionality
   // function googleLogin(props) {
@@ -182,46 +148,45 @@ function App() {
 
       <button onClick={toggleTheme}>Toggle Theme</button>
       <Switch>
-      <Container className="d-flex align-items-center justify-content-center ">
+        <Container className="d-flex align-items-center justify-content-center ">
           <div className="w-100 " style={{ maxWidth: "400px" }}>
-      <Route
+            <Route
               exact
-              path={"/Dashboard"}
+              path={"/Create"}
               render={(props) => {
-                return <Dashboard user={user} />;
+                return <Create user={user} />;
               }}
             />
-        <Route exact path={"/"} component={Home} />
-        <Route path={"/Profile"} component={Profile} />
-        <Route path={"/Connect"} component={Connect} />
-        <Route
-          path={"/Create"}
-          render={(props) => {
-            return (
-              <>
-                <Create theme={theme} />
-                {/* <Flower color={props.colorPicked} /> */}
-              </>
-            );
-          }}
-        />
-        <Route path={"/Global"} component={Global} />
-        <Route
+            <Route exact path={"/"} component={Home} />
+            <Route path={"/Profile"} component={Profile} />
+            <Route path={"/Connect"} component={Connect} />
+            <Route
+              path={"/Create"}
+              render={(props) => {
+                return (
+                  <>
+                    <Create theme={theme} />
+                    {/* <Flower color={props.colorPicked} /> */}
+                  </>
+                );
+              }}
+            />
+            <Route path={"/Global"} component={Global} />
+            <Route
               exact
               path="/"
               render={(props) => {
                 return (
                   <Login
-                    loginPass={loginPass}
                     user={user}
                     googleLogin={googleLogin}
                   />
                 );
               }}
             />
-        <Route path={"/PastFlowers"} component={PastFlowers} />
-        <Route path={"/Settings"} component={Settings} />
-        </div>
+            <Route path={"/PastFlowers"} component={PastFlowers} />
+            <Route path={"/Settings"} component={Settings} />
+          </div>
         </Container>
       </Switch>
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
