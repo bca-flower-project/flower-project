@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { Create } from "react";
-import { HuePicker } from "react-color";
+import { HuePicker, CirclePicker } from "react-color";
 import App from "../App";
 import Flower from "./Flower.js";
 import "../App.css";
@@ -16,6 +16,20 @@ function PetalModal(props) {
         "What are your biggest accomplishments?",
         "What are your happiest memories?",
       ],
+      // colorOptions: [
+      //   "#f44336",
+      //   "#e91e63",
+      //   "#9c27b0",
+      //   "#673ab7",
+      //   "#3f51b5",
+      //   "#2196f3",
+      //   "#03a9f4",
+      //   "#00bcd4",
+      //   "#009688",
+      //   "#4caf50",
+      //   "#8bc34a",
+      //   "#cddc39",
+      // ],
     },
     {
       petal: "Aspirations",
@@ -24,6 +38,20 @@ function PetalModal(props) {
         "What are your aspirations?",
         "What are your goals?",
       ],
+      // colorOptions: [
+      //   "#f44336",
+      //   "#e91e63",
+      //   "#9c27b0",
+      //   "#673ab7",
+      //   "#3f51b5",
+      //   "#2196f3",
+      //   "#03a9f4",
+      //   "#00bcd4",
+      //   "#009688",
+      //   "#4caf50",
+      //   "#8bc34a",
+      //   "#cddc39",
+      // ],
     },
     {
       petal: "People",
@@ -32,6 +60,20 @@ function PetalModal(props) {
         "Who are the people that care for you?",
         "Who are the most influential people in your life?",
       ],
+      // colorOptions: [
+      //   "#f44336",
+      //   "#e91e63",
+      //   "#9c27b0",
+      //   "#673ab7",
+      //   "#3f51b5",
+      //   "#2196f3",
+      //   "#03a9f4",
+      //   "#00bcd4",
+      //   "#009688",
+      //   "#4caf50",
+      //   "#8bc34a",
+      //   "#cddc39",
+      // ],
     },
     {
       petal: "Principles",
@@ -40,6 +82,20 @@ function PetalModal(props) {
         "What do you care about most in life?",
         "What are your most deeply held beliefs?",
       ],
+      // colorOptions: [
+      //   "#f44336",
+      //   "#e91e63",
+      //   "#9c27b0",
+      //   "#673ab7",
+      //   "#3f51b5",
+      //   "#2196f3",
+      //   "#03a9f4",
+      //   "#00bcd4",
+      //   "#009688",
+      //   "#4caf50",
+      //   "#8bc34a",
+      //   "#cddc39",
+      // ],
     },
     {
       petal: "Powers",
@@ -48,6 +104,20 @@ function PetalModal(props) {
         "What do you love to do?",
         "What are your powers?",
       ],
+      // colorOptions: [
+      //   "#f44336",
+      //   "#e91e63",
+      //   "#9c27b0",
+      //   "#673ab7",
+      //   "#3f51b5",
+      //   "#2196f3",
+      //   "#03a9f4",
+      //   "#00bcd4",
+      //   "#009688",
+      //   "#4caf50",
+      //   "#8bc34a",
+      //   "#cddc39",
+      // ],
     },
     {
       petal: "Challenges",
@@ -56,43 +126,53 @@ function PetalModal(props) {
         "What are the biggest challenges you've faced?",
         "What have been the hardest times of your life?",
       ],
+      // colorOptions: [
+      //   "#f44336",
+      //   "#e91e63",
+      //   "#9c27b0",
+      //   "#673ab7",
+      //   "#3f51b5",
+      //   "#2196f3",
+      //   "#03a9f4",
+      //   "#00bcd4",
+      //   "#009688",
+      //   "#4caf50",
+      //   "#8bc34a",
+      //   "#cddc39",
+      // ],
     },
   ];
+
   const [chosen, setChosen] = useState(0); // what is chosen state
   const [selected, setSelected] = useState(""); // what is selected state
   //const [question, setQuestion] = useState(""); //which petal they select determines which questions show
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [question, setQuestion] = useState([]);
+  const [chosenColor, setChosenColor] = useState([]);
   //state to save userInput for each input of the petals
-  const [userInput, setUserInput] = useState('');
-  const [peaks, setPeaks] =useState('');
-  const [aspirations, setAspirations] =useState('');
-  const [people, setPeople] =useState('');
-  const [principles, setPrinciples] =useState('');
-  const [powers, setPowers] =useState('');
-  const [challenges, setChallenges] =useState('');
-  const [saveChange, setSaveChange] = useState()
-  //petal color states
-  const [peaksPetal, setPeaksPetal] = useState("");
-  const [aspirationsPetal, setAspirationsPetal] = useState("");
-  const [peoplePetal, setPeoplePetal] = useState("");
-  const [principlesPetal, setPrinciplesPetal] = useState("");
-  const [powersPetal, setPowersPetal] =useState("");
-  const [challengesPetal, setChallengesPetal] =useState("");
-  
+  const [userInput, setUserInput] = useState("");
+  const [peaks, setPeaks] = useState("");
+  const [aspirations, setAspirations] = useState("");
+  const [people, setPeople] = useState("");
+  const [principles, setPrinciples] = useState("");
+  const [powers, setPowers] = useState("");
+  const [challenges, setChallenges] = useState("");
+  const [saveChange, setSaveChange] = useState();
+  //state color for petals
+  const [peaksPetal, setPeaksPetal] = useState("yellow")
+  const [aspirationsPetal, setAspirationsPetal] = useState("yellow")
+  const [peoplePetal, setPeoplePetal] = useState("yellow")
+  const [principlesPetal, setPrinciplesPetal] = useState("yellow")
+  const [powersPetal, setPowersPetal] = useState("yellow")
+  const [challengesPetal, setChallengesPetal] = useState("yellow")
+
+
   function handleNextQuestion(evt) {
     // let petalArray = petal
-    setSaveChange(evt.target.value)
-
+    setSaveChange(evt.target.value);
 
     let nextQuestion = chosen + 1;
     //if the question # is bigger than the length of the array, it stops bc petals are complete
-    //petal[chosen] = {
-    // question[chosen]
-    // answer[chosen]
-    //  color[chosen]
-    // }
-    //^^this will go to firestore
     if (nextQuestion < questions.length) {
       setChosen(nextQuestion);
     } else {
@@ -119,32 +199,65 @@ function PetalModal(props) {
     let target = evt.target;
     setSelected(target.value);
   }
-//   let changeHandler = e => {
-//     props.setState({
-//       Id:e.target.value
-//     });
-// }
+  //   let changeHandler = e => {
+  //     props.setState({
+  //       Id:e.target.value
+  //     });
+  // }
 
   function handleUserInput(evt) {
     console.log(chosen);
     console.log(userInput);
     if (chosen === 0) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPeaks(evt.target.value)} value={peaks}/>;
+      return (
+        <textarea
+          placeholder="Enter your response here"
+          onChange={(evt) => setPeaks(evt.target.value)}
+          value={peaks}
+        />
+      );
     } else if (chosen === 1) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setAspirations(evt.target.value)} value={aspirations}/>;
+      return (
+        <textarea
+          placeholder="Enter your response here"
+          onChange={(evt) => setAspirations(evt.target.value)}
+          value={aspirations}
+        />
+      );
     } else if (chosen === 2) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPeople(evt.target.value)} value={people}/>;
+      return (
+        <textarea
+          placeholder="Enter your response here"
+          onChange={(evt) => setPeople(evt.target.value)}
+          value={people}
+        />
+      );
     } else if (chosen === 3) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPrinciples(evt.target.value)} value={principles}/>;
+      return (
+        <textarea
+          placeholder="Enter your response here"
+          onChange={(evt) => setPrinciples(evt.target.value)}
+          value={principles}
+        />
+      );
     } else if (chosen === 4) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setPowers(evt.target.value)} value={powers}/>;
+      return (
+        <textarea
+          placeholder="Enter your response here"
+          onChange={(evt) => setPowers(evt.target.value)}
+          value={powers}
+        />
+      );
     } else if (chosen === 5) {
-      return <textarea placeholder="Enter your response here" onChange={evt => setChallenges(evt.target.value)}/>;
+      return (
+        <textarea
+          placeholder="Enter your response here"
+          onChange={(evt) => setChallenges(evt.target.value)}
+          value={challenges}
+        />
+      );
     }
-    
   }
-  ;
-
   //
   //fetch
   // save your response to state, console.log state
@@ -162,44 +275,34 @@ function PetalModal(props) {
     }
   });
 
-  const [chosenPetal, setChosenPetal] = useState([]);
-  function handleChosenPetal(evt) {
-    // let petalArray = petal
-    setSaveChange(evt.target.value)
+  //const [colorPicked, setColorPicked] = useState("");
 
+  // const handleColor = (evt) => {
+  // //   // setColorPicked({fill: color.hex})
+//  setColorPicked(evt.target.value);
+  // //   // setPeaksPetal(evt.target.value);
+  // // }; principles powers challengesks
+ // };
 
-    let nextQuestion = chosenPetal + 1;
-    //if the question # is bigger than the length of the array, it stops bc petals are complete
-    //petal[chosen] = {
-    // question[chosen]
-    // answer[chosen]
-    //  color[chosen]
-    // }
-    //^^this will go to firestore
-    if (nextQuestion < questions.length) {
-      setChosen(nextQuestion);
-    } else {
-      setModalIsOpen(false);
+//create custom colorpicker component
+
+  const handleColorChange = (color) => {
+    if (chosen === 0) {
+      setPeaksPetal(color.hex)
+    } else if (chosen === 1) {
+      setAspirationsPetal(color.hex)
+    } else if (chosen === 2) {
+      setPeoplePetal(color.hex) 
+    } else if (chosen === 3) {
+      setPrinciplesPetal(color.hex)
+    } else if (chosen === 4) {
+      setPowersPetal(color.hex) 
+    } else if (chosen === 5) {
+      setChallengesPetal(color.hex)
     }
-  }
-
-
-  const [colorPicked, setColorPicked] = useState("yellow");
-
-
-
-
-  const handleColor = (evt) => {
-    // setColorPicked({fill: color.hex})
-    setColorPicked(evt.target.value);
   };
 
-  const handleColorChange = (color, evt) => {
-    setColorPicked(color.hex);
-    console.log(color.hex);
-  };
-
-
+  
 
   function showSubmit() {
     if (chosen !== 5) {
@@ -214,8 +317,7 @@ function PetalModal(props) {
       return <input type="submit" value="Submit Flower" />;
     }
   }
-  //do we need to make it questions.length or id
-  console.log(props.theme);
+
   return (
     <div>
       <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
@@ -267,17 +369,45 @@ function PetalModal(props) {
               Next Petal
             </button>
             <HuePicker
-              id="hue"
+              id={`hue-${chosen}`}
               height="18px"
               width="300px"
               onChange={handleColorChange}
               direction="horizontal"
               pointer="none"
             />
+            {/* <h3>{`Select a color for ${questions[chosen].petal}`}</h3>
+            <CirclePicker
+              colors={[
+                "#f44336",
+                "#e91e63",
+                "#9c27b0",
+                "#673ab7",
+                "#3f51b5",
+                "#2196f3",
+                "#03a9f4",
+                "#00bcd4",
+                "#009688",
+                "#4caf50",
+                "#8bc34a",
+                "#cddc39",
+              ]}
+            /> */}
+{/* 
+            {questions[chosen].colorOptions.map((color, index) => {
+              return <option value={`Color ${index}`}>{color.hex}</option>;
+            })} */}
           </div>
-
           <div id="flower">
-            <Flower icolor={colorPicked} height="90vh" width="50vw" />
+            <Flower 
+            colorOne={peaksPetal} 
+            colorTwo={aspirationsPetal}
+            colorThree={peoplePetal}
+            colorFour={principlesPetal}
+            colorFive={powersPetal}
+            colorSix={challengesPetal}
+            //color={colorPicked}
+            height="90vh" width="50vw" />
           </div>
         </div>
       </Modal>

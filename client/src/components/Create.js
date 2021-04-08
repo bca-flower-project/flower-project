@@ -68,7 +68,12 @@ export default function Create(props) {
    
       <div id="flower-wrapper">
         <Flower 
-        color={colorPicked} 
+        colorOne="pink"
+        colorTwo="pink"
+        colorThree="pink"
+        colorFour="pink"
+        colorFive="pink"
+        colorSix="pink"
         height="auto"
         width="76vw"
         />
