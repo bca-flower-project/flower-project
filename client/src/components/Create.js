@@ -16,38 +16,6 @@ export default function Create(props) {
   // const [theme, setTheme] = useState("light");
   const [display, setDisplay] = useState(false); // is the modal displayed or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  //function that toggles between themes
-  // const toggleTheme = () => {
-  //   if (props.theme === "light") {
-  //     setTheme("dark");
-  //   } else {
-  //     setTheme("light");
-  //   }
-  // };
-
-  const [pickQuestions, setPickQuestions] = useState();
-
-  //this will set question to one chosen with on submit later on
-  // const [peaksQuestion, setPeaksQuestion] = useState();
-  // const [challengesQuestion, setChallengesQuestion] = useState();
-  // const [peopleQuestion, setPeopleQuestion] = useState();
-  // const [principlesQuestion, setPrinciplesQuestion] = useState();
-  // const [powerQuestion, setPowerQuestion] = useState();
-  // const [aspirationsQuestion, setAspirationsQuestion] = useState();
-
-  // function ColorPicker {
-  const [colorPicked, setColorPicked] = useState("yellow");
-  
-  // const handleColor = (evt) => {
-  //   // setColorPicked({fill: color.hex})
-  //   setColorPicked(evt.target.value);
-  // };
-  
-  // const handleColorChange = (color, evt) => {
-  //   setColorPicked(color.hex);
-  //   console.log(color.hex);
-  // };
  
 
   return (
