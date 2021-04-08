@@ -16,20 +16,6 @@ function PetalModal(props) {
         "What are your biggest accomplishments?",
         "What are your happiest memories?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
     {
       petal: "Aspirations",
@@ -38,20 +24,6 @@ function PetalModal(props) {
         "What are your aspirations?",
         "What are your goals?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
     {
       petal: "People",
@@ -60,20 +32,6 @@ function PetalModal(props) {
         "Who are the people that care for you?",
         "Who are the most influential people in your life?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
     {
       petal: "Principles",
@@ -82,20 +40,6 @@ function PetalModal(props) {
         "What do you care about most in life?",
         "What are your most deeply held beliefs?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
     {
       petal: "Powers",
@@ -104,20 +48,7 @@ function PetalModal(props) {
         "What do you love to do?",
         "What are your powers?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
+
     },
     {
       petal: "Challenges",
@@ -126,20 +57,6 @@ function PetalModal(props) {
         "What are the biggest challenges you've faced?",
         "What have been the hardest times of your life?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
   ];
 
@@ -376,23 +293,7 @@ function PetalModal(props) {
               direction="horizontal"
               pointer="none"
             />
-            {/* <h3>{`Select a color for ${questions[chosen].petal}`}</h3>
-            <CirclePicker
-              colors={[
-                "#f44336",
-                "#e91e63",
-                "#9c27b0",
-                "#673ab7",
-                "#3f51b5",
-                "#2196f3",
-                "#03a9f4",
-                "#00bcd4",
-                "#009688",
-                "#4caf50",
-                "#8bc34a",
-                "#cddc39",
-              ]}
-            /> */}
+            
 {/* 
             {questions[chosen].colorOptions.map((color, index) => {
               return <option value={`Color ${index}`}>{color.hex}</option>;

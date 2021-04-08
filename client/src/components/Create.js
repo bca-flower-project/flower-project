@@ -66,7 +66,7 @@ export default function Create(props) {
       </ThemeProvider>
 
    
-      <div id="flower-wrapper">
+      {/* <div id="flower-wrapper">
         <Flower 
         colorOne="pink"
         colorTwo="pink"
@@ -77,7 +77,7 @@ export default function Create(props) {
         height="auto"
         width="76vw"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

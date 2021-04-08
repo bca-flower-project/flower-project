@@ -150,18 +150,18 @@ function App() {
       <Switch>
         <Container className="d-flex align-items-center justify-content-center ">
           <div className="w-100 " style={{ maxWidth: "400px" }}>
-            <Route
+            {/* <Route
               exact
               path={"/Create"}
               render={(props) => {
                 return <Create user={user} />;
               }}
-            />
+            /> */}
             <Route exact path={"/"} component={Home} />
             <Route path={"/Profile"} component={Profile} />
             <Route path={"/Connect"} component={Connect} />
             <Route
-              path={"/Create"}
+              exact path={"/Create"}
               render={(props) => {
                 return (
                   <>
