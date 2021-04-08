@@ -42,3 +42,4 @@ export { firebaseApp, auth, googleProvider}
 //     console.log("  Photo URL: " + profile.photoURL);
 //   });
 // }
+
