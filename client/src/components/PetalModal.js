@@ -72,6 +72,14 @@ function PetalModal(props) {
   const [powers, setPowers] =useState('');
   const [challenges, setChallenges] =useState('');
   const [saveChange, setSaveChange] = useState()
+  //petal color states
+  const [peaksPetal, setPeaksPetal] = useState("");
+  const [aspirationsPetal, setAspirationsPetal] = useState("");
+  const [peoplePetal, setPeoplePetal] = useState("");
+  const [principlesPetal, setPrinciplesPetal] = useState("");
+  const [powersPetal, setPowersPetal] =useState("");
+  const [challengesPetal, setChallengesPetal] =useState("");
+  
   function handleNextQuestion(evt) {
     // let petalArray = petal
     setSaveChange(evt.target.value)

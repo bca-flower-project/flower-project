@@ -31,7 +31,7 @@ const entrySchema = new .Schema({
       "UID": {
         "peaks": {
           "color": "#000000",
-          "question":[0]",
+          "question":[0],
           "answer": ""
       }, "aspirations": {
             "color": "#000000",
