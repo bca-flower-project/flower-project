@@ -20,6 +20,11 @@ export default function PastFlower(props) {
   return (
     <div>
       <h1>Your growing garden</h1>
+      {flowers.map((flowerItem, index) => {
+        return (
+          <h1>return the svgs here</h1>
+        )
+      })}
     </div>
   );
 }

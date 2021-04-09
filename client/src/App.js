@@ -151,19 +151,25 @@ function App() {
       <Switch>
         <Container className="d-flex align-items-center justify-content-center ">
           <div className="w-100 " style={{ maxWidth: "400px" }}>
-            <Route
-              exact
-              path={"/Create"}
-              render={(props) => {
-                return <Create user={user} theme={theme} />;
-              }}
-            />
+            
             <Route exact path={"/"} component={Home} />
             <Route path={"/Profile"} component={Profile} />
             <Route path={"/Connect"} component={Connect} />
             <Route path={"/Global"} render={(props)=>{
               return <Global user={user}/>
             }} />
+            <Route
+              exact path={"/Create"}
+              render={(props) => {
+                return (
+                  <>
+                    <Create theme={theme} user={user} />
+                    {/* <Flower color={props.colorPicked} /> */}
+                  </>
+                );
+              }}
+            />
+            <Route path={"/Global"} component={Global} />
             <Route
               exact
               path="/"
