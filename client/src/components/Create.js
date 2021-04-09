@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import blank from "./images/blank.svg";
-import Flower from "./Flower.js";
+import CreateFlower from "./CreateFlower.js";
 import { useState, useEffect } from "react";
 import outline from "./icons/ok-flower.png";
 import DarkModeNav from "./DarkModeNav";
@@ -37,7 +37,7 @@ export default function Create(props) {
   // const [aspirationsQuestion, setAspirationsQuestion] = useState();
 
   // function ColorPicker {
-  const [colorPicked, setColorPicked] = useState("yellow");
+  // const [colorPicked, setColorPicked] = useState("yellow");
   
   // const handleColor = (evt) => {
   //   // setColorPicked({fill: color.hex})
@@ -52,7 +52,7 @@ export default function Create(props) {
 
   return (
     <div>
-      <h1>Create!!!</h1>
+      
 
       <PetalModal theme={props.theme === "light" ? lightTheme : darkTheme}/>
       {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
@@ -65,19 +65,20 @@ export default function Create(props) {
         </>
       </ThemeProvider>
 
-   
+{/*    
       <div id="flower-wrapper">
-        <Flower 
-        colorOne="pink"
-        colorTwo="pink"
-        colorThree="pink"
-        colorFour="pink"
-        colorFive="pink"
-        colorSix="pink"
+       <CreateFlower
+        // onClick={modalIsOpen}
+        // colorOne="pink"
+        // colorTwo="pink"
+        // colorThree="pink"
+        // colorFour="pink"
+        // colorFive="pink"
+        // colorSix="pink"
         height="auto"
         width="76vw"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

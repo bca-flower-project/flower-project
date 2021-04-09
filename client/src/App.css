@@ -83,20 +83,24 @@ left: 33%;
   /* margin-bottom: 0  */
 }
 
-#hue {
+/* .hue-hover-zoom-point-zoom {
+  transform-origin: 65% 75%;
+  transition: transform 1s, filter .5s ease-out;
+} */
+
+.hue {
   margin-top: 2vh;
 }
 
+
+
 #flower {
-  height:100vh;
+  margin-top: 14vh;
+  margin-right:8vw;
+  height:80vh;
   width: auto;
 }
 
-<<<<<<< HEAD
-/* #path  */
-=======
-
->>>>>>> 6fd4fba5f9efcdc517a6325b534b7e3a5dae4750
 
 
 /* -----------flower /create css */

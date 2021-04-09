@@ -10,7 +10,7 @@ function Flower(props) {
       // width="100vw"
       // height="auto"
       version="1.1"
-      viewBox="0 0 575.36 577.6"
+      viewBox="100 18 240 240"
     >
       <defs>
         <linearGradient osbPaint="solid">
