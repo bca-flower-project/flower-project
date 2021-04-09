@@ -2,26 +2,22 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import Nav from "./Nav";
 import DarkModeNav from "./DarkModeNav";
+import { database } from "./fire";
 
 export default function PastFlower(props) {
   //Probably useEffect/API fetch
-  const [flowers, setFlowers] =useState([])
+  const [previousFlower, setPreviousFlower] = useState(null);
+  console.log(props.user);
+  async function pastFlowers() {
+    return database.collection("users").doc(props.user.uid).collection("flower").get("flower")
+    }
 
-  useEffect(() => {
-    if (flowers.length !== 0) {
-      fetch('/api')
-      .then((res) => res.json())
-      .then((usersFlowers) => {
-        setFlowers(usersFlowers);
-      })
+  useEffect(async () => {
+    if (previousFlower === null) {
+      setPreviousFlower(await pastFlowers());
     }
   });
-  flowers && 
-      flowers.forEach((object) => {
-        console.log(flowers)
-        
-      })
-
+  console.log(previousFlower);
 
   return (
     <div>
