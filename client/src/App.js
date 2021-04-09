@@ -31,6 +31,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./components/theme";
 import { GlobalStyles } from "./global";
 import "./App.css";
+import { render } from "react-dom";
 let provider = new firebase.auth.GoogleAuthProvider();
 
 //write all login functionality on app
@@ -39,8 +40,8 @@ function App() {
   const [googleUser, setGoogleUser] = useState();
   //useEffect to get if user exists/signed in, then pull info from database based on what user is signed in
   //useeffect will ping db then send back info on what user is logged in
-
   const [user, setUser] = useState(null);
+
   let history = useHistory();
   async function googleLogin(props) {
     
@@ -61,9 +62,9 @@ function App() {
           uid: user.uid,
         };
         
-        console.log(userObj);
+        await setUser(userObj);
         async function addUser(data) {
-          let collection = await database.collection("user");
+          let collection = await database.collection("user").doc(user.uid).set(data);
           return await collection.add(data);
         }
         await addUser(userObj)
@@ -154,24 +155,15 @@ function App() {
               exact
               path={"/Create"}
               render={(props) => {
-                return <Create user={user} />;
+                return <Create user={user} theme={theme} />;
               }}
             />
             <Route exact path={"/"} component={Home} />
             <Route path={"/Profile"} component={Profile} />
             <Route path={"/Connect"} component={Connect} />
-            <Route
-              path={"/Create"}
-              render={(props) => {
-                return (
-                  <>
-                    <Create theme={theme} />
-                    {/* <Flower color={props.colorPicked} /> */}
-                  </>
-                );
-              }}
-            />
-            <Route path={"/Global"} component={Global} />
+            <Route path={"/Global"} render={(props)=>{
+              return <Global user={user}/>
+            }} />
             <Route
               exact
               path="/"
@@ -184,7 +176,9 @@ function App() {
                 );
               }}
             />
-            <Route path={"/PastFlowers"} component={PastFlowers} />
+            <Route path={"/PastFlowers"} render={(props) => {
+              return <PastFlowers user={user} />
+            }}/>
             <Route path={"/Settings"} component={Settings} />
           </div>
         </Container>

@@ -1,7 +1,21 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import { database } from "./fire";
 
-export default function PastFlower() {
+export default function PastFlower(props) {
   //Probably useEffect/API fetch
+  const [previousFlower, setPreviousFlower] = useState(null);
+  console.log(props.user);
+  async function pastFlowers() {
+    return database.collection("users").doc(props.user.uid).collection("flower").get("flower")
+    }
+
+  useEffect(async () => {
+    if (previousFlower === null) {
+      setPreviousFlower(await pastFlowers());
+    }
+  });
+  console.log(previousFlower);
 
   return (
     <div>
