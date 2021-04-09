@@ -10,51 +10,22 @@ import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "../global";
 import "../App.css";
 import PetalModal from "./PetalModal";
+import Nav from "./Nav";
+
 
 
 export default function Create(props) {
   // const [theme, setTheme] = useState("light");
   const [display, setDisplay] = useState(false); // is the modal displayed or not
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
-  //function that toggles between themes
-  // const toggleTheme = () => {
-  //   if (props.theme === "light") {
-  //     setTheme("dark");
-  //   } else {
-  //     setTheme("light");
-  //   }
-  // };
-
-  const [pickQuestions, setPickQuestions] = useState();
-
-  //this will set question to one chosen with on submit later on
-  // const [peaksQuestion, setPeaksQuestion] = useState();
-  // const [challengesQuestion, setChallengesQuestion] = useState();
-  // const [peopleQuestion, setPeopleQuestion] = useState();
-  // const [principlesQuestion, setPrinciplesQuestion] = useState();
-  // const [powerQuestion, setPowerQuestion] = useState();
-  // const [aspirationsQuestion, setAspirationsQuestion] = useState();
-
-  // function ColorPicker {
-  const [colorPicked, setColorPicked] = useState("yellow");
-  
-  // const handleColor = (evt) => {
-  //   // setColorPicked({fill: color.hex})
-  //   setColorPicked(evt.target.value);
-  // };
-  
-  // const handleColorChange = (color, evt) => {
-  //   setColorPicked(color.hex);
-  //   console.log(color.hex);
-  // };
  
 
   return (
     <div>
+       {props.theme === "dark" ? <DarkModeNav  /> : <Nav />}
       <h1>Create!!!</h1>
 
-      <PetalModal theme={props.theme === "light" ? lightTheme : darkTheme}/>
+      <PetalModal theme={props.theme === "light" ? lightTheme : darkTheme} user={props.user}/>
       {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
       {/* <button disabled={props.disabledState} onClick={() => {props.setDisabled(false); props.display(true)}} >Show Modal</button> Activates guess modal */}
       <ThemeProvider theme={props.theme === "light" ? lightTheme : darkTheme}>
@@ -66,7 +37,7 @@ export default function Create(props) {
       </ThemeProvider>
 
    
-      <div id="flower-wrapper">
+      {/* <div id="flower-wrapper">
         <Flower 
         colorOne="pink"
         colorTwo="pink"
@@ -77,7 +48,7 @@ export default function Create(props) {
         height="auto"
         width="76vw"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

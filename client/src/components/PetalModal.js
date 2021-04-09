@@ -5,7 +5,7 @@ import { HuePicker, CirclePicker } from "react-color";
 import App from "../App";
 import Flower from "./Flower.js";
 import "../App.css";
-
+import { database } from "./fire";
 function PetalModal(props) {
   const questions = [
     {
@@ -16,20 +16,6 @@ function PetalModal(props) {
         "What are your biggest accomplishments?",
         "What are your happiest memories?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
     {
       petal: "Aspirations",
@@ -38,20 +24,6 @@ function PetalModal(props) {
         "What are your aspirations?",
         "What are your goals?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
     {
       petal: "People",
@@ -60,20 +32,6 @@ function PetalModal(props) {
         "Who are the people that care for you?",
         "Who are the most influential people in your life?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
     {
       petal: "Principles",
@@ -82,20 +40,6 @@ function PetalModal(props) {
         "What do you care about most in life?",
         "What are your most deeply held beliefs?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
     {
       petal: "Powers",
@@ -104,20 +48,7 @@ function PetalModal(props) {
         "What do you love to do?",
         "What are your powers?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
+
     },
     {
       petal: "Challenges",
@@ -126,20 +57,6 @@ function PetalModal(props) {
         "What are the biggest challenges you've faced?",
         "What have been the hardest times of your life?",
       ],
-      // colorOptions: [
-      //   "#f44336",
-      //   "#e91e63",
-      //   "#9c27b0",
-      //   "#673ab7",
-      //   "#3f51b5",
-      //   "#2196f3",
-      //   "#03a9f4",
-      //   "#00bcd4",
-      //   "#009688",
-      //   "#4caf50",
-      //   "#8bc34a",
-      //   "#cddc39",
-      // ],
     },
   ];
 
@@ -159,13 +76,12 @@ function PetalModal(props) {
   const [challenges, setChallenges] = useState("");
   const [saveChange, setSaveChange] = useState();
   //state color for petals
-  const [peaksPetal, setPeaksPetal] = useState("yellow")
-  const [aspirationsPetal, setAspirationsPetal] = useState("yellow")
-  const [peoplePetal, setPeoplePetal] = useState("yellow")
-  const [principlesPetal, setPrinciplesPetal] = useState("yellow")
-  const [powersPetal, setPowersPetal] = useState("yellow")
-  const [challengesPetal, setChallengesPetal] = useState("yellow")
-
+  const [peaksPetal, setPeaksPetal] = useState("yellow");
+  const [aspirationsPetal, setAspirationsPetal] = useState("yellow");
+  const [peoplePetal, setPeoplePetal] = useState("yellow");
+  const [principlesPetal, setPrinciplesPetal] = useState("yellow");
+  const [powersPetal, setPowersPetal] = useState("yellow");
+  const [challengesPetal, setChallengesPetal] = useState("yellow");
 
   function handleNextQuestion(evt) {
     // let petalArray = petal
@@ -192,6 +108,8 @@ function PetalModal(props) {
   function submitForm(evt) {
     evt.preventDefault();
     setChosen(selected);
+    addFlower(userFlower);
+    addGlobalFlower(userFlower)
   }
 
   // when option is selected save it in selected state
@@ -279,31 +197,77 @@ function PetalModal(props) {
 
   // const handleColor = (evt) => {
   // //   // setColorPicked({fill: color.hex})
-//  setColorPicked(evt.target.value);
+  //  setColorPicked(evt.target.value);
   // //   // setPeaksPetal(evt.target.value);
   // // }; principles powers challengesks
- // };
+  // };
 
-//create custom colorpicker component
-
+  //create custom colorpicker component
+ 
   const handleColorChange = (color) => {
     if (chosen === 0) {
-      setPeaksPetal(color.hex)
+      setPeaksPetal(color.hex);
     } else if (chosen === 1) {
-      setAspirationsPetal(color.hex)
+      setAspirationsPetal(color.hex);
     } else if (chosen === 2) {
-      setPeoplePetal(color.hex) 
+      setPeoplePetal(color.hex);
     } else if (chosen === 3) {
-      setPrinciplesPetal(color.hex)
+      setPrinciplesPetal(color.hex);
     } else if (chosen === 4) {
-      setPowersPetal(color.hex) 
+      setPowersPetal(color.hex);
     } else if (chosen === 5) {
-      setChallengesPetal(color.hex)
+      setChallengesPetal(color.hex);
     }
   };
-
   
 
+  let userFlower = {
+    // PeakQuestion: questions[chosen],
+    // AspirationsQuestion: questions[chosen === 1],
+    // PeopleQuestion: questions[chosen === 2],
+    // PrincipleQuestion: questions[chosen === 3],
+    // PowersQuestion: questions[chosen === 4],
+    // ChallengesQuestion: questions[chosen === 5],
+    PeaksColor: peaksPetal,
+    AspirationsColor: aspirationsPetal,
+    PeopleColor: peoplePetal,
+    PrinciplesColor: principlesPetal,
+    PowerColor: powersPetal,
+    ChallengesColor: challengesPetal,
+    Peaks: peaks,
+    Aspirations: aspirations,
+    People: people,
+    Principles: principles,
+    Powers: powers,
+    Challenges: challenges,
+  };
+  console.log(userFlower);
+  console.log(props.user)
+  async function addFlower(data) {
+    
+    let collection = await database
+      .collection("user")
+      .doc(props.user.uid)
+      .collection("flower")
+      // .doc(data)
+      // .set(data)
+      
+    return await collection.add(data);
+    
+  }
+  async function addGlobalFlower(data) {
+    
+    let collection = await database
+      .collection("Global")
+      
+      // .doc(data)
+      // .set(data)
+      
+    return await collection.add(data);
+    
+  }
+  
+  
   function showSubmit() {
     if (chosen !== 5) {
       return (
@@ -320,6 +284,7 @@ function PetalModal(props) {
 
   return (
     <div>
+     
       <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
 
       <Modal
@@ -376,38 +341,24 @@ function PetalModal(props) {
               direction="horizontal"
               pointer="none"
             />
-            {/* <h3>{`Select a color for ${questions[chosen].petal}`}</h3>
-            <CirclePicker
-              colors={[
-                "#f44336",
-                "#e91e63",
-                "#9c27b0",
-                "#673ab7",
-                "#3f51b5",
-                "#2196f3",
-                "#03a9f4",
-                "#00bcd4",
-                "#009688",
-                "#4caf50",
-                "#8bc34a",
-                "#cddc39",
-              ]}
-            /> */}
+            
 {/* 
             {questions[chosen].colorOptions.map((color, index) => {
               return <option value={`Color ${index}`}>{color.hex}</option>;
             })} */}
           </div>
           <div id="flower">
-            <Flower 
-            colorOne={peaksPetal} 
-            colorTwo={aspirationsPetal}
-            colorThree={peoplePetal}
-            colorFour={principlesPetal}
-            colorFive={powersPetal}
-            colorSix={challengesPetal}
-            //color={colorPicked}
-            height="90vh" width="50vw" />
+            <Flower
+              colorOne={peaksPetal}
+              colorTwo={aspirationsPetal}
+              colorThree={peoplePetal}
+              colorFour={principlesPetal}
+              colorFive={powersPetal}
+              colorSix={challengesPetal}
+              //color={colorPicked}
+              height="90vh"
+              width="50vw"
+            />
           </div>
         </div>
       </Modal>
