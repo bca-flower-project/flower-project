@@ -61,6 +61,12 @@ left: 33%;
   width: 100vw; 
   justify-content: space-between;
 }
+#navbarlight {
+  display: flex;
+  flex-direction: row;
+  width: 100vw; 
+  justify-content: space-between;
+}
 
 #navflower,
 #navspiral,

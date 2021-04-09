@@ -10,6 +10,8 @@ import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "../global";
 import "../App.css";
 import PetalModal from "./PetalModal";
+import Nav from "./Nav";
+
 
 
 export default function Create(props) {
@@ -20,6 +22,7 @@ export default function Create(props) {
 
   return (
     <div>
+       {props.theme === "dark" ? <DarkModeNav  /> : <Nav />}
       <h1>Create!!!</h1>
 
       <PetalModal theme={props.theme === "light" ? lightTheme : darkTheme}/>

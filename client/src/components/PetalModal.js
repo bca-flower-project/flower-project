@@ -237,6 +237,7 @@ function PetalModal(props) {
 
   return (
     <div>
+     
       <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
 
       <Modal

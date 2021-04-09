@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from 'react';
+import Nav from "./Nav";
+import DarkModeNav from "./DarkModeNav";
 
-export default function PastFlower() {
+export default function PastFlower(props) {
   //Probably useEffect/API fetch
   const [flowers, setFlowers] =useState([])
 
@@ -23,6 +25,7 @@ export default function PastFlower() {
 
   return (
     <div>
+      {props.theme === "dark" ? <DarkModeNav  /> : <Nav />}
       <h1>Your growing garden</h1>
       {flowers.map((flowerItem, index) => {
         return (

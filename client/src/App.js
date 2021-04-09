@@ -35,7 +35,7 @@ let provider = new firebase.auth.GoogleAuthProvider();
 
 //write all login functionality on app
 
-function App() {
+function App(props) {
   const [googleUser, setGoogleUser] = useState();
   //useEffect to get if user exists/signed in, then pull info from database based on what user is signed in
   //useeffect will ping db then send back info on what user is logged in
@@ -144,7 +144,7 @@ function App() {
   console.log(user);
   return (
     <div className="App">
-      {theme === "dark" ? <DarkModeNav /> : <Nav />}
+      {/* {theme === "dark" ? <DarkModeNav  /> : <Nav />} */}
 
       <button onClick={toggleTheme}>Toggle Theme</button>
       <Switch>
