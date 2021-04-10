@@ -25,60 +25,10 @@ app.get("*", (req, res) => {
 });
 
 // ------------DB FOR PETALS/FLOWERS/COLORS----------//
-const entrySchema = new .Schema({
-  {
-    "users": {
-      "UID": {
-        "peaks": {
-          "color": "#000000",
-          "question":[0],
-          "answer": ""
-      }, "aspirations": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-    },    "people": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-  },      "principles": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-},        "powers": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-},        "challenges": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-}
-    }
-    }
-  }
   
-  
-  
-//adding a new flower
-// db.collection('users')
-//   .doc("flower")
-//   .set({
-//     //pull in uid,
-//     UID: "",
-//     peaks: peaks,
-//     challenges: "kjsfkjenf",
-//     people: "wefewf",
-//     principles: "fdjfalsjfldksjf",
-//     powers: "jfkdsjflaksjfklds",
-//     aspirations: "jdfklajdflkjda",
-//   })
-//   .then(() => {
-//     console.log("Document successfully written!");
-//   })
-//   .catch((error) => {
-//     console.error("Error writing document: ", error);
-//   });
+
+
+
 
 //-------------PORT------------//
 //Tell the express server to listen and to console.log inside Node what server it is listening on

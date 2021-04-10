@@ -9,9 +9,9 @@ export default function PastFlower(props) {
   const [previousFlower, setPreviousFlower] = useState(null);
   console.log(props.user);
   async function pastFlowers() {
-    return database.collection("users").doc(props.user.uid).collection("flower").get("flower")
+    return database.collection("users").doc(props.user.uid).collection("flower").doc("pMTPbNiRoxu4IGpBUgsl").get()
     }
-
+console.log(PastFlower)
   useEffect(async () => {
     if (previousFlower === null) {
       setPreviousFlower(await pastFlowers());
@@ -23,11 +23,11 @@ export default function PastFlower(props) {
     <div>
       {props.theme === "dark" ? <DarkModeNav  /> : <Nav />}
       <h1>Your growing garden</h1>
-      {flowers.map((flowerItem, index) => {
+      {/* {flowers.map((flowerItem, index) => {
         return (
           <h1>return the svgs here</h1>
         )
-      })}
+      })} */}
     </div>
   );
 }

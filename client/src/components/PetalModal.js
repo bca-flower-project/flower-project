@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Redirect } from "react";
 import Modal from "react-modal";
 import { Create } from "react";
 import { HuePicker, CirclePicker } from "react-color";
@@ -96,6 +96,7 @@ function PetalModal(props) {
       setModalIsOpen(false);
     }
   }
+  
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true);
@@ -110,7 +111,8 @@ function PetalModal(props) {
     evt.preventDefault();
     setChosen(selected);
     addFlower(userFlower);
-    addGlobalFlower(userFlower)
+    addGlobalFlower(userFlower);
+    console.log("hello")
   }
 
   // when option is selected save it in selected state
@@ -204,7 +206,7 @@ function PetalModal(props) {
   // };
 
   //create custom colorpicker component
- 
+
   const handleColorChange = (color) => {
     if (chosen === 0) {
       setPeaksPetal(color.hex);
@@ -220,55 +222,60 @@ function PetalModal(props) {
       setChallengesPetal(color.hex);
     }
   };
-  
 
-  let userFlower = {
-    // PeakQuestion: questions[chosen],
-    // AspirationsQuestion: questions[chosen === 1],
-    // PeopleQuestion: questions[chosen === 2],
-    // PrincipleQuestion: questions[chosen === 3],
-    // PowersQuestion: questions[chosen === 4],
-    // ChallengesQuestion: questions[chosen === 5],
-    PeaksColor: peaksPetal,
-    AspirationsColor: aspirationsPetal,
-    PeopleColor: peoplePetal,
-    PrinciplesColor: principlesPetal,
-    PowerColor: powersPetal,
-    ChallengesColor: challengesPetal,
-    Peaks: peaks,
-    Aspirations: aspirations,
-    People: people,
-    Principles: principles,
-    Powers: powers,
-    Challenges: challenges,
-  };
+  //setting state to move through past flowers
+  const [chosenPastFlower, setChosenPastFlower] = useState(0)
+  function handlePastFlower() {
+    let nextPastFlower = chosenPastFlower + 1
+    if (nextPastFlower < userFlower.length) {
+      setChosenPastFlower(nextPastFlower);
+    }
+  }
+
+
+  let userFlower =
+    {
+      // PeakQuestion: questions[chosen],
+      // AspirationsQuestion: questions[chosen === 1],
+      // PeopleQuestion: questions[chosen === 2],
+      // PrincipleQuestion: questions[chosen === 3],
+      // PowersQuestion: questions[chosen === 4],
+      // ChallengesQuestion: questions[chosen === 5],
+      PeaksColor: peaksPetal,
+      AspirationsColor: aspirationsPetal,
+      PeopleColor: peoplePetal,
+      PrinciplesColor: principlesPetal,
+      PowerColor: powersPetal,
+      ChallengesColor: challengesPetal,
+      Peaks: peaks,
+      Aspirations: aspirations,
+      People: people,
+      Principles: principles,
+      Powers: powers,
+      Challenges: challenges,
+    };
+  // console.log([data]);
   console.log(userFlower);
-  console.log(props.user)
+  console.log(props.user);
   async function addFlower(data) {
-    
     let collection = await database
       .collection("user")
       .doc(props.user.uid)
-      .collection("flower")
-      // .doc(data)
-      // .set(data)
-      
+      .collection("flower");
+    // .doc("Previous Flower")
+    // .set(data)
+    console.log(data);
     return await collection.add(data);
-    
   }
   async function addGlobalFlower(data) {
-    
-    let collection = await database
-      .collection("Global")
-      
-      // .doc(data)
-      // .set(data)
-      
+    let collection = await database.collection("Global");
+
+    // .doc(data)
+    // .set(data)
+
     return await collection.add(data);
-    
   }
-  
-  
+
   function showSubmit() {
     if (chosen !== 5) {
       return (
@@ -287,7 +294,7 @@ function PetalModal(props) {
     <div>
       {/* <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button> */}
       <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
-        <CreateFlower width="45vw" height="auto"/>
+        <CreateFlower width="45vw" height="auto" />
         {/* <button onClick={setModalIsOpenToTrue}>Create</button> </CreateFlower> */}
       </a>
       <Modal
@@ -310,8 +317,9 @@ function PetalModal(props) {
         </button>
         <div id="modalwindow">
           <div className="question-text">
-            <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
-            <form onSubmit={submitForm}>
+            {/* <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1> */}
+            {/* <form onSubmit={evt => {submitForm(evt)}}> */}
+              <form onSubmit={submitForm}>
               <select
                 className="button"
                 name="question-selection"
@@ -346,8 +354,8 @@ function PetalModal(props) {
               direction="horizontal"
               pointer="none"
             />
-            
-{/* 
+
+            {/* 
             {questions[chosen].colorOptions.map((color, index) => {
               return <option value={`Color ${index}`}>{color.hex}</option>;
             })} */}
