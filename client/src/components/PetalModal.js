@@ -6,6 +6,8 @@ import App from "../App";
 import Flower from "./Flower.js";
 import "../App.css";
 import { database } from "./fire";
+import CreateFlower from "./CreateFlower.js";
+
 function PetalModal(props) {
   const questions = [
     {
@@ -48,7 +50,6 @@ function PetalModal(props) {
         "What do you love to do?",
         "What are your powers?",
       ],
-
     },
     {
       petal: "Challenges",
@@ -284,10 +285,13 @@ function PetalModal(props) {
 
   return (
     <div>
-     
-      <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button>
-
+      {/* <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button> */}
+      <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
+        <CreateFlower width="45vw" height="auto"/>
+        {/* <button onClick={setModalIsOpenToTrue}>Create</button> </CreateFlower> */}
+      </a>
       <Modal
+        id="modalWindow"
         isOpen={modalIsOpen}
         style={{
           content: {
@@ -297,7 +301,7 @@ function PetalModal(props) {
             left: "14vw",
             right: "14vw",
             top: "17vh",
-            overflow: "hidden",
+            // overflow: "hidden",
           },
         }}
       >
@@ -335,6 +339,7 @@ function PetalModal(props) {
             </button>
             <HuePicker
               id={`hue-${chosen}`}
+              className="hue"
               height="18px"
               width="300px"
               onChange={handleColorChange}
@@ -356,8 +361,8 @@ function PetalModal(props) {
               colorFive={powersPetal}
               colorSix={challengesPetal}
               //color={colorPicked}
-              height="90vh"
-              width="50vw"
+              height="40vh"
+              width="auto"
             />
           </div>
         </div>

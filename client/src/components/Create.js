@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import blank from "./images/blank.svg";
-import Flower from "./Flower.js";
+import CreateFlower from "./CreateFlower.js";
 import { useState, useEffect } from "react";
 import outline from "./icons/ok-flower.png";
 import DarkModeNav from "./DarkModeNav";
@@ -24,6 +24,7 @@ export default function Create(props) {
     <div>
        {props.theme === "dark" ? <DarkModeNav  /> : <Nav />}
       <h1>Create!!!</h1>
+      
 
       <PetalModal theme={props.theme === "light" ? lightTheme : darkTheme} user={props.user}/>
       {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
