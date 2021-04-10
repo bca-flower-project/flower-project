@@ -222,7 +222,7 @@ function PetalModal(props) {
   
 
   let userFlower = {
-    // PeakQuestion: questions[chosen],
+    PeakQuestion: questions[chosen],
     // AspirationsQuestion: questions[chosen === 1],
     // PeopleQuestion: questions[chosen === 2],
     // PrincipleQuestion: questions[chosen === 3],

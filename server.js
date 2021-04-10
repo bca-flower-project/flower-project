@@ -25,38 +25,38 @@ app.get("*", (req, res) => {
 });
 
 // ------------DB FOR PETALS/FLOWERS/COLORS----------//
-const entrySchema = new .Schema({
-  {
-    "users": {
-      "UID": {
-        "peaks": {
-          "color": "#000000",
-          "question":[0],
-          "answer": ""
-      }, "aspirations": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-    },    "people": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-  },      "principles": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-},        "powers": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-},        "challenges": {
-            "color": "#000000",
-            "question": "",
-            "answer": ""
-}
-    }
-    }
-  }
+// const entrySchema = new .Schema({
+//   {
+//     "users": {
+//       "UID": {
+//         "peaks": {
+//           "color": "#000000",
+//           "question":[0],
+//           "answer": ""
+//       }, "aspirations": {
+//             "color": "#000000",
+//             "question": "",
+//             "answer": ""
+//     },    "people": {
+//             "color": "#000000",
+//             "question": "",
+//             "answer": ""
+//   },      "principles": {
+//             "color": "#000000",
+//             "question": "",
+//             "answer": ""
+// },        "powers": {
+//             "color": "#000000",
+//             "question": "",
+//             "answer": ""
+// },        "challenges": {
+//             "color": "#000000",
+//             "question": "",
+//             "answer": ""
+// }
+//     }
+//     }
+//   }
   
   
   
