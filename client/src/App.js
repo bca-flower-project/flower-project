@@ -46,7 +46,6 @@ function App(props) {
 
   let history = useHistory();
   async function googleLogin(props) {
-    
     firebase
       .auth()
       .signInWithPopup(googleProvider)
@@ -63,13 +62,16 @@ function App(props) {
           email: user.email,
           uid: user.uid,
         };
-        
+
         await setUser(userObj);
         async function addUser(data) {
-          let collection = await database.collection("user").doc(user.uid).set(data);
+          let collection = await database
+            .collection("user")
+            .doc(user.uid)
+            .set(data);
           return await collection.add(data);
         }
-        await addUser(userObj)
+        await addUser(userObj);
         // await addUser(userObj);
         // database.prototype.addUser = function(data) {
         //   let collection = firebase.firestore().collection('user');
@@ -149,20 +151,22 @@ function App(props) {
     <div className="App">
       {/* {theme === "dark" ? <DarkModeNav  /> : <Nav />} */}
 
-          {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
-      <Switch> 
-   
+      {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
+      <Switch>
         <Container className="d-flex align-items-center justify-content-center ">
           <div className="w-100 " style={{ maxWidth: "400px" }}>
-            
             <Route exact path={"/"} component={Home} />
             <Route path={"/Profile"} component={Profile} />
             <Route path={"/Connect"} component={Connect} />
-            <Route path={"/Global"} render={(props)=>{
-              return <Global user={user}/>
-            }} />
             <Route
-              exact path={"/Create"}
+              path={"/Global"}
+              render={(props) => {
+                return <Global user={user} />;
+              }}
+            />
+            <Route
+              exact
+              path={"/Create"}
               render={(props) => {
                 return (
                   <>
@@ -177,29 +181,29 @@ function App(props) {
               exact
               path="/"
               render={(props) => {
-                return (
-                  <Login
-                    user={user}
-                    googleLogin={googleLogin}
-                  />
-                );
+                return <Login user={user} googleLogin={googleLogin} />;
               }}
             />
-            <Route path={"/PastFlowers"} render={(props) => {
-              return <PastFlowers user={user} />
-            }}/>
+            <Route
+              path={"/PastFlowers"}
+              render={(props) => {
+                return <PastFlowers user={user} />;
+              }}
+            />
             <Route path={"/Settings"} component={Settings} />
           </div>
         </Container>
       </Switch>
+
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
         <>
           <GlobalStyles />
-          
+
           <footer></footer>
         </>
       </ThemeProvider>
-      {props.theme === "dark" ? <DarkModeFooter  /> : <Footer />}
+    
+      {props.theme === "dark" ? <DarkModeFooter /> : <Footer />}
     </div>
   );
 }

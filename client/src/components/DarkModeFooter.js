@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import whiteSpiral from './icons/whiteSpiral.png'
+//import { Link } from "react-router-dom";
+import whiteLogo from './icons/whiteLogo.png';
 
 
 export default function DarkModeFooter() {
 
   return (
 
-    <div id="navbar">
+    <div>
       
-       <Link href ="https://www.ok.community/"><img src={whiteSpiral} alt="spiral" id="navspiral"/></Link>
+      <img src={whiteLogo} alt="sokLogo"id="nokLogo"/>
       
     </div>
   );
