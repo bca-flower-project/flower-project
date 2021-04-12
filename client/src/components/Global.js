@@ -3,23 +3,22 @@
 // import DarkModeNav from "./DarkModeNav";
 // import {database} from "./fire";
 // import {useState, useEffect} from "react";
-
+//import BlankFlower from "./BlankFlower";
 // export default function Global(props) {
 //   const [GlobalFlower, setGlobalFlower] = useState(null);
 //   const [loading, setLoading] = useState(false);
 //   async function flowerGlobe(id) {
 //       console.log(props.user.uid);
 //       const ref = database
-//         .collection("user")
-//         .doc(props.user.uid)
-//         .collection("flower");
+//         .collection("Global")
+//         
   
 //       setLoading(true);
   
 //       await ref.get().then((item) => {
 //         const items = item.docs.map((doc) => doc.data());
 //         console.log(item.docs);
-//         setPreviousFlower(items);
+//         setGlobalFlower(items);
 //         setLoading(false);
 //       });
 //     }
@@ -29,13 +28,13 @@
 //     if (loading) {
 //       return <h1>Loading....</h1>;
 //     }
-//     console.log(previousFlower);
+//     console.log(setGlobalFlower);
   
 //     return (
 //       <div>
 //         {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
 //         <h1>Your growing garden</h1>
-//         {previousFlower.map((flower, index) => {
+//         {setGlobalFlower.map((flower, index) => {
 //           return (
 //             <div>
 //               <BlankFlower
