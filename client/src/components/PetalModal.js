@@ -62,7 +62,7 @@ function PetalModal(props) {
   ];
 
   const [chosen, setChosen] = useState(0); // what is chosen state
-  const [selected, setSelected] = useState(""); // what is selected state
+  const [selected, setSelected] = useState(0); // what is selected state
   //const [question, setQuestion] = useState(""); //which petal they select determines which questions show
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [question, setQuestion] = useState([]);
@@ -83,11 +83,14 @@ function PetalModal(props) {
   const [principlesPetal, setPrinciplesPetal] = useState("yellow");
   const [powersPetal, setPowersPetal] = useState("yellow");
   const [challengesPetal, setChallengesPetal] = useState("yellow");
-  const [selectedQuestion, setSelectedQuestion] = useState("");
+  // const [selectedQuestion, setSelectedQuestion] = useState(0);
 
   function handleNextQuestion(evt) {
     // let petalArray = petal
     setSaveChange(evt.target.value);
+    setSelected(evt.target.value)
+    console.log(questions[chosen].questionOptions[selected])
+
 
     let nextQuestion = chosen + 1;
     //if the question # is bigger than the length of the array, it stops bc petals are complete
@@ -119,6 +122,7 @@ function PetalModal(props) {
   function handleChange(evt) {
     let target = evt.target;
     setSelected(target.value);
+    // setSelectedQuestion(target.value);
   }
   //   let changeHandler = e => {
   //     props.setState({
@@ -287,7 +291,7 @@ function PetalModal(props) {
       return <input type="submit" value="Submit Flower" />;
     }
   }
-
+  // console.log(questions[chosen].questionOptions[selectedQuestion])
   return (
     <div>
       {/* <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button> */}
@@ -329,6 +333,7 @@ function PetalModal(props) {
                     <option value={`Question ${index}`}>{question}</option>
                   );
                 })}
+                
               </select>
               <br></br>
               {handleUserInput()}
