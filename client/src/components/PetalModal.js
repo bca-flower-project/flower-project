@@ -265,14 +265,12 @@ function PetalModal(props) {
     console.log(data);
     return await collection.add(data);
   }
-  
+
   async function addGlobalFlower(data) {
-    
-    let collection = await database
-      .collection("Global")
-      // .doc("globeflowers")
-      // .set(data)
-      
+    let collection = await database.collection("Global");
+    // .doc("globeflowers")
+    // .set(data)
+
     return await collection.add(data);
   }
 
@@ -368,7 +366,6 @@ function PetalModal(props) {
               colorFour={principlesPetal}
               colorFive={powersPetal}
               colorSix={challengesPetal}
-              //color={colorPicked}
               height="40vh"
               width="auto"
             />

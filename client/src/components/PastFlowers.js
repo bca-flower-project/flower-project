@@ -5,6 +5,7 @@ import DarkModeNav from "./DarkModeNav";
 import { database } from "./fire";
 import "firebase/firestore";
 import BlankFlower from "./BlankFlower";
+import QuestionsAnswers from "./QuestionsAnswers";
 
 export default function PastFlower(props) {
   //Probably useEffect/API fetch
@@ -44,22 +45,36 @@ export default function PastFlower(props) {
       {previousFlower.map((flower, index) => {
         return (
           <div>
-<BlankFlower
-colorOne={flower.PeaksColor}
-colorTwo={flower.AspirationsColor}
-colorThree={flower.PeopleColor}
-colorFour={flower.PrinciplesColor}
-colorFive={flower.PowerColor}
-colorSix={flower.ChallengesColor}
-
-/>
-        {/* // <div key={flower.props.user}>
-        // <h4>{flower}</h4> */}
-        </div> 
-        )
+            <BlankFlower
+              colorOne={flower.PeaksColor}
+              colorTwo={flower.AspirationsColor}
+              colorThree={flower.PeopleColor}
+              colorFour={flower.PrinciplesColor}
+              colorFive={flower.PowerColor}
+              colorSix={flower.ChallengesColor}
+            />
+            <QuestionsAnswers
+              peaksQuestion={flower.PeaksQuestion}
+              peaksAnswer={flower.Peaks}
+              aspirationsQuestion={flower.aspirationsQuestion}
+              aspirationsAnswer={flower.Aspirations}
+              peopleQuestion={flower.peopleQuestion}
+              peopleAnswer={flower.People}
+              principlesQuestion={flower.principlesQuestions}
+              principlesAnswer={flower.Principles}
+              powerQuestion={flower.powerQuestion}
+              powerAnswer={flower.Power}
+              challengesQuestion={flower.challengesQuestion}
+              challengesAnswer={flower.Challenges}
+            />
+          </div>
+        );
       })}
     </div>
   );
 }
 
 //to display their past flowers in chronological order, and when they click one it opens up a modal window like how it does in global view
+
+//TO GET TEXT DISPLAYING WITHIN FLOWER (CLICK FLOWER, MODAL POPS UP WITH QUESTIONS AND ANSWERS) ---
+//do same as onclick for createflower, wrap in <a> </a>, set modal with either function or call to component Questions Answers
