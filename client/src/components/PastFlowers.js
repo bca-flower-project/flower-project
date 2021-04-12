@@ -19,9 +19,9 @@ export default function PastFlower(props) {
       .collection("user")
       .doc(props.user.uid)
       .collection("flower");
-    
+
     setLoading(true);
-   
+
     await ref.get().then((item) => {
       const items = item.docs.map((doc) => doc.data());
       console.log(item.docs);
@@ -29,18 +29,6 @@ export default function PastFlower(props) {
       setLoading(false);
     });
   }
-
-  //   setLoading(true);
-  //   await ref.onSnapshot((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //       items.push(doc.data());
-  //     });
-  //     console.log(items)
-  //     setPreviousFlower(items);
-  //     setLoading(false);
-  //   });
-  // }
-
   useEffect(async () => {
     pastFlowers();
   }, []);
@@ -54,10 +42,21 @@ export default function PastFlower(props) {
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <h1>Your growing garden</h1>
       {previousFlower.map((flower, index) => {
-        return(
-          <svg> </svg>
-        )
+        return (
+          <div>
+<BlankFlower
+colorOne={flower.PeaksColor}
+colorTwo={flower.AspirationsColor}
+colorThree={flower.PeopleColor}
+colorFour={flower.PrinciplesColor}
+colorFive={flower.PowerColor}
+colorSix={flower.ChallengesColor}
 
+/>
+        {/* // <div key={flower.props.user}>
+        // <h4>{flower}</h4> */}
+        </div> 
+        )
       })}
     </div>
   );

@@ -11,6 +11,8 @@ import { GlobalStyles } from "../global";
 import "../App.css";
 import PetalModal from "./PetalModal";
 import Nav from "./Nav";
+import Footer from "./Footer";
+import DarkModeFooter from "./DarkModeFooter";
 
 
 
@@ -36,7 +38,7 @@ export default function Create(props) {
           <footer></footer>
         </>
       </ThemeProvider>
-
+     
    
       {/* <div id="flower-wrapper">
         <Flower 

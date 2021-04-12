@@ -83,6 +83,7 @@ function PetalModal(props) {
   const [principlesPetal, setPrinciplesPetal] = useState("yellow");
   const [powersPetal, setPowersPetal] = useState("yellow");
   const [challengesPetal, setChallengesPetal] = useState("yellow");
+  const [selectedQuestion, setSelectedQuestion] = useState("");
 
   function handleNextQuestion(evt) {
     // let petalArray = petal
@@ -111,6 +112,7 @@ function PetalModal(props) {
     setChosen(0);
     addFlower(userFlower);
     addGlobalFlower(userFlower);
+    setModalIsOpen(false);
   }
 
   // when option is selected save it in selected state
@@ -231,12 +233,12 @@ function PetalModal(props) {
   }
 
   let userFlower = {
-    PeakQuestion: questions[chosen],
-    // AspirationsQuestion: questions[chosen === 1],
-    // PeopleQuestion: questions[chosen === 2],
-    // PrincipleQuestion: questions[chosen === 3],
-    // PowersQuestion: questions[chosen === 4],
-    // ChallengesQuestion: questions[chosen === 5],
+    // PeakQuestion: questions[chosen],
+    // AspirationsQuestion: questions.selected],
+    // PeopleQuestion: questions.selected],
+    // PrincipleQuestion: questions.selected],
+    // PowersQuestion: questions.selected],
+    // ChallengesQuestion: questions.selected],
     PeaksColor: peaksPetal,
     AspirationsColor: aspirationsPetal,
     PeopleColor: peoplePetal,
@@ -263,6 +265,7 @@ function PetalModal(props) {
     console.log(data);
     return await collection.add(data);
   }
+  
   async function addGlobalFlower(data) {
     
     let collection = await database
