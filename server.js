@@ -25,41 +25,6 @@ app.get("*", (req, res) => {
 });
 
 // ------------DB FOR PETALS/FLOWERS/COLORS----------//
-<<<<<<< HEAD
-// const entrySchema = new .Schema({
-//   {
-//     "users": {
-//       "UID": {
-//         "peaks": {
-//           "color": "#000000",
-//           "question":[0],
-//           "answer": ""
-//       }, "aspirations": {
-//             "color": "#000000",
-//             "question": "",
-//             "answer": ""
-//     },    "people": {
-//             "color": "#000000",
-//             "question": "",
-//             "answer": ""
-//   },      "principles": {
-//             "color": "#000000",
-//             "question": "",
-//             "answer": ""
-// },        "powers": {
-//             "color": "#000000",
-//             "question": "",
-//             "answer": ""
-// },        "challenges": {
-//             "color": "#000000",
-//             "question": "",
-//             "answer": ""
-// }
-//     }
-//     }
-//   }
-=======
->>>>>>> 7862682d8e894067fe6f898b567d300d9ab93704
   
 
 
