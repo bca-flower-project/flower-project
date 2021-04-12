@@ -4,6 +4,8 @@ import Nav from "./Nav";
 import DarkModeNav from "./DarkModeNav";
 import { database } from "./fire";
 import "firebase/firestore";
+import BlankFlower from "./BlankFlower";
+
 export default function PastFlower(props) {
   //Probably useEffect/API fetch
   const [previousFlower, setPreviousFlower] = useState([]);
@@ -51,11 +53,11 @@ export default function PastFlower(props) {
     <div>
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <h1>Your growing garden</h1>
-      {previousFlower.map((flower) => {
-        <div key={flower.Aspirations}>
-          <h2>{flower.AspirationsColor}</h2>
-          <p>{flower.Challenges}</p>
-        </div>
+      {previousFlower.map((flower, index) => {
+        return(
+          <svg> </svg>
+        )
+
       })}
     </div>
   );

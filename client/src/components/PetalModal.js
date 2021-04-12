@@ -267,8 +267,8 @@ function PetalModal(props) {
     
     let collection = await database
       .collection("Global")
-      .doc("globeflowers")
-      .set(data)
+      // .doc("globeflowers")
+      // .set(data)
       
     return await collection.add(data);
   }
