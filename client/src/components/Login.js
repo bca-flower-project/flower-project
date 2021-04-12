@@ -20,7 +20,11 @@ export default function Login(props) {
   }
   console.log(props);
   return (
-    <>
+    <div className="loginWrapper">
+    <div className="login">
+    
+      <h1>Please sign in!</h1>
+    
       {/* This is creating the login form  */}
       <Card>
         <Card.Body>
@@ -39,6 +43,7 @@ export default function Login(props) {
           {props.user && <Redirect to="/Create" />}
         </Card.Body>
       </Card>
-    </>
+    </div>
+    </div>
   );
 }

@@ -36,6 +36,7 @@ export default function PastFlower(props) {
   console.log(previousFlower);
 
   return (
+    <div className="gardenWrapper">
     <div>
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <h1>Your growing garden</h1>
@@ -45,6 +46,7 @@ export default function PastFlower(props) {
           <p>{flower.Challenges}</p>
         </div>
       })}
+    </div>
     </div>
   );
 }

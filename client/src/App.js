@@ -17,21 +17,23 @@ import "firebase/auth";
 import { useHistory } from "react-router-dom";
 
 //darkmode
-
 import DarkModeNav from "./components/DarkModeNav";
+import Footer from "./components/Footer";
+import DarkModeFooter from "./components/DarkModeFooter";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./components/theme";
+import { GlobalStyles } from "./global";
+// create modal
 import React, { useState, useEffect } from "react";
 import PetalModal from "./components/PetalModal";
 import Flower from "./components/Flower.js";
 import { auth, googleProvider, database } from "./components/fire.js";
 import "./App.css";
-import Footer from "./components/Footer";
-import DarkModeFooter from "./components/DarkModeFooter";
+
 // import { database } from "./components/fire.js";
 
-//darkmode
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./components/theme";
-import { GlobalStyles } from "./global";
+
+
 import "./App.css";
 import { render } from "react-dom";
 let provider = new firebase.auth.GoogleAuthProvider();
@@ -151,11 +153,11 @@ function App(props) {
     <div className="App">
       {/* {theme === "dark" ? <DarkModeNav  /> : <Nav />} */}
 
-      {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
+      
       <Switch>
-        <Container className="d-flex align-items-center justify-content-center ">
-          <div className="w-100 " style={{ maxWidth: "400px" }}>
-            <Route exact path={"/"} component={Home} />
+        {/* <Container className="d-flex align-items-center justify-content-center "> */}
+          <div >
+            
             <Route path={"/Profile"} component={Profile} />
             <Route path={"/Connect"} component={Connect} />
             <Route
@@ -192,18 +194,18 @@ function App(props) {
             />
             <Route path={"/Settings"} component={Settings} />
           </div>
-        </Container>
+        {/* </Container> */}
       </Switch>
 
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
         <>
           <GlobalStyles />
 
-          <footer></footer>
+          <footer><button onClick={toggleTheme}>Toggle Theme</button></footer>
         </>
       </ThemeProvider>
     
-      {props.theme === "dark" ? <DarkModeFooter /> : <Footer />}
+      
     </div>
   );
 }

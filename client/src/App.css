@@ -60,12 +60,16 @@ left: 33%;
   flex-direction: row;
   width: 100vw; 
   justify-content: space-between;
+  position: absolute;
+  top: 0;
 }
 #navbarlight {
   display: flex;
   flex-direction: row;
   width: 100vw; 
   justify-content: space-between;
+  position: absolute;
+  top: 0;
 }
 
 #navflower,
@@ -131,3 +135,29 @@ left: 33%;
 FONT SELECTIONS
 font-family: 'Karla', sans-serif; ----- BODY
 font-family: 'Poppins', sans-serif; -----HEADER */
+
+#footerLogo{
+  width: 10vw;
+}
+.login{
+  width: 40vw;
+}
+.createContents{
+  width: 40vw;
+  max-height: 50vh;
+}
+.loginWrapper{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.createWrapper{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
