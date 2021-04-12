@@ -3,24 +3,31 @@ import Nav from "./Nav";
 import DarkModeNav from "./DarkModeNav";
 import {database} from "./fire";
 import {useState, useEffect} from "react";
+import Footer from "./Footer";
+import DarkModeFooter from "./DarkModeFooter";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./theme";
+import { GlobalStyles } from "../global";
 
 export default function Global(props) {
   const [GlobalFlower, setGlobalFlower] = useState(null);
   
-  async function flowerGlobe(id) {
-    return await database.collection("Global").doc(id).get()
-    }
-
-  useEffect(async () => {
-    if (GlobalFlower === null) {
-      setGlobalFlower(await flowerGlobe());
-    }
-  });
-  console.log(GlobalFlower);
+  
   return (
-    <div>
+    <div className="globalWrapper">
       {props.theme === "dark" ? <DarkModeNav  /> : <Nav />}
-      <h1>global view</h1>
+      <div className="globalContents">
+      
+      <h1>Global view</h1>
+      <ThemeProvider theme={props.theme === "light" ? lightTheme : darkTheme}>
+          <>
+            <GlobalStyles />
+
+            <footer></footer>
+          </>
+        </ThemeProvider>
+        {props.theme === "dark" ? <DarkModeFooter /> : <Footer />}
+      </div>
     </div>
   );
 }
