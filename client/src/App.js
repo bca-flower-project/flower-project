@@ -163,7 +163,7 @@ function App(props) {
             <Route
               path={"/Global"}
               render={(props) => {
-                return <Global user={user} />;
+                return <Global user={user} theme={theme} />;
               }}
             />
             <Route
@@ -183,7 +183,7 @@ function App(props) {
               exact
               path="/"
               render={(props) => {
-                return <Login user={user} googleLogin={googleLogin} />;
+                return <Login user={user} googleLogin={googleLogin} theme={theme} />;
               }}
             />
             <Route
