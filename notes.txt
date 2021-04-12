@@ -249,4 +249,18 @@ NewLogin1.save((err, data) => {
   // };
 
 
-    
+    // -------in petal modal------------
+      function handleNextQuestion(evt) {
+    // let petalArray = petal
+    setSaveChange(evt.target.value);
+
+    let nextQuestion = chosen += 1;
+    while (nextQuestion < 5) {
+      setChosen(nextQuestion);
+    } if (nextQuestion === 5) {
+      setChosen(chosen[5]);
+    } else if (nextQuestion > 5) {
+      setModalIsOpen(false);
+      <Redirect to="/PastFlowers" />;
+    }
+  }

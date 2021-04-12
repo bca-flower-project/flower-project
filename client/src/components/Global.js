@@ -1,9 +1,8 @@
 import React from "react";
 import Nav from "./Nav";
 import DarkModeNav from "./DarkModeNav";
-import { database } from "./fire"
-import {useState, useEffect} from "react"
-
+import {database} from "./fire";
+import {useState, useEffect} from "react";
 
 export default function Global(props) {
   const [GlobalFlower, setGlobalFlower] = useState(null);
