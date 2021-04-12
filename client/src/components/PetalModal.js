@@ -96,7 +96,6 @@ function PetalModal(props) {
       setModalIsOpen(false);
     }
   }
-  
 
   const setModalIsOpenToTrue = () => {
     setModalIsOpen(true);
@@ -109,10 +108,9 @@ function PetalModal(props) {
   // when submitted... update chosen state with currently selected
   function submitForm(evt) {
     evt.preventDefault();
-    setChosen(selected);
+    setChosen(0);
     addFlower(userFlower);
     addGlobalFlower(userFlower);
-    console.log("hello")
   }
 
   // when option is selected save it in selected state
@@ -224,36 +222,34 @@ function PetalModal(props) {
   };
 
   //setting state to move through past flowers
-  const [chosenPastFlower, setChosenPastFlower] = useState(0)
+  const [chosenPastFlower, setChosenPastFlower] = useState(0);
   function handlePastFlower() {
-    let nextPastFlower = chosenPastFlower + 1
+    let nextPastFlower = chosenPastFlower + 1;
     if (nextPastFlower < userFlower.length) {
       setChosenPastFlower(nextPastFlower);
     }
   }
 
-
-  let userFlower =
-    {
-      // PeakQuestion: questions[chosen],
-      // AspirationsQuestion: questions[chosen === 1],
-      // PeopleQuestion: questions[chosen === 2],
-      // PrincipleQuestion: questions[chosen === 3],
-      // PowersQuestion: questions[chosen === 4],
-      // ChallengesQuestion: questions[chosen === 5],
-      PeaksColor: peaksPetal,
-      AspirationsColor: aspirationsPetal,
-      PeopleColor: peoplePetal,
-      PrinciplesColor: principlesPetal,
-      PowerColor: powersPetal,
-      ChallengesColor: challengesPetal,
-      Peaks: peaks,
-      Aspirations: aspirations,
-      People: people,
-      Principles: principles,
-      Powers: powers,
-      Challenges: challenges,
-    };
+  let userFlower = {
+    // PeakQuestion: questions[chosen],
+    // AspirationsQuestion: questions[chosen === 1],
+    // PeopleQuestion: questions[chosen === 2],
+    // PrincipleQuestion: questions[chosen === 3],
+    // PowersQuestion: questions[chosen === 4],
+    // ChallengesQuestion: questions[chosen === 5],
+    PeaksColor: peaksPetal,
+    AspirationsColor: aspirationsPetal,
+    PeopleColor: peoplePetal,
+    PrinciplesColor: principlesPetal,
+    PowerColor: powersPetal,
+    ChallengesColor: challengesPetal,
+    Peaks: peaks,
+    Aspirations: aspirations,
+    People: people,
+    Principles: principles,
+    Powers: powers,
+    Challenges: challenges,
+  };
   // console.log([data]);
   console.log(userFlower);
   console.log(props.user);
@@ -317,9 +313,9 @@ function PetalModal(props) {
         </button>
         <div id="modalwindow">
           <div className="question-text">
-            {/* <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1> */}
+            <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
             {/* <form onSubmit={evt => {submitForm(evt)}}> */}
-              <form onSubmit={submitForm}>
+            <form onSubmit={submitForm}>
               <select
                 className="button"
                 name="question-selection"
