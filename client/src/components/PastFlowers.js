@@ -27,18 +27,6 @@ export default function PastFlower(props) {
       setLoading(false);
     });
   }
-
-  //   setLoading(true);
-  //   await ref.onSnapshot((querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //       items.push(doc.data());
-  //     });
-  //     console.log(items)
-  //     setPreviousFlower(items);
-  //     setLoading(false);
-  //   });
-  // }
-
   useEffect(async () => {
     pastFlowers();
   }, []);
@@ -51,7 +39,7 @@ export default function PastFlower(props) {
     <div>
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <h1>Your growing garden</h1>
-      {previousFlower.map((flower) => {
+      {previousFlower.map((flower, index) => {
         <div key={flower.Aspirations}>
           <h2>{flower.AspirationsColor}</h2>
           <p>{flower.Challenges}</p>

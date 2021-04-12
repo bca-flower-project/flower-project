@@ -111,6 +111,7 @@ function PetalModal(props) {
     setChosen(0);
     addFlower(userFlower);
     addGlobalFlower(userFlower);
+    setModalIsOpen(false);
   }
 
   // when option is selected save it in selected state
