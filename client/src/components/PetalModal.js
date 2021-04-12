@@ -250,8 +250,8 @@ function PetalModal(props) {
       .collection("user")
       .doc(props.user.uid)
       .collection("flower")
-      // .doc(data)
-      // .set(data)
+      .doc("Previous")
+      .set(data)
       
     return await collection.add(data);
     
@@ -260,9 +260,8 @@ function PetalModal(props) {
     
     let collection = await database
       .collection("Global")
-      
-      // .doc(data)
-      // .set(data)
+      .doc("globeflowers")
+      .set(data)
       
     return await collection.add(data);
     
