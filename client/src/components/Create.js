@@ -43,23 +43,3 @@ export default function Create(props) {
     </div>
   );
 }
-
-//style as JS object (stored in state), pass style object through and use it and target it
-//color choices in array(store in state), pass array through to petals - in petal SVG, we can escape to javascript (props.color[0], props.color[1],etc)
-
-//when create is clicked, first petal is zoomed in.
-//user is prompted to select one of 3 questions from drop down menu -> when selected
-//will be either button or text area (within/outlined as a flex box? questions will always be top section: text area always below. this way all petals are equal size/proportions)
-
-//next button/onsubmit brings you to next prompt + saves the info from last petal
-
-//https://css-tricks.com/the-shapes-of-css/#cone-shape-via-omid-rasouli
-//petals should be Indexed
-//get higher res image where when you click, it will zoom in on individual petal
-//then do transitional animation to rotate to next petal -> on click, rotate 60 degrees
-//then zoom out to final flower ---- able to design/color after?? not while typing in individual petal
-
-//360/6 60 degrees per rotation
-//z index for image in the background, each think is clicking on the link, on top of the picture so it brings us to there and we can fill it out
-
-//or do 6 divs with the tv screen shape , rotate them each individially

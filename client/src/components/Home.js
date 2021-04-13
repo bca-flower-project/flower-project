@@ -1,13 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import blackflower from "./icons/black-flower.png";
+import blackglobe from "./icons/black-globe.png";
+import spiral from "./icons/spiral.png";
 
 export default function Home() {
   return (
-    <h1></h1>
-    // <div>
-    //   <h1>Please sign in!</h1>
-    // </div>
+    <div id="homenav">
+      <Link to={"/PastFlowers"}>
+        <img src={spiral} id="navspiral" />
+      </Link>
+      <Link to={"/Create"}>
+        <img src={blackflower} id="navflower" />
+      </Link>
+      <Link to={"/Global"}>
+        <img src={blackglobe} id="navglobe" />
+      </Link>
+    </div>
   );
 }
-
-//homepage
-//black background, icon at center to create a flower; icon on left to see your past flowers; icon on right to see global view of all users' flowers
