@@ -95,6 +95,9 @@ function PetalModal(props) {
   function handleNextQuestion(evt) {
     // let petalArray = petal
     setSaveChange(evt.target.value);
+    setSelected(evt.target.value)
+    // console.log(questions[chosen].questionOptions[selectedQuestion])
+
 
     let nextQuestion = chosen + 1;
     //if the question # is bigger than the length of the array, it stops bc petals are complete
@@ -119,6 +122,14 @@ function PetalModal(props) {
     setModalIsOpen(false);
   };
   console.log(questions[chosen]);
+
+  
+ function handleChange(evt) {
+    let target = evt.target;
+    setSelected(target.value);
+  } 
+
+
 
   // when submitted... update chosen state with currently selected
   function submitForm(evt) {
@@ -281,7 +292,7 @@ function PetalModal(props) {
   // console.log([data]);
   console.log(userFlower);
   console.log(props.user);
-  console.log(flowerQuestion)
+  
   async function addFlower(data) {
     let collection = await database
       .collection("user")
@@ -314,7 +325,7 @@ function PetalModal(props) {
       return <input type="submit" value="Submit Flower" />;
     }
   }
-
+  // console.log(questions[chosen].questionOptions[selectedQuestion])
   return (
     <div>
       <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
@@ -351,7 +362,15 @@ function PetalModal(props) {
               >
                 {questions[chosen].questionOptions.map((question, index) => {
                   return <option value={question}>{question}</option>;
+                  // return (
+                  //   <div id="dropdown">
+                  //   <option value={`Question ${0}`}>{question}</option>
+                  //   <option value={`Question ${1}`}>{question}</option>
+                  //   <option value={`Question ${2}`}>{question}</option>
+                  //   </div>
+                  // );
                 })}
+                
               </select>
               <br></br>
               {handleUserInput()}

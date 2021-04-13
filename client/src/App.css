@@ -142,10 +142,7 @@ font-family: 'Poppins', sans-serif; -----HEADER */
 .login{
   width: 40vw;
 }
-.createContents{
-  width: 40vw;
-  max-height: 50vh;
-}
+
 .loginWrapper{
   width: 100vw;
   height: 100vh;
@@ -153,7 +150,35 @@ font-family: 'Poppins', sans-serif; -----HEADER */
   justify-content: center;
   align-items: center;
 }
+.createContents{
+  width: 40vw;
+  max-height: 50vh;
+}
 .createWrapper{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.gardenContents{
+  width: 40vw;
+  height: 70vh;
+}
+.gardenWrapper{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.globalContents{
+  width: 40vw;
+  height: 77vh;
+}
+.globalWrapper{
   width: 100vw;
   height: 100vh;
   display: flex;
