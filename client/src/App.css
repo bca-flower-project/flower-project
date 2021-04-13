@@ -177,12 +177,20 @@ font-family: 'Poppins', sans-serif; -----HEADER */
 .globalContents{
   width: 40vw;
   height: 77vh;
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
 }
 .globalWrapper{
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-flow: row wrap;
+  position: relative;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column
 }
+
+
+.createflowerwrapper {}

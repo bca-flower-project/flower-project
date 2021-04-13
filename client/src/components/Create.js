@@ -23,7 +23,6 @@ export default function Create(props) {
     <div className="createWrapper">
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <div className="createContents">
-        <h1>Create!!!</h1>
 
         <PetalModal
           theme={props.theme === "light" ? lightTheme : darkTheme}

@@ -58,17 +58,17 @@ export default function PastFlower(props) {
                 colorSix={flower.ChallengesColor}
               />
               <QuestionsAnswers
-                peaksQuestion={flower.PeaksQuestion}
+                peaksQuestion={flower.PeakQuestion}
                 peaksAnswer={flower.Peaks}
-                aspirationsQuestion={flower.aspirationsQuestion}
+                aspirationsQuestion={flower.AspirationsQuestion}
                 aspirationsAnswer={flower.Aspirations}
-                peopleQuestion={flower.peopleQuestion}
+                peopleQuestion={flower.PeopleQuestion}
                 peopleAnswer={flower.People}
-                principlesQuestion={flower.principlesQuestions}
+                principlesQuestion={flower.PrinciplesQuestions}
                 principlesAnswer={flower.Principles}
-                powerQuestion={flower.powerQuestion}
+                powerQuestion={flower.PowerQuestion}
                 powerAnswer={flower.Power}
-                challengesQuestion={flower.challengesQuestion}
+                challengesQuestion={flower.ChallengesQuestion}
                 challengesAnswer={flower.Challenges}
               />
             </div>

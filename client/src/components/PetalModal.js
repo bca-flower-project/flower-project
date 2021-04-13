@@ -321,9 +321,11 @@ function PetalModal(props) {
   // console.log(questions[chosen].questionOptions[selectedQuestion])
   return (
     <div>
+      <div className="createflowerwrapper">
       <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
         <CreateFlower width="45vw" height="auto" />
       </a>
+      </div>
       <Modal
         id="modalWindow"
         isOpen={modalIsOpen}
@@ -355,13 +357,6 @@ function PetalModal(props) {
               >
                 {questions[chosen].questionOptions.map((question, index) => {
                   return <option value={question}>{question}</option>;
-                  // return (
-                  //   <div id="dropdown">
-                  //   <option value={`Question ${0}`}>{question}</option>
-                  //   <option value={`Question ${1}`}>{question}</option>
-                  //   <option value={`Question ${2}`}>{question}</option>
-                  //   </div>
-                  // );
                 })}
               </select>
               <br></br>

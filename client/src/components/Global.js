@@ -39,7 +39,6 @@ export default function Global(props) {
     <div className="globalWrapper">
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <div className="globalContents">
-      {/* <h1>Global View</h1> */}
       {GlobalFlower.map((flower, index) => {
         return (
           <div>
@@ -50,6 +49,7 @@ export default function Global(props) {
               colorFour={flower.PrinciplesColor}
               colorFive={flower.PowerColor}
               colorSix={flower.ChallengesColor}
+              width="20vw"
             />
           </div>
         );

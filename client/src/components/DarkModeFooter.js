@@ -7,7 +7,7 @@ export default function DarkModeFooter() {
  
   return (
 
-    <div>
+    <div style={{alignItems: "center"}}>
       
       <a href="https://www.ok.community/the-flower-project"> <img id="footerLogo" src={whiteLogo} style={{width: "2vw"}}alt="okLogo"id="okLogo"/></a>
       
