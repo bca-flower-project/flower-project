@@ -1,9 +1,12 @@
 import React from 'react';
-export default function NotFound() {
+import Login from './Login';
+
+export default function NotFound(props) {
     return (
         <div>
-            <h1>You've Been Logged Out</h1>
-            <h3>Please log in again</h3>
+            <h1 style={{textAlign: "center"}}>You've Been Logged Out</h1>
+            
+            <Login user={props.user} googleLogin={props.googleLogin}/>
         </div>
     )
 }

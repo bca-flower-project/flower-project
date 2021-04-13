@@ -2,6 +2,7 @@ import "./App.css";
 import { Link, Switch, Route, Redirect } from "react-router-dom";
 //import components
 import Home from "./components/Home";
+import NotFound from './components/NotFound';
 
 import Create from "./components/Create";
 import Global from "./components/Global";
@@ -102,7 +103,7 @@ function App(props) {
       <Switch>
         <div>
           <Route
-            path={"/Global"}
+            exact path={"/Global"}
             render={(props) => {
               return <Global user={user} theme={theme}/>;
             }}
@@ -127,14 +128,20 @@ function App(props) {
             }}
           />
           <Route
-            path={"/PastFlowers"}
+           exact path={"/PastFlowers"}
             render={(props) => {
               return <PastFlowers user={user} theme={theme}/>;
             }}
           />
+          
         </div>
       </Switch>
-
+      {/* <div>
+          <Route path="*" render={(props) => {
+              return <NotFound user={user} googleLogin={googleLogin} />;
+          }}
+              /> 
+          </div> */}
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
         <>
           <GlobalStyles />

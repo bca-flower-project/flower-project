@@ -178,7 +178,7 @@ font-family: 'Poppins', sans-serif; -----HEADER */
   width: 40vw;
   height: 77vh;
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap:wrap;
   position: relative;
 }
 .globalWrapper{
@@ -193,4 +193,9 @@ font-family: 'Poppins', sans-serif; -----HEADER */
 }
 
 
-.createflowerwrapper {}
+.createflowerwrapper {
+  width:100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
