@@ -172,7 +172,7 @@ font-family: 'Poppins', sans-serif; -----HEADER */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse
 }
 .globalContents{
   width: 40vw;

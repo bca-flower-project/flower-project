@@ -60,14 +60,14 @@ export default function PastFlower(props) {
               <QuestionsAnswers
                 peaksQuestion={flower.PeakQuestion}
                 peaksAnswer={flower.Peaks}
-                aspirationsQuestion={flower.AspirationsQuestion}
+                aspirationsQuestion={flower.AspirationQuestion}
                 aspirationsAnswer={flower.Aspirations}
                 peopleQuestion={flower.PeopleQuestion}
                 peopleAnswer={flower.People}
-                principlesQuestion={flower.PrinciplesQuestions}
-                principlesAnswer={flower.Principles}
-                powerQuestion={flower.PowerQuestion}
-                powerAnswer={flower.Power}
+                principleQuestion={flower.PrincipleQuestion}
+                principleAnswer={flower.Principles}
+                powersQuestion={flower.PowerQuestion}
+                powerAnswer={flower.Powers}
                 challengesQuestion={flower.ChallengesQuestion}
                 challengesAnswer={flower.Challenges}
               />

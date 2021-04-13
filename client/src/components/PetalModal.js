@@ -264,10 +264,10 @@ function PetalModal(props) {
 
   let userFlower = {
     PeakQuestion: peaksQuestion,
-    AspirationsQuestion: aspirationsQuestion,
+    AspirationQuestion: aspirationsQuestion,
     PeopleQuestion: peopleQuestion,
     PrincipleQuestion: principlesQuestion,
-    PowersQuestion: powersQuestion,
+    PowerQuestion: powersQuestion,
     ChallengesQuestion: challengesQuestion,
     PeaksColor: peaksPetal,
     AspirationsColor: aspirationsPetal,
