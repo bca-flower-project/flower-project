@@ -89,7 +89,7 @@ function PetalModal(props) {
     // let petalArray = petal
     setSaveChange(evt.target.value);
     setSelected(evt.target.value)
-    console.log(questions[chosen].questionOptions[selected])
+    // console.log(questions[chosen].questionOptions[selectedQuestion])
 
 
     let nextQuestion = chosen + 1;
@@ -109,6 +109,14 @@ function PetalModal(props) {
   };
   console.log(questions[chosen]);
 
+  
+ function handleChange(evt) {
+    let target = evt.target;
+    setSelected(target.value);
+  } 
+
+
+
   // when submitted... update chosen state with currently selected
   function submitForm(evt) {
     evt.preventDefault();
@@ -118,17 +126,19 @@ function PetalModal(props) {
     setModalIsOpen(false);
   }
 
-  // when option is selected save it in selected state
-  function handleChange(evt) {
-    let target = evt.target;
-    setSelected(target.value);
-    // setSelectedQuestion(target.value);
-  }
-  //   let changeHandler = e => {
-  //     props.setState({
-  //       Id:e.target.value
-  //     });
+  // function changeAndQuestion(){
+  // // when option is selected save it in selected state
+  //     function handleChange(evt) {
+  //       let target = evt.target;
+  //       setSelected(target.value);
+  //       console.log(selected.stringify())
+  //     } 
+  //     function questionSelected (evt) {
+  //       //onClick map over the array of questionOptions for the chosen petal and take the one clicked one and puts it in new array [selected]
+  //     }
   // }
+  
+ 
 
   function handleUserInput(evt) {
     console.log(chosen);
@@ -237,12 +247,12 @@ function PetalModal(props) {
   }
 
   let userFlower = {
-    // PeakQuestion: questions[chosen],
-    // AspirationsQuestion: questions.selected],
-    // PeopleQuestion: questions.selected],
-    // PrincipleQuestion: questions.selected],
-    // PowersQuestion: questions.selected],
-    // ChallengesQuestion: questions.selected],
+    PeakQuestion: questions[chosen].questionOptions[selected],
+    AspirationsQuestion: questions[chosen].selected,
+    PeopleQuestion: questions[chosen].selected,
+    PrincipleQuestion: questions[chosen].selected,
+    PowerQuestion: questions[chosen].selected,
+    ChallengesQuestion: questions[chosen].selected,
     PeaksColor: peaksPetal,
     AspirationsColor: aspirationsPetal,
     PeopleColor: peoplePetal,

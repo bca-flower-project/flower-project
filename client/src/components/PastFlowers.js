@@ -6,6 +6,9 @@ import { database } from "./fire";
 import "firebase/firestore";
 import BlankFlower from "./BlankFlower";
 import QuestionsAnswers from "./QuestionsAnswers";
+import Footer from "./Footer";
+import DarkModeFooter from "./DarkModeFooter";
+
 
 export default function PastFlower(props) {
   //Probably useEffect/API fetch
@@ -40,8 +43,9 @@ export default function PastFlower(props) {
 
   return (
     <div className="gardenWrapper">
-    <div>
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
+    <div className="gardenContents">
+      
       <h1>Your growing garden</h1>
       {previousFlower.map((flower, index) => {
         return (
@@ -71,6 +75,7 @@ export default function PastFlower(props) {
           </div>
         );
       })}
+       {props.theme === "dark" ? <DarkModeFooter /> : <Footer />}
     </div>
     </div>
   );
