@@ -252,7 +252,7 @@ function PetalModal(props) {
     PeopleQuestion: questions[chosen].selected,
     PrincipleQuestion: questions[chosen].selected,
     PowerQuestion: questions[chosen].selected,
-    ChallengesQuestion: questions[chosen].selected,
+    ChallengesQuestion: questions[chosen.selected],
     PeaksColor: peaksPetal,
     AspirationsColor: aspirationsPetal,
     PeopleColor: peoplePetal,
@@ -269,6 +269,7 @@ function PetalModal(props) {
   // console.log([data]);
   console.log(userFlower);
   console.log(props.user);
+  console.log(questions[chosen].questionOptions[selected])
   async function addFlower(data) {
     let collection = await database
       .collection("user")
@@ -340,7 +341,11 @@ function PetalModal(props) {
               >
                 {questions[chosen].questionOptions.map((question, index) => {
                   return (
-                    <option value={`Question ${index}`}>{question}</option>
+                    <div id="dropdown">
+                    <option value={`Question ${0}`}>{question}</option>
+                    <option value={`Question ${1}`}>{question}</option>
+                    <option value={`Question ${2}`}>{question}</option>
+                    </div>
                   );
                 })}
                 
