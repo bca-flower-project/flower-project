@@ -42,8 +42,9 @@ export default function PastFlower(props) {
 
   return (
     <div className="gardenWrapper">
-      <div>
-        {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
+           {props.theme === "dark" ? <DarkModeNav /> : <Nav />} 
+            <div className="gardenContents">
+ 
         <h1>Your growing garden</h1>
         {previousFlower.map((flower, index) => {
           return (

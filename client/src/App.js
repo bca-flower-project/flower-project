@@ -104,7 +104,7 @@ function App(props) {
           <Route
             path={"/Global"}
             render={(props) => {
-              return <Global user={user} />;
+              return <Global user={user} theme={theme}/>;
             }}
           />
           <Route
@@ -118,7 +118,7 @@ function App(props) {
               );
             }}
           />
-          <Route path={"/Global"} component={Global} />
+        
           <Route
             exact
             path="/"
@@ -129,7 +129,7 @@ function App(props) {
           <Route
             path={"/PastFlowers"}
             render={(props) => {
-              return <PastFlowers user={user} />;
+              return <PastFlowers user={user} theme={theme}/>;
             }}
           />
         </div>

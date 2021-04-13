@@ -95,9 +95,8 @@ function PetalModal(props) {
   function handleNextQuestion(evt) {
     // let petalArray = petal
     setSaveChange(evt.target.value);
-    setSelected(evt.target.value)
+    setSelected(evt.target.value);
     // console.log(questions[chosen].questionOptions[selectedQuestion])
-
 
     let nextQuestion = chosen + 1;
     //if the question # is bigger than the length of the array, it stops bc petals are complete
@@ -112,7 +111,6 @@ function PetalModal(props) {
     questArr.push(selected);
     console.log(questArr);
     setSelectedQuestion(questArr);
-
   }
 
   const setModalIsOpenToTrue = () => {
@@ -123,13 +121,10 @@ function PetalModal(props) {
   };
   console.log(questions[chosen]);
 
-  
- function handleChange(evt) {
+  function handleChange(evt) {
     let target = evt.target;
     setSelected(target.value);
-  } 
-
-
+  }
 
   // when submitted... update chosen state with currently selected
   function submitForm(evt) {
@@ -156,22 +151,20 @@ function PetalModal(props) {
     console.log(selected);
     setSelected(target.value);
 
-  if (chosen === 0) 
-  {setPeakQuestion(target.value)}
-  else if (chosen === 1) 
-  {setAspirationQuestion (target.value)}
-  else if (chosen === 2)
-  {setPeopleQuestion (target.value)
+    if (chosen === 0) {
+      setPeaksQuestion(target.value);
+    } else if (chosen === 1) {
+      setAspirationsQuestion(target.value);
+    } else if (chosen === 2) {
+      setPeopleQuestion(target.value);
+    } else if (chosen === 3) {
+      setPrinciplesQuestion(target.value);
+    } else if (chosen === 4) {
+      setPowersQuestion(target.value);
+    } else if (chosen === 5) {
+      setChallengesQuestion(target.value);
+    }
   }
-  else if(chosen === 3)
-  {setPrinciplesQuestion (target.value)}
-  else if (chosen === 4)
-  {setPowersQuestion (target.value)}
-  else if (chosen === 5) 
-  {setChallengesQuestion (target.value)}
-
- }
-
 
 
   function handleUserInput(evt) {
@@ -292,7 +285,7 @@ function PetalModal(props) {
   // console.log([data]);
   console.log(userFlower);
   console.log(props.user);
-  
+
   async function addFlower(data) {
     let collection = await database
       .collection("user")
@@ -370,7 +363,6 @@ function PetalModal(props) {
                   //   </div>
                   // );
                 })}
-                
               </select>
               <br></br>
               {handleUserInput()}
