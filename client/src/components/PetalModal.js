@@ -99,7 +99,8 @@ function PetalModal(props) {
     // console.log(questions[chosen].questionOptions[selectedQuestion])
 
     let nextQuestion = chosen + 1;
-    //if the question # is bigger than the length of the array, it stops bc petals are complete
+    //if the question # is bigger than the length of the array, 
+    //it stops bc petals are complete
     if (nextQuestion < questions.length) {
       setChosen(nextQuestion);
     } else {
@@ -282,25 +283,20 @@ function PetalModal(props) {
     Powers: powers,
     Challenges: challenges,
   };
-  // console.log([data]);
-  console.log(userFlower);
-  console.log(props.user);
-
+  
   async function addFlower(data) {
     let collection = await database
       .collection("user")
       .doc(props.user.uid)
       .collection("flower");
-    // .doc("Previous Flower")
-    // .set(data)
+    
     console.log(data);
     return await collection.add(data);
   }
 
   async function addGlobalFlower(data) {
     let collection = await database.collection("Global");
-    // .doc("globeflowers")
-    // .set(data)
+    
 
     return await collection.add(data);
   }
@@ -318,7 +314,7 @@ function PetalModal(props) {
       return <input type="submit" value="Submit Flower" />;
     }
   }
-  // console.log(questions[chosen].questionOptions[selectedQuestion])
+  
   return (
     <div>
       <div className="createflowerwrapper">
@@ -337,7 +333,6 @@ function PetalModal(props) {
             left: "14vw",
             right: "14vw",
             top: "17vh",
-            // overflow: "hidden",
           },
         }}
       >

@@ -49,7 +49,7 @@ export default function Global(props) {
               colorFour={flower.PrinciplesColor}
               colorFive={flower.PowerColor}
               colorSix={flower.ChallengesColor}
-              width="20vw"
+              width="10vw"
             />
           </div>
         );

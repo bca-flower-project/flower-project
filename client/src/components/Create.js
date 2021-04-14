@@ -23,13 +23,11 @@ export default function Create(props) {
     <div className="createWrapper">
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <div className="createContents">
-
         <PetalModal
           theme={props.theme === "light" ? lightTheme : darkTheme}
           user={props.user}
         />
-        {/* <button onClick={setModalIsOpen(true)}>Show Modal</button> */}
-        {/* <button disabled={props.disabledState} onClick={() => {props.setDisabled(false); props.display(true)}} >Show Modal</button> Activates guess modal */}
+
         <ThemeProvider theme={props.theme === "light" ? lightTheme : darkTheme}>
           <>
             <GlobalStyles />

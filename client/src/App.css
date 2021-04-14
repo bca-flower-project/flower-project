@@ -136,9 +136,7 @@ FONT SELECTIONS
 font-family: 'Karla', sans-serif; ----- BODY
 font-family: 'Poppins', sans-serif; -----HEADER */
 
-#footerLogo{
-  width: 10vw;
-}
+
 .login{
   width: 40vw;
 }
@@ -175,10 +173,11 @@ font-family: 'Poppins', sans-serif; -----HEADER */
   flex-direction: column-reverse
 }
 .globalContents{
-  width: 40vw;
+  margin-top:7vh;
+  width: 55vw;
   height: 77vh;
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   position: relative;
 }
 .globalWrapper{
@@ -189,13 +188,44 @@ font-family: 'Poppins', sans-serif; -----HEADER */
   position: relative;
   justify-content: center;
   align-items: center;
-  flex-direction: column
+  /* flex-direction: column */
 }
 
 
-.createflowerwrapper {
+/* .createflowerwrapper {
   width:100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
+} */
+
+#quest-answers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#quest-answers h4 {
+  font-size:medium;
+}
+
+#quest-one {
+  display: flex;
+  flex-direction: column;
+}
+#quest-two {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#footer {
+  flex-direction: row;
+  justify-content: space-between;
+  height:10vh;
+}
+
+#footerLogo{
+  /* width: 10vw; */
+  height:100vh;
 }

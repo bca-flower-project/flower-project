@@ -7,8 +7,6 @@ function Flower(props) {
       xmlnsOsb="http://www.openswatchbook.org/uri/2009/osb"
       width={props.width}
       height={props.height}
-      // width="100vw"
-      // height="auto"
       version="1.1"
       viewBox="100 18 240 240"
     >
@@ -597,9 +595,6 @@ function Flower(props) {
             ry="35.141"
           ></ellipse>
           <path id="powers-five"
-          //i think we make these props.target.color??
-          //can make a css style obj (target by id and fill color)
-          //pass props for each petal fill
             fill={props.colorFive}
             stroke="#000"
             strokeWidth="6.633"
