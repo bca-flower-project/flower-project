@@ -1,13 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import whiteFlower from './icons/whiteFlower.png'
+import whiteGlobe from './icons/whiteGlobe.png'
+import whiteSpiral from './icons/whiteSpiral.png'
+import HomeFooter from './HomeFooter';
 
 export default function Home() {
   return (
-    <h1></h1>
-    // <div>
-    //   <h1>Please sign in!</h1>
-    // </div>
+    <div id="homenav">
+      <Link to={"/PastFlowers"}><img src={whiteSpiral} alt="spiral" id="navspiral"/></Link>
+      <Link to={"/Create"}><img src={whiteFlower} alt="flower" id="navflower"/></Link>
+      <Link to={"/Global"}><img src={whiteGlobe} alt="globe" id="navglobe"/></Link>
+      <HomeFooter/>
+    </div>
   );
 }
-
-//homepage
-//black background, icon at center to create a flower; icon on left to see your past flowers; icon on right to see global view of all users' flowers

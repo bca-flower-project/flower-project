@@ -8,7 +8,7 @@ function CreateFlower(props) {
       width={props.width}
       height={props.height}
       version="1.1"
-      viewBox="70 0 300 277.6"
+      viewBox="44 0 300 277.6"
     >
       <defs>
         <linearGradient osbPaint="solid">

@@ -5,6 +5,10 @@ import { database } from "./fire";
 import { useState, useEffect } from "react";
 import BlankFlower from "./BlankFlower";
 import "firebase/firestore";
+import Footer from "./Footer";
+import DarkModeFooter from "./DarkModeFooter";
+
+
 export default function Global(props) {
   const [GlobalFlower, setGlobalFlower] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,9 +36,9 @@ export default function Global(props) {
   console.log(GlobalFlower);
 
   return (
-    <div>
+    <div className="globalWrapper">
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
-      <h1>Global View</h1>
+      <div className="globalContents">
       {GlobalFlower.map((flower, index) => {
         return (
           <div>
@@ -45,10 +49,13 @@ export default function Global(props) {
               colorFour={flower.PrinciplesColor}
               colorFive={flower.PowerColor}
               colorSix={flower.ChallengesColor}
+              width="10vw"
             />
           </div>
         );
       })}
+       
+      </div>
     </div>
   );
 }

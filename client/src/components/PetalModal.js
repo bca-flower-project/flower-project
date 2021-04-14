@@ -67,7 +67,7 @@ function PetalModal(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [question, setQuestion] = useState([]);
   const [chosenColor, setChosenColor] = useState([]);
-  //state to save userInput for each input of the petals
+  //state for the answers to each question
   const [userInput, setUserInput] = useState("");
   const [peaks, setPeaks] = useState("");
   const [aspirations, setAspirations] = useState("");
@@ -76,6 +76,13 @@ function PetalModal(props) {
   const [powers, setPowers] = useState("");
   const [challenges, setChallenges] = useState("");
   const [saveChange, setSaveChange] = useState();
+  //state for the questions for each petal
+  const [peaksQuestion, setPeaksQuestion] = useState("");
+  const [aspirationsQuestion, setAspirationsQuestion] = useState("");
+  const [peopleQuestion, setPeopleQuestion] = useState("");
+  const [principlesQuestion, setPrinciplesQuestion] = useState("");
+  const [powersQuestion, setPowersQuestion] = useState("");
+  const [challengesQuestion, setChallengesQuestion] = useState("");
   //state color for petals
   const [peaksPetal, setPeaksPetal] = useState("yellow");
   const [aspirationsPetal, setAspirationsPetal] = useState("yellow");
@@ -83,22 +90,33 @@ function PetalModal(props) {
   const [principlesPetal, setPrinciplesPetal] = useState("yellow");
   const [powersPetal, setPowersPetal] = useState("yellow");
   const [challengesPetal, setChallengesPetal] = useState("yellow");
-  // const [selectedQuestion, setSelectedQuestion] = useState(0);
+  const [selectedQuestion, setSelectedQuestion] = useState([]);
 
   function handleNextQuestion(evt) {
     // let petalArray = petal
     setSaveChange(evt.target.value);
-    setSelected(evt.target.value)
-    console.log(questions[chosen].questionOptions[selected])
-
+    setSelected(evt.target.value);
+    // console.log(questions[chosen].questionOptions[selectedQuestion])
 
     let nextQuestion = chosen + 1;
-    //if the question # is bigger than the length of the array, it stops bc petals are complete
+    //if the question # is bigger than the length of the array, 
+    //it stops bc petals are complete
     if (nextQuestion < questions.length) {
       setChosen(nextQuestion);
+      return (
+        <input type="submit" value="Next Petal"/>
+      )
     } else {
       setModalIsOpen(false);
+    
+      //display button hidden goes here
     }
+  
+    let questArr = selectedQuestion;
+
+    questArr.push(selected);
+    console.log(questArr);
+    setSelectedQuestion(questArr);
   }
 
   const setModalIsOpenToTrue = () => {
@@ -109,26 +127,51 @@ function PetalModal(props) {
   };
   console.log(questions[chosen]);
 
+  function handleChange(evt) {
+    let target = evt.target;
+    setSelected(target.value);
+  }
+
   // when submitted... update chosen state with currently selected
   function submitForm(evt) {
     evt.preventDefault();
     setChosen(0);
     addFlower(userFlower);
     addGlobalFlower(userFlower);
+    // addFlowerQuestions(selectedQuestion);
+    console.log(selectedQuestion);
     setModalIsOpen(false);
+
+    // let flowerQuestion = questions.map((questionOptions, index) => {
+    //   return { selectedQuestion };
+    // });
   }
+  const flowerQuestion = questions.map((questionOptions, index) => {
+    return { selectedQuestion };
+  });
 
   // when option is selected save it in selected state
   function handleChange(evt) {
     let target = evt.target;
+    console.log(target.value);
+    console.log(selected);
     setSelected(target.value);
-    // setSelectedQuestion(target.value);
+
+    if (chosen === 0) {
+      setPeaksQuestion(target.value);
+    } else if (chosen === 1) {
+      setAspirationsQuestion(target.value);
+    } else if (chosen === 2) {
+      setPeopleQuestion(target.value);
+    } else if (chosen === 3) {
+      setPrinciplesQuestion(target.value);
+    } else if (chosen === 4) {
+      setPowersQuestion(target.value);
+    } else if (chosen === 5) {
+      setChallengesQuestion(target.value);
+    }
   }
-  //   let changeHandler = e => {
-  //     props.setState({
-  //       Id:e.target.value
-  //     });
-  // }
+
 
   function handleUserInput(evt) {
     console.log(chosen);
@@ -200,17 +243,6 @@ function PetalModal(props) {
     }
   });
 
-  //const [colorPicked, setColorPicked] = useState("");
-
-  // const handleColor = (evt) => {
-  // //   // setColorPicked({fill: color.hex})
-  //  setColorPicked(evt.target.value);
-  // //   // setPeaksPetal(evt.target.value);
-  // // }; principles powers challengesks
-  // };
-
-  //create custom colorpicker component
-
   const handleColorChange = (color) => {
     if (chosen === 0) {
       setPeaksPetal(color.hex);
@@ -237,12 +269,12 @@ function PetalModal(props) {
   }
 
   let userFlower = {
-    // PeakQuestion: questions[chosen],
-    // AspirationsQuestion: questions.selected],
-    // PeopleQuestion: questions.selected],
-    // PrincipleQuestion: questions.selected],
-    // PowersQuestion: questions.selected],
-    // ChallengesQuestion: questions.selected],
+    PeakQuestion: peaksQuestion,
+    AspirationQuestion: aspirationsQuestion,
+    PeopleQuestion: peopleQuestion,
+    PrincipleQuestion: principlesQuestion,
+    PowerQuestion: powersQuestion,
+    ChallengesQuestion: challengesQuestion,
     PeaksColor: peaksPetal,
     AspirationsColor: aspirationsPetal,
     PeopleColor: peoplePetal,
@@ -256,24 +288,20 @@ function PetalModal(props) {
     Powers: powers,
     Challenges: challenges,
   };
-  // console.log([data]);
-  console.log(userFlower);
-  console.log(props.user);
+  
   async function addFlower(data) {
     let collection = await database
       .collection("user")
       .doc(props.user.uid)
       .collection("flower");
-    // .doc("Previous Flower")
-    // .set(data)
+    
     console.log(data);
     return await collection.add(data);
   }
 
   async function addGlobalFlower(data) {
     let collection = await database.collection("Global");
-    // .doc("globeflowers")
-    // .set(data)
+    
 
     return await collection.add(data);
   }
@@ -291,14 +319,15 @@ function PetalModal(props) {
       return <input type="submit" value="Submit Flower" />;
     }
   }
-  // console.log(questions[chosen].questionOptions[selectedQuestion])
+  
+  
   return (
     <div>
-      {/* <button onClick={setModalIsOpenToTrue}>Click to Open Modal</button> */}
+      <div className="createflowerwrapper">
       <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
         <CreateFlower width="45vw" height="auto" />
-        {/* <button onClick={setModalIsOpenToTrue}>Create</button> </CreateFlower> */}
       </a>
+      </div>
       <Modal
         id="modalWindow"
         isOpen={modalIsOpen}
@@ -310,7 +339,6 @@ function PetalModal(props) {
             left: "14vw",
             right: "14vw",
             top: "17vh",
-            // overflow: "hidden",
           },
         }}
       >
@@ -320,7 +348,7 @@ function PetalModal(props) {
         <div id="modalwindow">
           <div className="question-text">
             <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
-            {/* <form onSubmit={evt => {submitForm(evt)}}> */}
+
             <form onSubmit={submitForm}>
               <select
                 className="button"
@@ -329,11 +357,8 @@ function PetalModal(props) {
                 onChange={handleChange}
               >
                 {questions[chosen].questionOptions.map((question, index) => {
-                  return (
-                    <option value={`Question ${index}`}>{question}</option>
-                  );
+                  return <option value={question}>{question}</option>;
                 })}
-                
               </select>
               <br></br>
               {handleUserInput()}
@@ -341,13 +366,7 @@ function PetalModal(props) {
               {showSubmit()}
             </form>
             <br></br>
-            <button
-              type="submit"
-              className="button"
-              onClick={handleNextQuestion}
-            >
-              Next Petal
-            </button>
+            <button type="submit" className="button" onClick={handleNextQuestion}>Next Petal</button>
             <HuePicker
               id={`hue-${chosen}`}
               className="hue"
@@ -357,11 +376,6 @@ function PetalModal(props) {
               direction="horizontal"
               pointer="none"
             />
-
-            {/* 
-            {questions[chosen].colorOptions.map((color, index) => {
-              return <option value={`Color ${index}`}>{color.hex}</option>;
-            })} */}
           </div>
           <div id="flower">
             <Flower
@@ -379,6 +393,6 @@ function PetalModal(props) {
       </Modal>
     </div>
   );
-}
+};
 
 export default PetalModal;

@@ -112,34 +112,7 @@ left: 33%;
   width: auto;
 }
 
-/* #path  */
 
-
-/* -----------flower /create css */
-/* #hue {
-  height: 86vh; 
-   width: 86vw
-} */
-
-
-
-/* #flower-wrapper {
- height: 87vh;
- width: 100vw;
- top: 300px;
- 
-}  */
-
-
-/* 
-
-FONT SELECTIONS
-font-family: 'Karla', sans-serif; ----- BODY
-font-family: 'Poppins', sans-serif; -----HEADER */
-
-#footerLogo{
-  width: 10vw;
-}
 .login{
   width: 40vw;
 }
@@ -165,7 +138,7 @@ font-family: 'Poppins', sans-serif; -----HEADER */
 }
 .gardenContents{
   width: 40vw;
-  background-color: pink;
+  height: 87vh;
 }
 .gardenWrapper{
   width: 100vw;
@@ -173,18 +146,78 @@ font-family: 'Poppins', sans-serif; -----HEADER */
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse
 }
 .globalContents{
-  width: 40vw;
-  background-color: pink;
-  
+  margin-top:7vh;
+  width: 55vw;
+  height: 77vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
 }
 .globalWrapper{
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-flow: row wrap;
+  position: relative;
   justify-content: center;
   align-items: center;
+  /* flex-direction: column */
+}
+
+
+/* .createflowerwrapper {
+  width:100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+} */
+
+#quest-answers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#quest-answers h4 {
+  font-size:medium;
+}
+
+#quest-one {
+  display: flex;
   flex-direction: column;
 }
+#quest-two {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#footer {
+  flex-direction: row !important;
+  position:fixed;
+  justify-content: space-between !important;
+  height: 7vh;
+  width: 100vw;
+  bottom: 0;
+}
+
+a {
+  /* width: 14vw; */
+}
+
+button{ 
+ left: 25vw;
+}
+
+#okLogo{
+  /* width: 10vw; */
+  /* height:100vh; */
+}
+
+/* 
+FONT SELECTIONS
+font-family: 'Karla', sans-serif; ----- BODY
+font-family: 'Poppins', sans-serif; -----HEADER */ 
