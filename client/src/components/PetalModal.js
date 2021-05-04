@@ -20,11 +20,11 @@ function PetalModal(props) {
       ],
     },
     {
-      petal: "Challenges",
+      petal: "Aspirations",
       questionOptions: [
-        "What do you struggle with the most?",
-        "What are the biggest challenges you've faced?",
-        "What have been the hardest times of your life?",
+        "What is your intention for the future?",
+        "What are your aspirations?",
+        "What are your goals?",
       ],
     },
     {
@@ -52,11 +52,11 @@ function PetalModal(props) {
       ],
     },
     {
-      petal: "Aspirations",
+      petal: "Challenges",
       questionOptions: [
-        "What is your intention for the future?",
-        "What are your aspirations?",
-        "What are your goals?",
+        "What do you struggle with the most?",
+        "What are the biggest challenges you've faced?",
+        "What have been the hardest times of your life?",
       ],
     },
   ];
@@ -159,7 +159,7 @@ function PetalModal(props) {
   if (chosen === 0) 
   {setPeaksQuestion(target.value)}
   else if (chosen === 1) 
-  {setChallengesQuestion (target.value)}
+  {setAspirationsQuestion (target.value)}
   else if (chosen === 2)
   {setPeopleQuestion (target.value)
   }
@@ -168,7 +168,7 @@ function PetalModal(props) {
   else if (chosen === 4)
   {setPowersQuestion (target.value)}
   else if (chosen === 5) 
-  {setAspirationsQuestion (target.value)}
+  {setChallengesQuestion (target.value)}
 
  }
 
@@ -189,7 +189,7 @@ function PetalModal(props) {
       return (
         <textarea
           placeholder="Enter your response here"
-          onChange={(evt) => setChallenges(evt.target.value)}
+          onChange={(evt) => setAspirations(evt.target.value)}
           value={aspirations}
         />
       );
@@ -221,7 +221,7 @@ function PetalModal(props) {
       return (
         <textarea
           placeholder="Enter your response here"
-          onChange={(evt) => setAspirations(evt.target.value)}
+          onChange={(evt) => setChallenges(evt.target.value)}
           value={challenges}
         />
       );
@@ -248,7 +248,7 @@ function PetalModal(props) {
     if (chosen === 0) {
       setPeaksPetal(color.hex);
     } else if (chosen === 1) {
-      setChallengesPetal(color.hex);
+      setAspirationsPetal(color.hex);
     } else if (chosen === 2) {
       setPeoplePetal(color.hex);
     } else if (chosen === 3) {
@@ -256,7 +256,7 @@ function PetalModal(props) {
     } else if (chosen === 4) {
       setPowersPetal(color.hex);
     } else if (chosen === 5) {
-      setAspirationsPetal(color.hex);
+      setChallengesPetal(color.hex);
     }
   };
 
@@ -271,23 +271,23 @@ function PetalModal(props) {
 
   let userFlower = {
     PeakQuestion: peaksQuestion,
-    ChallengesQuestion: challengesQuestion,
+    AspirationsQuestion: aspirationsQuestion,
     PeopleQuestion: peopleQuestion,
     PrincipleQuestion: principlesQuestion,
     PowersQuestion: powersQuestion,
-    AspirationsQuestion: aspirationsQuestion,
+    ChallengesQuestion: challengesQuestion,
     PeaksColor: peaksPetal,
-    ChallengesColor: challengesPetal,
+    AspirationsColor: aspirationsPetal,
     PeopleColor: peoplePetal,
     PrinciplesColor: principlesPetal,
     PowerColor: powersPetal,
-    AspirationsColor: aspirationsPetal,
+    ChallengesColor: challengesPetal,
     Peaks: peaks,
-    Challenges: challenges,
+    Aspirations: aspirations,
     People: people,
     Principles: principles,
     Powers: powers,
-    Aspirations: aspirations,
+    Challenges: challenges,
   };
   // console.log([data]);
   console.log(userFlower);
