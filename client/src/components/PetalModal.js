@@ -84,12 +84,12 @@ function PetalModal(props) {
   const [powersQuestion, setPowersQuestion] = useState("");
   const [challengesQuestion, setChallengesQuestion] = useState("");
   //state color for petals
-  const [peaksPetal, setPeaksPetal] = useState("");
-  const [aspirationsPetal, setAspirationsPetal] = useState("");
-  const [peoplePetal, setPeoplePetal] = useState("");
-  const [principlesPetal, setPrinciplesPetal] = useState("");
-  const [powersPetal, setPowersPetal] = useState("");
-  const [challengesPetal, setChallengesPetal] = useState("");
+  const [peaksPetal, setPeaksPetal] = useState("white");
+  const [aspirationsPetal, setAspirationsPetal] = useState("white");
+  const [peoplePetal, setPeoplePetal] = useState("white");
+  const [principlesPetal, setPrinciplesPetal] = useState("white");
+  const [powersPetal, setPowersPetal] = useState("white");
+  const [challengesPetal, setChallengesPetal] = useState("white");
   const [selectedQuestion, setSelectedQuestion] = useState([]);
 
   function handleNextQuestion(evt) {
