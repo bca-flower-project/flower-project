@@ -57,7 +57,7 @@ export default function PastFlower(props) {
                 colorSix={flower.ChallengesColor}
               />
               <QuestionsAnswers
-                peaksQuestion={flower.PeaksQuestion}
+                peaksQuestion={props.peaksQuestion}
                 peaksAnswer={flower.Peaks}
                 aspirationsQuestion={flower.aspirationsQuestion}
                 aspirationsAnswer={flower.Aspirations}
