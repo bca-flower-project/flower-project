@@ -347,7 +347,7 @@ function PetalModal(props) {
         </button>
         <div id="modalwindow">
           <div className="question-text">
-            <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
+            <h1>{`${questions[chosen].petal}`}</h1>
 
             <form onSubmit={submitForm}>
               <select
@@ -385,7 +385,7 @@ function PetalModal(props) {
               colorFour={principlesPetal}
               colorFive={powersPetal}
               colorSix={challengesPetal}
-              height="40vh"
+              height="50vh"
               width="auto"
             />
           </div>
