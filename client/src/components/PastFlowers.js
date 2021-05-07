@@ -41,13 +41,17 @@ export default function PastFlower(props) {
   }
   console.log(previousFlower);
 
-  const setModalIsOpenToTrue = () => {
+  const setModalIsOpenToTrue = (evt) => {
     setModalIsOpen(true);
   };
 
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
   };
+
+  function showPastFlowInfo(evt) {
+    setModalIsOpen(true)
+  }
 
   return (
     <div className="gardenWrapper">
@@ -60,6 +64,7 @@ export default function PastFlower(props) {
         {previousFlower.map((flower, index) => {
           return (
             <div>
+              <div className="pastModal">
               <a
                 onClick={setModalIsOpenToTrue}
                 color="black"
@@ -75,8 +80,23 @@ export default function PastFlower(props) {
                   width="20vw"
                 />
               </a>
+              </div>
 
-              <Modal>
+              <Modal 
+              id="flower-modal"
+               isOpen={modalIsOpen}
+               style={{
+                 content: {
+                  //  background: props.theme.body,
+                   width: "70vw",
+                   height: "70vh",
+                   left: "14vw",
+                   right: "14vw",
+                   top: "17vh",
+                 },
+               }}
+              >
+               
                 <button className="button" onClick={setModalIsOpenToFalse}>
                   x
                 </button>
