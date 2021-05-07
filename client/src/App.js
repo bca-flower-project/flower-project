@@ -46,7 +46,7 @@ function App(props) {
   async function googleLogin(props) {
     firebase
       .auth()
-      .signInWithRedirect(googleProvider)
+      .signInWithPopup(googleProvider)
       .then(async (result) => {
         const credential = result.credential;
 
