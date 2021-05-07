@@ -138,9 +138,14 @@ left: 33%;
   flex-direction: column;
 }
 .gardenContents{
-  width: 40vw;
-  height: 87vh;
+  width: 90vw;
+  height: 70vh;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  justify-content: center;
 }
+
 .gardenWrapper{
   width: 100vw;
   height: 100vh;

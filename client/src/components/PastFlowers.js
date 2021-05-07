@@ -8,11 +8,12 @@ import BlankFlower from "./BlankFlower";
 import QuestionsAnswers from "./QuestionsAnswers";
 import Footer from "./Footer";
 import DarkModeFooter from "./DarkModeFooter";
-
+import Modal from "react-modal";
 
 export default function PastFlower(props) {
   const [previousFlower, setPreviousFlower] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   console.log(props.user);
 
@@ -40,40 +41,60 @@ export default function PastFlower(props) {
   }
   console.log(previousFlower);
 
+  const setModalIsOpenToTrue = () => {
+    setModalIsOpen(true);
+  };
+
+  const setModalIsOpenToFalse = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <div className="gardenWrapper">
-           {props.theme === "dark" ? <DarkModeNav /> : <Nav />} 
-            <div className="gardenContents">
-      <br></br>
-      <br></br>
-      <br></br>
-        <h1>Your growing garden</h1>
+      {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
+      <div className="gardenContents">
+        <br></br>
+        <br></br>
+        <br></br>
+        {/* <h1>Your growing garden</h1> */}
         {previousFlower.map((flower, index) => {
           return (
             <div>
-              <BlankFlower
-                colorOne={flower.PeaksColor}
-                colorTwo={flower.AspirationsColor}
-                colorThree={flower.PeopleColor}
-                colorFour={flower.PrinciplesColor}
-                colorFive={flower.PowerColor}
-                colorSix={flower.ChallengesColor}
-                width="35vw"
-              />
-              <QuestionsAnswers
-                peaksQuestion={flower.PeakQuestion}
-                peaksAnswer={flower.Peaks}
-                aspirationsQuestion={flower.AspirationQuestion}
-                aspirationsAnswer={flower.Aspirations}
-                peopleQuestion={flower.PeopleQuestion}
-                peopleAnswer={flower.People}
-                principleQuestion={flower.PrincipleQuestion}
-                principleAnswer={flower.Principles}
-                powersQuestion={flower.PowerQuestion}
-                powerAnswer={flower.Powers}
-                challengesQuestion={flower.ChallengesQuestion}
-                challengesAnswer={flower.Challenges}
-              />
+              <a
+                onClick={setModalIsOpenToTrue}
+                color="black"
+                textDecoration="none"
+              >
+                <BlankFlower
+                  colorOne={flower.PeaksColor}
+                  colorTwo={flower.AspirationsColor}
+                  colorThree={flower.PeopleColor}
+                  colorFour={flower.PrinciplesColor}
+                  colorFive={flower.PowerColor}
+                  colorSix={flower.ChallengesColor}
+                  width="20vw"
+                />
+              </a>
+
+              <Modal>
+                <button className="button" onClick={setModalIsOpenToFalse}>
+                  x
+                </button>
+                <QuestionsAnswers
+                  peaksQuestion={flower.PeakQuestion}
+                  peaksAnswer={flower.Peaks}
+                  aspirationsQuestion={flower.AspirationQuestion}
+                  aspirationsAnswer={flower.Aspirations}
+                  peopleQuestion={flower.PeopleQuestion}
+                  peopleAnswer={flower.People}
+                  principleQuestion={flower.PrincipleQuestion}
+                  principleAnswer={flower.Principles}
+                  powersQuestion={flower.PowerQuestion}
+                  powerAnswer={flower.Powers}
+                  challengesQuestion={flower.ChallengesQuestion}
+                  challengesAnswer={flower.Challenges}
+                />
+              </Modal>
             </div>
           );
         })}

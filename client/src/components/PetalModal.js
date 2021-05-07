@@ -99,19 +99,17 @@ function PetalModal(props) {
     // console.log(questions[chosen].questionOptions[selectedQuestion])
 
     let nextQuestion = chosen + 1;
-    //if the question # is bigger than the length of the array, 
+    //if the question # is bigger than the length of the array,
     //it stops bc petals are complete
     if (nextQuestion < questions.length) {
       setChosen(nextQuestion);
-      return (
-        <input type="submit" value="Next Petal"/>
-      )
+      return <input type="submit" value="Next Petal" />;
     } else {
       setModalIsOpen(false);
-    
+
       //display button hidden goes here
     }
-  
+
     let questArr = selectedQuestion;
 
     questArr.push(selected);
@@ -171,7 +169,6 @@ function PetalModal(props) {
       setChallengesQuestion(target.value);
     }
   }
-
 
   function handleUserInput(evt) {
     console.log(chosen);
@@ -288,20 +285,19 @@ function PetalModal(props) {
     Powers: powers,
     Challenges: challenges,
   };
-  
+
   async function addFlower(data) {
     let collection = await database
       .collection("user")
       .doc(props.user.uid)
       .collection("flower");
-    
+
     console.log(data);
     return await collection.add(data);
   }
 
   async function addGlobalFlower(data) {
     let collection = await database.collection("Global");
-    
 
     return await collection.add(data);
   }
@@ -319,14 +315,13 @@ function PetalModal(props) {
       return <input type="submit" value="Submit Flower" />;
     }
   }
-  
-  
+
   return (
     <div>
       <div className="createflowerwrapper">
-      <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
-        <CreateFlower width="45vw" height="auto" />
-      </a>
+        <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
+          <CreateFlower width="45vw" height="auto" />
+        </a>
       </div>
       <Modal
         id="modalWindow"
@@ -366,7 +361,13 @@ function PetalModal(props) {
               {showSubmit()}
             </form>
             <br></br>
-            <button type="submit" className="button" onClick={handleNextQuestion}>Next Petal</button>
+            <button
+              type="submit"
+              className="button"
+              onClick={handleNextQuestion}
+            >
+              Next Petal
+            </button>
             <HuePicker
               id={`hue-${chosen}`}
               className="hue"
@@ -393,6 +394,6 @@ function PetalModal(props) {
       </Modal>
     </div>
   );
-};
+}
 
 export default PetalModal;
