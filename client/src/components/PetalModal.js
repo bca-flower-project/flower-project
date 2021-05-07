@@ -92,6 +92,21 @@ function PetalModal(props) {
   const [challengesPetal, setChallengesPetal] = useState("yellow");
   const [selectedQuestion, setSelectedQuestion] = useState([]);
 
+  function showSubmit() {
+    if (chosen !== 5) {
+      return (
+        <input
+          style={{ display: "none" }}
+          type="submit"
+          value="Submit Flower"
+        />
+      );
+    } else {
+      return <input type="submit" value="Submit Flower" />;
+    }
+  }
+  
+
   function handleNextQuestion(evt) {
     // let petalArray = petal
     setSaveChange(evt.target.value);
@@ -101,17 +116,23 @@ function PetalModal(props) {
     let nextQuestion = chosen + 1;
     //if the question # is bigger than the length of the array, 
     //it stops bc petals are complete
-    if (nextQuestion < questions.length) {
+    if (nextQuestion < 5) {
       setChosen(nextQuestion);
+      console.log("hey stan");
+      console.log(questions.length);
       return (
         <input type="submit" value="Next Petal"/>
       )
-    } else {
-      setModalIsOpen(false);
     
+    
+    } else if (chosen === 5) {
+      showSubmit();
+      console.log("hey romie")
+      setChosen(5);
       //display button hidden goes here
     }
-  
+    //setModalIsOpen(false);
+
     let questArr = selectedQuestion;
 
     questArr.push(selected);
@@ -306,20 +327,7 @@ function PetalModal(props) {
     return await collection.add(data);
   }
 
-  function showSubmit() {
-    if (chosen !== 5) {
-      return (
-        <input
-          style={{ display: "none" }}
-          type="submit"
-          value="Submit Flower"
-        />
-      );
-    } else {
-      return <input type="submit" value="Submit Flower" />;
-    }
-  }
-  
+
   
   return (
     <div>
@@ -363,7 +371,7 @@ function PetalModal(props) {
               <br></br>
               {handleUserInput()}
               <br></br>
-              {showSubmit()}
+              {/* {showSubmit()} */}
             </form>
             <br></br>
             <button type="submit" className="button" onClick={handleNextQuestion}>Next Petal</button>
