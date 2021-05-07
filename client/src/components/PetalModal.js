@@ -84,12 +84,12 @@ function PetalModal(props) {
   const [powersQuestion, setPowersQuestion] = useState("");
   const [challengesQuestion, setChallengesQuestion] = useState("");
   //state color for petals
-  const [peaksPetal, setPeaksPetal] = useState("yellow");
-  const [aspirationsPetal, setAspirationsPetal] = useState("yellow");
-  const [peoplePetal, setPeoplePetal] = useState("yellow");
-  const [principlesPetal, setPrinciplesPetal] = useState("yellow");
-  const [powersPetal, setPowersPetal] = useState("yellow");
-  const [challengesPetal, setChallengesPetal] = useState("yellow");
+  const [peaksPetal, setPeaksPetal] = useState("white");
+  const [aspirationsPetal, setAspirationsPetal] = useState("white");
+  const [peoplePetal, setPeoplePetal] = useState("white");
+  const [principlesPetal, setPrinciplesPetal] = useState("white");
+  const [powersPetal, setPowersPetal] = useState("white");
+  const [challengesPetal, setChallengesPetal] = useState("white");
   const [selectedQuestion, setSelectedQuestion] = useState([]);
 
   function showSubmit() {
@@ -355,7 +355,7 @@ function PetalModal(props) {
         </button>
         <div id="modalwindow">
           <div className="question-text">
-            <h1>{`Select a reflection question for ${questions[chosen].petal}`}</h1>
+            <h1>{`${questions[chosen].petal}`}</h1>
 
             <form onSubmit={submitForm}>
               <select
@@ -393,7 +393,7 @@ function PetalModal(props) {
               colorFour={principlesPetal}
               colorFive={powersPetal}
               colorSix={challengesPetal}
-              height="40vh"
+              height="50vh"
               width="auto"
             />
           </div>

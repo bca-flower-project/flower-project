@@ -106,8 +106,9 @@ left: 33%;
 
 
 #flower {
-  margin-top: 14vh;
-  margin-right:8vw;
+  margin-top: 8vh;
+  margin-right:3vw;
+  margin-left:2vw;
   height:80vh;
   width: auto;
 }
