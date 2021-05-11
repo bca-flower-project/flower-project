@@ -14,6 +14,7 @@ function PetalModal(props) {
       petal: "Peaks",
       questionOptions: [
         //array of possible questions
+        "Please select a question below",
         "What have been the peak moments of your life?",
         "What are your biggest accomplishments?",
         "What are your happiest memories?",
@@ -22,6 +23,7 @@ function PetalModal(props) {
     {
       petal: "Aspirations",
       questionOptions: [
+        "Please select a question below",
         "What is your intention for the future?",
         "What are your aspirations?",
         "What are your goals?",
@@ -30,6 +32,7 @@ function PetalModal(props) {
     {
       petal: "People",
       questionOptions: [
+        "Please select a question below",
         "Who do you care about the most?",
         "Who are the people that care for you?",
         "Who are the most influential people in your life?",
@@ -38,6 +41,7 @@ function PetalModal(props) {
     {
       petal: "Principles",
       questionOptions: [
+        "Please select a question below",
         "What are your principles?",
         "What do you care about most in life?",
         "What are your most deeply held beliefs?",
@@ -46,6 +50,7 @@ function PetalModal(props) {
     {
       petal: "Powers",
       questionOptions: [
+        "Please select a question below",
         "What do you feel you are good at?",
         "What do you love to do?",
         "What are your powers?",
@@ -54,6 +59,7 @@ function PetalModal(props) {
     {
       petal: "Challenges",
       questionOptions: [
+        "Please select a question below",
         "What do you struggle with the most?",
         "What are the biggest challenges you've faced?",
         "What have been the hardest times of your life?",
