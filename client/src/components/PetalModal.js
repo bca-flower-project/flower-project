@@ -365,7 +365,7 @@ function PetalModal(props) {
               <br></br>
               {handleUserInput()}
               <br></br>
-              {/* {showSubmit()} */}
+              {showSubmit()}
             </form>
             <br></br>
             <button type="submit" className="button" onClick={handleNextQuestion}>Next Petal</button>
