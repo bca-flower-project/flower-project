@@ -114,24 +114,12 @@ function PetalModal(props) {
     // console.log(questions[chosen].questionOptions[selectedQuestion])
 
     let nextQuestion = chosen + 1;
-    //if the question # is bigger than the length of the array, 
-    //it stops bc petals are complete
-    if (nextQuestion < 5) {
+    //if the question # is bigger than the length of the array, it stops bc petals are complete
+    if (nextQuestion < questions.length) {
       setChosen(nextQuestion);
-      console.log("hey stan");
-      console.log(questions.length);
-      return (
-        <input type="submit" value="Next Petal"/>
-      )
-    
-    
-    } else if (chosen === 5) {
-      showSubmit();
-      console.log("hey romie")
-      setChosen(5);
-      //display button hidden goes here
+    } else {
+      setModalIsOpen(false);
     }
-    //setModalIsOpen(false);
 
     let questArr = selectedQuestion;
 
