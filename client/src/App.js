@@ -139,7 +139,7 @@ function App(props) {
       <>
         <GlobalStyles />
 
-       <div id="footer">
+       <div id="footer" style={{paddingBottom: "10vh", paddingLeft: "5vw" }}>
           <button onClick={toggleTheme}>Toggle Theme</button>
           {theme === "dark" ? <DarkModeFooter /> : <Footer />}
         </div>

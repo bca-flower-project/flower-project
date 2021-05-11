@@ -9,7 +9,7 @@ export default function Footer() {
         {" "}
         <img
           src={blackLogo}
-          style={{ width: "5vw" }}
+          style={{ width: "3vw" }}
           alt="okLogo"
           id="okLogo"
         />
