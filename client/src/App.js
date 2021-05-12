@@ -9,6 +9,7 @@ import Global from "./components/Global";
 import Login from "./components/Login";
 import Nav from "./components/Nav";
 import PastFlowers from "./components/PastFlowers";
+import LandingPage from "./components/LandingPage";
 
 import Dashboard from "./components/Dashboard";
 import { Container } from "react-bootstrap";
@@ -32,6 +33,7 @@ import "./App.css";
 
 import "./App.css";
 import { render } from "react-dom";
+
 let provider = new firebase.auth.GoogleAuthProvider();
 
 //write all login functionality on app
@@ -134,7 +136,12 @@ function App(props) {
               return <PastFlowers user={user} theme={theme}/>;
             }}
           />
-          
+          <Route
+           exact path={"/LandingPage"}
+            render={(props) => {
+              return <LandingPage user={user} theme={theme}/>;
+            }}
+          />
         
       </Switch>
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>

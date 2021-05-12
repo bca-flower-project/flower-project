@@ -222,3 +222,27 @@ button{
 FONT SELECTIONS
 font-family: 'Karla', sans-serif; ----- BODY
 font-family: 'Poppins', sans-serif; -----HEADER */ 
+
+/* -----landing page-----  */
+
+#landing{
+  height: 40vh;
+}
+.LightLanding{
+  padding-top: 25vh;
+  display: flex;
+  flex-direction: row;
+  width: 100vw; 
+  justify-content: space-between;
+}
+.DarkLanding{
+  padding-top: 25vh;
+  display: flex;
+  flex-direction: row;
+  width: 100vw; 
+  justify-content: space-between;
+}
+.landingText{
+  display: flex;
+  flex-direction: row;
+}

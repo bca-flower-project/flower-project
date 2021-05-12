@@ -40,7 +40,7 @@ export default function Login(props) {
           >
             Google Login
           </Button>
-          {props.user && <Redirect to="/Create" />}
+          {props.user && <Redirect to="/LandingPage" />}
         </Card.Body>
       </Card>
     </div>
