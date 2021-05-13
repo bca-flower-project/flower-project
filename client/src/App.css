@@ -246,3 +246,7 @@ font-family: 'Poppins', sans-serif; -----HEADER */
   display: flex;
   flex-direction: row;
 }
+#landingGlobe{
+ height: 45vh;
+ padding-bottom: 5vh;
+}
