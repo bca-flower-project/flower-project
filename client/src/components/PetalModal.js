@@ -194,7 +194,6 @@ function PetalModal(props) {
     if (chosen === 0) {
       return (
         <textarea
-          placeholder="Enter your response here"
           onChange={(evt) => setPeaks(evt.target.value)}
           value={peaks}
         />
@@ -202,7 +201,6 @@ function PetalModal(props) {
     } else if (chosen === 1) {
       return (
         <textarea
-          placeholder="Enter your response here"
           onChange={(evt) => setAspirations(evt.target.value)}
           value={aspirations}
         />
@@ -210,7 +208,6 @@ function PetalModal(props) {
     } else if (chosen === 2) {
       return (
         <textarea
-          placeholder="Enter your response here"
           onChange={(evt) => setPeople(evt.target.value)}
           value={people}
         />
@@ -218,7 +215,6 @@ function PetalModal(props) {
     } else if (chosen === 3) {
       return (
         <textarea
-          placeholder="Enter your response here"
           onChange={(evt) => setPrinciples(evt.target.value)}
           value={principles}
         />
@@ -226,7 +222,6 @@ function PetalModal(props) {
     } else if (chosen === 4) {
       return (
         <textarea
-          placeholder="Enter your response here"
           onChange={(evt) => setPowers(evt.target.value)}
           value={powers}
         />
@@ -234,7 +229,6 @@ function PetalModal(props) {
     } else if (chosen === 5) {
       return (
         <textarea
-          placeholder="Enter your response here"
           onChange={(evt) => setChallenges(evt.target.value)}
           value={challenges}
         />
