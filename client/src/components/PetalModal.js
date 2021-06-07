@@ -21,12 +21,12 @@ function PetalModal(props) {
       ],
     },
     {
-      petal: "Aspirations",
+      petal: "Challenges",
       questionOptions: [
         "Please select a question below",
-        "What is your intention for the future?",
-        "What are your aspirations?",
-        "What are your goals?",
+        "What do you struggle with the most?",
+        "What are the biggest challenges you've faced?",
+        "What have been the hardest times of your life?",
       ],
     },
     {
@@ -57,14 +57,15 @@ function PetalModal(props) {
       ],
     },
     {
-      petal: "Challenges",
+      petal: "Aspirations",
       questionOptions: [
         "Please select a question below",
-        "What do you struggle with the most?",
-        "What are the biggest challenges you've faced?",
-        "What have been the hardest times of your life?",
+        "What is your intention for the future?",
+        "What are your aspirations?",
+        "What are your goals?",
       ],
-    },
+    }
+    
   ];
 
   const [chosen, setChosen] = useState(0); // what is chosen state
@@ -105,10 +106,11 @@ function PetalModal(props) {
           style={{ display: "none" }}
           type="submit"
           value="Submit Flower"
+
         />
       );
     } else {
-      return <input type="submit" value="Submit Flower" />;
+      return <input type="submit" value="Submit Flower" className="button" />;
     }
   }
   
@@ -175,7 +177,7 @@ function PetalModal(props) {
     if (chosen === 0) {
       setPeaksQuestion(target.value);
     } else if (chosen === 1) {
-      setAspirationsQuestion(target.value);
+      setChallengesQuestion(target.value);
     } else if (chosen === 2) {
       setPeopleQuestion(target.value);
     } else if (chosen === 3) {
@@ -183,7 +185,7 @@ function PetalModal(props) {
     } else if (chosen === 4) {
       setPowersQuestion(target.value);
     } else if (chosen === 5) {
-      setChallengesQuestion(target.value);
+      setAspirationsQuestion(target.value);
     }
   }
 
@@ -196,13 +198,15 @@ function PetalModal(props) {
         <textarea
           onChange={(evt) => setPeaks(evt.target.value)}
           value={peaks}
+          style={{width: "33.9vw"}}
         />
       );
     } else if (chosen === 1) {
       return (
         <textarea
-          onChange={(evt) => setAspirations(evt.target.value)}
-          value={aspirations}
+          onChange={(evt) => setChallenges(evt.target.value)}
+          value={challenges}
+          style={{width: "33.9vw"}}
         />
       );
     } else if (chosen === 2) {
@@ -210,6 +214,7 @@ function PetalModal(props) {
         <textarea
           onChange={(evt) => setPeople(evt.target.value)}
           value={people}
+          style={{width: "33.9vw"}}
         />
       );
     } else if (chosen === 3) {
@@ -217,6 +222,7 @@ function PetalModal(props) {
         <textarea
           onChange={(evt) => setPrinciples(evt.target.value)}
           value={principles}
+          style={{width: "33.9vw"}}
         />
       );
     } else if (chosen === 4) {
@@ -224,13 +230,15 @@ function PetalModal(props) {
         <textarea
           onChange={(evt) => setPowers(evt.target.value)}
           value={powers}
+          style={{width: "33.9vw"}}
         />
       );
     } else if (chosen === 5) {
       return (
         <textarea
-          onChange={(evt) => setChallenges(evt.target.value)}
-          value={challenges}
+          onChange={(evt) => setAspirations(evt.target.value)}
+          value={aspirations}
+          style={{width: "33.9vw"}}
         />
       );
     }
@@ -256,7 +264,7 @@ function PetalModal(props) {
     if (chosen === 0) {
       setPeaksPetal(color.hex);
     } else if (chosen === 1) {
-      setAspirationsPetal(color.hex);
+      setChallengesPetal(color.hex);
     } else if (chosen === 2) {
       setPeoplePetal(color.hex);
     } else if (chosen === 3) {
@@ -264,7 +272,7 @@ function PetalModal(props) {
     } else if (chosen === 4) {
       setPowersPetal(color.hex);
     } else if (chosen === 5) {
-      setChallengesPetal(color.hex);
+      setAspirationsPetal(color.hex);
     }
   };
 
@@ -318,7 +326,7 @@ function PetalModal(props) {
 
   
   return (
-    <div>
+    <div className="modalContents">
       <div className="createflowerwrapper">
       <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
         <CreateFlower width="45vw" height="auto" />
@@ -342,10 +350,38 @@ function PetalModal(props) {
           x
         </button>
         <div id="modalwindow">
-          <div className="question-text">
-            <h1>{`${questions[chosen].petal}`}</h1>
+        <div className="question-text" 
+        // style={{textAlign: "center"}}
+        >
+          <div style={{paddingLeft: "8vw"}}>
+              <HuePicker
+              id={`hue-${chosen}`}
+              className="hue"
+              height="18px"
+              width="50vw"
+              onChange={handleColorChange}
+              direction="horizontal"
+              pointer="none"
+              style={{}}
+            /> 
+            <div className="flower">
+            <Flower
+            
+            colorOne={peaksPetal}
+            colorTwo={challengesPetal}
+            colorThree={peoplePetal}
+            colorFour={principlesPetal}
+            colorFive={powersPetal}
+            colorSix={aspirationsPetal}
+            //height="10vh"
+            width="10vw"
+          />
+          </div>
+            <h1 
+            style={{paddingLeft: "20vw"}}
+            >{`${questions[chosen].petal}`}</h1>
 
-            <form onSubmit={submitForm}>
+            <form onSubmit={submitForm} style={{textAlign: "center"}}>
               <select
                 className="button"
                 name="question-selection"
@@ -356,35 +392,26 @@ function PetalModal(props) {
                   return <option value={question}>{question}</option>;
                 })}
               </select>
-              <br></br>
+              
               {handleUserInput()}
-              <br></br>
+              
               {showSubmit()}
             </form>
             <br></br>
-            <button type="submit" className="button" onClick={handleNextQuestion}>Next Petal</button>
-            <HuePicker
-              id={`hue-${chosen}`}
-              className="hue"
-              height="18px"
-              width="300px"
-              onChange={handleColorChange}
-              direction="horizontal"
-              pointer="none"
-            />
+            
+            
+            </div>
+            
+            
+            <button 
+            style={{marginLeft: "40vw"}}
+            type="submit" 
+            className="button" 
+            onClick={handleNextQuestion} 
+            >Next Petal</button>
+          
           </div>
-          <div id="flower">
-            <Flower
-              colorOne={peaksPetal}
-              colorTwo={aspirationsPetal}
-              colorThree={peoplePetal}
-              colorFour={principlesPetal}
-              colorFive={powersPetal}
-              colorSix={challengesPetal}
-              height="50vh"
-              width="auto"
-            />
-          </div>
+          
         </div>
       </Modal>
     </div>

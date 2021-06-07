@@ -15,7 +15,6 @@ export default function Nav() {
           <Link to={"/PastFlowers"}><img src={spiral} alt="spiral, nav to past flowers" id="navspiral"/></Link>
           <Link to={"/Create"}><img src={blackflower} alt="flower, nav to create" id="navflower"/></Link>
           <Link to={"/Global"}><img src={blackglobe} alt="globe, nav to global" id="navglobe"/></Link>
-          <Link to={'/LandingPage'}>Landing Page</Link>
     
       {/* <Link to={"/Signup"}>Signup</Link> */}
       {/* <Link to={"/Login"}>Login</Link>

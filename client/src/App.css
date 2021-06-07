@@ -103,15 +103,18 @@ left: 33%;
   margin-top: 2vh;
 }
 
+.flower{
+  margin-left: 20vw;
+  align-items: center;
+}
 
-
-#flower {
+/* #flower {
   margin-top: 8vh;
   margin-right:3vw;
-  margin-left:2vw;
+  margin-left:20vw;
   height:80vh;
   width: auto;
-}
+} */
 
 
 .login{
@@ -167,14 +170,17 @@ left: 33%;
   align-items: center;
   /* flex-direction: column */
 }
+.modalContents{
+  align-items: center;
+  justify-content: center;
+}
 
-
-/* .createflowerwrapper {
+.createflowerwrapper {
   width:100vw;
   display: flex;
   flex-direction: row;
   align-items: center;
-} */
+}
 
 #quest-answers {
   display: flex;

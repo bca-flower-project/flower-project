@@ -53,26 +53,26 @@ export default function PastFlower(props) {
             <div>
               <BlankFlower
                 colorOne={flower.PeaksColor}
-                colorTwo={flower.AspirationsColor}
+                colorTwo={flower.ChallengesColor}
                 colorThree={flower.PeopleColor}
                 colorFour={flower.PrinciplesColor}
                 colorFive={flower.PowerColor}
-                colorSix={flower.ChallengesColor}
+                colorSix={flower.AspirationsColor}
                 width="35vw"
               />
               <QuestionsAnswers
                 peaksQuestion={flower.PeakQuestion}
                 peaksAnswer={flower.Peaks}
-                aspirationsQuestion={flower.AspirationQuestion}
-                aspirationsAnswer={flower.Aspirations}
+                challengesQuestion={flower.ChallengesQuestion}
+                challengesAnswer={flower.Challenges}
                 peopleQuestion={flower.PeopleQuestion}
                 peopleAnswer={flower.People}
                 principleQuestion={flower.PrincipleQuestion}
                 principleAnswer={flower.Principles}
                 powersQuestion={flower.PowerQuestion}
                 powerAnswer={flower.Powers}
-                challengesQuestion={flower.ChallengesQuestion}
-                challengesAnswer={flower.Challenges}
+                aspirationsQuestion={flower.AspirationQuestion}
+                aspirationsAnswer={flower.Aspirations}
               />
             </div>
           );
