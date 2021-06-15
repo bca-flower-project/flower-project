@@ -18,13 +18,12 @@ export default function Login(props) {
       setPassVal(evt.target.value);
     }
   }
-  console.log(props);
   return (
     <div className="loginWrapper">
     <div className="login">
-    
+
       <h1>Please sign in!</h1>
-    
+
       {/* This is creating the login form  */}
       <Card>
         <Card.Body>

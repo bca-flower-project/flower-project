@@ -13,11 +13,7 @@ import DarkModeFooter from "./DarkModeFooter";
 export default function PastFlower(props) {
   const [previousFlower, setPreviousFlower] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  console.log(props.user);
-
   async function pastFlowers() {
-    console.log(props.user.uid);
     const ref = database
       .collection("user")
       .doc(props.user.uid)
@@ -27,7 +23,6 @@ export default function PastFlower(props) {
 
     await ref.get().then((item) => {
       const items = item.docs.map((doc) => doc.data());
-      console.log(item.docs);
       setPreviousFlower(items);
       setLoading(false);
     });
@@ -38,11 +33,10 @@ export default function PastFlower(props) {
   if (loading) {
     return <h1>Loading....</h1>;
   }
-  console.log(previousFlower);
 
   return (
     <div className="gardenWrapper">
-           {props.theme === "dark" ? <DarkModeNav /> : <Nav />} 
+           {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
             <div className="gardenContents">
       <br></br>
       <br></br>

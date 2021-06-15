@@ -111,13 +111,11 @@ function PetalModal(props) {
       return <input type="submit" value="Submit Flower" />;
     }
   }
-  
 
   function handleNextQuestion(evt) {
     // let petalArray = petal
     setSaveChange(evt.target.value);
     setSelected(evt.target.value);
-    // console.log(questions[chosen].questionOptions[selectedQuestion])
 
     let nextQuestion = chosen + 1;
     //if the question # is bigger than the length of the array, it stops bc petals are complete
@@ -130,7 +128,6 @@ function PetalModal(props) {
     let questArr = selectedQuestion;
 
     questArr.push(selected);
-    console.log(questArr);
     setSelectedQuestion(questArr);
   }
 
@@ -140,7 +137,6 @@ function PetalModal(props) {
   const setModalIsOpenToFalse = () => {
     setModalIsOpen(false);
   };
-  console.log(questions[chosen]);
 
   function handleChange(evt) {
     let target = evt.target;
@@ -153,13 +149,7 @@ function PetalModal(props) {
     setChosen(0);
     addFlower(userFlower);
     addGlobalFlower(userFlower);
-    // addFlowerQuestions(selectedQuestion);
-    console.log(selectedQuestion);
     setModalIsOpen(false);
-
-    // let flowerQuestion = questions.map((questionOptions, index) => {
-    //   return { selectedQuestion };
-    // });
   }
   const flowerQuestion = questions.map((questionOptions, index) => {
     return { selectedQuestion };
@@ -168,8 +158,7 @@ function PetalModal(props) {
   // when option is selected save it in selected state
   function handleChange(evt) {
     let target = evt.target;
-    console.log(target.value);
-    console.log(selected);
+
     setSelected(target.value);
 
     if (chosen === 0) {
@@ -187,10 +176,7 @@ function PetalModal(props) {
     }
   }
 
-
   function handleUserInput(evt) {
-    console.log(chosen);
-    console.log(userInput);
     if (chosen === 0) {
       return (
         <textarea
@@ -235,12 +221,9 @@ function PetalModal(props) {
       );
     }
   }
-  //
-  //fetch
-  // save your response to state, console.log state
 
-  //use this array, set as intermediate variable, push to it and then set it in state again to save all of it
   const [petal, setPetal] = useState([]);
+
   //use state for questions for each petal
   useEffect(() => {
     if (petal === "peaks") {
@@ -297,32 +280,28 @@ function PetalModal(props) {
     Powers: powers,
     Challenges: challenges,
   };
-  
+
   async function addFlower(data) {
     let collection = await database
       .collection("user")
       .doc(props.user.uid)
       .collection("flower");
-    
-    console.log(data);
+
     return await collection.add(data);
   }
 
   async function addGlobalFlower(data) {
     let collection = await database.collection("Global");
-    
 
     return await collection.add(data);
   }
 
-
-  
   return (
     <div>
       <div className="createflowerwrapper">
-      <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
-        <CreateFlower width="45vw" height="auto" />
-      </a>
+        <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
+          <CreateFlower width="45vw" height="auto" />
+        </a>
       </div>
       <Modal
         id="modalWindow"
@@ -362,7 +341,13 @@ function PetalModal(props) {
               {showSubmit()}
             </form>
             <br></br>
-            <button type="submit" className="button" onClick={handleNextQuestion}>Next Petal</button>
+            <button
+              type="submit"
+              className="button"
+              onClick={handleNextQuestion}
+            >
+              Next Petal
+            </button>
             <HuePicker
               id={`hue-${chosen}`}
               className="hue"
@@ -389,6 +374,6 @@ function PetalModal(props) {
       </Modal>
     </div>
   );
-};
+}
 
 export default PetalModal;

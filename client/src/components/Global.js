@@ -15,14 +15,13 @@ export default function Global(props) {
 
 
   async function flowerGlobe() {
-    
+
     const ref = database.collection("Global");
 
     setLoading(true);
 
     await ref.get().then((item) => {
       const items = item.docs.map((doc) => doc.data());
-      console.log(item.docs);
       setGlobalFlower(items);
       setLoading(false);
     });
@@ -33,7 +32,6 @@ export default function Global(props) {
   if (loading) {
     return <h1>Loading....</h1>;
   }
-  console.log(GlobalFlower);
 
   return (
     <div className="globalWrapper">
@@ -54,7 +52,7 @@ export default function Global(props) {
           </div>
         );
       })}
-       
+
       </div>
     </div>
   );
