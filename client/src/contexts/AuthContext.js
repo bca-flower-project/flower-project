@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 export const AuthContext = createContext({});
 const {  googleProvider, database } = fire;
 
-
 const AuthProvider = ({ children }) => {
   const auth = fire.auth();
   const history = useHistory();
@@ -26,7 +25,8 @@ const AuthProvider = ({ children }) => {
 
         let userObj = {
           name: user.displayName,
-          ...user
+          email: user.email,
+          uid: user.uid,
         };
 
         async function addUser(data) {
@@ -37,7 +37,6 @@ const AuthProvider = ({ children }) => {
           return await collection.add(data);
         }
         await addUser(userObj);
-
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -47,10 +46,11 @@ const AuthProvider = ({ children }) => {
         console.log({ errorCode, errorMessage, email, credential, error });
       });
   };
+  const setCurrentUser = (userAuth) => {setState({ ...state, currentUser: userAuth })};
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
-      setState({ ...state, currentUser: userAuth });
+      setCurrentUser(userAuth)
     });
     return () => unsubscribe();
   }, [auth]);

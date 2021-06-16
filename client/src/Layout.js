@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import { Navbar, Nav } from "react-bootstrap";
-
+import { ThemeContext } from 'styled-components';
+import SiteNav from './components/SiteNav'
 const Layout = ({ children }) => {
   const { currentUser, login, logout } = useContext(AuthContext);
-  console.log({ currentUser, login, logout });
+  const themeContext = useContext(ThemeContext)
   return (
     <div className="App">
       <Navbar bg="dark">
@@ -16,6 +17,8 @@ const Layout = ({ children }) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      {currentUser && <div><SiteNav /></div>}
+      <pre>{JSON.stringify(themeContext)}</pre>
       {children}
     </div>
   );
