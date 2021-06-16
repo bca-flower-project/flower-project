@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
       setCurrentUser(userAuth)
     });
     return () => unsubscribe();
-  }, [auth]);
+  }, [auth, setCurrentUser]);
 
   return (
     <AuthContext.Provider value={{ ...state, login, logout }}>

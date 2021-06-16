@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { AppThemeContext } from "../contexts/AppThemeContext";
 import blackflower from "./icons/black-flower.png";
 import blackglobe from "./icons/black-globe.png";
 import blackspiral from "./icons/spiral.png";
@@ -8,11 +8,14 @@ import whiteFlower from "./icons/whiteFlower.png";
 import whiteGlobe from "./icons/whiteGlobe.png";
 import whiteSpiral from "./icons/whiteSpiral.png";
 
-const SiteNav = ({ theme = "light" }) => {
+const SiteNav = () => {
+  const { theme } = useContext(AppThemeContext);
+
   const images = {
     dark: { spiral: whiteSpiral, globe: whiteGlobe, flower: whiteFlower },
     light: { spiral: blackspiral, globe: blackglobe, flower: blackflower },
   };
+
   const { spiral, globe, flower } = images[theme];
 
   return (

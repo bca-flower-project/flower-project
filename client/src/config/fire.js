@@ -12,7 +12,9 @@ const credentials = {
   appId: "1:116787099467:web:fa9197347738dbf39b9ace",
   measurementId: "G-DS4Q87HB28",
 };
+
 const firebaseApp = firebase.initializeApp(credentials);
+
 const auth = firebase.auth;
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 const database = firebaseApp.firestore();

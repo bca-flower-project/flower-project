@@ -18,7 +18,6 @@ const Layout = ({ children }) => {
         </Navbar.Collapse>
       </Navbar>
       {currentUser && <div><SiteNav /></div>}
-      <pre>{JSON.stringify(themeContext)}</pre>
       {children}
     </div>
   );
