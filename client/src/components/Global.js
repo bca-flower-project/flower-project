@@ -5,8 +5,6 @@ import { database } from "./fire";
 import { useState, useEffect } from "react";
 import BlankFlower from "./BlankFlower";
 import "firebase/firestore";
-import Footer from "./Footer";
-import DarkModeFooter from "./DarkModeFooter";
 
 export default function Global(props) {
   const [GlobalFlower, setGlobalFlower] = useState([]);
@@ -24,7 +22,7 @@ export default function Global(props) {
     });
   }
 
-  useEffect(async () => {
+  useEffect(() => {
     flowerGlobe();
   }, []);
 

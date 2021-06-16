@@ -6,8 +6,6 @@ import { database } from "./fire";
 import "firebase/firestore";
 import BlankFlower from "./BlankFlower";
 import QuestionsAnswers from "./QuestionsAnswers";
-import Footer from "./Footer";
-import DarkModeFooter from "./DarkModeFooter";
 
 export default function PastFlower(props) {
   const [previousFlower, setPreviousFlower] = useState([]);

@@ -7,7 +7,6 @@ import spiral from "./icons/spiral.png";
 import whiteFlower from "./icons/whiteFlower.png";
 import whiteGlobe from "./icons/ok.globe.white.png";
 import whiteSpiral from "./icons/whiteSpiral.png";
-import Flower from "./Flower";
 
 export default function LandingPage(props) {
   return (

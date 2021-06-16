@@ -16,7 +16,7 @@ export default function Nav() {
       <Link to={"/Global"}>
         <img src={blackglobe} alt="globe, nav to global" id="navglobe" />
       </Link>
-      <Link to={"/LandingPage"}>Landing Page</Link>
+      {/*<Link to={"/LandingPage"}>Landing Page</Link>*/}
 
       {/* <Link to={"/Signup"}>Signup</Link> */}
       {/* <Link to={"/Login"}>Login</Link>

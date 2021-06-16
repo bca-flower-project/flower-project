@@ -6,11 +6,10 @@ export default function Footer() {
     <div style={{ alignItems: "center" }}>
       <a href="https://www.ok.community/the-flower-project">
         <img
-          id="footerLogo"
           src={blackLogo}
+          id="footerLogo"
           style={{ width: "2vw" }}
           alt="okLogo"
-          id="okLogo"
         />
       </a>
       <a href="https://www.ok.community/the-flower-project">

@@ -1,7 +1,6 @@
-import { useState, useEffect, Redirect } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { Create } from "react";
-import { HuePicker, CirclePicker } from "react-color";
+import { HuePicker } from "react-color";
 import Flower from "./Flower.js";
 import { database } from "./fire";
 import CreateFlower from "./CreateFlower.js";
@@ -65,31 +64,24 @@ function PetalModal(props) {
     },
   ];
 
-  const [chosen, setChosen] = useState(0); // what is chosen state
-  const [selected, setSelected] = useState(0); // what is selected state
-  //const [question, setQuestion] = useState("");
-  //which petal they select determines which questions show
+  const [chosen, setChosen] = useState(0);
+  const [selected, setSelected] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [question, setQuestion] = useState([]);
-  const [chosenColor, setChosenColor] = useState([]);
-  //state for the answers to each question
-  const [userInput, setUserInput] = useState("");
   const [peaks, setPeaks] = useState("");
   const [aspirations, setAspirations] = useState("");
   const [people, setPeople] = useState("");
   const [principles, setPrinciples] = useState("");
   const [powers, setPowers] = useState("");
   const [challenges, setChallenges] = useState("");
-  const [saveChange, setSaveChange] = useState();
-  //state for the questions for each petal
+
   const [peaksQuestion, setPeaksQuestion] = useState("");
   const [aspirationsQuestion, setAspirationsQuestion] = useState("");
   const [peopleQuestion, setPeopleQuestion] = useState("");
   const [principlesQuestion, setPrinciplesQuestion] = useState("");
   const [powersQuestion, setPowersQuestion] = useState("");
   const [challengesQuestion, setChallengesQuestion] = useState("");
-  //state color for petals
   const [peaksPetal, setPeaksPetal] = useState("white");
+
   const [aspirationsPetal, setAspirationsPetal] = useState("white");
   const [peoplePetal, setPeoplePetal] = useState("white");
   const [principlesPetal, setPrinciplesPetal] = useState("white");
@@ -112,8 +104,6 @@ function PetalModal(props) {
   }
 
   function handleNextQuestion(evt) {
-    // let petalArray = petal
-    setSaveChange(evt.target.value);
     setSelected(evt.target.value);
 
     let nextQuestion = chosen + 1;
@@ -150,9 +140,9 @@ function PetalModal(props) {
     addGlobalFlower(userFlower);
     setModalIsOpen(false);
   }
-  const flowerQuestion = questions.map((questionOptions, index) => {
-    return { selectedQuestion };
-  });
+  // const flowerQuestion = questions.map((questionOptions, index) => {
+  //   return { selectedQuestion };
+  // });
 
   // when option is selected save it in selected state
   function handleChange(evt) {
@@ -249,15 +239,6 @@ function PetalModal(props) {
       setChallengesPetal(color.hex);
     }
   };
-
-  //setting state to move through past flowers
-  const [chosenPastFlower, setChosenPastFlower] = useState(0);
-  function handlePastFlower() {
-    let nextPastFlower = chosenPastFlower + 1;
-    if (nextPastFlower < userFlower.length) {
-      setChosenPastFlower(nextPastFlower);
-    }
-  }
 
   let userFlower = {
     PeakQuestion: peaksQuestion,

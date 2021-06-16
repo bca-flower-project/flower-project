@@ -6,7 +6,6 @@ export default function DarkModeFooter() {
   return (
     <a href="https://www.ok.community/the-flower-project">
       <img
-        id="footerLogo"
         src={whiteLogo}
         style={{ width: "3vw" }}
         alt="okLogo"
