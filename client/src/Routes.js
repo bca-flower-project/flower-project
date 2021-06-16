@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import { Route } from "react-router-dom";
 
+import Login from './components/Login'
+import PetalModal from './components/PetalModal'
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -17,7 +19,7 @@ const Routes = () => {
       key: "create-flowers",
       path: "/create",
       render: () => {
-        return <>Create</>;
+        return <PetalModal />;
       },
     },
     {
@@ -45,7 +47,7 @@ const Routes = () => {
         <Route
           path="*"
           render={() => {
-            return <>you are logged out</>;
+            return <Login />;
           }}
         />
       )}

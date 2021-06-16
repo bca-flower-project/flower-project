@@ -1,30 +1,29 @@
-import React from "react";
-import { Button, Card } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Container, Button, Card } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
-export default function Login(props) {
+export default function Login() {
+  const { login } = useContext(AuthContext);
+
   return (
-    <div className="loginWrapper">
-      <div className="login">
-        <h1>Please sign in!</h1>
-        {/* This is creating the login form  */}
-        <Card>
-          <Card.Body>
-            <h2 text-center mb-4 style={{ color: "black" }}>
-              Log In
-            </h2>
-            <Button
-              onClick={props.googleLogin}
-              className="w-100"
-              style={{ background: "black" }}
-              type="submit"
-            >
-              Google Login
-            </Button>
-            {props.user && <Redirect to="/LandingPage" />}
-          </Card.Body>
-        </Card>
-      </div>
-    </div>
+    <Container className="loginWrapper">
+      <h1>Please sign in!</h1>
+      <Card>
+        <Card.Body>
+          <h2 text-center mb-4 style={{ color: "black" }}>
+            Log In
+          </h2>
+          <Button
+            onClick={login}
+            className="w-100"
+            style={{ background: "black" }}
+            type="submit"
+          >
+            Google Login
+          </Button>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 }

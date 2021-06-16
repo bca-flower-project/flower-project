@@ -7,7 +7,6 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box
     }
 
-
 body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
@@ -16,4 +15,15 @@ body {
 button {
     color: ${({ theme }) => theme.button};
     background-color: ${({ theme }) => theme.color};
+}
+
+#navbar{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+#navbar img {
+  height: 150px;
 }`;

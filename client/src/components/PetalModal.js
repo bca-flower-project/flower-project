@@ -2,15 +2,16 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { HuePicker } from "react-color";
 import Flower from "./Flower.js";
-import { database } from "./fire";
+import fire from "../config/fire";
 import CreateFlower from "./CreateFlower.js";
+
+const { database } = fire;
 
 function PetalModal(props) {
   const questions = [
     {
       petal: "Peaks",
       questionOptions: [
-        //array of possible questions
         "Please select a question below",
         "What have been the peak moments of your life?",
         "What are your biggest accomplishments?",
@@ -277,82 +278,92 @@ function PetalModal(props) {
   }
 
   return (
-    <div>
-      <div className="createflowerwrapper">
-        <a onClick={setModalIsOpenToTrue} color="black" textDecoration="none">
-          <CreateFlower width="45vw" height="auto" />
-        </a>
-      </div>
-      <Modal
-        id="modalWindow"
-        isOpen={modalIsOpen}
-        style={{
-          content: {
-            background: props.theme.body,
-            width: "70vw",
-            height: "70vh",
-            left: "14vw",
-            right: "14vw",
-            top: "17vh",
-          },
-        }}
-      >
-        <button className="button" onClick={setModalIsOpenToFalse}>
-          x
-        </button>
-        <div id="modalwindow">
-          <div className="question-text">
-            <h1>{`${questions[chosen].petal}`}</h1>
-
-            <form onSubmit={submitForm}>
-              <select
-                className="button"
-                name="question-selection"
-                value={selected}
-                onChange={handleChange}
-              >
-                {questions[chosen].questionOptions.map((question, index) => {
-                  return <option value={question}>{question}</option>;
-                })}
-              </select>
-              <br></br>
-              {handleUserInput()}
-              <br></br>
-              {showSubmit()}
-            </form>
-            <br></br>
-            <HuePicker
-              id={`hue-${chosen}`}
-              className="hue"
-              height="18px"
-              width="300px"
-              onChange={handleColorChange}
-              direction="horizontal"
-              pointer="none"
-            />
-            <br></br>
-            <button
-              type="submit"
-              className="button"
-              onClick={handleNextQuestion}
+    <div className="createWrapper">
+      <div className="createContents">
+        <div>
+          <div className="createflowerwrapper">
+            <a
+              onClick={setModalIsOpenToTrue}
+              color="black"
+              textDecoration="none"
             >
-              Next Petal
+              <CreateFlower width="45vw" height="auto" />
+            </a>
+          </div>
+          <Modal
+            id="modalWindow"
+            isOpen={modalIsOpen}
+            style={{
+              content: {
+                // background: props.theme.body,
+                width: "70vw",
+                height: "70vh",
+                left: "14vw",
+                right: "14vw",
+                top: "17vh",
+              },
+            }}
+          >
+            <button className="button" onClick={setModalIsOpenToFalse}>
+              x
             </button>
-          </div>
-          <div id="flower">
-            <Flower
-              colorOne={peaksPetal}
-              colorTwo={aspirationsPetal}
-              colorThree={peoplePetal}
-              colorFour={principlesPetal}
-              colorFive={powersPetal}
-              colorSix={challengesPetal}
-              height="50vh"
-              width="auto"
-            />
-          </div>
+            <div id="modalwindow">
+              <div className="question-text">
+                <h1>{`${questions[chosen].petal}`}</h1>
+
+                <form onSubmit={submitForm}>
+                  <select
+                    className="button"
+                    name="question-selection"
+                    value={selected}
+                    onChange={handleChange}
+                  >
+                    {questions[chosen].questionOptions.map(
+                      (question, index) => {
+                        return <option value={question}>{question}</option>;
+                      }
+                    )}
+                  </select>
+                  <br></br>
+                  {handleUserInput()}
+                  <br></br>
+                  {showSubmit()}
+                </form>
+                <br></br>
+                <HuePicker
+                  id={`hue-${chosen}`}
+                  className="hue"
+                  height="18px"
+                  width="300px"
+                  onChange={handleColorChange}
+                  direction="horizontal"
+                  pointer="none"
+                />
+                <br></br>
+                <button
+                  type="submit"
+                  className="button"
+                  onClick={handleNextQuestion}
+                >
+                  Next Petal
+                </button>
+              </div>
+              <div id="flower">
+                <Flower
+                  colorOne={peaksPetal}
+                  colorTwo={aspirationsPetal}
+                  colorThree={peoplePetal}
+                  colorFour={principlesPetal}
+                  colorFive={powersPetal}
+                  colorSix={challengesPetal}
+                  height="50vh"
+                  width="auto"
+                />
+              </div>
+            </div>
+          </Modal>
         </div>
-      </Modal>
+      </div>
     </div>
   );
 }
