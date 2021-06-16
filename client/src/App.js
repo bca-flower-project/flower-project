@@ -82,7 +82,8 @@ function App(props) {
         <Route
           exact
           path="/Create"
-          render={(props) => {
+          render={(props) =import React from "react";
+> {
             return (
               <>
                 <Create theme={theme} user={user} />
