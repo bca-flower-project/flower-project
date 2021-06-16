@@ -5,6 +5,7 @@ export const lightTheme = {
     button: "white",
     color: "black"
 }
+
 export const darkTheme = {
     body: 'black' ,
     text: '#FAFAFA',

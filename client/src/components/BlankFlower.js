@@ -1,11 +1,21 @@
 import React from "react";
 
 function BlankFlower(props) {
+  const {
+    width,
+    height,
+    colorOne,
+    colorTwo,
+    colorThree,
+    colorFour,
+    colorFive,
+    colorSix,
+  } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={props.width}
-      height={props.height}
+      width={width}
+      height={height}
       version="1.1"
       viewBox="20 80 170 160"
     >
@@ -27,8 +37,8 @@ function BlankFlower(props) {
             ry="26.236"
           ></ellipse>
           <path
-          id="petal-one"
-          fill={props.colorOne}
+            id="petal-one"
+            fill={colorOne}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -36,8 +46,8 @@ function BlankFlower(props) {
             d="M126.566 90.797c-18.293-12.082-46.995-3.813-45.627 20.02 10.259 6.089 16.923 12.223 24.714 21.08 12.048.238 17.433 2.784 24.368 10.673 4.91-17.95 11.343-39.926-3.455-51.773z"
           ></path>
           <path
-          id="petal-two"
-          fill={props.colorTwo}
+            id="petal-two"
+            fill={colorTwo}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -45,8 +55,8 @@ function BlankFlower(props) {
             d="M176.07 140.131c1.317-21.883-20.194-42.605-40.151-29.503-.143 11.928-2.124 20.766-5.898 31.942 5.818 10.553 6.305 16.49 2.94 26.44 18.002-4.722 40.249-10.14 43.11-28.879z"
           ></path>
           <path
-          id="petal-three"
-          fill={props.colorThree}
+            id="petal-three"
+            fill={colorThree}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -54,8 +64,8 @@ function BlankFlower(props) {
             d="M158.098 207.671c19.61-9.801 26.8-38.792 5.475-49.524-10.402 5.84-19.046 8.544-30.612 10.863-6.23 10.315-11.127 13.705-21.427 15.767 13.09 13.228 28.905 29.786 46.564 22.894z"
           ></path>
           <path
-          id="petal-four"
-          fill={props.colorFour}
+            id="petal-four"
+            fill={colorFour}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -63,8 +73,8 @@ function BlankFlower(props) {
             d="M90.62 225.876c18.294 12.082 46.996 3.813 45.627-20.02-10.258-6.089-16.922-12.223-24.713-21.08-12.048-.238-17.433-2.784-24.368-10.673-4.911 17.95-11.343 39.926 3.455 51.773z"
           ></path>
           <path
-          id="petal-five"
-          fill={props.colorFive}
+            id="petal-five"
+            fill={colorFive}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -72,8 +82,8 @@ function BlankFlower(props) {
             d="M41.116 176.542c-1.317 21.883 20.195 42.605 40.152 29.503.143-11.928 2.124-20.766 5.898-31.942-5.818-10.553-6.305-16.49-2.94-26.44-18.002 4.722-40.249 10.14-43.11 28.879z"
           ></path>
           <path
-          id="petal-six"
-          fill={props.colorSix}
+            id="petal-six"
+            fill={colorSix}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -88,4 +98,4 @@ function BlankFlower(props) {
 
 export default BlankFlower;
 
-// pass array through to petals - in petal SVG, we can escape to javascript (props.color[0], props.color[1],etc)
+// pass array through to petals - in petal SVG, we can escape to javascript (color[0], color[1],etc)

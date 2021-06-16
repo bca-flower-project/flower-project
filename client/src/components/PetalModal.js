@@ -2,9 +2,7 @@ import { useState, useEffect, Redirect } from "react";
 import Modal from "react-modal";
 import { Create } from "react";
 import { HuePicker, CirclePicker } from "react-color";
-import App from "../App";
 import Flower from "./Flower.js";
-import "../App.css";
 import { database } from "./fire";
 import CreateFlower from "./CreateFlower.js";
 

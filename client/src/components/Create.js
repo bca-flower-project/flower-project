@@ -31,8 +31,6 @@ export default function Create(props) {
         <ThemeProvider theme={props.theme === "light" ? lightTheme : darkTheme}>
           <>
             <GlobalStyles />
-
-            {/* <footer></footer> */}
           </>
         </ThemeProvider>
         {/* {props.theme === "dark" ? <DarkModeFooter /> : <Footer />} */}

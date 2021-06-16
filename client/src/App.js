@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Switch, Route, Redirect, useHistory} from "react-router-dom";
+import { Link, Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { render } from "react-dom";
 import { ThemeProvider } from "styled-components";
@@ -8,7 +8,7 @@ import "firebase/auth";
 
 //import components
 import Home from "./components/Home";
-import NotFound from './components/NotFound';
+import NotFound from "./components/NotFound";
 import Create from "./components/Create";
 import Global from "./components/Global";
 import Login from "./components/Login";
@@ -98,57 +98,61 @@ function App(props) {
   return (
     <div className="App">
       <Switch>
-          <Route
-            exact path={"/Global"}
-            render={(props) => {
-              return <Global user={user} theme={theme}/>;
-            }}
-          />
-          <Route
-            exact
-            path={"/Create"}
-            render={(props) => {
-              return (
-                <>
-                  <Create theme={theme} user={user} />
-                </>
-              );
-            }}
-          />
+        <Route
+          exact
+          path="/Global"
+          render={(props) => {
+            return <Global user={user} theme={theme} />;
+          }}
+        />
+        <Route
+          exact
+          path="/Create"
+          render={(props) => {
+            return (
+              <>
+                <Create theme={theme} user={user} />
+              </>
+            );
+          }}
+        />
 
-          <Route
-            exact
-            path="/"
-            render={(props) => {
-              return <Login user={user} googleLogin={googleLogin} />;
-            }}
-          />
-          <Route
-           exact path={"/PastFlowers"}
-            render={(props) => {
-              return <PastFlowers user={user} theme={theme}/>;
-            }}
-          />
-          <Route
-           exact path={"/LandingPage"}
-            render={(props) => {
-              return <LandingPage user={user} theme={theme}/>;
-            }}
-          />
-
+        <Route
+          exact
+          path="/"
+          render={(props) => {
+            return <Login user={user} googleLogin={googleLogin} />;
+          }}
+        />
+        <Route
+          exact
+          path="/PastFlowers"
+          render={(props) => {
+            return <PastFlowers user={user} theme={theme} />;
+          }}
+        />
+        <Route
+          exact
+          path="/LandingPage"
+          render={(props) => {
+            return <LandingPage user={user} theme={theme} />;
+          }}
+        />
       </Switch>
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <>
-        <GlobalStyles />
+        <>
+          <GlobalStyles />
+          <div
+            id="footer"
+            style={{ paddingBottom: "10vh", paddingLeft: "5vw" }}
+          >
+            <button onClick={toggleTheme}>Toggle Theme</button>
+            {theme === "dark" ? <DarkModeFooter /> : <Footer />}
+          </div>
+        </>
+      </ThemeProvider>
+    </div>
+  );
+}
 
-       <div id="footer" style={{paddingBottom: "10vh", paddingLeft: "5vw" }}>
-          <button onClick={toggleTheme}>Toggle Theme</button>
-          {theme === "dark" ? <DarkModeFooter /> : <Footer />}
-        </div>
-      </>
-    </ThemeProvider>
-  </div>
-
-  )}
-
-  export default App;
+export default App;

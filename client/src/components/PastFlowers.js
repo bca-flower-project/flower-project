@@ -9,15 +9,11 @@ import QuestionsAnswers from "./QuestionsAnswers";
 import Footer from "./Footer";
 import DarkModeFooter from "./DarkModeFooter";
 
-
 export default function PastFlower(props) {
   const [previousFlower, setPreviousFlower] = useState([]);
   const [loading, setLoading] = useState(false);
-  async function pastFlowers() {
-    const ref = database
-      .collection("user")
-      .doc(props.user.uid)
-      .collection("flower");
+  async function pastFlowers(user) {
+    const ref = database.collection("user").doc(user.uid).collection("flower");
 
     setLoading(true);
 
@@ -28,19 +24,21 @@ export default function PastFlower(props) {
     });
   }
   useEffect(async () => {
-    pastFlowers();
-  }, []);
+    if (props.user) {
+      pastFlowers(props.user);
+    }
+  }, [props.user]);
   if (loading) {
     return <h1>Loading....</h1>;
   }
 
   return (
     <div className="gardenWrapper">
-           {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
-            <div className="gardenContents">
-      <br></br>
-      <br></br>
-      <br></br>
+      {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
+      <div className="gardenContents">
+        <br></br>
+        <br></br>
+        <br></br>
         <h1>Your growing garden</h1>
         {previousFlower.map((flower, index) => {
           return (

@@ -8,14 +8,11 @@ import "firebase/firestore";
 import Footer from "./Footer";
 import DarkModeFooter from "./DarkModeFooter";
 
-
 export default function Global(props) {
   const [GlobalFlower, setGlobalFlower] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
   async function flowerGlobe() {
-
     const ref = database.collection("Global");
 
     setLoading(true);
@@ -26,9 +23,11 @@ export default function Global(props) {
       setLoading(false);
     });
   }
+
   useEffect(async () => {
     flowerGlobe();
   }, []);
+
   if (loading) {
     return <h1>Loading....</h1>;
   }
@@ -37,22 +36,21 @@ export default function Global(props) {
     <div className="globalWrapper">
       {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <div className="globalContents">
-      {GlobalFlower.map((flower, index) => {
-        return (
-          <div>
-            <BlankFlower
-              colorOne={flower.PeaksColor}
-              colorTwo={flower.AspirationsColor}
-              colorThree={flower.PeopleColor}
-              colorFour={flower.PrinciplesColor}
-              colorFive={flower.PowerColor}
-              colorSix={flower.ChallengesColor}
-              width="10vw"
-            />
-          </div>
-        );
-      })}
-
+        {GlobalFlower.map((flower, index) => {
+          return (
+            <div>
+              <BlankFlower
+                colorOne={flower.PeaksColor}
+                colorTwo={flower.AspirationsColor}
+                colorThree={flower.PeopleColor}
+                colorFour={flower.PrinciplesColor}
+                colorFive={flower.PowerColor}
+                colorSix={flower.ChallengesColor}
+                width="10vw"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

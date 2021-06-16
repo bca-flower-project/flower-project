@@ -40,7 +40,7 @@ h1 {
 }
 
 /* #flower-outer {
-  position: relative; 
+  position: relative;
 } */
 
 /* #flower-outline {
@@ -58,16 +58,16 @@ left: 33%;
 #navbar {
   display: flex;
   flex-direction: row;
-  width: 100vw; 
+  width: 100vw;
   justify-content: space-between;
   position: absolute;
   top: 0;
-  
+
 }
 #navbarlight {
   display: flex;
   flex-direction: row;
-  width: 100vw; 
+  width: 100vw;
   justify-content: space-between;
   position: absolute;
   top: 0;
@@ -79,7 +79,7 @@ left: 33%;
   height: 13vh;
 }
 
-/* 
+/*
 --------------modal window css---------- */
 
 #modalwindow {
@@ -91,7 +91,6 @@ left: 33%;
   margin-top: 2vh;
   width: 23vw;
   height: 17vh;
-  /* margin-bottom: 0  */
 }
 
 /* .hue-hover-zoom-point-zoom {
@@ -209,7 +208,7 @@ a {
   /* width: 14vw; */
 }
 
-button{ 
+button{
  left: 25vw;
 }
 
@@ -218,10 +217,10 @@ button{
   /* height:100vh; */
 }
 
-/* 
+/*
 FONT SELECTIONS
 font-family: 'Karla', sans-serif; ----- BODY
-font-family: 'Poppins', sans-serif; -----HEADER */ 
+font-family: 'Poppins', sans-serif; -----HEADER */
 
 /* -----landing page-----  */
 
@@ -232,14 +231,14 @@ font-family: 'Poppins', sans-serif; -----HEADER */
   padding-top: 25vh;
   display: flex;
   flex-direction: row;
-  width: 100vw; 
+  width: 100vw;
   justify-content: space-between;
 }
 .DarkLanding{
   padding-top: 25vh;
   display: flex;
   flex-direction: row;
-  width: 100vw; 
+  width: 100vw;
   justify-content: space-between;
 }
 .landingText{
