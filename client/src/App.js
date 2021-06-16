@@ -116,14 +116,6 @@ function App(props) {
             );
           }}
         />
-
-        <Route
-          exact
-          path="/"
-          render={(props) => {
-            return <Login user={user} googleLogin={googleLogin} />;
-          }}
-        />
         <Route
           exact
           path="/PastFlowers"
@@ -138,18 +130,20 @@ function App(props) {
             return <LandingPage user={user} theme={theme} />;
           }}
         />
+        <Route
+          exact
+          path="/"
+          render={(props) => {
+            return <Login user={user} googleLogin={googleLogin} />;
+          }}
+        />
       </Switch>
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-        <>
-          <GlobalStyles />
-          <div
-            id="footer"
-            style={{ paddingBottom: "10vh", paddingLeft: "5vw" }}
-          >
-            <button onClick={toggleTheme}>Toggle Theme</button>
-            {theme === "dark" ? <DarkModeFooter /> : <Footer />}
-          </div>
-        </>
+        <GlobalStyles />
+        <div id="footer" style={{ paddingBottom: "10vh", paddingLeft: "5vw" }}>
+          <button onClick={toggleTheme}>Toggle Theme</button>
+          {theme === "dark" ? <DarkModeFooter /> : <Footer />}
+        </div>
       </ThemeProvider>
     </div>
   );

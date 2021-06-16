@@ -1,11 +1,21 @@
 import React from "react";
 
 function Flower(props) {
+  const {
+    width,
+    height,
+    colorOne,
+    colorTwo,
+    colorThree,
+    colorFour,
+    colorFive,
+    colorSix,
+  } = props;
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={props.width}
-      height={props.height}
+      width={width}
+      height={height}
       version="1.1"
       viewBox="20 80 170 160"
     >
@@ -28,7 +38,7 @@ function Flower(props) {
           ></ellipse>
           <path
             id="petal-one"
-            fill={props.colorOne}
+            fill={colorOne}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -37,7 +47,7 @@ function Flower(props) {
           ></path>
           <path
             id="petal-two"
-            fill={props.colorTwo}
+            fill={colorTwo}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -46,7 +56,7 @@ function Flower(props) {
           ></path>
           <path
             id="petal-three"
-            fill={props.colorThree}
+            fill={colorThree}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -55,7 +65,7 @@ function Flower(props) {
           ></path>
           <path
             id="petal-four"
-            fill={props.colorFour}
+            fill={colorFour}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -64,7 +74,7 @@ function Flower(props) {
           ></path>
           <path
             id="petal-five"
-            fill={props.colorFive}
+            fill={colorFive}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"
@@ -73,7 +83,7 @@ function Flower(props) {
           ></path>
           <path
             id="petal-six"
-            fill={props.colorSix}
+            fill={colorSix}
             stroke="#000"
             strokeLinecap="butt"
             strokeLinejoin="miter"

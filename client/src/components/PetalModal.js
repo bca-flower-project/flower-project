@@ -67,7 +67,8 @@ function PetalModal(props) {
 
   const [chosen, setChosen] = useState(0); // what is chosen state
   const [selected, setSelected] = useState(0); // what is selected state
-  //const [question, setQuestion] = useState(""); //which petal they select determines which questions show
+  //const [question, setQuestion] = useState("");
+  //which petal they select determines which questions show
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [question, setQuestion] = useState([]);
   const [chosenColor, setChosenColor] = useState([]);
@@ -339,13 +340,6 @@ function PetalModal(props) {
               {showSubmit()}
             </form>
             <br></br>
-            <button
-              type="submit"
-              className="button"
-              onClick={handleNextQuestion}
-            >
-              Next Petal
-            </button>
             <HuePicker
               id={`hue-${chosen}`}
               className="hue"
@@ -355,6 +349,14 @@ function PetalModal(props) {
               direction="horizontal"
               pointer="none"
             />
+            <br></br>
+            <button
+              type="submit"
+              className="button"
+              onClick={handleNextQuestion}
+            >
+              Next Petal
+            </button>
           </div>
           <div id="flower">
             <Flower

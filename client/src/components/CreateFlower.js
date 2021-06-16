@@ -631,7 +631,7 @@ function CreateFlower(props) {
       <text
         id="createtext"
         xmlSpace="preserve"
-        style={{ lineHeight: "1.25" }}
+        style={{ lineHeight: "1.25", cursor: "pointer" }}
         x="150.783"
         y="124.468"
         fill="#000"
@@ -639,7 +639,7 @@ function CreateFlower(props) {
         stroke="none"
         strokeWidth="0.755"
         fontFamily="sans-serif"
-        fontSize="30.209"
+        fontSize="26"
         fontStyle="normal"
         fontWeight="normal"
         transform="scale(.9114 1.0972)"
