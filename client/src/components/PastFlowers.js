@@ -1,13 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Nav from "./Nav";
-import DarkModeNav from "./DarkModeNav";
-import { database } from "./fire";
-import "firebase/firestore";
+import fire from "../config/fire";
 import BlankFlower from "./BlankFlower";
 import QuestionsAnswers from "./QuestionsAnswers";
-
-export default function PastFlower(props) {
+const { database } = fire;
+export default function PastFlowers(props) {
   const [previousFlower, setPreviousFlower] = useState([]);
   const [loading, setLoading] = useState(false);
   async function pastFlowers(user) {
@@ -32,7 +29,6 @@ export default function PastFlower(props) {
 
   return (
     <div className="gardenWrapper">
-      {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <div className="gardenContents">
         <br></br>
         <br></br>

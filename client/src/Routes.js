@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 
 import Login from './components/Login'
 import PetalModal from './components/PetalModal'
+import PastFlowers from './components/PastFlowers'
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -26,7 +27,7 @@ const Routes = () => {
       key: "past-flowers",
       path: "/past-flowers",
       render: () => {
-        return <>PastFlowers</>;
+        return <PastFlowers />;
       },
     },
     {
