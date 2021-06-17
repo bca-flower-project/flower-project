@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Container, Button, Card } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function Login() {
@@ -11,7 +10,7 @@ export default function Login() {
       <h1>Please sign in!</h1>
       <Card>
         <Card.Body>
-          <h2 text-center mb-4 style={{ color: "black" }}>
+          <h2 className="text-center mb-4" style={{ color: "black" }}>
             Log In
           </h2>
           <Button

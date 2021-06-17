@@ -3,12 +3,12 @@ import fire from "../config/fire";
 import { useHistory } from "react-router-dom";
 
 export const AuthContext = createContext({});
-const {  googleProvider, database } = fire;
+const { googleProvider, database } = fire;
 
 const AuthProvider = ({ children }) => {
   const auth = fire.auth();
   const history = useHistory();
-  const [state, setState] = useState({ currentUser: auth.currentUser });
+  const [currentUser, setCurrentUser] = useState();
 
   const logout = () => {
     auth.signOut().then((x) => {
@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const login = async () => {
+    console.log("trying to log in");
     auth
       .signInWithPopup(googleProvider)
       .then(async (result) => {
@@ -28,6 +29,7 @@ const AuthProvider = ({ children }) => {
           email: user.email,
           uid: user.uid,
         };
+        console.log({ userObj });
 
         async function addUser(data) {
           let collection = await database
@@ -46,20 +48,19 @@ const AuthProvider = ({ children }) => {
         console.log({ errorCode, errorMessage, email, credential, error });
       });
   };
-  const setCurrentUser = (userAuth) => {setState({ ...state, currentUser: userAuth })};
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
-      setCurrentUser(userAuth)
+      setCurrentUser(userAuth);
     });
     return () => unsubscribe();
-  }, [auth, setCurrentUser]);
+  }, [auth]);
 
   return (
-    <AuthContext.Provider value={{ ...state, login, logout }}>
+    <AuthContext.Provider value={{ currentUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export default AuthProvider
+export default AuthProvider;

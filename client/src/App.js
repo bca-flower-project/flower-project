@@ -4,7 +4,7 @@ import { Switch } from "react-router-dom";
 import AuthProvider from "./contexts/AuthContext";
 import AppThemeProvider from "./contexts/AppThemeContext";
 import Routes from "./Routes";
-import Layout from "./Layout";
+import Layout from "./components/Layout";
 
 const App = () => {
   return (

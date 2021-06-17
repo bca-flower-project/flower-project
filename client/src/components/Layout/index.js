@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-import { AuthContext } from "./contexts/AuthContext";
-import { AppThemeContext } from "./contexts/AppThemeContext";
-
+import { AuthContext } from "../../contexts/AuthContext";
+import { AppThemeContext } from "../../contexts/AppThemeContext";
 import { Navbar, Nav } from "react-bootstrap";
-import SiteNav from "./components/SiteNav";
+
+import SiteNav from "./SiteNav";
+import SiteFooter from './SiteFooter'
+
 import './Layout.scss'
 const Layout = ({ children }) => {
   const { currentUser, login, logout } = useContext(AuthContext);
@@ -28,6 +30,7 @@ const Layout = ({ children }) => {
         </div>
       )}
       {children}
+      <SiteFooter />
     </div>
   );
 };
