@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import Modal from "react-modal";
 import { HuePicker } from "react-color";
+import { AuthContext } from "../../contexts/AuthContext";
+
 import fire from "../../config/fire";
 import CreateFlower from "./CreateFlower.js";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
@@ -68,11 +70,12 @@ const INITIAL_STATE = {
 
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
+  const { currentUser } = useContext(AuthContext);
 
-  const { modalOpen, currentQuestion, currentPetal, petals } = state;
+  const { modalOpen, currentPetal, petals } = state;
 
   const toggleModal = () => {
-    setState({ ...state, modalOpen: !modalOpen });
+    setState({ ...INITIAL_STATE, modalOpen: !modalOpen });
   };
 
   const setPetalValue = (petalIdx, key, value) => {
@@ -88,6 +91,44 @@ const Create = (props) => {
     });
   };
 
+  const getPetalValueByUnknownIndex = (name, key) => {
+    const idx = QUESTIONS.findIndex((q) => {
+      return q.petal === name;
+    });
+    return petals[idx][key];
+  };
+
+  const getPetalValues = (name) => {
+    return {
+      [`${name}Question`]: getPetalValueByUnknownIndex(name, "question"),
+      [`${name}Color`]: getPetalValueByUnknownIndex(name, "color"),
+      [`${name}`]: getPetalValueByUnknownIndex(name, "answer"),
+    };
+  };
+
+  const userFlower = {
+    ...getPetalValues("Peaks"),
+    ...getPetalValues("Aspirations"),
+    ...getPetalValues("People"),
+    ...getPetalValues("Principles"),
+    ...getPetalValues("Powers"),
+    ...getPetalValues("Challenges"),
+  };
+
+  const submitFlower = async () => {
+    const userFlowerCollection = await database
+      .collection("user")
+      .doc(currentUser.uid)
+      .collection("flower");
+
+    await userFlowerCollection.add(userFlower);
+
+    let globalFlowerCollection = await database.collection("Global");
+
+    await globalFlowerCollection.add(userFlower);
+    toggleModal();
+  };
+
   return (
     <>
       <Container>
@@ -95,13 +136,14 @@ const Create = (props) => {
           <CreateFlower onClick={toggleModal} width="45vw" height="auto" />
         </Row>
       </Container>
+
       <Modal
         id="modalWindow"
         isOpen={modalOpen}
         style={{
           content: {
             width: "70vw",
-            height: "70vh",
+            height: "40vh",
             left: "14vw",
             right: "14vw",
             top: "17vh",
@@ -168,21 +210,31 @@ const Create = (props) => {
               />
               <br />
               <Button
+                className="btn-dark"
                 onClick={() => {
                   setState({ ...state, currentPetal: currentPetal - 1 });
                 }}
                 disabled={currentPetal === 0}
-                className="prev-button"
               >
                 &larr; Previous
               </Button>
               <Button
+                className="btn-dark"
                 onClick={() => {
                   setState({ ...state, currentPetal: currentPetal + 1 });
                 }}
                 disabled={currentPetal === QUESTIONS.length - 1}
               >
                 Next &rarr;
+              </Button>
+              <Button
+                className="btn-success"
+                onClick={() => {
+                  submitFlower();
+                }}
+                disabled={Object.values(userFlower).includes(undefined)}
+              >
+                Submit Flower
               </Button>
             </Col>
             <Col>
@@ -201,7 +253,7 @@ const Create = (props) => {
     </>
   );
 };
-//
+
 // function PetalModal(props) {
 //   const questions = [
 //     {
