@@ -1,21 +1,24 @@
 import React from "react";
-import Nav from "./Nav";
-import DarkModeNav from "./DarkModeNav";
-import { database } from "./fire";
+import fire from "../config/fire";
 import { useState, useEffect } from "react";
 import BlankFlower from "./BlankFlower";
-import "firebase/firestore";
+
+const { database } = fire;
 
 export default function Global(props) {
   const [GlobalFlower, setGlobalFlower] = useState([]);
   const [loading, setLoading] = useState(false);
+  console.log('ok')
 
   async function flowerGlobe() {
     const ref = database.collection("Global");
 
     setLoading(true);
+    console.log('ok')
 
     await ref.get().then((item) => {
+      console.log('ok')
+
       const items = item.docs.map((doc) => doc.data());
       setGlobalFlower(items);
       setLoading(false);
@@ -23,6 +26,8 @@ export default function Global(props) {
   }
 
   useEffect(() => {
+    console.log('o2')
+
     flowerGlobe();
   }, []);
 
@@ -32,7 +37,6 @@ export default function Global(props) {
 
   return (
     <div className="globalWrapper">
-      {props.theme === "dark" ? <DarkModeNav /> : <Nav />}
       <div className="globalContents">
         {GlobalFlower.map((flower, index) => {
           return (

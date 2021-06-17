@@ -4,12 +4,12 @@ import { AppThemeContext } from "./contexts/AppThemeContext";
 
 import { Navbar, Nav } from "react-bootstrap";
 import SiteNav from "./components/SiteNav";
-
+import './Layout.scss'
 const Layout = ({ children }) => {
   const { currentUser, login, logout } = useContext(AuthContext);
   const { toggleTheme } = useContext(AppThemeContext);
   return (
-    <div className="App">
+    <div className="Layout">
       <Navbar bg="dark">
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

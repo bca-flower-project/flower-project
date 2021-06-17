@@ -5,6 +5,8 @@ import { Route } from "react-router-dom";
 import Login from './components/Login'
 import PetalModal from './components/PetalModal'
 import PastFlowers from './components/PastFlowers'
+import Global from './components/Global'
+
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -13,7 +15,7 @@ const Routes = () => {
       key: "global-flowers",
       path: "/global",
       render: () => {
-        return <>GLOBAL</>;
+        return <Global />;
       },
     },
     {

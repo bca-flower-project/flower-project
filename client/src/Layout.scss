@@ -1,0 +1,11 @@
+.Layout {
+  .navbar {
+    color: white;
+    .nav-link {
+      color: white !important;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

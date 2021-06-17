@@ -1,6 +1,6 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase";
 import "firebase/firestore";
+import "firebase/auth";
 
 const credentials = {
   apiKey: "AIzaSyA7mxsDElsxmGLruz5UIcrxywn7KplB1Jw",
@@ -12,7 +12,6 @@ const credentials = {
   appId: "1:116787099467:web:fa9197347738dbf39b9ace",
   measurementId: "G-DS4Q87HB28",
 };
-
 const firebaseApp = firebase.initializeApp(credentials);
 
 const auth = firebase.auth;

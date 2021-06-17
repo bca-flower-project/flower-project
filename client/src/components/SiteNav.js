@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppThemeContext } from "../contexts/AppThemeContext";
+import "./SiteNav.scss";
+import { Container, Row } from "react-bootstrap";
 
 import blackflower from "./icons/black-flower.png";
 import blackglobe from "./icons/black-globe.png";
@@ -20,17 +22,19 @@ const SiteNav = () => {
   const { spiral, globe, flower } = images[theme];
 
   return (
-    <div id="navbar">
-      <Link to={"/past-flowers"}>
-        <img src={spiral} alt="spiral, nav to past flowers" id="navspiral" />
-      </Link>
-      <Link to={"/create"}>
-        <img src={flower} alt="flower, nav to create" id="navflower" />
-      </Link>
-      <Link to={"/global-flowers"}>
-        <img src={globe} alt="globe, nav to global" id="navglobe" />
-      </Link>
-    </div>
+    <Container className="SiteNav" fluid>
+      <Row>
+        <Link to={"/past-flowers"}>
+          <img src={spiral} alt="Past Flowers" />
+        </Link>
+        <Link to={"/create"}>
+          <img src={flower} alt="Create" />
+        </Link>
+        <Link to={"/global"}>
+          <img src={globe} alt="Global Flowers" />
+        </Link>
+      </Row>
+    </Container>
   );
 };
 
