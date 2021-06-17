@@ -1,9 +1,11 @@
-import React from "react";
+import { useContext } from "react";
 import blackLogo from "../icons/blackLogo.png";
+import { AppThemeContext } from "../../contexts/AppThemeContext";
 import "./SiteFooter.scss";
 export default function SiteFooter() {
+  const { theme } = useContext(AppThemeContext);
   return (
-    <footer>
+    <footer className={theme}>
       <h5>
         <a href="https://www.ok.community/the-flower-project">
           <img src={blackLogo} className="footerLogo" alt="okLogo" />

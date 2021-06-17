@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import fire from "../../config/fire";
 import BlankFlower from "../BlankFlower";
 import QuestionsAnswers from "./QuestionsAnswers";
-import './PastFlowers.scss'
+import "./PastFlowers.scss";
 
 const { database } = fire;
 
@@ -65,30 +65,34 @@ export default function PastFlowers(props) {
         } = flower;
 
         return (
-          <Row className="flowerRow">
-            <BlankFlower
-              colorOne={PeaksColor}
-              colorTwo={AspirationsColor}
-              colorThree={PeopleColor}
-              colorFour={PrinciplesColor}
-              colorFive={PowersColor}
-              colorSix={ChallengesColor}
-              width="35vw"
-            />
-            <QuestionsAnswers
-              peaksQuestion={PeaksQuestion}
-              peaksAnswer={Peaks}
-              aspirationsQuestion={AspirationsQuestion}
-              aspirationsAnswer={Aspirations}
-              peopleQuestion={PeopleQuestion}
-              peopleAnswer={People}
-              principleQuestion={PrinciplesQuestion}
-              principleAnswer={Principles}
-              powersQuestion={PowersQuestion}
-              powerAnswer={Powers}
-              challengesQuestion={ChallengesQuestion}
-              challengesAnswer={Challenges}
-            />
+          <Row key={`flower-${index}`} className="flowerRow">
+            <Col>
+              {" "}
+              <BlankFlower
+                colorOne={PeaksColor}
+                colorTwo={AspirationsColor}
+                colorThree={PeopleColor}
+                colorFour={PrinciplesColor}
+                colorFive={PowersColor}
+                colorSix={ChallengesColor}
+              />
+            </Col>
+            <Col>
+              <QuestionsAnswers
+                peaksQuestion={PeaksQuestion}
+                peaksAnswer={Peaks}
+                aspirationsQuestion={AspirationsQuestion}
+                aspirationsAnswer={Aspirations}
+                peopleQuestion={PeopleQuestion}
+                peopleAnswer={People}
+                principleQuestion={PrinciplesQuestion}
+                principleAnswer={Principles}
+                powersQuestion={PowersQuestion}
+                powerAnswer={Powers}
+                challengesQuestion={ChallengesQuestion}
+                challengesAnswer={Challenges}
+              />
+            </Col>
           </Row>
         );
       })}

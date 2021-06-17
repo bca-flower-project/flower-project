@@ -1,6 +1,7 @@
 footer {
   text-align: center;
   color: white;
+  margin-top: 1rem;
 
   a {
     color: white;
@@ -13,6 +14,16 @@ footer {
     &:hover {
       text-decoration: underline;
       color: white !important;
+    }
+  }
+
+  &.light {
+    color: black;
+    a {
+      color: black;
+      &:hover {
+        color: black !important;
+      }
     }
   }
 }
