@@ -1,0 +1,16 @@
+.closeModal {
+  color: black;
+  float: right;
+  cursor: pointer;
+}
+
+.btn {
+  margin-right: 1rem;
+}
+
+.petal {
+  cursor: pointer;
+  &:hover {
+    opacity: 75%;
+  }
+}

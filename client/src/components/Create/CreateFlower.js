@@ -1,14 +1,15 @@
 import React from "react";
 
-function CreateFlower(props) {
+function CreateFlower({ height, width, onClick }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlnsOsb="http://www.openswatchbook.org/uri/2009/osb"
-      width={props.width}
-      height={props.height}
+      width={width}
+      height={height}
       version="1.1"
       viewBox="44 0 300 277.6"
+      onClick={onClick}
     >
       <defs>
         <linearGradient osbPaint="solid">

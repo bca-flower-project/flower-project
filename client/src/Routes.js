@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 import { Route } from "react-router-dom";
 
-import Login from './components/Login'
-import PetalModal from './components/PetalModal'
-import PastFlowers from './components/PastFlowers'
-import Global from './components/Global'
-
+import Login from "./components/Login";
+import Create from "./components/Create";
+import PastFlowers from "./components/PastFlowers";
+import Global from "./components/Global";
+// import LandingPage from "./components/LandingPage";
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -22,7 +22,7 @@ const Routes = () => {
       key: "create-flowers",
       path: "/create",
       render: () => {
-        return <PetalModal />;
+        return <Create />;
       },
     },
     {
@@ -36,7 +36,7 @@ const Routes = () => {
       key: "homepage",
       path: "/",
       render: () => {
-        return <>Reset in process</>;
+        return <Create />;
       },
     },
   ];

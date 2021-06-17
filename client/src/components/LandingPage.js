@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import blackflower from './icons/black-flower.png';
 import blackflower from "./icons/ok-flower.png";
 import blackglobe from "./icons/ok.globe.png";
 import spiral from "./icons/spiral.png";
