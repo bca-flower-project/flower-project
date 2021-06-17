@@ -3,6 +3,7 @@ import React from "react";
 function CreateFlower({ height, width, onClick }) {
   return (
     <svg
+      className="createFlower"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsOsb="http://www.openswatchbook.org/uri/2009/osb"
       width={width}

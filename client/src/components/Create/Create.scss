@@ -8,10 +8,13 @@
   margin-right: 1rem;
 }
 
-
 .petal {
   cursor: pointer;
   &:hover {
     opacity: 75%;
   }
+}
+
+svg.createFlower {
+  cursor: pointer;
 }
