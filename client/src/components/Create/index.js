@@ -150,7 +150,7 @@ const Create = (props) => {
                   e.preventDefault();
                   setPetalValue(currentPetal, "answer", e.target.value);
                 }}
-                value={petals[currentPetal] ? petals[currentPetal].answer : ""}
+                value={petals[currentPetal].answer || ""}
                 as="textarea"
                 rows={3}
               />
