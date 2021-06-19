@@ -6,7 +6,7 @@ import Login from "./components/Login";
 import Create from "./components/Create";
 import PastFlowers from "./components/PastFlowers";
 import Global from "./components/Global";
-// import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/LandingPage";
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -36,7 +36,7 @@ const Routes = () => {
       key: "homepage",
       path: "/",
       render: () => {
-        return <Create />;
+        return <LandingPage />;
       },
     },
   ];

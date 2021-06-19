@@ -1,6 +1,9 @@
 .Layout {
   .navbar {
     color: white;
+    a {
+      color: white;
+    }
     .nav-link {
       color: white !important;
       &:hover {

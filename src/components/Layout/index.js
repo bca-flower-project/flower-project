@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+import {Link} from 'react-router-dom'
 import { AuthContext } from "../../contexts/AuthContext";
 import { AppThemeContext } from "../../contexts/AppThemeContext";
 import { Navbar, Nav } from "react-bootstrap";
 
 import SiteNav from "./SiteNav";
-import SiteFooter from './SiteFooter'
+import SiteFooter from "./SiteFooter";
 
-import './Layout.scss'
+import "./Layout.scss";
 const Layout = ({ children }) => {
   const { currentUser, login, logout } = useContext(AuthContext);
   const { toggleTheme } = useContext(AppThemeContext);
@@ -15,7 +16,7 @@ const Layout = ({ children }) => {
       <Navbar bg="dark">
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {currentUser && <>Welcome, {currentUser.displayName}!</>}
+            {currentUser && <Link to="/">Welcome, {currentUser.displayName}!</Link>}
           </Nav>
           <Nav className="ml-auto">
             <Nav.Link onClick={toggleTheme}>Toggle Theme</Nav.Link>
@@ -24,7 +25,7 @@ const Layout = ({ children }) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {currentUser && (
+      {currentUser && window.location.pathname !== "/" && (
         <div>
           <SiteNav />
         </div>
