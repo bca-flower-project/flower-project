@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AppThemeContext } from "../../contexts/AppThemeContext";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Container, Row  } from "react-bootstrap";
 import "./LandingPage.scss";
 import blackflower from "../icons/ok-flower.png";
 import blackglobe from "../icons/ok.globe.png";
@@ -24,7 +24,7 @@ export default function LandingPage() {
       to: "/create",
     },
     {
-      imgSrc: theme === "dark" ? whiteSpiral : spiral,
+      imgSrc: theme === "dark" ? whiteGlobe : blackglobe,
       label: "Connect",
       to: "/global",
     },
