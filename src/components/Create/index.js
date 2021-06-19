@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { HuePicker } from "react-color";
+import {useHistory} from 'react-router-dom'
 import { AuthContext } from "../../contexts/AuthContext";
 import firebase from "firebase";
 
@@ -63,7 +64,6 @@ const QUESTIONS = [
 ];
 
 const INITIAL_STATE = {
-  modalOpen: false,
   currentPetal: 0,
   petals: { 0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {} },
   location: undefined,
@@ -72,22 +72,21 @@ const INITIAL_STATE = {
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   const { currentUser } = useContext(AuthContext);
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((x) => {
-        alert('succ', JSON.stringify(x));
-      },
-      (y) => {
-        alert('error', JSON.stringify(y));
-      });
-    }
-  }, []);
+  const history = useHistory()
 
-  const { modalOpen, currentPetal, petals } = state;
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((x) => {
+  //       alert('succ', JSON.stringify(x));
+  //     },
+  //     (y) => {
+  //       alert('error', JSON.stringify(y));
+  //     });
+  //   }
+  // }, []);
 
-  const toggleModal = () => {
-    setState({ ...INITIAL_STATE, modalOpen: !modalOpen });
-  };
+  const {  currentPetal, petals } = state;
+
 
   const setPetalValue = (petalIdx, key, value) => {
     setState({
@@ -157,7 +156,7 @@ const Create = (props) => {
     const globalFlowerCollection = await database.collection("Global");
 
     await globalFlowerCollection.add(globalFlower);
-    toggleModal();
+    history.push('/past-flowers')
   };
 
   return (

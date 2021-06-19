@@ -11,14 +11,46 @@ const QandA = ({ q, a }) => {
 
 // petal / question order -> Peaks, challenges, people, principles, powers, aspirations
 export default function QuestionsAnswers(props) {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const {
+    peaksQuestion,
+    peaksAnswer,
+    challengesQuestion,
+    challengesAnswer,
+    peopleQuestion,
+    peopleAnswer,
+    principleQuestion,
+    principleAnswer,
+    powersQuestion,
+    powerAnswer,
+    aspirationsQuestion,
+    aspirationsAnswer,
+    date,
+  } = props;
   return (
     <>
-      <QandA q={props.peaksQuestion} a={props.peaksAnswer} />
-      <QandA q={props.challengesQuestion} a={props.challengesAnswer} />
-      <QandA q={props.peopleQuestion} a={props.peopleAnswer} />
-      <QandA q={props.principleQuestion} a={props.principleAnswer} />
-      <QandA q={props.powersQuestion} a={props.powerAnswer} />
-      <QandA q={props.aspirationsQuestion} a={props.aspirationsAnswer} />
+      <h3>
+        {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}
+      </h3>
+      <QandA q={peaksQuestion} a={peaksAnswer} />
+      <QandA q={challengesQuestion} a={challengesAnswer} />
+      <QandA q={peopleQuestion} a={peopleAnswer} />
+      <QandA q={principleQuestion} a={principleAnswer} />
+      <QandA q={powersQuestion} a={powerAnswer} />
+      <QandA q={aspirationsQuestion} a={aspirationsAnswer} />
     </>
   );
 }

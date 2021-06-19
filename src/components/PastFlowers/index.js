@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
-
+import firebase from "firebase";
 import { AuthContext } from "../../contexts/AuthContext";
 import fire from "../../config/fire";
 import BlankFlower from "../BlankFlower";
@@ -63,9 +63,10 @@ export default function PastFlowers(props) {
           ChallengesQuestion,
           Challenges,
         } = flower;
+        const date = new Date(1970, 0, 1);
+        date.setSeconds(flower.createdAt.seconds);
 
         return (
-          <Container>
             <Row key={`flower-${index}`} className="flowerRow">
               <div className="col-sm-6">
                 <BlankFlower
@@ -79,6 +80,7 @@ export default function PastFlowers(props) {
               </div>
               <div className="col-sm-6">
                 <QuestionsAnswers
+                  date={date}
                   peaksQuestion={PeaksQuestion}
                   peaksAnswer={Peaks}
                   aspirationsQuestion={AspirationsQuestion}
@@ -94,7 +96,6 @@ export default function PastFlowers(props) {
                 />
               </div>
             </Row>
-          </Container>
         );
       })}
     </Container>
