@@ -123,7 +123,7 @@ const Create = (props) => {
 
     await userFlowerCollection.add(userFlower);
 
-    let globalFlowerCollection = await database.collection("Global");
+    const globalFlowerCollection = await database.collection("Global");
 
     await globalFlowerCollection.add(userFlower);
     toggleModal();
@@ -143,7 +143,7 @@ const Create = (props) => {
         style={{
           content: {
             width: "70vw",
-            height: "40vh",
+            height: "70vh",
             left: "14vw",
             right: "14vw",
             top: "17vh",

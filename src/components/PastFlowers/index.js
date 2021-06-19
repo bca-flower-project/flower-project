@@ -41,7 +41,6 @@ export default function PastFlowers(props) {
 
   return (
     <Container>
-      <h1>Your growing garden</h1>
       {previousFlowers.map((flower, index) => {
         const {
           PeaksColor,
