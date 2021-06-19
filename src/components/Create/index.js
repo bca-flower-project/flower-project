@@ -11,6 +11,7 @@ import Flower from "./Flower.js";
 
 const { database } = fire;
 
+// order should be:
 const QUESTIONS = [
   {
     petal: "Peaks",
@@ -21,11 +22,11 @@ const QUESTIONS = [
     ],
   },
   {
-    petal: "Aspirations",
+    petal: "Challenges",
     questionOptions: [
-      "What is your intention for the future?",
-      "What are your aspirations?",
-      "What are your goals?",
+      "What do you struggle with the most?",
+      "What are the biggest challenges you've faced?",
+      "What have been the hardest times of your life?",
     ],
   },
   {
@@ -53,11 +54,11 @@ const QUESTIONS = [
     ],
   },
   {
-    petal: "Challenges",
+    petal: "Aspirations",
     questionOptions: [
-      "What do you struggle with the most?",
-      "What are the biggest challenges you've faced?",
-      "What have been the hardest times of your life?",
+      "What is your intention for the future?",
+      "What are your aspirations?",
+      "What are your goals?",
     ],
   },
 ];
