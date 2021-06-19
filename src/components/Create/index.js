@@ -1,10 +1,10 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { HuePicker } from "react-color";
 import { AuthContext } from "../../contexts/AuthContext";
 import firebase from "firebase";
 
 import fire from "../../config/fire";
-import { Container, Row, Button, Form } from "react-bootstrap";
+import { Container, Row, Button, Form, Col } from "react-bootstrap";
 import "./Create.scss";
 import Flower from "./Flower.js";
 
@@ -66,11 +66,22 @@ const INITIAL_STATE = {
   modalOpen: false,
   currentPetal: 0,
   petals: { 0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {} },
+  location: undefined,
 };
 
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   const { currentUser } = useContext(AuthContext);
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((x) => {
+        alert('succ', JSON.stringify(x));
+      },
+      (y) => {
+        alert('error', JSON.stringify(y));
+      });
+    }
+  }, []);
 
   const { modalOpen, currentPetal, petals } = state;
 
@@ -151,20 +162,36 @@ const Create = (props) => {
 
   return (
     <>
-      <Container style={{ marginTop: "1rem" }}>
+      <Container className="Create">
         <Row>
-          <div className="col-sm-6">
-            <Flower
-              setCurrentPetal={(i) => {
-                setState({ ...state, currentPetal: parseInt(i) });
-              }}
-              petals={petals}
-              height="50vh"
-              width="auto"
-            />
-          </div>
-          <div className="col-sm-6 order-lg-last">
+          <Col classname="justify-content-center">
+            <Container>
+              <Row>
+                <Col></Col>
+                <Col>
+                  <Flower
+                    setCurrentPetal={(i) => {
+                      setState({ ...state, currentPetal: parseInt(i) });
+                    }}
+                    petals={petals}
+                  />
+                </Col>
+                <Col></Col>
+              </Row>
+            </Container>
+
             <h1>{QUESTIONS[currentPetal].petal}</h1>
+            <Form.Label>Click to choose a color</Form.Label>
+            <HuePicker
+              className="hue"
+              height="30px"
+              width="100%"
+              onChange={({ hex }) => {
+                setPetalValue(currentPetal, "color", hex);
+              }}
+              direction="horizontal"
+              pointer="none"
+            />
             <br />
             <Form.Control
               as="select"
@@ -206,18 +233,23 @@ const Create = (props) => {
               rows={3}
             />
             <br />
-            <Form.Label>Click to choose a color</Form.Label>
-            <HuePicker
-              className="hue"
-              height="30px"
-              width="100%"
-              onChange={({ hex }) => {
-                setPetalValue(currentPetal, "color", hex);
-              }}
-              direction="horizontal"
-              pointer="none"
-            />
+
             <br />
+          </Col>
+        </Row>
+        {currentPetal === QUESTIONS.length - 1 &&
+          Object.values(userFlower).includes(undefined) && (
+            <Row
+              style={{ color: "red", marginBottom: "1rem", textAlign: "right" }}
+            >
+              <Col>
+                Please choose a question, answer and color for each step before
+                submitting your flower.
+              </Col>
+            </Row>
+          )}
+        <Row className="buttonRow">
+          <Col>
             <Button
               className="btn-dark"
               onClick={() => {
@@ -227,25 +259,31 @@ const Create = (props) => {
             >
               &larr; Previous
             </Button>
-            <Button
-              className="btn-dark"
-              onClick={() => {
-                setState({ ...state, currentPetal: currentPetal + 1 });
-              }}
-              disabled={currentPetal === QUESTIONS.length - 1}
-            >
-              Next &rarr;
-            </Button>
-            <Button
-              className="btn-success"
-              onClick={() => {
-                submitFlower();
-              }}
-              disabled={Object.values(userFlower).includes(undefined)}
-            >
-              Submit Flower
-            </Button>
-          </div>
+          </Col>
+          <Col className="right-button">
+            {currentPetal !== QUESTIONS.length - 1 && (
+              <Button
+                className="btn-dark"
+                onClick={() => {
+                  setState({ ...state, currentPetal: currentPetal + 1 });
+                }}
+                disabled={currentPetal === QUESTIONS.length - 1}
+              >
+                Next &rarr;
+              </Button>
+            )}
+            {currentPetal === QUESTIONS.length - 1 && (
+              <Button
+                className="btn-success"
+                onClick={() => {
+                  submitFlower();
+                }}
+                disabled={Object.values(userFlower).includes(undefined)}
+              >
+                Submit Flower
+              </Button>
+            )}
+          </Col>
         </Row>
       </Container>
     </>
