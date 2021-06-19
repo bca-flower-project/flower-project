@@ -1,12 +1,24 @@
 .LandingPage {
+  &.light {
+    .row {
+      a {
+        color: black !important;
+      }
+    }
+  }
+
+  &.dark {
+    .row {
+      a {
+        color: white !important;
+      }
+    }
+  }
   padding-top: 5rem;
+
   .row {
     text-align: center;
     justify-content: space-between;
-    
-    a {
-      color: white;
-    }
 
     @media only screen and (min-width: 721px) {
       img {

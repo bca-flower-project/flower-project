@@ -15,7 +15,7 @@ export default function LandingPage() {
   const bits = [
     {
       imgSrc: theme === "dark" ? whiteSpiral : spiral,
-      label: "Past Flowers",
+      label: "View",
       to: "/past-flowers",
     },
     {
@@ -25,13 +25,13 @@ export default function LandingPage() {
     },
     {
       imgSrc: theme === "dark" ? whiteSpiral : spiral,
-      label: "Global Flowers",
+      label: "Connect",
       to: "/global",
     },
   ];
 
   return (
-    <Container fluid className="LandingPage">
+    <Container fluid className={`LandingPage ${theme}`}>
       <Row>
         {bits.map(({ imgSrc, label, to }) => {
           return (
