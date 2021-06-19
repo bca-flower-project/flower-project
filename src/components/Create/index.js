@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import Modal from "react-modal";
 import { HuePicker } from "react-color";
 import { AuthContext } from "../../contexts/AuthContext";
+import firebase from "firebase";
 
 import fire from "../../config/fire";
 import CreateFlower from "./CreateFlower.js";
@@ -114,6 +115,26 @@ const Create = (props) => {
     ...getPetalValues("Principles"),
     ...getPetalValues("Powers"),
     ...getPetalValues("Challenges"),
+    createdAt: firebase.firestore.Timestamp.now(),
+  };
+
+  const {
+    PeaksColor,
+    AspirationsColor,
+    PeopleColor,
+    PrinciplesColor,
+    PowersColor,
+    ChallengesColor,
+  } = userFlower;
+
+  const globalFlower = {
+    PeaksColor,
+    AspirationsColor,
+    PeopleColor,
+    PrinciplesColor,
+    PowersColor,
+    ChallengesColor,
+    createdAt: firebase.firestore.Timestamp.now()
   };
 
   const submitFlower = async () => {
@@ -126,7 +147,7 @@ const Create = (props) => {
 
     const globalFlowerCollection = await database.collection("Global");
 
-    await globalFlowerCollection.add(userFlower);
+    await globalFlowerCollection.add(globalFlower);
     toggleModal();
   };
 
@@ -151,6 +172,8 @@ const Create = (props) => {
           },
         }}
       >
+        <pre>{JSON.stringify(userFlower, null, "  ")}</pre>
+
         <span className="closeModal" onClick={toggleModal}>
           ✖
         </span>
