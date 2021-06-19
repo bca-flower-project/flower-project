@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import "./Login.scss";
-import { Container, Button, Card, Row, Col } from "react-bootstrap";
+import { Container, Button, Card, Row } from "react-bootstrap";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function Login() {
   const { login } = useContext(AuthContext);
 
   return (
-    <Container className="loginWrapper">
-      <Row className="col-6 offset-3 justify-content-center">
-        <Col>
+    <Container fluid className="loginWrapper">
+      <Row className="justify-content-center">
+        <div className='col-sm-4'>
           <h1>Please sign in!</h1>
           <Card>
             <Card.Body>
@@ -26,7 +26,7 @@ export default function Login() {
               </Button>
             </Card.Body>
           </Card>
-        </Col>
+        </div>
       </Row>
     </Container>
   );

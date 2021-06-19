@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
-import firebase from "firebase";
 import { AuthContext } from "../../contexts/AuthContext";
 import fire from "../../config/fire";
 import BlankFlower from "../BlankFlower";

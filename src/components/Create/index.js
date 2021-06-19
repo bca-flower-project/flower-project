@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { HuePicker } from "react-color";
 import {useHistory} from 'react-router-dom'
 import { AuthContext } from "../../contexts/AuthContext";
