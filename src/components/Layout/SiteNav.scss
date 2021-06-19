@@ -3,7 +3,17 @@
     justify-content: space-between;
     img {
       padding: 1rem;
-      height: 13rem;
+    }
+    @media only screen and (min-width: 721px) {
+      img {
+        padding-bottom: 2rem;
+        height: 13vw;
+      }
+    }
+    @media only screen and (max-width: 720px) {
+      img {
+        height: 25vw;
+      }
     }
   }
 }

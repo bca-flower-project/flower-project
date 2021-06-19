@@ -14,7 +14,7 @@ export default function PastFlowers(props) {
   const [loading, setLoading] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
-  useEffect(async () => {
+  useEffect(() => {
     async function pastFlowers() {
       const ref = database
         .collection("user")
@@ -64,35 +64,36 @@ export default function PastFlowers(props) {
         } = flower;
 
         return (
-          <Row key={`flower-${index}`} className="flowerRow">
-            <Col>
-              {" "}
-              <BlankFlower
-                colorOne={PeaksColor}
-                colorTwo={AspirationsColor}
-                colorThree={PeopleColor}
-                colorFour={PrinciplesColor}
-                colorFive={PowersColor}
-                colorSix={ChallengesColor}
-              />
-            </Col>
-            <Col>
-              <QuestionsAnswers
-                peaksQuestion={PeaksQuestion}
-                peaksAnswer={Peaks}
-                aspirationsQuestion={AspirationsQuestion}
-                aspirationsAnswer={Aspirations}
-                peopleQuestion={PeopleQuestion}
-                peopleAnswer={People}
-                principleQuestion={PrinciplesQuestion}
-                principleAnswer={Principles}
-                powersQuestion={PowersQuestion}
-                powerAnswer={Powers}
-                challengesQuestion={ChallengesQuestion}
-                challengesAnswer={Challenges}
-              />
-            </Col>
-          </Row>
+          <Container>
+            <Row key={`flower-${index}`} className="flowerRow">
+              <div className="col-sm-6">
+                <BlankFlower
+                  colorOne={PeaksColor}
+                  colorTwo={AspirationsColor}
+                  colorThree={PeopleColor}
+                  colorFour={PrinciplesColor}
+                  colorFive={PowersColor}
+                  colorSix={ChallengesColor}
+                />
+              </div>
+              <div className="col-sm-6">
+                <QuestionsAnswers
+                  peaksQuestion={PeaksQuestion}
+                  peaksAnswer={Peaks}
+                  aspirationsQuestion={AspirationsQuestion}
+                  aspirationsAnswer={Aspirations}
+                  peopleQuestion={PeopleQuestion}
+                  peopleAnswer={People}
+                  principleQuestion={PrinciplesQuestion}
+                  principleAnswer={Principles}
+                  powersQuestion={PowersQuestion}
+                  powerAnswer={Powers}
+                  challengesQuestion={ChallengesQuestion}
+                  challengesAnswer={Challenges}
+                />
+              </div>
+            </Row>
+          </Container>
         );
       })}
     </Container>
