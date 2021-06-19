@@ -153,128 +153,103 @@ const Create = (props) => {
 
   return (
     <>
-      <Container>
-        <Row className="justify-content-center">
-          <CreateFlower onClick={toggleModal} width="45vw" height="auto" />
-        </Row>
-      </Container>
-
-      <Modal
-        id="modalWindow"
-        isOpen={modalOpen}
-        style={{
-          content: {
-            width: "70vw",
-            height: "70vh",
-            left: "14vw",
-            right: "14vw",
-            top: "17vh",
-          },
-        }}
-      >
-        <pre>{JSON.stringify(userFlower, null, "  ")}</pre>
-
-        <span className="closeModal" onClick={toggleModal}>
-          ✖
-        </span>
-        <Container style={{ marginTop: "1rem" }}>
-          <Row>
-            <Col className="text-dark">
-              <h1>{QUESTIONS[currentPetal].petal}</h1>
-              <br />
-              <Form.Control
-                as="select"
-                onChange={(e) => {
-                  e.preventDefault();
-                  setPetalValue(currentPetal, "question", e.target.value);
-                }}
-              >
-                <option
-                  value={false}
-                  disabled
-                  selected={!petals[currentPetal].question}
-                >
-                  Please select a question below
-                </option>
-                {QUESTIONS[currentPetal].questionOptions.map(
-                  (question, index) => {
-                    return (
-                      <option
-                        selected={petals[currentPetal].question === question}
-                        key={question}
-                        value={question}
-                      >
-                        {question}
-                      </option>
-                    );
-                  }
-                )}
-              </Form.Control>
-              <br />
-              <Form.Label>Answer:</Form.Label>
-              <Form.Control
-                onChange={(e) => {
-                  e.preventDefault();
-                  setPetalValue(currentPetal, "answer", e.target.value);
-                }}
-                value={petals[currentPetal].answer || ""}
-                as="textarea"
-                rows={3}
-              />
-              <br />
-              <Form.Label>Click to choose a color</Form.Label>
-              <HuePicker
-                className="hue"
-                height="30px"
-                width="100%"
-                onChange={({ hex }) => {
-                  setPetalValue(currentPetal, "color", hex);
-                }}
-                direction="horizontal"
-                pointer="none"
-              />
-              <br />
-              <Button
-                className="btn-dark"
-                onClick={() => {
-                  setState({ ...state, currentPetal: currentPetal - 1 });
-                }}
-                disabled={currentPetal === 0}
-              >
-                &larr; Previous
-              </Button>
-              <Button
-                className="btn-dark"
-                onClick={() => {
-                  setState({ ...state, currentPetal: currentPetal + 1 });
-                }}
-                disabled={currentPetal === QUESTIONS.length - 1}
-              >
-                Next &rarr;
-              </Button>
-              <Button
-                className="btn-success"
-                onClick={() => {
-                  submitFlower();
-                }}
-                disabled={Object.values(userFlower).includes(undefined)}
-              >
-                Submit Flower
-              </Button>
-            </Col>
-            <Col>
-              <Flower
-                setCurrentPetal={(i) => {
-                  setState({ ...state, currentPetal: parseInt(i) });
-                }}
-                petals={petals}
-                height="50vh"
-                width="auto"
-              />
-            </Col>
-          </Row>
-        </Container>
-      </Modal>
+    <Container style={{ marginTop: "1rem" }}>
+      <Row>
+        <Col className="text-dark">
+          <h1>{QUESTIONS[currentPetal].petal}</h1>
+          <br />
+          <Form.Control
+            as="select"
+            onChange={(e) => {
+              e.preventDefault();
+              setPetalValue(currentPetal, "question", e.target.value);
+            }}
+          >
+            <option
+              value={false}
+              disabled
+              selected={!petals[currentPetal].question}
+            >
+              Please select a question below
+            </option>
+            {QUESTIONS[currentPetal].questionOptions.map(
+              (question, index) => {
+                return (
+                  <option
+                    selected={petals[currentPetal].question === question}
+                    key={question}
+                    value={question}
+                  >
+                    {question}
+                  </option>
+                );
+              }
+            )}
+          </Form.Control>
+          <br />
+          <Form.Label>Answer:</Form.Label>
+          <Form.Control
+            onChange={(e) => {
+              e.preventDefault();
+              setPetalValue(currentPetal, "answer", e.target.value);
+            }}
+            value={petals[currentPetal].answer || ""}
+            as="textarea"
+            rows={3}
+          />
+          <br />
+          <Form.Label>Click to choose a color</Form.Label>
+          <HuePicker
+            className="hue"
+            height="30px"
+            width="100%"
+            onChange={({ hex }) => {
+              setPetalValue(currentPetal, "color", hex);
+            }}
+            direction="horizontal"
+            pointer="none"
+          />
+          <br />
+          <Button
+            className="btn-dark"
+            onClick={() => {
+              setState({ ...state, currentPetal: currentPetal - 1 });
+            }}
+            disabled={currentPetal === 0}
+          >
+            &larr; Previous
+          </Button>
+          <Button
+            className="btn-dark"
+            onClick={() => {
+              setState({ ...state, currentPetal: currentPetal + 1 });
+            }}
+            disabled={currentPetal === QUESTIONS.length - 1}
+          >
+            Next &rarr;
+          </Button>
+          <Button
+            className="btn-success"
+            onClick={() => {
+              submitFlower();
+            }}
+            disabled={Object.values(userFlower).includes(undefined)}
+          >
+            Submit Flower
+          </Button>
+        </Col>
+        <Col>
+          <Flower
+            setCurrentPetal={(i) => {
+              setState({ ...state, currentPetal: parseInt(i) });
+            }}
+            petals={petals}
+            height="50vh"
+            width="auto"
+          />
+        </Col>
+      </Row>
+    </Container>
     </>
   );
 };

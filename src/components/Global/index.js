@@ -13,7 +13,7 @@ export default function Global(props) {
 
   useEffect(() => {
     async function flowerGlobe() {
-      const ref = database.collection("Global");
+      const ref = database.collection("Global").orderBy('createdAt');
 
       setLoading(true);
 

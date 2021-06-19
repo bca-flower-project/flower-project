@@ -19,7 +19,8 @@ export default function PastFlowers(props) {
       const ref = database
         .collection("user")
         .doc(currentUser.uid)
-        .collection("flower");
+        .collection("flower")
+        .orderBy("createdAt");
 
       setLoading(true);
 
