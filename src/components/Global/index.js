@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import fire from "../config/fire";
+import fire from "../../config/fire";
 import { Container, Row } from "react-bootstrap";
+import './Global.scss'
 
-import BlankFlower from "./BlankFlower";
+import BlankFlower from "../BlankFlower";
 
 const { database } = fire;
 
@@ -34,7 +35,7 @@ export default function Global(props) {
       <Row>
         {GlobalFlower.map((flower, index) => {
           return (
-            <div>
+            <div className="flower-col col-4 col-lg-2">
               <BlankFlower
                 colorOne={flower.PeaksColor}
                 colorTwo={flower.AspirationsColor}
@@ -42,7 +43,6 @@ export default function Global(props) {
                 colorFour={flower.PrinciplesColor}
                 colorFive={flower.PowersColor}
                 colorSix={flower.ChallengesColor}
-                width="10vw"
               />
             </div>
           );
