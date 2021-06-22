@@ -7,7 +7,7 @@
     cursor: pointer;
 
     &:hover {
-      fill-opacity: 75%; 
+      fill-opacity: 75%;
     }
   }
 
@@ -24,5 +24,11 @@
 
   .right-button {
     text-align: right;
+  }
+
+  @media only screen and (max-width: 720px) {
+    svg {
+      height: 25vw;
+    }
   }
 }
