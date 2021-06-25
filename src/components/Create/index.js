@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { HuePicker } from "react-color";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import firebase from "firebase";
 
@@ -72,7 +72,16 @@ const INITIAL_STATE = {
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   const { currentUser } = useContext(AuthContext);
-  const history = useHistory()
+  const history = useHistory();
+  
+  navigator.geolocation.getCurrentPosition(
+    (x) => {
+      alert("succ", JSON.stringify(x));
+    },
+    (x) => {
+      alert("fail", JSON.stringify(x));
+    }
+  );
 
   // useEffect(() => {
   //   if (navigator.geolocation) {
@@ -85,8 +94,7 @@ const Create = (props) => {
   //   }
   // }, []);
 
-  const {  currentPetal, petals } = state;
-
+  const { currentPetal, petals } = state;
 
   const setPetalValue = (petalIdx, key, value) => {
     setState({
@@ -156,7 +164,7 @@ const Create = (props) => {
     const globalFlowerCollection = await database.collection("Global");
 
     await globalFlowerCollection.add(globalFlower);
-    history.push('/past-flowers')
+    history.push("/past-flowers");
   };
 
   return (
