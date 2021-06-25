@@ -12,7 +12,7 @@ import "firebase/auth";
 //   appId: "1:116787099467:web:fa9197347738dbf39b9ace",
 //   measurementId: "G-DS4Q87HB28",
 // };
-//
+
 const credentials = {
   apiKey: "AIzaSyCyW5EKjdoVB-ek0KMrFgCffl9iPFGHE6A",
   authDomain: "flowers-project-a8d03.firebaseapp.com",

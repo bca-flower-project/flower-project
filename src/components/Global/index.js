@@ -31,7 +31,7 @@ export default function Global(props) {
   }
 
   return (
-    <Container>
+    <Container fluid>
       <Row>
         {GlobalFlower.map((flower, index) => {
           return (
