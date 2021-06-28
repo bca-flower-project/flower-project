@@ -35,7 +35,7 @@ export default function LandingPage() {
       <Row>
         {bits.map(({ imgSrc, label, to }) => {
           return (
-            <div className="col-sm-3">
+            <div key={label} className="col-sm-3">
               <Link to={to}>
                 <img src={imgSrc} alt={label} />
                 <h2>{label}</h2>
