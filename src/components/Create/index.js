@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { HuePicker } from "react-color";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -73,23 +73,16 @@ const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   const { currentUser } = useContext(AuthContext);
   const history = useHistory();
-  
-  navigator.geolocation.getCurrentPosition(
-    (x) => {
-      alert("succ", JSON.stringify(x));
-    },
-    (x) => {
-      alert("fail", JSON.stringify(x));
-    }
-  );
+  const [location, setLocation] = useState()
+
 
   // useEffect(() => {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition((x) => {
-  //       alert('succ', JSON.stringify(x));
+  //       setLocation({location: x, test: true})
   //     },
-  //     (y) => {
-  //       alert('error', JSON.stringify(y));
+  //     () => {
+  //       console.warn("Error with geo-lookup")
   //     });
   //   }
   // }, []);
@@ -169,6 +162,7 @@ const Create = (props) => {
 
   return (
     <>
+    {/*<pre>{JSON.stringify(location)}</pre>*/}
       <Container className="Create">
         <Row>
           <Col classname="justify-content-center">
