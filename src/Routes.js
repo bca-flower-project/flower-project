@@ -7,6 +7,7 @@ import Create from "./components/Create";
 import PastFlowers from "./components/PastFlowers";
 import Global from "./components/Global";
 import LandingPage from "./components/LandingPage";
+import SettingsPage from './components/Settings'
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -23,6 +24,13 @@ const Routes = () => {
       path: "/create",
       render: () => {
         return <Create />;
+      },
+    },
+    {
+      key: "settings-page",
+      path: "/settings",
+      render: () => {
+        return <SettingsPage />;
       },
     },
     {
