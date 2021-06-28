@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { HuePicker } from "react-color";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -66,26 +66,12 @@ const QUESTIONS = [
 const INITIAL_STATE = {
   currentPetal: 0,
   petals: { 0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {} },
-  location: undefined,
 };
 
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   const { currentUser } = useContext(AuthContext);
   const history = useHistory();
-  const [location, setLocation] = useState()
-
-
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition((x) => {
-  //       setLocation({location: x, test: true})
-  //     },
-  //     () => {
-  //       console.warn("Error with geo-lookup")
-  //     });
-  //   }
-  // }, []);
 
   const { currentPetal, petals } = state;
 
