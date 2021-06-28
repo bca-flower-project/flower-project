@@ -23,9 +23,9 @@ const Layout = ({ children }) => {
           </Nav>
           <Nav className="ml-auto">
             <Nav.Link onClick={toggleTheme}>Toggle Theme</Nav.Link>
-              {currentUser && (
-                <Nav.Link><Link to="/settings">Settings</Link></Nav.Link>
-              )}
+            {currentUser && (
+                <Link to="/settings">Settings</Link>
+            )}
             {currentUser && <Nav.Link onClick={logout}>Logout</Nav.Link>}
             {!currentUser && <Nav.Link onClick={login}>Login</Nav.Link>}
           </Nav>

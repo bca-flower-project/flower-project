@@ -1,36 +1,28 @@
 import { useContext, useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Form,
-  Col,
-  InputGroup,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Container, Row, Form, Col, Button } from "react-bootstrap";
 import fire from "../../config/fire";
 import { AuthContext } from "../../contexts/AuthContext";
 const { database } = fire;
 
 const SettingsPage = () => {
   const { currentUser } = useContext(AuthContext);
-
   const [userData, setUserData] = useState({});
 
-  useEffect(async () => {
-    const ref = database.collection("user").doc(currentUser.uid);
+  const getUser = async (user) => {
+    const ref = database.collection("user").doc(user.uid);
 
     await ref.get().then((item) => {
       setUserData(item.data());
     });
+  };
+
+  useEffect(() => {
+    getUser(currentUser);
   }, [currentUser]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userFlowerCollection = await database
-      .collection("user")
-      .doc(currentUser.uid)
-      .update(userData);
+    await database.collection("user").doc(currentUser.uid).update(userData);
   };
 
   return (

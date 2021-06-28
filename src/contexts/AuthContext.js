@@ -17,7 +17,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const login = async () => {
-    console.log("trying to log in");
     auth
       .signInWithPopup(googleProvider)
       .then(async (result) => {
@@ -29,7 +28,6 @@ const AuthProvider = ({ children }) => {
           email: user.email,
           uid: user.uid,
         };
-        console.log({ userObj });
 
         async function addUser(data) {
           let collection = await database
