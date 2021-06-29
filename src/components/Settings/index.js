@@ -45,12 +45,12 @@ const SettingsPage = () => {
                   onChange={(e) => {
                     e.preventDefault();
                     const dateOfBirth = e.target.value;
-                    const [_, monthOfBirth, dayofBirth] =
+                    const [_, monthOfBirth, dayOfBirth] =
                       dateOfBirth.split(/[^\d]/);
                     setUserData({
                       ...userData,
                       monthOfBirth,
-                      dayofBirth,
+                      dayOfBirth,
                       dateOfBirth,
                     });
                   }}

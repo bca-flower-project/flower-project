@@ -1,29 +1,32 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
-admin.initializeApp();
+admin.initializeApp()
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello from Firebase!");
-});
+exports.happyBirthday = functions.pubsub
+  .schedule("every 24 hours")
+  .onRun(async (context) => {
+    const today = new Date()
+    const currMonth = `${today.getMonth() + 1}`.padStart(2, '0')
+    const currDay = `${today.getDate()}`.padStart(2, '0')
 
-// exports.happyBirthday = functions.pubsub
-//   .schedule("every 5 minutes")
-//   .onRun(async function (context) {
-//     console.log("This will be run every 5 minutes!");
-//     const users = await admin
-//       .firestore()
-//       .collection("user")
-//       .where("dateOfBirth", "==", "2021-06-15")
-//       .get()
-//       .data();
-//     functions.logger.info(JSON.stringify(users), { structuredData: true });
-//     return null;
-//   });
+    functions.logger.info("Querying users with birthday of " + currMonth + "/" + currDay);
 
-exports.scheduledFunctionCrontab = functions.pubsub
-    .schedule("every 5 minutes")
-    .onRun((context) => {
-      console.log("every 5 minutes tripped");
-      return null;
+    const users = await admin
+      .firestore()
+      .collection("user")
+      .where("monthOfBirth", "==", currMonth)
+      .where("dayOfBirth", "==", currDay)
+      .get()
+			.then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+					functions.logger.info(
+            JSON.stringify(doc.data()),
+            {structuredData: true}
+          );
+        });
+    })
+    .catch((error) => {
+        functions.logger.error("Error getting documents: ", error);
     });
+    return null;
+  });
