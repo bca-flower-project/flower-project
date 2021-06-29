@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
           let collection = await database
             .collection("user")
             .doc(user.uid)
-            .set(data);
+            .update(data);
           return await collection.add(data);
         }
         await addUser(userObj);

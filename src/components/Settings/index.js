@@ -44,7 +44,15 @@ const SettingsPage = () => {
                   value={userData.dateOfBirth}
                   onChange={(e) => {
                     e.preventDefault();
-                    setUserData({ ...userData, dateOfBirth: e.target.value });
+                    const dateOfBirth = e.target.value;
+                    const [_, monthOfBirth, dayofBirth] =
+                      dateOfBirth.split(/[^\d]/);
+                    setUserData({
+                      ...userData,
+                      monthOfBirth,
+                      dayofBirth,
+                      dateOfBirth,
+                    });
                   }}
                   type="date"
                   className="mb-2"
