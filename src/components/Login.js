@@ -13,7 +13,13 @@ export default function Login() {
           <h3 className="text-center">Welcome!</h3>
           <h4 className="text-center"> Sign in to Create a Flower</h4>
 
-          <p className="text-center"><span className="font-italic">Reflect on Who You Are & Who You Want to Be Can't do it now?</span><br/>Join and we'll send you a link you can use later</p>
+          <p className="text-center">
+            <span className="font-italic">
+              Reflect on Who You Are & Who You Want to Be Can't do it now?
+            </span>
+            <br />
+            Join and we'll send you a link you can use later
+          </p>
           <Card>
             <Card.Body>
               <h4 className="text-center mb-4" style={{ color: "black" }}>
