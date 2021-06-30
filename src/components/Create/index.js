@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { HuePicker } from "react-color";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -70,10 +70,36 @@ const INITIAL_STATE = {
 
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
+  const [location, setLocation] = useState({
+    latitude: undefined,
+    longitude: undefined,
+  });
   const { currentUser } = useContext(AuthContext);
   const history = useHistory();
 
   const { currentPetal, petals } = state;
+
+  useEffect(() => {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
+    function success(pos) {
+      const crd = pos.coords;
+      const { latitude, longitude } = crd;
+      if (latitude && longitude) {
+        setLocation({  latitude, longitude });
+      }
+    }
+
+    function error(err) {
+      console.log(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }, [location]);
 
   const setPetalValue = (petalIdx, key, value) => {
     setState({
@@ -110,6 +136,7 @@ const Create = (props) => {
     ...getPetalValues("Principles"),
     ...getPetalValues("Powers"),
     ...getPetalValues("Challenges"),
+    ...location,
     createdAt: firebase.firestore.Timestamp.now(),
   };
 
@@ -129,6 +156,7 @@ const Create = (props) => {
     PrinciplesColor,
     PowersColor,
     ChallengesColor,
+    ...location,
     createdAt: firebase.firestore.Timestamp.now(),
   };
 
@@ -148,7 +176,7 @@ const Create = (props) => {
 
   return (
     <>
-    {/*<pre>{JSON.stringify(location)}</pre>*/}
+      {/*<pre style={{color: 'red'}}>{JSON.stringify(location)}</pre>*/}
       <Container className="Create">
         <Row>
           <Col classname="justify-content-center">
