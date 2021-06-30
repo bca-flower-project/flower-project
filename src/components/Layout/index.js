@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
   return (
     <div className="Layout">
       <Navbar bg="dark" expand="md">
-        <Navbar.Toggle />
+        <Navbar.Toggle className="navbar-dark"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {currentUser && (
