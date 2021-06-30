@@ -25,7 +25,7 @@ export default function PastFlowers(props) {
 
       await ref.get().then((item) => {
         const items = item.docs.map((doc) => doc.data());
-        setPreviousFlowers(items);
+        setPreviousFlowers(items.reverse());
         setLoading(false);
       });
     }
