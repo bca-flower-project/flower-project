@@ -4,20 +4,16 @@ import { Container, Button, Card, Row } from "react-bootstrap";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function Login() {
-  const { login, facebookLogin} = useContext(AuthContext);
+  const { login, facebookLogin } = useContext(AuthContext);
 
   return (
     <Container fluid className="loginWrapper">
       <Row className="justify-content-center">
         <div className="col-sm-4">
-          <h3>Please sign in!</h3>
-          <p>
-            Donec aliquam ut urna et congue. Nam vel consequat nibh. Mauris
-            rutrum blandit nibh quis consequat. Cras et molestie libero, et
-            egestas sapien. Duis sagittis arcu bibendum magna semper congue.
-            Vestibulum pharetra urna eu lorem varius porttitor. Vivamus vitae
-            convallis risus, non lobortis ante.
-          </p>
+          <h3 className="text-center">Welcome!</h3>
+          <h4 className="text-center"> Sign in to Create a Flower</h4>
+
+          <p className="text-center"><span className="font-italic">Reflect on Who You Are & Who You Want to Be Can't do it now?</span><br/>Join and we'll send you a link you can use later</p>
           <Card>
             <Card.Body>
               <h4 className="text-center mb-4" style={{ color: "black" }}>
