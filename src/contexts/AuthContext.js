@@ -30,11 +30,10 @@ const AuthProvider = ({ children }) => {
         };
 
         async function addUser(data) {
-          let collection = await database
+          await database
             .collection("user")
             .doc(user.uid)
-            .update(data);
-          return await collection.add(data);
+            .set(data, { merge: true });
         }
         await addUser(userObj);
       })
@@ -48,7 +47,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const facebookLogin = async () => {
-    console.log({facebookProvider})
+    console.log({ facebookProvider });
     auth
       .signInWithPopup(facebookProvider)
       .then(async (result) => {
