@@ -55,7 +55,7 @@ exports.flowerOnCreate = functions.firestore
 
 exports.newUserEmail = functions.firestore
   .document("user/{userId}")
-  .onCreate((snap, ctx) => {
+  .onCreate(async (snap, ctx) => {
     const userData = snap.data();
     await doSendEmail(userData.email, NEW_USER_EMAIL_TEMPLATE_ID, {
       subject: "Welcome to flowers.community",
