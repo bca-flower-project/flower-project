@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "flowers-community"
+    "default": "flowers-community",
+    "prod": "flower-project-prod"
+
   }
 }
