@@ -25,10 +25,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "sh -ac '. ./.env.development; react-scripts build'",
+    "build:prod": "sh -ac '. ./.env.production; react-scripts build'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "firebase deploy --only hosting"
+    "deploy": "firebase use default && firebase deploy --only hosting",
+    "deploy:prod": "firebase use prod && firebase deploy --only hosting",
+    "deploy-functions": "firebase use default && firebase deploy --only functions",
+    "deploy-functions:prod": "firebase use prod && firebase deploy --only functions"
   },
   "eslintConfig": {
     "extends": [
