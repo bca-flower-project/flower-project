@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Login from "./components/Login";
 import Create from "./components/Create";
 import PastFlowers from "./components/PastFlowers";
 import Global from "./components/Global";
 import LandingPage from "./components/LandingPage";
-import SettingsPage from './components/Settings'
+import SettingsPage from "./components/Settings";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -17,6 +19,13 @@ const Routes = () => {
       path: "/global",
       render: () => {
         return <Global />;
+      },
+    },
+    {
+      key: "privacy-policy",
+      path: "/privacy-policy",
+      render: () => {
+        return <PrivacyPolicy />;
       },
     },
     {
@@ -55,12 +64,22 @@ const Routes = () => {
           return <Route exact {...pathInfo} />;
         })}
       {!currentUser && (
-        <Route
-          path="*"
-          render={() => {
-            return <Login />;
-          }}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/privacy-policy"
+            render={() => {
+              return <PrivacyPolicy />;
+            }}
+          />
+          <Route
+            exact
+            path="*"
+            render={() => {
+              return <Login />;
+            }}
+          />
+        </Switch>
       )}
     </>
   );

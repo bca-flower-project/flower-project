@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import blackLogo from "../icons/blackLogo.png";
 import { AppThemeContext } from "../../contexts/AppThemeContext";
 import "./SiteFooter.scss";
@@ -13,6 +14,9 @@ export default function SiteFooter() {
         </a>
       </h5>
       <p>&copy; {new Date().getFullYear()} The Flower Project</p>
+      <p>
+        <Link to="/privacy-policy">Privacy Policy</Link>
+      </p>
     </footer>
   );
 }

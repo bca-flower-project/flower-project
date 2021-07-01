@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
   return (
     <div className="Layout">
       <Navbar bg="dark" expand="md">
-        <Navbar.Toggle className="navbar-dark"/>
+        <Navbar.Toggle className="navbar-dark" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {currentUser && (
@@ -24,10 +24,16 @@ const Layout = ({ children }) => {
           <Nav className="ml-auto">
             <Nav.Link onClick={toggleTheme}>Toggle Theme</Nav.Link>
             {currentUser && (
-                <Link className="nav-link" to="/settings">Settings</Link>
+              <Link className="nav-link" to="/settings">
+                Settings
+              </Link>
             )}
             {currentUser && <Nav.Link onClick={logout}>Logout</Nav.Link>}
-            {!currentUser && <Nav.Link onClick={login}>Login</Nav.Link>}
+            {!currentUser && (
+              <Link className="nav-link" to="/">
+                Login
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
