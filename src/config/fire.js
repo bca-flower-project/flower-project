@@ -21,6 +21,7 @@ const database = firebaseApp.firestore();
 
 const exportable = {
   facebookProvider,
+  firestore: firebase.firestore,
   firebaseApp,
   auth,
   googleProvider,

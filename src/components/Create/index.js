@@ -2,14 +2,12 @@ import { useState, useContext, useEffect } from "react";
 import { HuePicker } from "react-color";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-import firebase from "firebase";
-
 import fire from "../../config/fire";
 import { Container, Row, Button, Form, Col } from "react-bootstrap";
 import "./Create.scss";
 import Flower from "./Flower.js";
 
-const { database } = fire;
+const { database, firestore } = fire;
 
 // order should be:
 const QUESTIONS = [
@@ -137,7 +135,7 @@ const Create = (props) => {
     ...getPetalValues("Powers"),
     ...getPetalValues("Challenges"),
     ...location,
-    createdAt: firebase.firestore.Timestamp.now(),
+    createdAt: firestore.Timestamp.now(),
   };
 
   const {
@@ -157,7 +155,7 @@ const Create = (props) => {
     PowersColor,
     ChallengesColor,
     ...location,
-    createdAt: firebase.firestore.Timestamp.now(),
+    createdAt: firestore.Timestamp.now(),
   };
 
   const submitFlower = async () => {
@@ -179,7 +177,7 @@ const Create = (props) => {
       {/*<pre style={{color: 'red'}}>{JSON.stringify(location)}</pre>*/}
       <Container className="Create">
         <Row>
-          <Col classname="justify-content-center">
+          <Col className="justify-content-center">
             <Container>
               <Row>
                 <Col></Col>
@@ -216,9 +214,8 @@ const Create = (props) => {
               }}
             >
               <option
-                value={false}
+                value={!petals[currentPetal].question}
                 disabled
-                selected={!petals[currentPetal].question}
               >
                 Please select a question below
               </option>
@@ -226,9 +223,8 @@ const Create = (props) => {
                 (question, index) => {
                   return (
                     <option
-                      selected={petals[currentPetal].question === question}
                       key={question}
-                      value={question}
+                      value={petals[currentPetal].question === question}
                     >
                       {question}
                     </option>
