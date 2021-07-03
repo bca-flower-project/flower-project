@@ -88,7 +88,7 @@ const Create = (props) => {
       const crd = pos.coords;
       const { latitude, longitude } = crd;
       if (latitude && longitude) {
-        setLocation({  latitude, longitude });
+        setLocation({ latitude, longitude });
       }
     }
 
@@ -134,7 +134,7 @@ const Create = (props) => {
     ...getPetalValues("Principles"),
     ...getPetalValues("Powers"),
     ...getPetalValues("Challenges"),
-    ...location,
+    ...(Object.values(location).includes(undefined) ? {} : location),
     createdAt: firestore.Timestamp.now(),
   };
 
@@ -154,7 +154,7 @@ const Create = (props) => {
     PrinciplesColor,
     PowersColor,
     ChallengesColor,
-    ...location,
+    ...(Object.values(location).includes(undefined) ? {} : location),
     createdAt: firestore.Timestamp.now(),
   };
 
@@ -174,7 +174,6 @@ const Create = (props) => {
 
   return (
     <>
-      {/*<pre style={{color: 'red'}}>{JSON.stringify(location)}</pre>*/}
       <Container className="Create">
         <Row>
           <Col className="justify-content-center">
@@ -208,15 +207,13 @@ const Create = (props) => {
             <br />
             <Form.Control
               as="select"
+              value={petals[currentPetal].question}
               onChange={(e) => {
                 e.preventDefault();
                 setPetalValue(currentPetal, "question", e.target.value);
               }}
             >
-              <option
-                value={!petals[currentPetal].question}
-                disabled
-              >
+              <option selected={!petals[currentPetal].question} disabled>
                 Please select a question below
               </option>
               {QUESTIONS[currentPetal].questionOptions.map(
@@ -224,7 +221,8 @@ const Create = (props) => {
                   return (
                     <option
                       key={question}
-                      value={petals[currentPetal].question === question}
+                      value={question}
+                      selected={petals[currentPetal.question] === question}
                     >
                       {question}
                     </option>

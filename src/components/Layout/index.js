@@ -8,6 +8,7 @@ import SiteNav from "./SiteNav";
 import SiteFooter from "./SiteFooter";
 
 import "./Layout.scss";
+
 const Layout = ({ children }) => {
   const { currentUser, logout } = useContext(AuthContext);
   const { toggleTheme } = useContext(AppThemeContext);
