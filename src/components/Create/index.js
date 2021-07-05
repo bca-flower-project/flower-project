@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import { HuePicker } from "react-color";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-import { AppThemeContext } from "../../contexts/AppThemeContext";
 
 import fire from "../../config/fire";
 import { Container, Row, Button, Form, Col } from "react-bootstrap";
@@ -82,7 +81,6 @@ const Create = (props) => {
   });
   const [showError, setShowError] = useState(false);
   const { currentUser } = useContext(AuthContext);
-  const { theme } = useContext(AppThemeContext);
 
   const history = useHistory();
 
@@ -200,7 +198,6 @@ const Create = (props) => {
                 <Col></Col>
                 <Col align="center">
                   <Flower
-                    theme={theme}
                     setCurrentPetal={(i) => {
                       setState({ ...state, currentPetal: parseInt(i) });
                     }}

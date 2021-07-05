@@ -6,7 +6,7 @@ import "./SiteFooter.scss";
 export default function SiteFooter() {
   const { theme } = useContext(AppThemeContext);
   return (
-    <footer className="footer mt-auto" styclassName={theme}>
+    <footer className="footer mt-auto" className={theme}>
       <h5>
         <a href="https://www.ok.community/the-flower-project">
           <img src={blackLogo} className="footerLogo" alt="okLogo" />
