@@ -7,6 +7,7 @@ const { database } = fire;
 const SettingsPage = () => {
   const { currentUser } = useContext(AuthContext);
   const [userData, setUserData] = useState({});
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const getUser = async (user) => {
     const ref = database.collection("user").doc(user.uid);
@@ -23,6 +24,11 @@ const SettingsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await database.collection("user").doc(currentUser.uid).update(userData);
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
 
   return (
@@ -60,9 +66,22 @@ const SettingsPage = () => {
                 />
               </Col>
               <Col xs="auto">
-                <Button type="submit" onClick={handleSubmit} className="mt-4">
-                  Submit
-                </Button>
+                {!showSuccess && (
+                  <Button type="submit" onClick={handleSubmit} className="mt-4">
+                    Submit
+                  </Button>
+                )}
+                {showSuccess && (
+                  <p
+                    style={{
+                      marginTop: "2.5rem",
+                      color: "green",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Saved
+                  </p>
+                )}
               </Col>
             </Form.Row>
           </Form>

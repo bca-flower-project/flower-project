@@ -11,14 +11,14 @@ export default function Login() {
       <Row className="justify-content-center">
         <div className="col-sm-4">
           <h3 className="text-center">Welcome!</h3>
-          <h4 className="text-center"> Sign in to Create a Flower</h4>
+          <h4 className="text-center">Log In to Create a Flower</h4>
 
           <p className="text-center">
             <span className="font-italic">
               Reflect on Who You Are & Who You Want to Be Can't do it now?
             </span>
             <br />
-            Join and we'll send you a link you can use later
+            Can't do it now? Join and we'll send you a link you can use later.
           </p>
           <Card>
             <Card.Body>

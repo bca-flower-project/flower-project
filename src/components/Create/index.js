@@ -2,6 +2,8 @@ import { useState, useContext, useEffect } from "react";
 import { HuePicker } from "react-color";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { AppThemeContext } from "../../contexts/AppThemeContext";
+
 import fire from "../../config/fire";
 import { Container, Row, Button, Form, Col } from "react-bootstrap";
 import "./Create.scss";
@@ -17,6 +19,7 @@ const QUESTIONS = [
       "What have been the peak moments of your life?",
       "What are your biggest accomplishments?",
       "What are your happiest memories?",
+      "What were your peaks this year?",
     ],
   },
   {
@@ -25,6 +28,7 @@ const QUESTIONS = [
       "What do you struggle with the most?",
       "What are the biggest challenges you've faced?",
       "What have been the hardest times of your life?",
+      "What were your challenges this year?",
     ],
   },
   {
@@ -33,6 +37,7 @@ const QUESTIONS = [
       "Who do you care about the most?",
       "Who are the people that care for you?",
       "Who are the most influential people in your life?",
+      "Who made an impact on you this year?",
     ],
   },
   {
@@ -41,6 +46,7 @@ const QUESTIONS = [
       "What are your principles?",
       "What do you care about most in life?",
       "What are your most deeply held beliefs?",
+      "What did you learn this year?",
     ],
   },
   {
@@ -49,6 +55,7 @@ const QUESTIONS = [
       "What do you feel you are good at?",
       "What do you love to do?",
       "What are your powers?",
+      "How do you feel you've grown this year?",
     ],
   },
   {
@@ -57,6 +64,7 @@ const QUESTIONS = [
       "What is your intention for the future?",
       "What are your aspirations?",
       "What are your goals?",
+      "What are your aspirations for the coming year?",
     ],
   },
 ];
@@ -72,7 +80,10 @@ const Create = (props) => {
     latitude: undefined,
     longitude: undefined,
   });
+  const [showError, setShowError] = useState(false);
   const { currentUser } = useContext(AuthContext);
+  const { theme } = useContext(AppThemeContext);
+
   const history = useHistory();
 
   const { currentPetal, petals } = state;
@@ -159,17 +170,24 @@ const Create = (props) => {
   };
 
   const submitFlower = async () => {
-    const userFlowerCollection = await database
-      .collection("user")
-      .doc(currentUser.uid)
-      .collection("flower");
+    if (Object.values(userFlower).includes(undefined)) {
+      setShowError(true);
+      setTimeout(() => {
+        setShowError(false);
+      }, 5000);
+    } else {
+      const userFlowerCollection = await database
+        .collection("user")
+        .doc(currentUser.uid)
+        .collection("flower");
 
-    await userFlowerCollection.add(userFlower);
+      await userFlowerCollection.add(userFlower);
 
-    const globalFlowerCollection = await database.collection("Global");
+      const globalFlowerCollection = await database.collection("Global");
 
-    await globalFlowerCollection.add(globalFlower);
-    history.push("/past-flowers");
+      await globalFlowerCollection.add(globalFlower);
+      history.push("/past-flowers");
+    }
   };
 
   return (
@@ -182,6 +200,7 @@ const Create = (props) => {
                 <Col></Col>
                 <Col>
                   <Flower
+                    theme={theme}
                     setCurrentPetal={(i) => {
                       setState({ ...state, currentPetal: parseInt(i) });
                     }}
@@ -193,7 +212,7 @@ const Create = (props) => {
             </Container>
 
             <h1>{QUESTIONS[currentPetal].petal}</h1>
-            <Form.Label>Click to choose a color</Form.Label>
+            <Form.Label>Click to choose petal color</Form.Label>
             <HuePicker
               className="hue"
               height="30px"
@@ -246,17 +265,14 @@ const Create = (props) => {
             <br />
           </Col>
         </Row>
-        {currentPetal === QUESTIONS.length - 1 &&
-          Object.values(userFlower).includes(undefined) && (
-            <Row
-              style={{ color: "red", marginBottom: "1rem", textAlign: "right" }}
-            >
-              <Col>
-                Please choose a question, answer and color for each step before
-                submitting your flower.
-              </Col>
-            </Row>
-          )}
+        {showError && (
+          <Row style={{ color: "red", marginBottom: "1rem" }}>
+            <Col>
+              Please choose a question, answer and color for each petal before
+              submitting your flower.
+            </Col>
+          </Row>
+        )}
         <Row className="buttonRow">
           <Col>
             <Button
@@ -287,7 +303,6 @@ const Create = (props) => {
                 onClick={() => {
                   submitFlower();
                 }}
-                disabled={Object.values(userFlower).includes(undefined)}
               >
                 Submit Flower
               </Button>
