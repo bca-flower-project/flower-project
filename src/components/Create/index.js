@@ -198,7 +198,7 @@ const Create = (props) => {
             <Container>
               <Row>
                 <Col></Col>
-                <Col>
+                <Col align="center">
                   <Flower
                     theme={theme}
                     setCurrentPetal={(i) => {
