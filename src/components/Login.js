@@ -12,7 +12,6 @@ export default function Login() {
         <div className="col-sm-4">
           <h3 className="text-center">Welcome!</h3>
           <h4 className="text-center">Log In to Create a Flower</h4>
-
           <p className="text-center">
             <span className="font-italic">
               Reflect on Who You Are & Who You Want to Be Can't do it now?
