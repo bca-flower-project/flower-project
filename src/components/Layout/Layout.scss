@@ -1,5 +1,9 @@
 .Layout {
   .navbar {
+    &.bg-dark {
+      background-color: black !important;
+      border-bottom: 1px solid white !important;
+    }
     color: white;
     a {
       color: white;
