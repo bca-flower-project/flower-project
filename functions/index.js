@@ -9,6 +9,7 @@ const SENDGRID_SENDER = functions.config().sendgrid.sender;
 const NEW_USER_EMAIL_TEMPLATE_ID = "d-7a1bc4cdc3d84efdab47c7e2edf6909d";
 const NEW_FLOWER_TEMPLATE_ID = "d-dca0af08c28148b5975bdc311c557121";
 const HAPPY_BIRTHDAY_EMAIL_TEMPLATE_ID = "d-7930e6c61d964ab19f63ea031e312701";
+const UNSUBSCRIBE_GROUP_ID = 15650;
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 
@@ -28,6 +29,9 @@ exports.flowerOnCreate = functions.firestore
         to: userData.email,
         from: SENDGRID_SENDER,
         templateId: NEW_FLOWER_TEMPLATE_ID,
+        asm: {
+          groupId: UNSUBSCRIBE_GROUP_ID,
+        },
         dynamic_template_data: {
           subject: "Nice work! You created a flower!",
           name: userData.name,
@@ -62,6 +66,9 @@ exports.newUserEmail = functions.firestore
         to: userData.email,
         from: SENDGRID_SENDER,
         templateId: NEW_USER_EMAIL_TEMPLATE_ID,
+        asm: {
+          groupId: UNSUBSCRIBE_GROUP_ID,
+        },
         dynamic_template_data: {
           subject: "Welcome to flowers.community",
           name: userData.name,
@@ -106,6 +113,9 @@ exports.happyBirthday = functions.pubsub
               to: userData.email,
               from: SENDGRID_SENDER,
               templateId: HAPPY_BIRTHDAY_EMAIL_TEMPLATE_ID,
+              asm: {
+                groupId: UNSUBSCRIBE_GROUP_ID,
+              },
               dynamic_template_data: {
                 subject: "Happy Birthday from flowers.community",
                 name: userData.name,
