@@ -250,7 +250,6 @@ const Create = (props) => {
               )}
             </Form.Control>
             <br />
-            <Form.Label>Answer:</Form.Label>
             <Form.Control
               onChange={(e) => {
                 e.preventDefault();
@@ -259,6 +258,7 @@ const Create = (props) => {
               value={petals[currentPetal].answer || ""}
               as="textarea"
               rows={3}
+              placeholder="Answer here..."
             />
             <br />
 
