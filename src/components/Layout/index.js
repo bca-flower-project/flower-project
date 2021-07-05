@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   const { currentUser, logout } = useContext(AuthContext);
   const { toggleTheme } = useContext(AppThemeContext);
   return (
-    <div className="Layout">
+    <div className="Layout d-flex flex-column min-vh-100">
       <Navbar bg="dark" expand="md">
         <Navbar.Toggle className="navbar-dark" />
         <Navbar.Collapse id="basic-navbar-nav">
