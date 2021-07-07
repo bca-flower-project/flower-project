@@ -61,6 +61,7 @@ const SignupPage = () => {
       setTimeout(() => {
         setState({ ...state, message: null });
       }, 3000);
+
     } else {
       doSignup({ firstName, lastName, email, password }, ({ message }) => {
         setState({ ...state, message });
