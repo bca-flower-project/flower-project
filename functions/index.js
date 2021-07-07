@@ -92,7 +92,7 @@ exports.newUserEmail = functions.firestore
   });
 
 exports.happyBirthday = functions.pubsub
-  .schedule("every 24 hours")
+  .schedule("0 6 * * * ")
   .onRun(async (context) => {
     const today = new Date();
     const currMonth = `${today.getMonth() + 1}`.padStart(2, "0");
