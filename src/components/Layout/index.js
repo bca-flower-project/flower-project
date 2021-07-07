@@ -19,7 +19,10 @@ const Layout = ({ children }) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {currentUser && (
-              <Link to="/">Welcome, {currentUser.displayName}!</Link>
+              <Link to="/">
+                Welcome
+                {currentUser.displayName && <>, {currentUser.displayName}</>}!
+              </Link>
             )}
           </Nav>
           <Nav className="ml-auto">

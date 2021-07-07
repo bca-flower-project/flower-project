@@ -22,7 +22,7 @@ export default function Login() {
     passwordLogin(email, password, ({ message }) => {
       setState({ ...state, message });
       setTimeout(() => {
-        setState({ ...state, notice: null });
+        setState({ ...state, message: null });
       }, 3000);
     });
   };

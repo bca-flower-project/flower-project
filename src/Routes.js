@@ -9,6 +9,7 @@ import Global from "./components/Global";
 import LandingPage from "./components/LandingPage";
 import SettingsPage from "./components/Settings";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import SignupPage from './components/SignupPage'
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -76,7 +77,7 @@ const Routes = () => {
             exact
             path="/signup"
             render={() => {
-              return <p>Signup Form Here</p>;
+              return <SignupPage />;
             }}
           />
           <Route

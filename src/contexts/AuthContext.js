@@ -50,6 +50,36 @@ const AuthProvider = ({ children }) => {
     fire.auth().signInWithEmailAndPassword(email, password).catch(onError);
   };
 
+  const doSignup = async (
+    { firstName, lastName, email, password },
+    handleError
+  ) => {
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(async (result) => {
+        // The signed-in user info.
+        const user = result.user;
+        await user.updateProfile({
+          displayName: `${firstName} ${lastName}`,
+        });
+
+        await database
+          .collection("user")
+          .doc(user.uid)
+          .set(
+            {
+              name: `${firstName} ${lastName}`,
+              email: user.email,
+              uid: user.uid,
+            },
+            { merge: true }
+          );
+        await auth().getCurrentUser().reload();
+      })
+      .catch(handleError);
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       setCurrentUser(userAuth);
@@ -59,7 +89,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ passwordLogin, currentUser, googleLogin, logout }}
+      value={{ doSignup, passwordLogin, currentUser, googleLogin, logout }}
     >
       {children}
     </AuthContext.Provider>
