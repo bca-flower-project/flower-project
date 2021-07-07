@@ -50,6 +50,14 @@ const AuthProvider = ({ children }) => {
     fire.auth().signInWithEmailAndPassword(email, password).catch(onError);
   };
 
+  const requestReset = (email, onError) => {
+    fire.auth().sendPasswordResetEmail(email)
+    .then((result) => {
+      console.log({result})
+    })
+    .catch(onError);
+  };
+
   const doSignup = async (
     { firstName, lastName, email, password },
     handleError
@@ -89,7 +97,14 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ doSignup, passwordLogin, currentUser, googleLogin, logout }}
+      value={{
+        requestReset,
+        doSignup,
+        passwordLogin,
+        currentUser,
+        googleLogin,
+        logout,
+      }}
     >
       {children}
     </AuthContext.Provider>

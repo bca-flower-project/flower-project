@@ -10,6 +10,7 @@ import LandingPage from "./components/LandingPage";
 import SettingsPage from "./components/Settings";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import SignupPage from './components/SignupPage'
+import ResetPasswordRequest from './components/ResetPasswordRequest'
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -84,7 +85,7 @@ const Routes = () => {
             exact
             path="/forgot-password"
             render={() => {
-              return <p>Password Reset Form Here</p>;
+              return <ResetPasswordRequest />;
             }}
           />
           <Route
