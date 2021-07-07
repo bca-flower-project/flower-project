@@ -4,7 +4,7 @@ import { Container, Button, Card, Row } from "react-bootstrap";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function Login() {
-  const { login, facebookLogin } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   return (
     <Container fluid className="loginWrapper">
@@ -32,14 +32,8 @@ export default function Login() {
               >
                 Google Login
               </Button>
-              <Button
-                onClick={facebookLogin}
-                className="w-100 mt-3"
-                style={{ background: "black" }}
-                type="submit"
-              >
-                Facebook Login
-              </Button>
+              <hr/>
+              sign in form
             </Card.Body>
           </Card>
         </div>

@@ -5,5 +5,11 @@
     margin: 2rem auto;
   }
 
-  .card {padding-bottom: 2rem;}
+  .card {
+    padding-bottom: 2rem;
+    color: black;
+    hr {
+      border-bottom: 1px solid black;
+    }
+  }
 }
