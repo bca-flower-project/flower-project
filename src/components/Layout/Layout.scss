@@ -1,19 +1,39 @@
 .Layout {
   .navbar {
-    &.bg-dark {
-      padding-top: 4px;
-      padding-bottom: 4px;
-      background-color: black !important;
-      border-bottom: 1px solid white !important;
-    }
-    color: white;
-    a {
+    &.theme-dark {
+      &.bg-dark {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        background-color: black !important;
+        border-bottom: 1px solid white !important;
+      }
       color: white;
+      a {
+        color: white;
+      }
+      .nav-link {
+        color: white !important;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
-    .nav-link {
-      color: white !important;
-      &:hover {
-        text-decoration: underline;
+    &.theme-light {
+      &.bg-dark {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        background-color: white !important;
+        border-bottom: 1px solid black !important;
+      }
+      color: black;
+      a {
+        color: black;
+      }
+      .nav-link {
+        color: black !important;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
