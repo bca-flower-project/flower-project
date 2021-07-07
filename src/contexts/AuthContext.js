@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  const login = async () => {
+  const googleLogin = async () => {
     auth
       .signInWithPopup(googleProvider)
       .then(async (result) => {
@@ -46,6 +46,10 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  const passwordLogin = (email, password, onError) => {
+    fire.auth().signInWithEmailAndPassword(email, password).catch(onError);
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       setCurrentUser(userAuth);
@@ -54,7 +58,9 @@ const AuthProvider = ({ children }) => {
   }, [auth]);
 
   return (
-    <AuthContext.Provider value={{  currentUser, login, logout }}>
+    <AuthContext.Provider
+      value={{ passwordLogin, currentUser, googleLogin, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

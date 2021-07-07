@@ -1,10 +1,33 @@
-import React, { useContext } from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Login.scss";
-import { Container, Button, Card, Row } from "react-bootstrap";
 import { AuthContext } from "../contexts/AuthContext";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 
 export default function Login() {
-  const { login } = useContext(AuthContext);
+  const { googleLogin, passwordLogin } = useContext(AuthContext);
+  const [state, setState] = useState({ email: "", password: "" });
+  const changeHandler = (key) => {
+    return ({ target: { value } }) => {
+      setState({ ...state, [key]: value });
+    };
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    passwordLogin(email, password, ({ message }) => {
+      setState({ ...state, message });
+      setTimeout(() => {
+        setState({ ...state, notice: null });
+      }, 3000);
+    });
+  };
+
+  const { email, password, message } = state;
 
   return (
     <Container fluid className="loginWrapper">
@@ -25,15 +48,54 @@ export default function Login() {
                 Log In
               </h4>
               <Button
-                onClick={login}
+                onClick={googleLogin}
                 className="w-100"
                 style={{ background: "black" }}
                 type="submit"
               >
                 Google Login
               </Button>
-              <hr/>
-              sign in form
+              <hr />
+              <h4 className="text-center mb-4" style={{ color: "black" }}>
+                Email & Password Log In
+              </h4>
+              <Form onSubmit={handleSubmit}>
+                {message && <Alert variant="danger">{message}</Alert>}
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    value={state.email}
+                    onChange={changeHandler("email")}
+                    type="email"
+                    placeholder="Enter email"
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    value={state.password}
+                    onChange={changeHandler("password")}
+                    type="password"
+                    placeholder="Password"
+                  />
+                </Form.Group>
+                <Button
+                  className="btn fw4 no-drag invert"
+                  style={{ background: "black" }}
+                  type="submit"
+                >
+                  Sign In
+                </Button>
+              </Form>
+              <p className="mt-3">
+                <Link style={{ color: "black" }} to="/signup">
+                  Create an Account
+                </Link>{" "}
+                |{" "}
+                <Link style={{ color: "black" }} to="/forgot-password">
+                  Forgot Password
+                </Link>
+              </p>
             </Card.Body>
           </Card>
         </div>

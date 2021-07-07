@@ -74,6 +74,20 @@ const Routes = () => {
           />
           <Route
             exact
+            path="/signup"
+            render={() => {
+              return <p>Signup Form Here</p>;
+            }}
+          />
+          <Route
+            exact
+            path="/forgot-password"
+            render={() => {
+              return <p>Password Reset Form Here</p>;
+            }}
+          />
+          <Route
+            exact
             path="*"
             render={() => {
               return <Login />;
