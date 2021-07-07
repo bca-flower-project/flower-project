@@ -50,12 +50,12 @@ const AuthProvider = ({ children }) => {
     fire.auth().signInWithEmailAndPassword(email, password).catch(onError);
   };
 
-  const requestReset = (email, onError) => {
-    fire.auth().sendPasswordResetEmail(email)
-    .then((result) => {
-      console.log({result})
-    })
-    .catch(onError);
+  const requestReset = (email, onSuccess, onError) => {
+    fire
+      .auth()
+      .sendPasswordResetEmail(email, { url: process.env.REACT_APP_RESET_REDIRECT_URL })
+      .then(onSuccess)
+      .catch(onError);
   };
 
   const doSignup = async (

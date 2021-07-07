@@ -34,7 +34,7 @@ export default function Login() {
       <Row className="justify-content-center">
         <div className="col-sm-4">
           <h3 className="text-center">Welcome!</h3>
-          <h4 className="text-center">Log In to Create a Flower</h4>
+          <h4 className="text-center">Login to Create a Flower</h4>
           <p className="text-center">
             <span className="font-italic">
               Reflect on Who You Are & Who You Want to Be
@@ -45,7 +45,7 @@ export default function Login() {
           <Card>
             <Card.Body>
               <h4 className="text-center mb-4" style={{ color: "black" }}>
-                Log In
+                Login
               </h4>
               <Button
                 onClick={googleLogin}
@@ -57,7 +57,7 @@ export default function Login() {
               </Button>
               <hr />
               <h4 className="text-center mb-4" style={{ color: "black" }}>
-                Email & Password Log In
+                Email & Password Login
               </h4>
               <Form onSubmit={handleSubmit}>
                 {message && <Alert variant="danger">{message}</Alert>}
@@ -84,7 +84,7 @@ export default function Login() {
                   style={{ background: "black" }}
                   type="submit"
                 >
-                  Sign In
+                   Login
                 </Button>
               </Form>
               <p className="mt-3">

@@ -12,6 +12,8 @@ import Alert from "react-bootstrap/Alert";
 export default function ResetPasswordRequest() {
   const { requestReset } = useContext(AuthContext);
   const [state, setState] = useState({ email: "" });
+  const [success, setSuccess] = useState(false);
+
   const changeHandler = (key) => {
     return ({ target: { value } }) => {
       setState({ ...state, [key]: value });
@@ -19,12 +21,18 @@ export default function ResetPasswordRequest() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    requestReset(email, ({ message }) => {
-      setState({ ...state, message });
-      setTimeout(() => {
-        setState({ ...state, message: null });
-      }, 3000);
-    });
+    requestReset(
+      email,
+      () => {
+        setSuccess(true);
+      },
+      ({ message }) => {
+        setState({ ...state, message });
+        setTimeout(() => {
+          setState({ ...state, message: null });
+        }, 3000);
+      }
+    );
   };
 
   const { email, message } = state;
@@ -50,13 +58,20 @@ export default function ResetPasswordRequest() {
                     placeholder="Enter email"
                   />
                 </Form.Group>
-                <Button
-                  className="btn fw4 no-drag invert"
-                  style={{ background: "black" }}
-                  type="submit"
-                >
-                  Request Reset
-                </Button>
+                {!success && (
+                  <Button
+                    className="btn fw4 no-drag invert"
+                    style={{ background: "black" }}
+                    type="submit"
+                  >
+                    Request Reset
+                  </Button>
+                )}
+                {success && (
+                  <p style={{ color: "green", fontWeight: "bold" }}>
+                    Check your email to reset your password.
+                  </p>
+                )}
               </Form>
             </Card.Body>
           </Card>
