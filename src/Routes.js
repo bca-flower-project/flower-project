@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Login from "./components/Login";
 import Create from "./components/Create";
@@ -62,9 +62,14 @@ const Routes = () => {
   return (
     <>
       {currentUser &&
-        paths.map((pathInfo) => {
+        <>
+        <Redirect strict from="/signup" to="/" />
+        {paths.map((pathInfo) => {
           return <Route exact {...pathInfo} />;
         })}
+        </>
+      }
+
       {!currentUser && (
         <Switch>
           <Route
