@@ -1,0 +1,34 @@
+.Create {
+  .btn {
+    margin-right: 1rem;
+  }
+
+  .petal {
+    cursor: pointer;
+
+    &:hover {
+      fill-opacity: 75%;
+    }
+  }
+
+  svg {
+    cursor: pointer;
+    width: 25vh;
+    margin: 0 auto;
+  }
+
+  .buttonRow {
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  .right-button {
+    text-align: right;
+  }
+
+  @media only screen and (max-width: 720px) {
+    svg {
+      height: 25vw;
+    }
+  }
+}

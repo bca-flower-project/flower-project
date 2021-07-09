@@ -1,0 +1,13 @@
+.flower-col {
+  @media only screen and (min-width: 721px) {
+    svg {
+      padding-bottom: 2rem;
+      height: 12vw;
+    }
+  }
+  @media only screen and (max-width: 720px) {
+    svg {
+      height: 25vw;
+    }
+  }
+}

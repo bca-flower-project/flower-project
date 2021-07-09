@@ -1,1 +1,5 @@
 node_modules
+build
+*.log
+functions/*.log
+.firebase/*.cache

@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "flower-power-58381"
+    "default": "flowers-community",
+    "prod": "flower-project-prod"
+
   }
 }

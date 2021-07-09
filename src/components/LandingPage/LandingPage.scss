@@ -1,0 +1,39 @@
+.LandingPage {
+  &.light {
+    .row {
+      a {
+        color: black !important;
+      }
+    }
+  }
+
+  &.dark {
+    .row {
+      a {
+        color: white !important;
+      }
+    }
+  }
+  padding-top: 5rem;
+
+  .row {
+    text-align: center;
+    justify-content: space-between;
+
+    @media only screen and (min-width: 721px) {
+      img {
+        padding-bottom: 2rem;
+        width: 20vw;
+      }
+    }
+
+    @media only screen and (max-width: 720px) {
+      img {
+        width: 90%;
+      }
+    }
+  }
+  @media only screen and (max-width: 720px) {
+    padding-top: 1rem;
+  }
+}
