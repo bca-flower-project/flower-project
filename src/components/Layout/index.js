@@ -32,6 +32,14 @@ const Layout = ({ children }) => {
                 Settings
               </Link>
             )}
+            <a
+              className="nav-link"
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.ok.community/connect"
+            >
+              Help
+            </a>
             {currentUser && <Nav.Link onClick={logout}>Logout</Nav.Link>}
             {!currentUser && (
               <Link className="nav-link" to="/">
