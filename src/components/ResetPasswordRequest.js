@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import "./Login.scss";
 import { AuthContext } from "../contexts/AuthContext";
 import Container from "react-bootstrap/Container";

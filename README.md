@@ -1,3 +1,8 @@
+
+# Deploy commands
+
+`yarn build && yarn deploy && yarn deploy-functions && yarn build:prod && yarn deploy:prod && yarn deploy-functions:prod`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
