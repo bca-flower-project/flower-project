@@ -41,6 +41,7 @@ function Flower({ setCurrentPetal, petals, currentPetal }) {
                 strokeLinecap="butt"
                 strokeLinejoin="miter"
                 strokeWidth="1.565"
+                id={`petal-${i}`}
                 key={`petal-${i}`}
                 onClick={() => {
                   setCurrentPetal(i);
