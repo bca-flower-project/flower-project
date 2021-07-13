@@ -10,6 +10,21 @@ import Flower from "./Flower.js";
 
 const { database, firestore } = fire;
 
+const iOsDevice = () => {
+  return (
+    [
+      "iPad Simulator",
+      "iPhone Simulator",
+      "iPod Simulator",
+      "iPad",
+      "iPhone",
+      "iPod",
+    ].includes(navigator.platform) ||
+    // iPad on iOS 13 detection
+    (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  );
+};
+
 // order should be:
 const QUESTIONS = [
   {
@@ -70,7 +85,7 @@ const QUESTIONS = [
 
 const INITIAL_STATE = {
   currentPetal: 0,
-  petals: { 0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {}, 6: {} },
+  petals: { 0: {}, 1: {}, 2: {}, 3: {}, 4: {}, 5: {} },
 };
 
 const Create = (props) => {
@@ -83,6 +98,8 @@ const Create = (props) => {
   const { currentUser } = useContext(AuthContext);
 
   const history = useHistory();
+
+  const handleiOS = iOsDevice();
 
   const { currentPetal, petals } = state;
 
@@ -198,6 +215,7 @@ const Create = (props) => {
                 <Col></Col>
                 <Col align="center">
                   <Flower
+                    currentPetal={state.currentPetal}
                     setCurrentPetal={(i) => {
                       setState({ ...state, currentPetal: parseInt(i) });
                     }}
@@ -245,6 +263,7 @@ const Create = (props) => {
                   );
                 }
               )}
+              {handleiOS && <optgroup></optgroup>}
             </Form.Control>
             <br />
             <Form.Control
@@ -258,7 +277,6 @@ const Create = (props) => {
               placeholder="Answer here..."
             />
             <br />
-
             <br />
           </Col>
         </Row>

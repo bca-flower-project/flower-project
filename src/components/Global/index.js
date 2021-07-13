@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import fire from "../../config/fire";
-import { Container, Row } from "react-bootstrap";
-import './Global.scss'
+import { Container, Row, Col } from "react-bootstrap";
+import "./Global.scss";
 
 import BlankFlower from "../BlankFlower";
 
@@ -13,7 +13,7 @@ export default function Global(props) {
 
   useEffect(() => {
     async function flowerGlobe() {
-      const ref = database.collection("Global").orderBy('createdAt');
+      const ref = database.collection("Global").orderBy("createdAt");
 
       setLoading(true);
 
@@ -32,6 +32,11 @@ export default function Global(props) {
 
   return (
     <Container fluid>
+      <Row>
+        <Col>
+          <h2 className="text-center">Coming Soon...</h2>
+        </Col>
+      </Row>
       <Row>
         {GlobalFlower.map((flower, index) => {
           return (
