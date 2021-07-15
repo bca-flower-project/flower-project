@@ -6,6 +6,12 @@
   .petal {
     cursor: pointer;
 
+    stroke: #000000;
+
+    &.active {
+      stroke: lightgreen;
+    }
+
     &:hover {
       fill-opacity: 75%;
     }

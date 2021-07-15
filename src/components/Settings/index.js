@@ -37,8 +37,8 @@ const SettingsPage = () => {
         <Col>
           <h1>Settings</h1>
           <p>
-            Set your birthday and receive a reminder each year to create a
-            Flower.
+            Choose the day of your birth and receive a reminder each year to
+            create a Flower.
           </p>
           <Form>
             <Form.Row className="align-items-center">

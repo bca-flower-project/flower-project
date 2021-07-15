@@ -1,6 +1,6 @@
 import React from "react";
 
-function Flower({ setCurrentPetal, petals }) {
+function Flower({ setCurrentPetal, petals, currentPetal }) {
   const petalDimensions = [
     "M126.566 90.797c-18.293-12.082-46.995-3.813-45.627 20.02 10.259 6.089 16.923 12.223 24.714 21.08 12.048.238 17.433 2.784 24.368 10.673 4.91-17.95 11.343-39.926-3.455-51.773z",
     "M176.07 140.131c1.317-21.883-20.194-42.605-40.151-29.503-.143 11.928-2.124 20.766-5.898 31.942 5.818 10.553 6.305 16.49 2.94 26.44 18.002-4.722 40.249-10.14 43.11-28.879z",
@@ -37,11 +37,11 @@ function Flower({ setCurrentPetal, petals }) {
           {Object.keys(petals).map((i) => {
             return (
               <path
-                className="petal"
-                stroke="#000000"
+                className={`petal ${`${currentPetal}` === i ? "active" : ""}`}
                 strokeLinecap="butt"
                 strokeLinejoin="miter"
                 strokeWidth="1.565"
+                id={`petal-${i}`}
                 key={`petal-${i}`}
                 onClick={() => {
                   setCurrentPetal(i);
