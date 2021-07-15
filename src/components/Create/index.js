@@ -30,55 +30,55 @@ const QUESTIONS = [
   {
     petal: "Peaks",
     questionOptions: [
+      "What were your peaks this year?",
       "What have been the peak moments of your life?",
       "What are your biggest accomplishments?",
       "What are your happiest memories?",
-      "What were your peaks this year?",
     ],
   },
   {
     petal: "Challenges",
     questionOptions: [
+      "What were your challenges this year?",
       "What do you struggle with the most?",
       "What are the biggest challenges you've faced?",
       "What have been the hardest times of your life?",
-      "What were your challenges this year?",
     ],
   },
   {
     petal: "People",
     questionOptions: [
+      "Who made an impact on you this year?",
       "Who do you care about the most?",
       "Who are the people that care for you?",
       "Who are the most influential people in your life?",
-      "Who made an impact on you this year?",
     ],
   },
   {
     petal: "Principles",
     questionOptions: [
+      "What did you learn this year?",
       "What are your principles?",
       "What do you care about most in life?",
       "What are your most deeply held beliefs?",
-      "What did you learn this year?",
     ],
   },
   {
     petal: "Powers",
     questionOptions: [
+      "How do you feel you've grown this year?",
       "What do you feel you are good at?",
       "What do you love to do?",
       "What are your powers?",
-      "How do you feel you've grown this year?",
     ],
   },
   {
     petal: "Aspirations",
     questionOptions: [
+      "What are your aspirations for the coming year?",
       "What is your intention for the future?",
       "What are your aspirations?",
       "What are your goals?",
-      "What are your aspirations for the coming year?",
     ],
   },
 ];
