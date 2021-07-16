@@ -1,6 +1,14 @@
 
 # Deploy commands
 
+## Deploy hosting (both envs)
+
+`yarn build && yarn deploy && yarn build:prod && yarn deploy:prod`
+
+## Deploy Everything (dev only)
+`yarn build && yarn deploy && yarn deploy-functions`
+
+## Deploy EVERYTHING
 `yarn build && yarn deploy && yarn deploy-functions && yarn build:prod && yarn deploy:prod && yarn deploy-functions:prod`
 
 # Getting Started with Create React App
