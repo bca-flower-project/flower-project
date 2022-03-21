@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { HuePicker } from "react-color";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 import fire from "../../config/fire";
@@ -90,14 +90,42 @@ const INITIAL_STATE = {
 
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
+  const [loading, setLoading] = useState(false);
+
   const [location, setLocation] = useState({
     latitude: undefined,
     longitude: undefined,
   });
-  const [showError, setShowError] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
   const history = useHistory();
+
+  const { flowerId } = useParams();
+
+  useEffect(() => {
+    async function loadFlower() {
+      if (!flowerId) {
+        return null;
+      }
+
+      const ref = database
+        .collection("user")
+        .doc(currentUser.uid)
+        .collection("flower")
+        .doc(flowerId);
+
+      setLoading(true);
+
+      await ref.get().then((item) => {
+        const { rawState, createdAt } = item.data();
+        if (rawState?.petals) {
+          setState({ ...state, createdAt, petals: rawState.petals });
+        }
+        setLoading(false);
+      });
+    }
+    loadFlower();
+  }, [flowerId, currentUser.uid]);
 
   const handleiOS = iOsDevice();
 
@@ -161,6 +189,7 @@ const Create = (props) => {
     ...getPetalValues("Powers"),
     ...getPetalValues("Challenges"),
     ...(Object.values(location).includes(undefined) ? {} : location),
+    rawState: state,
     createdAt: firestore.Timestamp.now(),
   };
 
@@ -184,26 +213,48 @@ const Create = (props) => {
     createdAt: firestore.Timestamp.now(),
   };
 
+  const rmUndefined = (obj) => {
+    return Object.keys(obj).reduce((acc, key) => {
+      if (obj[key] !== undefined) {
+        acc[key] = obj[key];
+      }
+      return acc;
+    }, {});
+  };
+
+  const isValid = !Object.values(userFlower).includes(undefined);
+
   const submitFlower = async () => {
-    if (Object.values(userFlower).includes(undefined)) {
-      setShowError(true);
-      setTimeout(() => {
-        setShowError(false);
-      }, 5000);
+    if (flowerId) {
+      const flowerRef = database
+        .collection("user")
+        .doc(currentUser.uid)
+        .collection("flower")
+        .doc(flowerId);
+
+      await flowerRef.update(rmUndefined(userFlower));
+
     } else {
+      
       const userFlowerCollection = await database
         .collection("user")
         .doc(currentUser.uid)
         .collection("flower");
 
-      await userFlowerCollection.add(userFlower);
-
-      const globalFlowerCollection = await database.collection("Global");
-
-      await globalFlowerCollection.add(globalFlower);
-      history.push("/past-flowers");
+      await userFlowerCollection.add(rmUndefined(userFlower));
     }
+
+    if (isValid) {
+      const globalFlowerCollection = await database.collection("Global");
+      await globalFlowerCollection.add(globalFlower);
+    }
+
+    history.push("/past-flowers");
   };
+
+  if (loading) {
+    return <h1>Loading....</h1>;
+  }
 
   return (
     <>
@@ -280,14 +331,7 @@ const Create = (props) => {
             <br />
           </Col>
         </Row>
-        {showError && (
-          <Row style={{ color: "red", marginBottom: "1rem" }}>
-            <Col>
-              Please choose a question, answer and color for each petal before
-              submitting your flower.
-            </Col>
-          </Row>
-        )}
+
         <Row className="buttonRow">
           <Col>
             <Button
@@ -319,8 +363,33 @@ const Create = (props) => {
                   submitFlower();
                 }}
               >
-                Submit Flower
+                {isValid ? "Submit Flower" : "Save Draft"}
               </Button>
+            )}
+            {currentPetal === QUESTIONS.length - 1 && !isValid && (
+              <Row style={{ color: "red", marginBottom: "1rem" }}>
+                <Col>Note: You have not filled out all the petals yet.</Col>
+              </Row>
+            )}
+            {currentPetal !== QUESTIONS.length - 1 && (
+              <Row>
+                <Col>
+                  <span
+                    style={{
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                      marginRight: "1rem",
+                    }}
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      submitFlower();
+                    }}
+                  >
+                    Save {isValid ? "Changes" : "Draft"}
+                  </span>
+                </Col>
+              </Row>
             )}
           </Col>
         </Row>

@@ -32,6 +32,14 @@ const Routes = () => {
     },
     {
       key: "create-flowers",
+      path: "/create/:flowerId/edit",
+      exact: true,
+      render: () => {
+        return <Create />;
+      },
+    },
+    {
+      key: "create-flowers",
       path: "/create",
       render: () => {
         return <Create />;

@@ -66,12 +66,33 @@ const SettingsPage = () => {
                   id="dateOfBirth"
                 />
               </Col>
+            </Form.Row>
+            <Form.Row className="align-items-center">
               <Col xs="auto">
+                <Form.Label inline htmlFor="dateOfBirth">
+                  Zip code
+                </Form.Label>
+                <Form.Control
+                  value={userData.zipcode}
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setUserData({
+                      ...userData,
+                      zipcode: e.target.value,
+                    });
+                  }}
+                  type="text"
+                  className="mb-2"
+                  id="zipcode"
+                  maxLength="5"
+                />
+
                 {!showSuccess && (
                   <Button type="submit" onClick={handleSubmit} className="mt-4">
                     Submit
                   </Button>
                 )}
+                
                 {showSuccess && (
                   <p
                     style={{
