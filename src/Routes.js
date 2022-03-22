@@ -9,8 +9,8 @@ import Global from "./components/Global";
 import LandingPage from "./components/LandingPage";
 import SettingsPage from "./components/Settings";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import SignupPage from './components/SignupPage'
-import ResetPasswordRequest from './components/ResetPasswordRequest'
+import SignupPage from "./components/SignupPage";
+import ResetPasswordRequest from "./components/ResetPasswordRequest";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -31,7 +31,7 @@ const Routes = () => {
       },
     },
     {
-      key: "create-flowers",
+      key: "edit-flowers",
       path: "/create/:flowerId/edit",
       exact: true,
       render: () => {
@@ -69,14 +69,14 @@ const Routes = () => {
   ];
   return (
     <>
-      {currentUser &&
+      {currentUser && (
         <>
-        <Redirect strict from="/signup" to="/" />
-        {paths.map((pathInfo) => {
-          return <Route exact {...pathInfo} />;
-        })}
+          <Redirect strict from="/signup" to="/" />
+          {paths.map((pathInfo) => {
+            return <Route exact {...pathInfo} />;
+          })}
         </>
-      }
+      )}
 
       {!currentUser && (
         <Switch>

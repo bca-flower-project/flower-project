@@ -119,7 +119,11 @@ const Create = (props) => {
       await ref.get().then((item) => {
         const { rawState, createdAt } = item.data();
         if (rawState?.petals) {
-          setState({ ...state, createdAt, petals: rawState.petals });
+          setState((current) => ({
+            ...current,
+            createdAt,
+            petals: rawState.petals,
+          }));
         }
         setLoading(false);
       });
@@ -233,9 +237,7 @@ const Create = (props) => {
         .doc(flowerId);
 
       await flowerRef.update(rmUndefined(userFlower));
-
     } else {
-      
       const userFlowerCollection = await database
         .collection("user")
         .doc(currentUser.uid)
