@@ -94,11 +94,11 @@ export default function PastFlowers(props) {
             <div className="col-sm-6">
               <BlankFlower
                 colorOne={PeaksColor}
-                colorTwo={AspirationsColor}
+                colorTwo={ChallengesColor}
                 colorThree={PeopleColor}
                 colorFour={PrinciplesColor}
                 colorFive={PowersColor}
-                colorSix={ChallengesColor}
+                colorSix={AspirationsColor}
               />
             </div>
             <div className="col-sm-6">

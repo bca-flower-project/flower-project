@@ -96,6 +96,7 @@ const Create = (props) => {
     latitude: undefined,
     longitude: undefined,
   });
+
   const { currentUser } = useContext(AuthContext);
 
   const history = useHistory();
