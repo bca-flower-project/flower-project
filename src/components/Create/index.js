@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { HuePicker } from "react-color";
+import { HuePicker, SketchPicker } from "react-color";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -90,10 +90,11 @@ const INITIAL_STATE = {
 
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
-  const [location, setLocation] = useState({
-    latitude: undefined,
-    longitude: undefined,
-  });
+  const [activeColor, setActiveColor] = useState("FFFFFF");
+  // const [location, setLocation] = useState({
+  //   latitude: undefined,
+  //   longitude: undefined,
+  // });
   const [showError, setShowError] = useState(false);
   const { currentUser } = useContext(AuthContext);
 
@@ -103,29 +104,30 @@ const Create = (props) => {
 
   const { currentPetal, petals } = state;
 
-  useEffect(() => {
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0,
-    };
+  // useEffect(() => {
+  //   const options = {
+  //     enableHighAccuracy: true,
+  //     timeout: 5000,
+  //     maximumAge: 0,
+  //   };
 
-    function success(pos) {
-      const crd = pos.coords;
-      const { latitude, longitude } = crd;
-      if (latitude && longitude) {
-        setLocation({ latitude, longitude });
-      }
-    }
+  //   function success(pos) {
+  //     const crd = pos.coords;
+  //     const { latitude, longitude } = crd;
+  //     if (latitude && longitude) {
+  //       setLocation({ latitude, longitude });
+  //     }
+  //   }
 
-    function error(err) {
-      console.log(`ERROR(${err.code}): ${err.message}`);
-    }
+  //   function error(err) {
+  //     console.log(`ERROR(${err.code}): ${err.message}`);
+  //   }
 
-    navigator.geolocation.getCurrentPosition(success, error, options);
-  }, [location]);
+  //   navigator.geolocation.getCurrentPosition(success, error, options);
+  // }, [location]);
 
   const setPetalValue = (petalIdx, key, value) => {
+    setActiveColor(value);
     setState({
       ...state,
       petals: {
@@ -160,7 +162,7 @@ const Create = (props) => {
     ...getPetalValues("Principles"),
     ...getPetalValues("Powers"),
     ...getPetalValues("Challenges"),
-    ...(Object.values(location).includes(undefined) ? {} : location),
+    // ...(Object.values(location).includes(undefined) ? {} : location),
     createdAt: firestore.Timestamp.now(),
   };
 
@@ -180,7 +182,7 @@ const Create = (props) => {
     PrinciplesColor,
     PowersColor,
     ChallengesColor,
-    ...(Object.values(location).includes(undefined) ? {} : location),
+    // ...(Object.values(location).includes(undefined) ? {} : location),
     createdAt: firestore.Timestamp.now(),
   };
 
@@ -228,16 +230,18 @@ const Create = (props) => {
 
             <h1>{QUESTIONS[currentPetal].petal}</h1>
             <Form.Label>Click to choose petal color</Form.Label>
-            <HuePicker
-              className="hue"
-              height="30px"
-              width="100%"
-              onChange={({ hex }) => {
-                setPetalValue(currentPetal, "color", hex);
-              }}
-              direction="horizontal"
-              pointer="none"
-            />
+            <br/>
+            <br/>
+            <Col align="center">
+              <SketchPicker
+                className="hue"
+                width="50%"
+                onChange={({ hex }) => {
+                  setPetalValue(currentPetal, "color", hex);
+                }}
+                color={activeColor}
+              />
+            </Col>
             <br />
             <Form.Control
               as="select"

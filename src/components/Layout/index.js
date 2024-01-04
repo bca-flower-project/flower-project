@@ -49,11 +49,12 @@ const Layout = ({ children }) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {currentUser && window.location.pathname !== "/" && (
+      <br/>
+      {/* {currentUser && window.location.pathname !== "/" && (
         <div>
           <SiteNav />
         </div>
-      )}
+      )} */}
       {children}
       <SiteFooter />
     </div>
