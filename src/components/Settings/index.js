@@ -4,7 +4,12 @@ import fire from "../../config/fire";
 import { AuthContext } from "../../contexts/AuthContext";
 const { database } = fire;
 
-const SettingsPage = () => {
+const SettingsPage = ({
+  submitButtonLabel = "Save",
+  afterSubmit,
+  title = "Settings",
+  introText = "Choose the day of your birth and receive a reminder each year to create a Flower. Provide a US zipcode and help visualize the world of flowers.",
+}) => {
   const { currentUser } = useContext(AuthContext);
   const [userData, setUserData] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
@@ -26,6 +31,10 @@ const SettingsPage = () => {
     await database.collection("user").doc(currentUser.uid).update(userData);
     setShowSuccess(true);
 
+    if (afterSubmit) {
+      afterSubmit();
+    }
+
     setTimeout(() => {
       setShowSuccess(false);
     }, 3000);
@@ -35,11 +44,8 @@ const SettingsPage = () => {
     <Container>
       <Row>
         <Col>
-          <h1>Settings</h1>
-          <p>
-            Choose the day of your birth and receive a reminder each year to
-            create a Flower.
-          </p>
+          <h1>{title}</h1>
+          <p>{introText}</p>
           <Form>
             <Form.Row className="align-items-center">
               <Col xs="auto">
@@ -66,12 +72,33 @@ const SettingsPage = () => {
                   id="dateOfBirth"
                 />
               </Col>
+            </Form.Row>
+            <Form.Row className="align-items-center">
               <Col xs="auto">
+                <Form.Label inline htmlFor="dateOfBirth">
+                  Zip code
+                </Form.Label>
+                <Form.Control
+                  value={userData.zipcode}
+                  onChange={(e) => {
+                    e.preventDefault();
+                    setUserData({
+                      ...userData,
+                      zipcode: e.target.value,
+                    });
+                  }}
+                  type="text"
+                  className="mb-2"
+                  id="zipcode"
+                  maxLength="5"
+                />
+
                 {!showSuccess && (
                   <Button type="submit" onClick={handleSubmit} className="mt-4">
-                    Submit
+                    {submitButtonLabel}
                   </Button>
                 )}
+
                 {showSuccess && (
                   <p
                     style={{

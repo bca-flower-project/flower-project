@@ -43,11 +43,11 @@ export default function Global(props) {
             <div className="flower-col col-4 col-lg-2">
               <BlankFlower
                 colorOne={flower.PeaksColor}
-                colorTwo={flower.AspirationsColor}
+                colorTwo={flower.ChallengesColor}
                 colorThree={flower.PeopleColor}
                 colorFour={flower.PrinciplesColor}
                 colorFive={flower.PowersColor}
-                colorSix={flower.ChallengesColor}
+                colorSix={flower.AspirationsColor}
               />
             </div>
           );
