@@ -20,8 +20,7 @@ const Layout = ({ children }) => {
           <Nav className="mr-auto">
             {currentUser && (
               <Link to="/">
-                Welcome
-                {currentUser.displayName && <>, {currentUser.displayName}</>}!
+                Home
               </Link>
             )}
           </Nav>
@@ -49,11 +48,12 @@ const Layout = ({ children }) => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {currentUser && window.location.pathname !== "/" && (
+      <br/>
+      {/* {currentUser && window.location.pathname !== "/" && (
         <div>
           <SiteNav />
         </div>
-      )}
+      )} */}
       {children}
       <SiteFooter />
     </div>

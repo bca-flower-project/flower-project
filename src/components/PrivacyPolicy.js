@@ -227,7 +227,7 @@ export default function PrivacyPolicy() {
             Application, We may collect, with Your prior permission:
           </p>
           <ul>
-            <li>Information regarding your location</li>
+            {/* <li>Information regarding your location</li> */}
             <li>Information from your Device's phone book (contacts list)</li>
             <li>
               Pictures and other information from your Device's camera and photo

@@ -1,7 +1,7 @@
-import { useState, useContext, useEffect } from "react";
-import { HuePicker } from "react-color";
+import { useState, useContext, useEffect, useRef, useLayoutEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { HueSlider, SaturationSlider, LightnessSlider } from 'react-slider-color-picker'
 
 import fire from "../../config/fire";
 import { Container, Row, Button, Form, Col } from "react-bootstrap";
@@ -91,11 +91,64 @@ const INITIAL_STATE = {
 const Create = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   const [loading, setLoading] = useState(false);
+  const [flowerLoaded, setFlowerLoaded] = useState(false);
+  const [color, setColor] = useState({h: 180, s: 100, l: 50, a: 1});
 
-  const [location, setLocation] = useState({
-    latitude: undefined,
-    longitude: undefined,
-  });
+  function hexToHsl(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    var r = parseInt(result[1], 16);
+    var g = parseInt(result[2], 16);
+    var b = parseInt(result[3], 16);
+
+    r /= 255;
+    g /= 255;
+    b /= 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+
+    if(max == min){
+        h = s = 0; // achromatic
+    } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+
+    s = s*100;
+    s = Math.round(s);
+    l = l*100;
+    l = Math.round(l);
+    h = Math.round(360*h);
+
+    setColor({h: h, s: s, l: l, a: 1});
+  }
+
+  function hslToHex(h, s, l) {
+    l /= 100;
+    const a = s * Math.min(l, 1 - l) / 100;
+    const f = n => {
+      const k = (n + h / 30) % 12;
+      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+  }
+
+  const handleChangeColor  = (newColor) => {
+    setColor(newColor);
+    setPetalValue(currentPetal, "color", hslToHex(newColor["h"], newColor["s"], newColor["l"]));
+  };
+
+  // const [location, setLocation] = useState({
+  //   latitude: undefined,
+  //   longitude: undefined,
+  // });
 
   const { currentUser } = useContext(AuthContext);
 
@@ -123,6 +176,7 @@ const Create = (props) => {
           setState(current => ({ ...current, createdAt, petals: rawState.petals }));
         }
         setLoading(false);
+        setFlowerLoaded(true);
       });
     }
     loadFlower();
@@ -133,26 +187,34 @@ const Create = (props) => {
   const { currentPetal, petals } = state;
 
   useEffect(() => {
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0,
-    };
-
-    function success(pos) {
-      const crd = pos.coords;
-      const { latitude, longitude } = crd;
-      if (latitude && longitude) {
-        setLocation({ latitude, longitude });
-      }
+    if(petals[currentPetal].color) {
+      hexToHsl(petals[currentPetal].color);
+    } else {
+      setColor({h: 180, s: 100, l: 50, a: 1});
     }
+  }, [flowerLoaded, currentPetal]);
 
-    function error(err) {
-      console.log(`ERROR(${err.code}): ${err.message}`);
-    }
+  // useEffect(() => {
+  //   const options = {
+  //     enableHighAccuracy: true,
+  //     timeout: 5000,
+  //     maximumAge: 0,
+  //   };
 
-    navigator.geolocation.getCurrentPosition(success, error, options);
-  }, [location]);
+  //   function success(pos) {
+  //     const crd = pos.coords;
+  //     const { latitude, longitude } = crd;
+  //     if (latitude && longitude) {
+  //       setLocation({ latitude, longitude });
+  //     }
+  //   }
+
+  //   function error(err) {
+  //     console.log(`ERROR(${err.code}): ${err.message}`);
+  //   }
+
+  //   navigator.geolocation.getCurrentPosition(success, error, options);
+  // }, [location]);
 
   const setPetalValue = (petalIdx, key, value) => {
     setState({
@@ -189,7 +251,7 @@ const Create = (props) => {
     ...getPetalValues("Principles"),
     ...getPetalValues("Powers"),
     ...getPetalValues("Challenges"),
-    ...(Object.values(location).includes(undefined) ? {} : location),
+    // ...(Object.values(location).includes(undefined) ? {} : location),
     rawState: state,
     createdAt: firestore.Timestamp.now(),
   };
@@ -210,7 +272,7 @@ const Create = (props) => {
     PrinciplesColor,
     PowersColor,
     ChallengesColor,
-    ...(Object.values(location).includes(undefined) ? {} : location),
+    // ...(Object.values(location).includes(undefined) ? {} : location),
     createdAt: firestore.Timestamp.now(),
   };
 
@@ -279,17 +341,14 @@ const Create = (props) => {
             </Container>
 
             <h1>{QUESTIONS[currentPetal].petal}</h1>
-            <Form.Label>Click to choose petal color</Form.Label>
-            <HuePicker
-              className="hue"
-              height="30px"
-              width="100%"
-              onChange={({ hex }) => {
-                setPetalValue(currentPetal, "color", hex);
-              }}
-              direction="horizontal"
-              pointer="none"
-            />
+            <Form.Label>Pick A Color For Your Petal</Form.Label>
+            <br/>
+            <br/>
+            <div className="hue">
+              <HueSlider handleChangeColor={handleChangeColor} color={color} />
+              <SaturationSlider handleChangeColor={handleChangeColor} color={color} />
+              <LightnessSlider handleChangeColor={handleChangeColor} color={color} />
+            </div>
             <br />
             <Form.Control
               as="select"
