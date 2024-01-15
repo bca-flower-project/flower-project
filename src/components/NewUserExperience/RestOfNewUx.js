@@ -60,10 +60,9 @@ export default function RestOfNewUx() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await database.collection("user").doc(currentUser.uid).update({
-      ...userData,
-      dateOfBirth: `${userData.yearOfBirth}-${userData.monthOfBirth}-${userData.dayOfBirth}`
-    });
+    userData.dateOfBirth = `${userData.yearOfBirth}-${userData.monthOfBirth}-${userData.dayOfBirth}`
+    await database.collection("user").doc(currentUser.uid).update(userData);
+    
     setDateOfBirthSubmitted(true);
   };
 

@@ -26,21 +26,21 @@ export default function NewUserExperience() {
   const [closeNewUxBanner, setCloseBanner] = useState(false);
 
   const getUser = async (user) => {
-    const ref = database.collection("user").doc(user.uid);
-    await ref.get().then((item) => {
-      setUserData(item.data());
-    });
-
     const ref2 = await database
-      .collection("user")
-      .doc(currentUser.uid)
-      .collection("flower").get();
-      
+    .collection("user")
+    .doc(currentUser.uid)
+    .collection("flower").get();
+    
     if (!ref2.empty) {
       setFirstFlowerExists(true);
     } else {
       setFirstFlowerExists(false);
     }
+    
+    const ref = database.collection("user").doc(user.uid);
+    await ref.get().then((item) => {
+      setUserData(item.data());
+    });
   };
 
   const closeBanner = async () => {
