@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect, useRef, useLayoutEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { HueSlider, SaturationSlider, LightnessSlider } from 'react-slider-color-picker'
 
@@ -7,6 +7,7 @@ import fire from "../../config/fire";
 import { Container, Row, Button, Form, Col } from "react-bootstrap";
 import "./Create.scss";
 import Flower from "./Flower.js";
+import { Link } from "react-router-dom/cjs/react-router-dom.min.js";
 
 const { database, firestore } = fire;
 
@@ -25,63 +26,6 @@ const iOsDevice = () => {
   );
 };
 
-// order should be:
-const QUESTIONS = [
-  {
-    petal: "Peaks",
-    questionOptions: [
-      "What were your peaks this year?",
-      "What have been the peak moments of your life?",
-      "What are your biggest accomplishments?",
-      "What are your happiest memories?",
-    ],
-  },
-  {
-    petal: "Challenges",
-    questionOptions: [
-      "What were your challenges this year?",
-      "What do you struggle with the most?",
-      "What are the biggest challenges you've faced?",
-      "What have been the hardest times of your life?",
-    ],
-  },
-  {
-    petal: "People",
-    questionOptions: [
-      "Who made an impact on you this year?",
-      "Who do you care about the most?",
-      "Who are the people that care for you?",
-      "Who are the most influential people in your life?",
-    ],
-  },
-  {
-    petal: "Principles",
-    questionOptions: [
-      "What did you learn this year?",
-      "What are your principles?",
-      "What do you care about most in life?",
-      "What are your most deeply held beliefs?",
-    ],
-  },
-  {
-    petal: "Powers",
-    questionOptions: [
-      "How do you feel you've grown this year?",
-      "What do you feel you are good at?",
-      "What do you love to do?",
-      "What are your powers?",
-    ],
-  },
-  {
-    petal: "Aspirations",
-    questionOptions: [
-      "What are your aspirations for the coming year?",
-      "What is your intention for the future?",
-      "What are your aspirations?",
-      "What are your goals?",
-    ],
-  },
-];
 
 const INITIAL_STATE = {
   currentPetal: 0,
@@ -93,6 +37,81 @@ const Create = (props) => {
   const [loading, setLoading] = useState(false);
   const [flowerLoaded, setFlowerLoaded] = useState(false);
   const [color, setColor] = useState({h: 180, s: 100, l: 50, a: 1});
+  const location = useLocation();
+  var firstFlowerIntroduction = null;
+  if(location.state) {
+    firstFlowerIntroduction = location.state["firstFlowerIntroduction"]; 
+  }
+
+  // order should be:
+  const QUESTIONS = [
+    {
+      petal: "Peaks",
+      questionOptions: firstFlowerIntroduction ? [
+       "What have been the peak moments of your life?"
+      ] : [
+        "What were your peaks this year?",
+        "What have been the peak moments of your life?",
+        "What are your biggest accomplishments?",
+        "What are your happiest memories?",
+      ],
+    },
+    {
+      petal: "Challenges",
+      questionOptions: firstFlowerIntroduction ? [
+        "What have been the greatest challenges of your life?"
+      ] : [
+        "What were your challenges this year?",
+        "What do you struggle with the most?",
+        "What are the biggest challenges you've faced?",
+        "What have been the hardest times of your life?",
+      ],
+    },
+    {
+      petal: "People",
+      questionOptions: firstFlowerIntroduction ? [
+        "Who has influenced you and how?"
+       ] : [
+        "Who made an impact on you this year?",
+        "Who do you care about the most?",
+        "Who are the people that care for you?",
+        "Who are the most influential people in your life?",
+      ],
+    },
+    {
+      petal: "Principles",
+      questionOptions: firstFlowerIntroduction ? [
+        "What do you care about most and why?"
+       ] : [
+        "What did you learn this year?",
+        "What are your principles?",
+        "What do you care about most in life?",
+        "What are your most deeply held beliefs?",
+      ],
+    },
+    {
+      petal: "Powers",
+      questionOptions: firstFlowerIntroduction ? [
+        "What are your greatest strengths, skills, and joys?"
+       ] : [
+        "How do you feel you've grown this year?",
+        "What do you feel you are good at?",
+        "What do you love to do?",
+        "What are your powers?",
+      ],
+    },
+    {
+      petal: "Aspirations",
+      questionOptions: firstFlowerIntroduction ? [
+        "What are your dreams and aspirations?"
+       ] : [
+        "What are your aspirations for the coming year?",
+        "What is your intention for the future?",
+        "What are your aspirations?",
+        "What are your goals?",
+      ],
+    },
+  ];
 
   function hexToHsl(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -312,7 +331,11 @@ const Create = (props) => {
       await globalFlowerCollection.add(globalFlower);
     }
 
-    history.push("/past-flowers");
+    if(firstFlowerIntroduction) {
+      history.push("/");
+    } else {
+      history.push("/past-flowers");
+    }
   };
 
   if (loading) {
