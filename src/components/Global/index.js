@@ -26,6 +26,10 @@ export default function Global(props) {
     flowerGlobe();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (loading) {
     return <h1>Loading....</h1>;
   }

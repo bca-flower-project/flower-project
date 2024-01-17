@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppThemeContext } from "../../contexts/AppThemeContext";
 
 import { Link } from "react-router-dom";
@@ -10,6 +10,10 @@ import whiteLogo from "../icons/whiteLogo.png";
 export default function LandingPage() {
   const { theme } = useContext(AppThemeContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const images = {
     dark: { okLogo: whiteLogo },
     light: { okLogo: blackLogo },
@@ -18,7 +22,11 @@ export default function LandingPage() {
   const { okLogo } = images[theme];
 
   return (
-    <Container fluid className={`LandingPage ${theme}`}>
+    <Container fluid className={`LandingPage ${theme}`}
+      style={{
+        marginBottom: "100px"
+      }}
+    >
       <Col align="center">
         <img className="ok-logo" src={okLogo} alt="oK.community" />
         <br/>

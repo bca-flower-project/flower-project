@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { AppThemeContext } from "../../contexts/AppThemeContext";
-import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import fire from "../../config/fire";
 import { Container, Col, Form, Button, Spinner } from "react-bootstrap";
@@ -24,7 +23,9 @@ export default function RestOfNewUx() {
   const [friendsEmail, setFriendsEmail] = useState("");
   const [badEmail, setBadEmail] = useState(false);
 
-  const history = useHistory();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const getUser = async (user) => {
     const ref = database.collection("user").doc(user.uid);
@@ -39,7 +40,7 @@ export default function RestOfNewUx() {
     if(email.match(mailformat) && (userData.email != email)) {
       await database.collection("friendRequest").add({
         sender: currentUser.uid,
-        senderName: currentUser.name,
+        senderName: userData.name,
         recipient: email,
         status: 'Pending'
       });
@@ -93,7 +94,11 @@ export default function RestOfNewUx() {
   if(userData) {
     if(!dateOfBirthSubmitted && !userData.dateOfBirth) {
       return (
-        <Container fluid className={`RestOfNewUx ${theme}`}>
+        <Container fluid className={`RestOfNewUx ${theme}`}
+          style={{
+            marginBottom: "100px"
+          }}
+        >
           <Col align="center">
             <p className="set-birthday-description">
                 Each year, create a Flower to see how you’ve grown and to consider how you want to grow in the coming year.
@@ -146,7 +151,11 @@ export default function RestOfNewUx() {
     } else {
       if(!goToLocationPage) {
         return (
-          <Container fluid className={`RestOfNewUx ${theme}`}>
+          <Container fluid className={`RestOfNewUx ${theme}`}
+            style={{
+              marginBottom: "100px"
+            }}
+          >
             <Col align="center">
               <p className="set-add-friend-description">
                 Invite two of the people you care about most to tell their own stories. Get reminders on their birthdays to reflect on your relationship.
@@ -178,7 +187,11 @@ export default function RestOfNewUx() {
         );
       } else {
         return (
-          <Container fluid className={`RestOfNewUx ${theme}`}>
+          <Container fluid className={`RestOfNewUx ${theme}`}
+            style={{
+              marginBottom: "100px"
+            }}
+          >
           <Col align="center">
             <p className="set-location-description">
             oK meets in person to reflect, deepen our connections, and meet new people. Add your location below so we can invite you to our in person events. None of your information will be visible online.

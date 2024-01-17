@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppThemeContext } from "../../contexts/AppThemeContext";
 
 import { Link } from "react-router-dom";
@@ -10,6 +10,10 @@ import whiteFlower from "../icons/whiteFlower.png";
 export default function FirstFlowerIntroduction() {
   const { theme } = useContext(AppThemeContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const images = {
     dark: { flowerLogo: whiteFlower },
     light: { flowerLogo: blackFlower },
@@ -18,7 +22,11 @@ export default function FirstFlowerIntroduction() {
   const { flowerLogo } = images[theme];
 
   return (
-    <Container fluid className={`FirstFlowerIntroduction ${theme}`}>
+    <Container fluid className={`FirstFlowerIntroduction ${theme}`}
+      style={{
+        marginBottom: "150px"
+      }}
+    >
       <Col align="center">
         <br/>
         <p className="create-flower-headline">

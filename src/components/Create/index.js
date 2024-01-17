@@ -43,6 +43,10 @@ const Create = (props) => {
     firstFlowerIntroduction = location.state["firstFlowerIntroduction"]; 
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // order should be:
   const QUESTIONS = [
     {
@@ -344,7 +348,11 @@ const Create = (props) => {
 
   return (
     <>
-      <Container className="Create">
+      <Container className="Create"
+        style={{
+          marginBottom: "100px"
+        }}
+      >
         <Row>
           <Col className="justify-content-center">
             <Container>

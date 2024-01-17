@@ -25,6 +25,10 @@ export default function NewUserExperience() {
   const [firstFlowerExists, setFirstFlowerExists] = useState();
   const [closeNewUxBanner, setCloseBanner] = useState(false);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const getUser = async (user) => {
     const ref2 = await database
     .collection("user")
@@ -93,7 +97,7 @@ export default function NewUserExperience() {
       return (
         <Container fluid className={`NewUserExperience ${theme}`}
           style={{
-            marginBottom: (!userData.closeNewUxBanner && !closeNewUxBanner) ? "100px" : "0px"
+            marginBottom: "100px"
           }}
         >
           { 
@@ -110,7 +114,7 @@ export default function NewUserExperience() {
               return (
                 <Col key={label} sm={{ order }}
                   style={{
-                    marginBottom: (!userData.closeNewUxBanner && !closeNewUxBanner) ? "0px" : "50px" 
+                    marginBottom: "50px" 
                   }}
                 >
                   <Link to={to}>

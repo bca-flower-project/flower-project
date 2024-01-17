@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import "./Login.scss";
 import { Container, Row } from "react-bootstrap";
 
 export default function PrivacyPolicy() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Container fluid className="loginWrapper">
       <Row className="justify-content-center">
