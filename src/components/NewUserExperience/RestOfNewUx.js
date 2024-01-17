@@ -35,13 +35,15 @@ export default function RestOfNewUx() {
   };
 
   const addFriend = async (email) => {
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
     if(email.match(mailformat) && (userData.email != email)) {
       await database.collection("friendRequest").add({
         sender: currentUser.uid,
+        senderName: currentUser.name,
         recipient: email,
         status: 'Pending'
       });
+      
       setBadEmail(false);
       setFriendsEmail("");
       setShowSuccess(true);
@@ -62,7 +64,7 @@ export default function RestOfNewUx() {
     e.preventDefault();
     userData.dateOfBirth = `${userData.yearOfBirth}-${userData.monthOfBirth}-${userData.dayOfBirth}`
     await database.collection("user").doc(currentUser.uid).update(userData);
-    
+
     setDateOfBirthSubmitted(true);
   };
 

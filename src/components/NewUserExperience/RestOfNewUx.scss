@@ -33,8 +33,7 @@
     }
 
     .btn-dark {
-        margin-top: 50px;
-        margin-bottom: 100px;
+      margin-top: 50px;
     }
 
     .set-bad-email-error {
@@ -50,7 +49,7 @@
     .inp {
       margin-left: 10px;
       padding: 0 !important;
-      border:none;
+      border: none;
       padding: 5px 10px;
       background-color: transparent;
       outline: none;
@@ -76,10 +75,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-
-      button {
-        width: 76.9px;
-      }
     }
 
     .invite-btn-container {
@@ -107,6 +102,10 @@
       .email-input-container-parent {
         width: 320px;
       }
+
+      .inp {
+        width: 180px;
+      }
     }
   
     @media only screen and (min-width: 720px) and (max-width: 1160px) {
@@ -125,9 +124,13 @@
         width: 350px;
         font-size: 18px;
       }
+
+      .inp {
+        width: 204px;
+      }
     }
   
-    @media only screen and (min-width: 1161px) {
+    @media only screen and (min-width: 1160px) {
       padding-top: 1rem;
   
       .set-birthday-logo, .set-add-friend-logo, .set-location-logo {
@@ -137,11 +140,16 @@
       .set-birthday-description, .set-add-friend-description, .set-location-description {
         font-size: 30px;
         margin-bottom: 50px;
+        width: 950px;
       }
 
       .email-input-container-parent {
         width: 350px;
         font-size: 18px;
+      }
+
+      .inp {
+        width: 204px;
       }
     }
   }

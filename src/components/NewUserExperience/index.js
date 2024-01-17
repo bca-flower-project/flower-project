@@ -91,7 +91,11 @@ export default function NewUserExperience() {
       }
     } else {
       return (
-        <Container fluid className={`NewUserExperience ${theme}`}>
+        <Container fluid className={`NewUserExperience ${theme}`}
+          style={{
+            marginBottom: (!userData.closeNewUxBanner && !closeNewUxBanner) ? "100px" : "0px"
+          }}
+        >
           { 
             (!userData.closeNewUxBanner && !closeNewUxBanner) && <div className="new-ux-banner">
               <p>This is your home.</p>
@@ -104,7 +108,11 @@ export default function NewUserExperience() {
           <Row>
             {bits.map(({ imgSrc, label, to, order }) => {
               return (
-                <Col key={label} sm={{ order }}>
+                <Col key={label} sm={{ order }}
+                  style={{
+                    marginBottom: (!userData.closeNewUxBanner && !closeNewUxBanner) ? "0px" : "50px" 
+                  }}
+                >
                   <Link to={to}>
                     <img className="home-logos" src={imgSrc} alt={label} />
                     <h2 className="home-logos-caption">{label}</h2>

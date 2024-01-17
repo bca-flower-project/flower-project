@@ -43,17 +43,6 @@ export default function LandingPage() {
             </Link>
           </div>
         </Row>
-        <br/>
-        <br/>
-        <div className="learn-more-btn">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://www.ok.community"
-          >
-            Learn More
-          </a>
-        </div>
       </Col>
     </Container>
   );

@@ -349,7 +349,6 @@ const Create = (props) => {
           <Col className="justify-content-center">
             <Container>
               <Row>
-                <Col></Col>
                 <Col align="center">
                   <Flower
                     currentPetal={state.currentPetal}
@@ -359,7 +358,6 @@ const Create = (props) => {
                     petals={petals}
                   />
                 </Col>
-                <Col></Col>
               </Row>
             </Container>
 
@@ -381,9 +379,9 @@ const Create = (props) => {
                 setPetalValue(currentPetal, "question", e.target.value);
               }}
             >
-              <option selected={!petals[currentPetal].question} disabled>
+              { !firstFlowerIntroduction && <option selected={!petals[currentPetal].question} disabled>
                 Please select a question below
-              </option>
+              </option> }
               {QUESTIONS[currentPetal].questionOptions.map(
                 (question, index) => {
                   return (
@@ -460,8 +458,7 @@ const Create = (props) => {
                   <span
                     style={{
                       textDecoration: "underline",
-                      cursor: "pointer",
-                      marginRight: "1rem",
+                      cursor: "pointer"
                     }}
                     href="#"
                     onClick={(e) => {

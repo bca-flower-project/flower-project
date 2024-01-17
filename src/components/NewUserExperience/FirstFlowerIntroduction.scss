@@ -22,12 +22,17 @@
     justify-content: space-between;
   }
 
+  .create-flower-logo-inner-container {
+    display: flex;
+    flex-direction: column;
+  }
+
   @media only screen and (max-width: 720px) {
     padding-top: 1rem;
 
     .create-flower-logo {
       width: 250px;
-      margin-bottom: 50px;
+      margin-top: 50px;
     }
 
     .create-flower-headline {
@@ -50,7 +55,7 @@
     
     .create-flower-logo {
       width: 300px;
-      margin-bottom: 50px;
+      margin-top: 50px;
     }
 
     .create-flower-headline {
@@ -68,12 +73,12 @@
     }
   }
 
-  @media only screen and (min-width: 1161px) {
+  @media only screen and (min-width: 1160px) {
     padding-top: 1rem;
 
     .create-flower-logo {
       width: 350px;
-      margin-bottom: 50px;
+      margin-top: 50px;
     }
 
     .create-flower-headline {
@@ -84,6 +89,7 @@
     .create-flower-description {
       font-size: 30px;
       margin-bottom: 25px;
+      width: 950px;
     }
 
     .create-flower-logo-caption {
@@ -96,10 +102,6 @@
     flex-direction: column;
     align-items: center;
   }
-
-  // .create-flower-logo-caption:hover, .create-flower-logo:hover {
-  //   cursor: pointer;
-  // }
 
   .create-flower-logo-caption {
     display: inline;
