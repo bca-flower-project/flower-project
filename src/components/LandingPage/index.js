@@ -34,11 +34,6 @@ export default function LandingPage() {
         <p className="ok-logo-headline">
           Our Stories | Our Future
         </p>
-        <p className="ok-logo-description">
-          oK is a community for people to share their stories and deepen their connections with the people they care for most.
-        </p>
-        <br/>
-        <br/>
         <Row align="center" className="session-container">
           <div className="session-btn join-btn">
             <Link to={"/signup"}>
@@ -51,6 +46,9 @@ export default function LandingPage() {
             </Link>
           </div>
         </Row>
+        <p className="ok-logo-description">
+          oK is a community for people to share their stories and deepen their connections with the people they care for most.
+        </p>
       </Col>
     </Container>
   );

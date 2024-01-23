@@ -40,11 +40,35 @@ const Create = (props) => {
   const location = useLocation();
   var firstFlowerIntroduction = null;
   if(location.state) {
-    firstFlowerIntroduction = location.state["firstFlowerIntroduction"]; 
+    firstFlowerIntroduction = location.state["firstFlowerIntroduction"];
   }
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if(firstFlowerIntroduction) {
+      const arr = [
+        "What have been the peak moments of your life?",
+        "What have been the greatest challenges of your life?",
+        "Who has influenced you and how?",
+        "What do you care about most and why?",
+        "What are your greatest strengths, skills, and joys?",
+        "What are your dreams and aspirations?"
+      ];
+      var dupe = {...state};
+      for (let [index, val] of arr.entries()) {
+        dupe = {
+          ...dupe,
+          petals: {
+            ...dupe.petals,
+            [index]: {
+              ...dupe.petals[index],
+              ["question"]: val,
+            },
+          },
+        }
+      }
+      setState({...dupe});
+    }
   }, []);
 
   // order should be:
@@ -379,7 +403,8 @@ const Create = (props) => {
               <LightnessSlider handleChangeColor={handleChangeColor} color={color} />
             </div>
             <br />
-            <Form.Control
+            { firstFlowerIntroduction &&  <p>{QUESTIONS[currentPetal].questionOptions[0]}</p>}
+            { !firstFlowerIntroduction && <Form.Control
               as="select"
               value={petals[currentPetal].question}
               onChange={(e) => {
@@ -387,7 +412,7 @@ const Create = (props) => {
                 setPetalValue(currentPetal, "question", e.target.value);
               }}
             >
-              { !firstFlowerIntroduction && <option selected={!petals[currentPetal].question} disabled>
+              { <option selected={!petals[currentPetal].question} disabled>
                 Please select a question below
               </option> }
               {QUESTIONS[currentPetal].questionOptions.map(
@@ -404,7 +429,7 @@ const Create = (props) => {
                 }
               )}
               {handleiOS && <optgroup></optgroup>}
-            </Form.Control>
+            </Form.Control> }
             <br />
             <Form.Control
               onChange={(e) => {

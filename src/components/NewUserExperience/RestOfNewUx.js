@@ -35,14 +35,53 @@ export default function RestOfNewUx() {
     });
   };
 
-  const addFriend = async (email) => {
+  // const checkFriendRequestExists = async (senderUid, recipientEmail) => {
+  //   const ref = await database.collection("friendRequest")
+  //               .where('sender', '==', senderUid)
+  //               .where('recipient', '==', recipientEmail).get();
+
+  //   const _ref = await database.collection("friendRequest")
+  //               .where('senderEmail', '==', recipientEmail)
+  //               .where('recipient', '==', userData.email).get();
+
+  //   if(ref.empty && _ref.empty) {
+  //     return false;
+  //   }
+
+  //   return true;
+  // }
+
+  // const addFriend = async (email) => {
+  //   var mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
+  //   if(email.match(mailformat) && (userData.email != email) && (checkFriendRequestExists(currentUser.uid, email))) {
+  //     await database.collection("friendRequest").add({
+  //       sender: currentUser.uid,
+  //       senderEmail: userData.email,
+  //       senderName: userData.name,
+  //       recipient: email,
+  //       status: 'Pending'
+  //     });
+      
+  //     setBadEmail(false);
+  //     setFriendsEmail("");
+  //     setShowSuccess(true);
+
+  //     setTimeout(() => {
+  //       setShowSuccess(false);
+  //     }, 3000);
+  //   } else {
+  //     setBadEmail(true);
+  //   }
+  // };
+
+  const inviteFriend = async (email) => {
     var mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
     if(email.match(mailformat) && (userData.email != email)) {
-      await database.collection("friendRequest").add({
+      await database.collection("invitation").add({
         sender: currentUser.uid,
+        senderEmail: userData.email,
         senderName: userData.name,
-        recipient: email,
-        status: 'Pending'
+        recipient: email
       });
       
       setBadEmail(false);
@@ -165,12 +204,12 @@ export default function RestOfNewUx() {
                   <span>Email:</span>
                   <input type="email" value={friendsEmail} onChange={handleEmailInput} class="inp" placeholder="Enter your friends email" required/>
                 </div>
-                <div className="invite-btn-container" onClick={() => addFriend(friendsEmail)}>
+                <div className="invite-btn-container" onClick={() => inviteFriend(friendsEmail)}>
                   <span>Invite</span>
                   <span>&#x229E;</span>
                 </div>
               </div>
-              {badEmail && <p className="set-bad-email-error">Please enter a valid email address</p> }
+              {badEmail && <p className="set-bad-email-error">Please enter a valid email address.</p> }
               {showSuccess && <p className="set-show-success">Friend Request sent successfully</p> }
               <div className="birthday-logo-container">
                 <Button

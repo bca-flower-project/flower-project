@@ -91,10 +91,10 @@ const Routes = () => {
     <>
       {currentUser && (
         <>
-          <Redirect strict from="/signup" to="/" />
           {paths.map((pathInfo) => {
             return <Route exact {...pathInfo} />;
           })}
+          <Redirect strict from="/signup" to="/" />
         </>
       )}
 
