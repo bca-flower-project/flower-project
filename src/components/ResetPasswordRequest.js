@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Login.scss";
 import { AuthContext } from "../contexts/AuthContext";
 import Container from "react-bootstrap/Container";
@@ -12,6 +12,10 @@ export default function ResetPasswordRequest() {
   const { requestReset } = useContext(AuthContext);
   const [state, setState] = useState({ email: "" });
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const changeHandler = (key) => {
     return ({ target: { value } }) => {

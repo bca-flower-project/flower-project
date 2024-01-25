@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
@@ -27,6 +27,10 @@ const SignupPage = () => {
   } = state;
 
   const { doSignup } = useContext(AuthContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const changeHandler = (key) => {
     return ({ target: { value } }) => {

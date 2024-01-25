@@ -18,11 +18,9 @@ const Layout = ({ children }) => {
         <Navbar.Toggle className="navbar-dark" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {currentUser && (
-              <Link to="/">
-                Home
-              </Link>
-            )}
+            <Link to="/">
+              Home
+            </Link>
           </Nav>
           <Nav className="ml-auto">
             <Nav.Link onClick={toggleTheme}>Toggle Theme</Nav.Link>
@@ -40,11 +38,6 @@ const Layout = ({ children }) => {
               Help
             </a>
             {currentUser && <Nav.Link onClick={logout}>Logout</Nav.Link>}
-            {!currentUser && (
-              <Link className="nav-link" to="/">
-                Login
-              </Link>
-            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -15,6 +15,10 @@ export default function PastFlowers(props) {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     async function pastFlowers() {
       const ref = database
         .collection("user")

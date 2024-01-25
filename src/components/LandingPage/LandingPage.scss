@@ -14,26 +14,176 @@
       }
     }
   }
-  padding-top: 5rem;
+
+  padding-top: 2rem;
 
   .row {
     text-align: center;
     justify-content: space-between;
-
-    @media only screen and (min-width: 721px) {
-      img {
-        padding-bottom: 2rem;
-        width: 20vw;
-      }
-    }
-
-    @media only screen and (max-width: 720px) {
-      img {
-        width: 90%;
-      }
-    }
   }
+
   @media only screen and (max-width: 720px) {
     padding-top: 1rem;
+
+    .ok-logo {
+      width: 150px;
+    }
+
+    .ok-logo-headline {
+      font-size: 18px;
+      margin-bottom: 75px;
+    }
+
+    .ok-logo-description {
+      font-size: 20px;
+    }
+
+    .session-btn {
+      // padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border: solid 1px;
+      background: transparent;
+      height: 45px;
+      width: 70px;
+    }
+  
+    .join-btn {
+      margin-right: 50px;
+    }
+  
+    .login-btn {
+      margin-left: 50px;
+    }
+
+    .learn-more-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border: solid 1px;
+      background: transparent;
+      width: 125px;
+      height: 45px;
+    }
+
+    .session-container {
+      margin-bottom: 50px;
+    }
+  }
+
+  @media only screen and (min-width: 720px) and (max-width: 1160px) {
+    padding-top: 1rem;
+    
+    .ok-logo {
+      width: 250px;
+    }
+
+    .ok-logo-headline {
+      font-size: 24px;
+      margin-bottom: 100px;
+    }
+
+    .ok-logo-description {
+      font-size: 28px;
+    }
+
+    .session-btn {
+      // padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      border: solid 1px;
+      background: transparent;
+      height: 45px;
+      width: 90px;
+    }
+  
+    .join-btn {
+      margin-right: 100px;
+    }
+  
+    .login-btn {
+      margin-left: 100px;
+    }
+
+    .learn-more-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      border: solid 1px;
+      background: transparent;
+      width: 165px;
+      height: 45px;
+    }
+
+    .session-container {
+      margin-bottom: 75px;
+    }
+  }
+
+  @media only screen and (min-width: 1160px) {
+    padding-top: 1rem;
+
+    .ok-logo {
+      width: 250px;
+    }
+
+    .ok-logo-headline {
+      font-size: 24px;
+      margin-bottom: 100px;
+    }
+
+    .ok-logo-description {
+      font-size: 28px;
+      width: 950px;
+    }
+
+    .session-btn {
+      // padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      border: solid 1px;
+      background: transparent;
+      height: 45px;
+      width: 90px;
+    }
+  
+    .join-btn {
+      margin-right: 100px;
+    }
+  
+    .login-btn {
+      margin-left: 100px;
+    }
+
+    .learn-more-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      border: solid 1px;
+      background: transparent;
+      width: 165px;
+      height: 45px;
+    }
+
+    .session-container {
+      margin-bottom: 75px;
+    }
+  }
+
+  .learn-more-btn, .session-btn {
+    a { color: inherit; } 
+  }
+
+  .session-container {
+    justify-content: center;
   }
 }

@@ -1,0 +1,156 @@
+.RestOfNewUx {
+    &.light {
+      .row {
+        a {
+          color: black !important;
+        }
+      }
+
+      .inp {
+        border-bottom: 1px solid black;
+        color: black;
+      }
+    }
+  
+    &.dark {
+      .row {
+        a {
+          color: white !important;
+        }
+      }
+
+      .inp {
+        border-bottom: 1px solid white;
+        color: white;
+      }
+    }
+  
+    padding-top: 2rem;
+  
+    .row {
+      text-align: center;
+      justify-content: space-between;
+    }
+
+    .btn-dark {
+      margin-top: 50px;
+    }
+
+    .set-bad-email-error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .set-show-success {
+      color: green;
+      margin-top: 10px;
+    }
+
+    .inp {
+      margin-left: 10px;
+      padding: 0 !important;
+      border: none;
+      padding: 5px 10px;
+      background-color: transparent;
+      outline: none;
+   }
+
+   .email-input-container {
+      display: flex;
+      align-items: end;
+    }
+
+    .email-input-container-parent {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .invite-friends-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .birthday-logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .invite-btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 65px;
+    }
+
+    .invite-btn-container:hover {
+      cursor: pointer;
+    }
+  
+    @media only screen and (max-width: 720px) {
+      padding-top: 1rem;
+  
+      .set-birthday-logo, .set-add-friend-logo, .set-location-logo {
+        width: 250px;
+      }
+
+      .set-birthday-description, .set-add-friend-description, .set-location-description {
+        font-size: 20px;
+        margin-bottom: 50px;
+      }
+
+      .email-input-container-parent {
+        width: 320px;
+      }
+
+      .inp {
+        width: 180px;
+      }
+    }
+  
+    @media only screen and (min-width: 720px) and (max-width: 1160px) {
+      padding-top: 1rem;
+      
+      .set-birthday-logo, .set-add-friend-logo, .set-location-logo {
+        width: 300px;
+      }
+
+      .set-birthday-description, .set-add-friend-description, .set-location-description {
+        font-size: 28px;
+        margin-bottom: 50px;
+      }
+
+      .email-input-container-parent {
+        width: 350px;
+        font-size: 18px;
+      }
+
+      .inp {
+        width: 204px;
+      }
+    }
+  
+    @media only screen and (min-width: 1160px) {
+      padding-top: 1rem;
+  
+      .set-birthday-logo, .set-add-friend-logo, .set-location-logo {
+        width: 350px;
+      }
+
+      .set-birthday-description, .set-add-friend-description, .set-location-description {
+        font-size: 30px;
+        margin-bottom: 50px;
+        width: 950px;
+      }
+
+      .email-input-container-parent {
+        width: 350px;
+        font-size: 18px;
+      }
+
+      .inp {
+        width: 204px;
+      }
+    }
+  }
+  

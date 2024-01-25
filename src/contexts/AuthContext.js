@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import fire from "../config/fire";
 import { useHistory } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
 export const AuthContext = createContext({});
 const { googleProvider, database } = fire;
@@ -9,6 +10,7 @@ const AuthProvider = ({ children }) => {
   const auth = fire.auth();
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState();
+  const [dataFetched, setDataFetched] = useState(false);
 
   const logout = () => {
     auth.signOut().then((x) => {
@@ -91,24 +93,33 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       setCurrentUser(userAuth);
+      if(!dataFetched) {
+        setDataFetched(true);
+      }
     });
     return () => unsubscribe();
   }, [auth]);
 
-  return (
-    <AuthContext.Provider
-      value={{
-        requestReset,
-        doSignup,
-        passwordLogin,
-        currentUser,
-        googleLogin,
-        logout,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  if(dataFetched) { 
+    return (
+      <AuthContext.Provider
+        value={{
+          requestReset,
+          doSignup,
+          passwordLogin,
+          currentUser,
+          googleLogin,
+          logout,
+        }}
+      >
+        {children}
+      </AuthContext.Provider>
+    );
+  } else {
+    return (
+      <Spinner animation="border" />
+    );
+  } 
 };
 
 export default AuthProvider;

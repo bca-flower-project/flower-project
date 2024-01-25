@@ -1,0 +1,117 @@
+.FirstFlowerIntroduction {
+  &.light {
+    .row {
+      a {
+        color: black !important;
+      }
+    }
+  }
+
+  &.dark {
+    .row {
+      a {
+        color: white !important;
+      }
+    }
+  }
+
+  padding-top: 2rem;
+
+  .row {
+    text-align: center;
+    justify-content: space-between;
+  }
+
+  .create-flower-logo-inner-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media only screen and (max-width: 720px) {
+    padding-top: 1rem;
+
+    .create-flower-logo {
+      width: 250px;
+      margin-top: 50px;
+    }
+
+    .create-flower-headline {
+      font-size: 20px;
+      margin-bottom: 50px;
+    }
+
+    .create-flower-description {
+      font-size: 22px;
+      margin-bottom: 50px;
+    }
+
+    .create-flower-logo-caption {
+      font-size: 22px;
+    }
+  }
+
+  @media only screen and (min-width: 720px) and (max-width: 1160px) {
+    padding-top: 1rem;
+    
+    .create-flower-logo {
+      width: 300px;
+      margin-top: 50px;
+    }
+
+    .create-flower-headline {
+      font-size: 26px;
+      margin-bottom: 50px;
+    }
+
+    .create-flower-description {
+      font-size: 28px;
+      margin-bottom: 50px;
+    }
+
+    .create-flower-logo-caption {
+      font-size: 28px;
+    }
+  }
+
+  @media only screen and (min-width: 1160px) {
+    padding-top: 1rem;
+
+    .create-flower-logo {
+      width: 350px;
+      margin-top: 50px;
+    }
+
+    .create-flower-headline {
+      font-size: 28px;
+      margin-bottom: 50px;
+    }
+
+    .create-flower-description {
+      font-size: 30px;
+      margin-bottom: 25px;
+      width: 950px;
+    }
+
+    .create-flower-logo-caption {
+      font-size: 30px;
+    }
+  }
+
+  .create-flower-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .create-flower-logo-caption {
+    display: inline;
+  }
+
+  .create-flower-logo-container {
+    a { color: inherit; } 
+  }
+
+  .session-container {
+    justify-content: center;
+  }
+}

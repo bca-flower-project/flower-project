@@ -14,5 +14,13 @@ service cloud.firestore {
       	allow create: if request.auth != null;
       }
     }
+
+    match /friendRequest/{friendRequestId} {
+      allow read, create: if request.auth != null;
+    }
+
+    match /invitation/{invitationId} {
+      allow read, create: if request.auth != null;
+    }
   }
 }

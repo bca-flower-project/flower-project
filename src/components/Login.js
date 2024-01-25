@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Login.scss";
 import { AuthContext } from "../contexts/AuthContext";
@@ -12,11 +12,17 @@ import Alert from "react-bootstrap/Alert";
 export default function Login() {
   const { googleLogin, passwordLogin } = useContext(AuthContext);
   const [state, setState] = useState({ email: "", password: "" });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const changeHandler = (key) => {
     return ({ target: { value } }) => {
       setState({ ...state, [key]: value });
     };
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     passwordLogin(email, password, ({ message }) => {
@@ -30,7 +36,11 @@ export default function Login() {
   const { email, password, message } = state;
 
   return (
-    <Container fluid className="loginWrapper">
+    <Container fluid className="loginWrapper"
+      style={{
+        marginBottom: "100px"
+      }}
+    >
       <Row className="justify-content-center">
         <div className="col-sm-4">
           <h3 className="text-center">Welcome!</h3>
