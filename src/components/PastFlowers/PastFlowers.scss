@@ -1,4 +1,317 @@
-.flowerRow {
-  margin-bottom: 2rem;
-  border-bottom: 1px solid white;
+.View {
+  &.light {
+    .row {
+      a {
+        color: black !important;
+      }
+    }
+  }
+
+  &.dark {
+    .row {
+      a {
+        color: white !important;
+      }
+    }
+  }
+
+  padding-top: 2rem;
+  margin-bottom: 200px;
+
+  .row {
+    text-align: center;
+    justify-content: space-between;
+  }
+
+  @media only screen and (max-width: 720px) {
+    padding-top: 1rem;
+
+    .show-label {
+      margin-bottom: 25px;
+    }
+  
+    .show-parent-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .show-parent-child-container {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .show-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  
+    .sort-container {
+      display: flex;
+      position: relative;
+      align-items: space-between;
+    }
+  
+    .sort-filters {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      right: 10px;
+    }
+  
+    .sort-filters-child {
+      padding: 5px 20px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      border: solid 1px;
+      background: transparent;
+    }
+  
+    .show-btn {
+      padding: 5px 20px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      background: transparent;
+      margin-bottom: 15px;
+    }
+  
+    .sort-btn {
+      padding: 5px 20px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      border: solid 1px;
+      background: transparent;
+    }
+
+    .flower-question {
+      font-size: 1.25rem;
+    }
+  
+    .flower-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+      text-align: center;
+    }
+  
+    .flower-response {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .flower-date {
+      margin-top: 10px;
+      margin-bottom: 50px;
+    }
+  
+    .flower-answer {
+      margin-bottom: 40px;
+    }
+
+    svg {
+      height: 296px;
+    }
+  }
+
+  @media only screen and (min-width: 721px) and (max-width: 1160px) {
+    padding-top: 1rem;
+
+    .show-label {
+      margin-right: 25px;
+    }
+  
+    .show-parent-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .show-container {
+      display: flex;
+    }
+  
+    .sort-container {
+      display: flex;
+      position: relative;
+    }
+  
+    .sort-filters {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      right: 10px;
+    }
+  
+    .sort-filters-child {
+      padding: 2.5px 10px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      border: solid 1px;
+      background: transparent;
+    }
+  
+    .show-btn {
+      padding: 2.5px 10px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      background: transparent;
+      margin-right: 25px;
+    }
+  
+    .sort-btn {
+      padding: 2.5px 10px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      border: solid 1px;
+      background: transparent;
+      margin-right: 10px;
+    }
+
+    .flower {
+      margin-right: 25px;
+    }
+
+    .flower-question {
+      font-size: 1.25rem;
+    }
+  
+    .flower-row {
+      display: flex;
+      margin-top: 100px;
+    }
+  
+    .flower-response {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .flower-date {
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+  
+    .flower-answer {
+      margin-bottom: 30px;
+    }
+
+    svg {
+      height: 300px;
+    }
+  }
+
+  @media only screen and (min-width: 1161px) {
+    padding-top: 1rem;
+
+    .show-label {
+      margin-right: 25px;
+    }
+  
+    .show-parent-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    .show-container {
+      display: flex;
+    }
+  
+    .sort-container {
+      display: flex;
+      position: relative;
+    }
+  
+    .sort-filters {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      right: 10px;
+    }
+  
+    .sort-filters-child {
+      padding: 5px 20px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      border: solid 1px;
+      background: transparent;
+    }
+  
+    .show-btn {
+      padding: 5px 20px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      background: transparent;
+      margin-right: 25px;
+    }
+  
+    .sort-btn {
+      padding: 5px 20px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      border: solid 1px;
+      background: transparent;
+      margin-right: 10px;
+    }
+
+    .flower {
+      margin-right: 100px;
+    }
+  
+    .flower-row {
+      display: flex;
+      margin-top: 100px;
+    }
+  
+    .flower-response {
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .flower-date {
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+  
+    .flower-answer {
+      margin-bottom: 30px;
+    }
+
+    svg {
+      height: 500px;
+    }
+  }
 }

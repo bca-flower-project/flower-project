@@ -3,8 +3,8 @@ import React from "react";
 const QandA = ({ q, a }) => {
   return (
     <>
-      <h4>{q}</h4>
-      <p>{a}</p>
+      <h4 className="flower-question">{q}</h4>
+      <p className="flower-answer">{a}</p>
     </>
   );
 };
@@ -42,15 +42,15 @@ export default function QuestionsAnswers(props) {
   } = props;
   return (
     <>
-      <h3>
+      <h3 className="flower-date">
         {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}
       </h3>
-      <QandA q={peaksQuestion} a={peaksAnswer} />
-      <QandA q={challengesQuestion} a={challengesAnswer} />
-      <QandA q={peopleQuestion} a={peopleAnswer} />
-      <QandA q={principleQuestion} a={principleAnswer} />
-      <QandA q={powersQuestion} a={powerAnswer} />
-      <QandA q={aspirationsQuestion} a={aspirationsAnswer} />
+      { peaksQuestion ? <QandA q={peaksQuestion} a={peaksAnswer} /> : <></>}
+      { challengesQuestion ? <QandA q={challengesQuestion} a={challengesAnswer} /> : <></>}
+      { peopleQuestion ? <QandA q={peopleQuestion} a={peopleAnswer} /> : <></>}
+      { principleQuestion ? <QandA q={principleQuestion} a={principleAnswer} /> : <></>}
+      { powersQuestion ? <QandA q={powersQuestion} a={powerAnswer} /> : <></>}
+      { aspirationsQuestion ? <QandA q={aspirationsQuestion} a={aspirationsAnswer} /> : <></>}
     </>
   );
 }
