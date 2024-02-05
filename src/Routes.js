@@ -14,6 +14,8 @@ import SignupPage from "./components/SignupPage";
 import ResetPasswordRequest from "./components/ResetPasswordRequest";
 import NewUserExperience from "./components/NewUserExperience";
 import RestOfNewUx from "./components/NewUserExperience/RestOfNewUx";
+import CreateHome from "./components/Create/home";
+import Send from "./components/Create/send";
 
 const { database } = fire;
 
@@ -56,6 +58,20 @@ const Routes = () => {
       exact: true,
       render: () => {
         return <Create />;
+      },
+    },
+    {
+      key: "create-landing-page",
+      path: "/create-home",
+      render: () => {
+        return <CreateHome />;
+      },
+    },
+    {
+      key: "send-flower",
+      path: "/send",
+      render: () => {
+        return <Send />;
       },
     },
     {

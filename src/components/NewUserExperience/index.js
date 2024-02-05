@@ -67,7 +67,7 @@ export default function NewUserExperience() {
     {
       imgSrc: theme === "dark" ? whiteFlower : blackflower,
       label: "Create",
-      to: "/create",
+      to: "/create-home",
       order: 2,
     },
     {
