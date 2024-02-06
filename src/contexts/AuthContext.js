@@ -85,7 +85,7 @@ const AuthProvider = ({ children }) => {
             },
             { merge: true }
           );
-        await auth().getCurrentUser().reload();
+        await auth.currentUser.reload();
       })
       .catch(handleError);
   };
@@ -100,20 +100,26 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, [auth]);
 
-  return (
-    <AuthContext.Provider
-      value={{
-        requestReset,
-        doSignup,
-        passwordLogin,
-        currentUser,
-        googleLogin,
-        logout,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  if(dataFetched) { 
+    return (
+      <AuthContext.Provider
+        value={{
+          requestReset,
+          doSignup,
+          passwordLogin,
+          currentUser,
+          googleLogin,
+          logout,
+        }}
+      >
+        {children}
+      </AuthContext.Provider>
+    );
+  } else {
+    return (
+      <Spinner animation="border" />
+    );
+  } 
 };
 
 export default AuthProvider;
