@@ -45,9 +45,9 @@ const Send = (props) => {
   const [state, setState] = useState(INITIAL_STATE);
   const { currentUser } = useContext(AuthContext);
   const [userData, setUserData] = useState();
+  const [badRecipient, setBadRecipient] = useState(false);
   const [loading, setLoading] = useState(false);
   const [flowerLoaded, setFlowerLoaded] = useState(false);
-  const [promptClicked, setPromptClicked] = useState(false);
   const [colorFirstPetal, setColorFirstPetal] = useState({h: 180, s: 100, l: 50, a: 1});
   const [colorSecondPetal, setColorSecondPetal] = useState({h: 180, s: 100, l: 50, a: 1});
 
@@ -66,10 +66,6 @@ const Send = (props) => {
   useEffect(() => {
     getUser(currentUser);
   }, [currentUser]);
-
-  function togglePromptClicked() {
-    promptClicked ? setPromptClicked(false) : setPromptClicked(true);
-  }
 
   function hexToHsl(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -200,21 +196,24 @@ const Send = (props) => {
       await flowerRef.update(rmUndefined(userFlower));
 
     } else {
-
-        await database
-        .collection("sentFlowers").add({
-            ...state,
-            fromName: userData.name,
-            fromEmail: userData.email,
-            fromUid: userData.uid,
-            toName: null,
-            toEmail: null,
-            toUid: null,
-            createdAt: firestore.Timestamp.now()
-        });
+        if(!state["toName"]) {
+            setBadRecipient(true);
+            window.scrollTo(0, 0);
+        }
+        // await database
+        // .collection("sentFlowers").add({
+        //     ...state,
+        //     fromName: userData.name,
+        //     fromEmail: userData.email,
+        //     fromUid: userData.uid,
+        //     toName: null,
+        //     toEmail: null,
+        //     toUid: null,
+        //     createdAt: firestore.Timestamp.now()
+        // });
     }
 
-    history.push("/past-flowers");
+    // history.push("/past-flowers");
   };
 
   if (loading) {
@@ -238,6 +237,7 @@ const Send = (props) => {
                             <span>Choose Friend:</span>
                             <input type="email"   class="inp" placeholder="Type your friend's name here" required/>
                         </div>
+                        {badRecipient && <p className="set-bad-email-error">Please add a friend to send this flower to.</p> }
                     </div>
                     <SendFlower
                         firstPetalColor={state.firstPetalColor}
@@ -268,8 +268,7 @@ const Send = (props) => {
                 </div>
             </div>
             <br />
-            <div className="click-to-view-prompt" onClick={togglePromptClicked}>{promptClicked ? <i>Close</i> : <i>Click to view prompt</i>}</div>
-            {promptClicked ? <p className="prompt">{INITIAL_STATE.prompt}</p> : <></>}
+            {<p className="prompt">{INITIAL_STATE.prompt}</p>}
             <br />
             <Form.Control
               style={{
@@ -295,7 +294,7 @@ const Send = (props) => {
                 <div
                     className="send"
                     onClick={() => {
-                        // submitFlower();
+                        submitFlower();
                     }}
                 >
                 Send

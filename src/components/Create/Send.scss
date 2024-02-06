@@ -15,11 +15,6 @@
             color: black;
             font-style: italic;
         }
-
-        .click-to-view-prompt {
-            background-color: black;
-            color: white;
-        }
     }
     
     &.dark {
@@ -38,11 +33,22 @@
             color: white;
             font-style: italic;
         }
+    }
 
-        .click-to-view-prompt {
-            background-color: white;
-            color: black;
-        }
+    .set-bad-email-error {
+        color: red;
+        margin-top: 10px;
+    }
+
+    .email-input-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .email-input-container-parent {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 
     @media only screen and (max-width: 720px) {
@@ -93,19 +99,18 @@
         }
     
         .email-input-container {
-            display: flex;
             border: 2px solid;
             padding: 5px 15px;
             font-size: 14px;
-    
+            width: 345px;
+
             .inp {
-                width: 210px;
+                width: 280px;
+                text-align: center;
             }
         }
       
         .email-input-container-parent {
-            display: flex;
-            justify-content: center;
             margin-top: 25px;
             margin-bottom: 25px;
         }
@@ -125,13 +130,6 @@
             margin-bottom: 10px;
         }
     
-        .click-to-view-prompt {
-            cursor: pointer;
-            text-align: center;
-            border: 2px solid;
-            padding: 10px 0px;
-        }
-    
         .prompt {
             margin-top: 25px;
             text-align: center;
@@ -143,6 +141,7 @@
         }
     
         .send {
+            cursor: pointer;
             border: 2px solid;
             width: 100px;
             text-align: center;
@@ -197,19 +196,17 @@
         }
     
         .email-input-container {
-            display: flex;
             align-items: end;
             border: 2px solid;
             padding: 10px 30px;
     
             .inp {
                 width: 210px;
+                text-align: center;
             }
         }
       
         .email-input-container-parent {
-            display: flex;
-            justify-content: center;
             margin-top: 25px;
             margin-bottom: 25px;
         }
@@ -229,13 +226,6 @@
             margin-bottom: 10px;
         }
     
-        .click-to-view-prompt {
-            cursor: pointer;
-            text-align: center;
-            border: 2px solid;
-            padding: 10px 0px;
-        }
-    
         .prompt {
             margin-top: 25px;
             text-align: center;
@@ -247,6 +237,7 @@
         }
     
         .send {
+            cursor: pointer;
             border: 2px solid;
             width: 100px;
             text-align: center;
@@ -301,19 +292,17 @@
         }
     
         .email-input-container {
-            display: flex;
             align-items: end;
             border: 2px solid;
             padding: 10px 30px;
     
             .inp {
                 width: 210px;
+                text-align: center;
             }
         }
       
         .email-input-container-parent {
-            display: flex;
-            justify-content: center;
             margin-top: 25px;
             margin-bottom: 25px;
         }
@@ -332,13 +321,6 @@
             text-align: end;
         }
     
-        .click-to-view-prompt {
-            cursor: pointer;
-            text-align: center;
-            border: 2px solid;
-            padding: 10px 0px;
-        }
-    
         .prompt {
             margin-top: 25px;
         }
@@ -349,6 +331,7 @@
         }
     
         .send {
+            cursor: pointer;
             border: 2px solid;
             width: 100px;
             text-align: center;
