@@ -100,26 +100,20 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, [auth]);
 
-  if(dataFetched) { 
-    return (
-      <AuthContext.Provider
-        value={{
-          requestReset,
-          doSignup,
-          passwordLogin,
-          currentUser,
-          googleLogin,
-          logout,
-        }}
-      >
-        {children}
-      </AuthContext.Provider>
-    );
-  } else {
-    return (
-      <Spinner animation="border" />
-    );
-  } 
+  return (
+    <AuthContext.Provider
+      value={{
+        requestReset,
+        doSignup,
+        passwordLogin,
+        currentUser,
+        googleLogin,
+        logout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
