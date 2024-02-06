@@ -62,16 +62,16 @@ const SignupPage = () => {
           </p>
         ),
       });
-      setTimeout(() => {
-        setState({ ...state, message: null });
-      }, 3000);
+      // setTimeout(() => {
+      //   setState({ ...state, message: null });
+      // }, 3000);
 
     } else {
       doSignup({ firstName, lastName, email, password }, ({ message }) => {
         setState({ ...state, message });
-        setTimeout(() => {
-          setState({ ...state, message: null });
-        }, 3000);
+        // setTimeout(() => {
+        //   setState({ ...state, message: null });
+        // }, 3000);
       });
     }
   };
