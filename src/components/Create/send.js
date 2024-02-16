@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { HueSlider, SaturationSlider, LightnessSlider } from 'react-slider-color-picker'
 
@@ -32,7 +32,6 @@ const INITIAL_STATE = {
   fromEmail: null,
   fromUid: null,
   toName: null,
-  toEmail: null,
   toUid: null,
   firstPetalColor: "#EA12C6",
   secondPetalColor: "#F0BF22",
@@ -50,10 +49,106 @@ const Send = (props) => {
   const [flowerLoaded, setFlowerLoaded] = useState(false);
   const [colorFirstPetal, setColorFirstPetal] = useState({h: 180, s: 100, l: 50, a: 1});
   const [colorSecondPetal, setColorSecondPetal] = useState({h: 180, s: 100, l: 50, a: 1});
+  const [viewFriends, setViewFriends] = useState({
+    contents: []
+  });
+  const [oldViewFriends, setOldViewFriends] = useState({
+    contents: []
+  });
+  const [firstRender, setFirstRender] = useState(false);
+  const [friendSearch, setFriendSearch] = useState("");
+  const [displayViewFriends, setDisplayViewFriends] = useState(false);
+  const [selectedFriend, setSelectedFriend] = useState(null);
+  const location = useLocation();
+  var _selectedFriend;
+  if(location.state) {
+    _selectedFriend = {};
+    _selectedFriend.name = location.state["name"];
+    _selectedFriend.uid = location.state["uid"];
+  }
+
 
   useEffect(() => {
+    if(_selectedFriend) {
+      setSelectedFriend(_selectedFriend);
+    }
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    async function friendsList() {
+      const ref = database.collection("user").doc(currentUser.uid).collection("friends");
+
+      await ref.get().then((item) => {
+        const items = item.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setViewFriends({
+          contents: items
+        });
+
+        setOldViewFriends({
+          contents: items
+        });
+      });
+    }
+
+    friendsList();
+  }, []);
+
+  useEffect(() => {
+    if(firstRender) {
+      const timeOutId = setTimeout(async () => {
+        const friends = oldViewFriends.contents;
+
+        var result = friends.filter(function (el) {
+          if(el.name.toLowerCase().includes(friendSearch.toLowerCase())) {
+            return el;
+          }
+        });
+        
+        setViewFriends({
+          contents: result
+        });
+        if(friendSearch.length > 0) setDisplayViewFriends(true);
+      }, 1000);
+
+      return () => {
+        setDisplayViewFriends(false);
+        clearTimeout(timeOutId)
+      };
+
+    } else {
+      setFirstRender(true);
+    }
+  }, [friendSearch]);
+
+  const handleFriendSearch = async (e) => {
+    e.preventDefault();
+    setFriendSearch(e.target.value);
+  };
+
+  const handleFriendSelect = (friend) => {
+    setDisplayViewFriends(false);
+    setFriendSearch("");
+    setSelectedFriend(friend);
+  };
+
+  const getTableContent = (obj) => {
+    if(obj && (obj.contents.length > 0) && (friendSearch.length > 0)) {
+      return (
+        obj.contents.map(function (item, i) {
+          return (
+            <div className="friend-search-container friend-select" onClick={() => handleFriendSelect({uid: item.uid, name: item.name})}>
+              <span>{item.name}</span>
+            </div>
+          )
+        })
+      );
+    } else if (obj && (obj.contents.length == 0) && (friendSearch.length > 0)) {
+      return <div className="friend-search-container">
+        No Friends Found
+      </div>
+    }
+  };
 
   const getUser = async (user) => {
     const ref = database.collection("user").doc(user.uid);
@@ -186,34 +281,33 @@ const Send = (props) => {
   };
 
   const submitFlower = async () => {
-    if (flowerId) {
-      const flowerRef = database
-        .collection("user")
-        .doc(currentUser.uid)
-        .collection("flower")
-        .doc(flowerId);
+    // if (flowerId) {
+    //   const flowerRef = database
+    //     .collection("user")
+    //     .doc(currentUser.uid)
+    //     .collection("flower")
+    //     .doc(flowerId);
 
-      await flowerRef.update(rmUndefined(userFlower));
+    //   await flowerRef.update(rmUndefined(userFlower));
 
-    } else {
-        if(!state["toName"]) {
+    // } else {
+        if(!selectedFriend) {
             setBadRecipient(true);
             window.scrollTo(0, 0);
+        } else {
+          await database
+          .collection("user").doc(currentUser.uid).collection("sentFlowers").add({
+              ...state,
+              fromName: userData.name,
+              fromEmail: userData.email,
+              fromUid: userData.uid,
+              toName: selectedFriend.name,
+              toUid: selectedFriend.uid,
+              createdAt: firestore.Timestamp.now()
+          });
+          history.push("/past-flowers");
         }
-        // await database
-        // .collection("sentFlowers").add({
-        //     ...state,
-        //     fromName: userData.name,
-        //     fromEmail: userData.email,
-        //     fromUid: userData.uid,
-        //     toName: null,
-        //     toEmail: null,
-        //     toUid: null,
-        //     createdAt: firestore.Timestamp.now()
-        // });
-    }
-
-    // history.push("/past-flowers");
+    // }
   };
 
   if (loading) {
@@ -235,10 +329,28 @@ const Send = (props) => {
                     <div className="email-input-container-parent">
                         <div className="email-input-container">
                             <span>Choose Friend:</span>
-                            <input type="email"   class="inp" placeholder="Type your friend's name here" required/>
+                            <input type="text" value={friendSearch} onChange={handleFriendSearch}  class="inp" placeholder="Type your friend's name here" required/>
                         </div>
                         {badRecipient && <p className="set-bad-email-error">Please add a friend to send this flower to.</p> }
                     </div>
+                    {displayViewFriends && <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        marginBottom: "25px"
+                      }}
+                    >
+                      {getTableContent(viewFriends)}
+                    </div>}
+                    {selectedFriend && <div
+                      style={{
+                        color: "green",
+                        marginBottom: "25px"
+                      }}
+                    >
+                      {`Sending flower to ${selectedFriend.name}`}
+                    </div>}
                     <SendFlower
                         firstPetalColor={state.firstPetalColor}
                         secondPetalColor={state.secondPetalColor}

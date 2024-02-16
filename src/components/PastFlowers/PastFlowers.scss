@@ -23,8 +23,25 @@
     justify-content: space-between;
   }
 
+  .flower-description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   @media only screen and (max-width: 720px) {
     padding-top: 1rem;
+
+    .flower-description {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+
+      h4 {
+        margin-bottom: 30px;
+      }
+    }
 
     .show-label {
       margin-bottom: 25px;
@@ -105,24 +122,57 @@
       align-items: center;
       margin-top: 100px;
       text-align: center;
+
+      svg {
+        height: 296px;
+        width: 296px;
+      }
     }
   
     .flower-response {
       display: flex;
       flex-direction: column;
     }
+
+    .send-flower-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+      text-align: center;
+
+      svg {
+        padding-left: 20px;
+        width: 296px;
+        height: 296px;
+      }
+    }
+  
+    .send-flower-response {
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      h4 {
+        font-size: 1rem;
+      }
+    }
   
     .flower-date {
       margin-top: 10px;
       margin-bottom: 50px;
     }
+
+    .send-flower-date {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
   
     .flower-answer {
       margin-bottom: 40px;
-    }
-
-    svg {
-      height: 296px;
     }
   }
 
@@ -201,11 +251,41 @@
     .flower-row {
       display: flex;
       margin-top: 100px;
+
+      svg {
+        width: 300px;
+        height: 300px;
+      }
     }
   
     .flower-response {
       display: flex;
       flex-direction: column;
+    }
+
+    .send-flower-row {
+      display: flex;
+      margin-top: 100px;
+
+      svg {
+        padding-left: 20px;
+        width: 300px;
+        height: 300px;
+      }
+    }
+  
+    .send-flower-response {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      h4 {
+        font-size: 1rem;
+      }
     }
   
     .flower-date {
@@ -215,10 +295,6 @@
   
     .flower-answer {
       margin-bottom: 30px;
-    }
-
-    svg {
-      height: 300px;
     }
   }
 
@@ -293,9 +369,32 @@
     .flower-row {
       display: flex;
       margin-top: 100px;
+
+      svg {
+        width: 500px;
+        height: 500px;
+      }
     }
   
     .flower-response {
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .send-flower-row {
+      display: flex;
+      margin-top: 100px;
+
+      svg {
+        height: 500px;
+        width: 500px;
+        padding-left: 40px;
+      }
+    }
+  
+    .send-flower-response {
+      margin-top: 40px;
       min-height: 500px;
       display: flex;
       flex-direction: column;
@@ -308,10 +407,6 @@
   
     .flower-answer {
       margin-bottom: 30px;
-    }
-
-    svg {
-      height: 500px;
     }
   }
 }

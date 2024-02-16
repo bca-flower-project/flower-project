@@ -45,6 +45,10 @@
         justify-content: center;
     }
 
+    .friend-select {
+      cursor: pointer;
+    }
+
     .email-input-container-parent {
         display: flex;
         align-items: center;
@@ -108,6 +112,13 @@
                 width: 280px;
                 text-align: center;
             }
+        }
+
+        .friend-search-container {
+            border: 2px solid;
+            padding: 5px 15px;
+            font-size: 14px;
+            width: 345px;
         }
       
         .email-input-container-parent {
@@ -205,6 +216,13 @@
                 text-align: center;
             }
         }
+
+        .friend-search-container {
+          border: 2px solid;
+          padding: 10px 30px;
+          font-size: 14px;
+          width: 388.01px;
+      }
       
         .email-input-container-parent {
             margin-top: 25px;
@@ -301,6 +319,13 @@
                 text-align: center;
             }
         }
+
+        .friend-search-container {
+          border: 2px solid;
+          padding: 10px 30px;
+          font-size: 14px;
+          width: 388.01px;
+      }
       
         .email-input-container-parent {
             margin-top: 25px;

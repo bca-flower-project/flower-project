@@ -35,45 +35,6 @@ export default function RestOfNewUx() {
     });
   };
 
-  // const checkFriendRequestExists = async (senderUid, recipientEmail) => {
-  //   const ref = await database.collection("friendRequest")
-  //               .where('sender', '==', senderUid)
-  //               .where('recipient', '==', recipientEmail).get();
-
-  //   const _ref = await database.collection("friendRequest")
-  //               .where('senderEmail', '==', recipientEmail)
-  //               .where('recipient', '==', userData.email).get();
-
-  //   if(ref.empty && _ref.empty) {
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
-
-  // const addFriend = async (email) => {
-  //   var mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
-  //   if(email.match(mailformat) && (userData.email != email) && (checkFriendRequestExists(currentUser.uid, email))) {
-  //     await database.collection("friendRequest").add({
-  //       sender: currentUser.uid,
-  //       senderEmail: userData.email,
-  //       senderName: userData.name,
-  //       recipient: email,
-  //       status: 'Pending'
-  //     });
-      
-  //     setBadEmail(false);
-  //     setFriendsEmail("");
-  //     setShowSuccess(true);
-
-  //     setTimeout(() => {
-  //       setShowSuccess(false);
-  //     }, 3000);
-  //   } else {
-  //     setBadEmail(true);
-  //   }
-  // };
-
   const inviteFriend = async (email) => {
     var mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
     if(email.match(mailformat) && (userData.email != email)) {

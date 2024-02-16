@@ -55,6 +55,28 @@ exports.newFriendRequest = functions.firestore
     const friendRequestData = snap.data();
     functions.logger.info(JSON.stringify({ friendRequestData, params: ctx.params }));
 
+    let recipientData;
+
+    await admin
+      .firestore()
+      .collection("user")
+      .where('email', '==', friendRequestData.recipient).get().then( async (item) => {
+        recipientData = item.docs[0].data();
+      });
+
+    await admin
+    .firestore()
+    .collection("user")
+    .doc(recipientData.uid)
+    .collection("notifications")
+    .add({
+      read: false,
+      sender: friendRequestData.sender,
+      name: friendRequestData.senderName,
+      date: friendRequestData.createdAt,
+      type: "Friend Request"
+    })
+
     try {
       const msg = {
         to: friendRequestData.recipient,
@@ -69,7 +91,7 @@ exports.newFriendRequest = functions.firestore
       };
 
       functions.logger.info(
-        "Sending new flower email to " +
+        "Sending new friend request email to " +
           friendRequestData.recipient +
           " " +
           JSON.stringify(msg)
@@ -82,6 +104,99 @@ exports.newFriendRequest = functions.firestore
       functions.logger.error(JSON.stringify(error));
     }
     return { success: true };
+  });
+
+  exports.newSendFlower = functions.firestore
+  .document("user/{userId}/sentFlowers/{sentFlowerId}")
+  .onCreate(async (snap, ctx) => {
+    const sentFlowerData = snap.data();
+    functions.logger.info(JSON.stringify({ sentFlowerData, params: ctx.params }));
+
+    let recipientData;
+    await admin
+      .firestore()
+      .collection("user")
+      .where('uid', '==', sentFlowerData.toUid).get().then( async (item) => {
+        recipientData = item.docs[0].data();
+      });
+
+    await admin
+      .firestore()
+      .collection("user")
+      .doc(recipientData.uid)
+      .collection("receivedFlowers")
+      .add(sentFlowerData)
+
+    await admin
+      .firestore()
+      .collection("user")
+      .doc(recipientData.uid)
+      .collection("notifications")
+      .add({
+        read: false,
+        name: sentFlowerData.fromName,
+        date: sentFlowerData.createdAt,
+        type: "New Flower"
+      })
+
+    try {
+      const msg = {
+        to: recipientData.email,
+        from: SENDGRID_SENDER,
+        templateId: NEW_FRIEND_REQUEST_TEMPLATE_ID,
+        asm: {
+          groupId: UNSUBSCRIBE_GROUP_ID,
+        },
+        dynamic_template_data: {
+          subject: `${sentFlowerData.fromName} sent you a flower!`
+        },
+      };
+
+      functions.logger.info(
+        "Sending new flower sent email to " +
+          recipientData.email +
+          " " +
+          JSON.stringify(msg)
+      );
+
+      const [response] = await sgMail.send(msg);
+
+      functions.logger.info("Email sent.");
+    } catch (error) {
+      functions.logger.error(JSON.stringify(error));
+    }
+    return { success: true };
+  });
+
+  exports.updateFriendRequest = functions.firestore
+  .document("friendRequest/{friendRequestId}")
+  .onUpdate(async (change, ctx) => {
+    const oldFriendRequestData = change.before.data();
+    const friendRequestData = change.after.data();
+    functions.logger.info(JSON.stringify({ friendRequestData, params: ctx.params }));
+
+    if((oldFriendRequestData.status == 'Pending') && (friendRequestData.status == 'Accepted')) {
+      await admin
+      .firestore()
+      .collection("user")
+      .where('email', '==', friendRequestData.recipient).get().then( async (item) => {
+        const recipientData = item.docs[0].data();
+
+        await admin.firestore().collection("user").doc(recipientData.uid).collection("friends").add({
+          uid: friendRequestData.sender,
+          name: friendRequestData.senderName,
+          dateOfBirth: friendRequestData.senderDOB
+        })
+
+        await admin.firestore().collection("user").doc(friendRequestData.sender).collection("friends").add({
+          uid: recipientData.uid,
+          name: recipientData.name,
+          dateOfBirth: recipientData.dateOfBirth
+        })
+      })
+
+      return { success: true };
+    }
   });
 
 exports.flowerOnCreate = functions.firestore

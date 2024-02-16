@@ -6,10 +6,30 @@ service cloud.firestore {
     }
 
   	match /user/{userId} {
-      allow read, update, delete: if request.auth != null && request.auth.uid == userId;
-      allow create: if request.auth != null;
+      allow read, create: if request.auth != null;
+      allow update, delete: if request.auth != null && request.auth.uid == userId;
 
       match /flower/{flowerId} {
+        allow read, update, delete: if request.auth != null && request.auth.uid == userId;
+      	allow create: if request.auth != null;
+      }
+
+      match /friends/{friendId} {
+        allow read, update, delete: if request.auth != null && request.auth.uid == userId;
+      	allow create: if request.auth != null;
+      }
+
+      match /sentFlowers/{sentFlowerId} {
+        allow read, update, delete: if request.auth != null && request.auth.uid == userId;
+      	allow create: if request.auth != null;
+      }
+
+      match /receivedFlowers/{receivedFlowerId} {
+        allow read, update, delete: if request.auth != null && request.auth.uid == userId;
+      	allow create: if request.auth != null;
+      }
+
+      match /notifications/{notificationId} {
         allow read, update, delete: if request.auth != null && request.auth.uid == userId;
       	allow create: if request.auth != null;
       }
@@ -17,10 +37,15 @@ service cloud.firestore {
 
     match /friendRequest/{friendRequestId} {
       allow read, create: if request.auth != null;
+      allow update, delete: if request.auth != null;
     }
 
     match /invitation/{invitationId} {
       allow read, create: if request.auth != null;
+    }
+
+    match /ciee/{cieeId} {
+      allow write, get: if request.auth != null;
     }
   }
 }
