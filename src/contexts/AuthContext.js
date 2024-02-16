@@ -14,7 +14,8 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     auth.signOut().then((x) => {
-      history.push("/");
+      // history.push("/");
+      // window.location.reload();
     });
   };
 
