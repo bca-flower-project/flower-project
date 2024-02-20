@@ -1,10 +1,20 @@
 import React from "react";
 
-const QandA = ({ q, a }) => {
+const QandA = ({ q, a, c }) => {
   return (
     <>
-      <h4 className="flower-question">{q}</h4>
-      <p className="flower-answer">{a}</p>
+      {/* {c == "received-flowers" && <h4 className="flower-question">{q}</h4>} */}
+      {/* <p className="flower-answer">{a}</p> */}
+      {
+        a.split("\\n").map(function(item, i) {
+          return (
+            <span key={i} className="flower-answer">
+              {item}
+              <br/>
+            </span>
+          )
+        })
+      }
     </>
   );
 };
@@ -42,7 +52,7 @@ export default function SendFlowerQuestionsAnswers(props) {
         </h3>
         <h4>{category === "sent-flowers" ? `To ${from}` : `From ${from}`}</h4>
       </div>
-      { prompt ? <QandA q={prompt} a={answer} /> : <></>}
+      { prompt ? <QandA q={prompt} a={answer} c={category}/> : <></>}
     </>
   );
 }

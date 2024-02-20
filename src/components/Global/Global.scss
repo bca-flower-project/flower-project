@@ -41,7 +41,26 @@
     height: 30px;
   }
 
+  .notifications-tab {
+    position: relative;
+  }
+
   @media only screen and (max-width: 720px) {
+    .notification-dot {
+      background-color: red;
+      border-radius: 40px;
+      color: white;
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      height: 25px;
+      width: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .flower-col {
       margin-bottom: 60px;
     }
@@ -49,9 +68,9 @@
     .view-friends-search-container {
       display: flex;
       justify-content: center;
-      border: 2px solid;
+      border-left: 1px solid;
+      border-right: 1px solid;
       padding: 15px 10px;
-      background-color: rgba(44, 44, 44, 0.82);
 
       .inp {
           width: 310px;
@@ -227,6 +246,21 @@
   }
 
   @media only screen and (min-width: 721px) and (max-width: 1160px) {
+    .notification-dot {
+      background-color: red;
+      border-radius: 40px;
+      color: white;
+      font-size: 14px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .flower-col {
       margin-bottom: 60px;
     }
@@ -234,9 +268,9 @@
     .view-friends-search-container {
       display: flex;
       justify-content: center;
-      border: 2px solid;
+      border-left: 1px solid;
+      border-right: 1px solid;
       padding: 15px 0px;
-      background-color: rgba(44, 44, 44, 0.82);
 
       .inp {
           width: 310px;
@@ -410,6 +444,21 @@
   }
 
   @media only screen and (min-width: 1161px) {
+    .notification-dot {
+      background-color: red;
+      border-radius: 40px;
+      color: white;
+      font-size: 14px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .flower-col {
       margin-bottom: 60px;
     }
@@ -417,9 +466,9 @@
     .view-friends-search-container {
       display: flex;
       justify-content: center;
-      border: 2px solid;
+      border-left: 1px solid;
+      border-right: 1px solid;
       padding: 15px 0px;
-      background-color: rgba(44, 44, 44, 0.82);
 
       .inp {
           width: 310px;

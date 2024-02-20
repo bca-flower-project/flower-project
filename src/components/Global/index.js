@@ -37,15 +37,15 @@ export default function Global(props) {
   const [badEmail, setBadEmail] = useState(false);
   const [firstRender, setFirstRender] = useState(false);
   const [friendSearch, setFriendSearch] = useState("");
-  const [displayViewFriends, setDisplayViewFriends] = useState(false);
+  const [displayViewFriends, setDisplayViewFriends] = useState(true);
   const [displayAddFriends, setDisplayAddFriends] = useState(false);
   const [displayNotifications, setDisplayNotifications] = useState(false);
 
 
-  async function notificationsList() {
+  function notificationsList() {
     const ref = database.collection("user").doc(currentUser.uid).collection("notifications").where('read', '==', false);
 
-    await ref.get().then((item) => {
+    ref.get().then((item) => {
       const items = item.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setViewNotifications({
         headers: ["Name", "Date", "Type"],
@@ -55,29 +55,26 @@ export default function Global(props) {
   }
 
   async function friendsList() {
-    const ref = database.collection("user").doc(currentUser.uid).collection("friends");
+    const ref = await database.collection("user").doc(currentUser.uid).collection("friends").get();
+    
+    const items = ref.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    setViewFriends({
+      headers: ["Name", "Birthday", "Send Flower"],
+      contents: items
+    });
 
-    await ref.get().then((item) => {
-      const items = item.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setViewFriends({
-        headers: ["Name", "Birthday", "Send Flower"],
-        contents: items
-      });
-
-      setOldViewFriends({
-        headers: ["Name", "Birthday", "Send Flower"],
-        contents: items
-      });
+    setOldViewFriends({
+      headers: ["Name", "Birthday", "Send Flower"],
+      contents: items
     });
   }
 
   async function flowerGlobe() {
-    const ref = database.collection("Global").orderBy("createdAt");
-
-    await ref.get().then((item) => {
-      const items = item.docs.map((doc) => doc.data());
-      setGlobalFlower(items);
-    });
+    const ref = await database.collection("Global").orderBy("createdAt").get();
+    
+    const items = ref.docs.map((doc) => doc.data());
+    setGlobalFlower(items);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -85,8 +82,6 @@ export default function Global(props) {
     friendsList();
     notificationsList();
     flowerGlobe();
-
-    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -295,37 +290,40 @@ export default function Global(props) {
   };
 
   const handleFriendRequest = async (kind, sender, docId) => {
-    const ref = database.collection("friendRequest").where('sender', '==', sender).where('recipient', '==', userData.email);
-
-    await ref.get().then((item) => {
-      item.docs.map(function (doc) {
-        if(kind == "accept") {
-          doc.ref.update({status: "Accepted"})
-        } else {
-          doc.ref.update({status: "Denied"})
-        }
-      });
+    const ref = await database.collection("friendRequest").where('sender', '==', sender).where('recipient', '==', userData.email).get();
+    ref.docs.map(function (doc) {
+      if(kind == "accept") {
+        doc.ref.update({status: "Accepted"}).then(() => {
+          const ref2 = database.collection("user").doc(currentUser.uid).collection("notifications").doc(docId);
+  
+          ref2.get().then((_item) => {
+            _item.ref.update({read: true}).then(async () => {
+              friendsList();
+              notificationsList();
+            })
+          })
+        })
+      } else {
+        doc.ref.update({status: "Denied"}).then(() => {
+          const ref2 = database.collection("user").doc(currentUser.uid).collection("notifications").doc(docId);
+  
+          ref2.get().then((_item) => {
+            _item.ref.update({read: true}).then(() => {
+              notificationsList();
+            })
+          })
+        })
+      }
     });
-
-    const ref2 = database.collection("user").doc(currentUser.uid).collection("notifications").doc(docId);
-    
-    await ref2.get().then((item) => {
-      item.ref.update({read: true})
-
-      notificationsList();
-    })
-
   };
 
   const history = useHistory();
 
   const handleNewFlowerClick = async (docId) => {
-    const ref2 = database.collection("user").doc(currentUser.uid).collection("notifications").doc(docId);
+    const ref2 = await database.collection("user").doc(currentUser.uid).collection("notifications").doc(docId).get();
     
-    await ref2.get().then((item) => {
-      item.ref.update({read: true})
-    })
-    history.push("/past-flowers");
+    ref2.ref.update({read: true});
+    history.push(`/past-flowers#${ref2.data().flowerId}`);
   }
 
   const clearNotifications = async () => {
@@ -356,9 +354,12 @@ export default function Global(props) {
               {nextItem.type === "Friend Request" && <td className="fr-row">
                 <span>{nextItem.type}</span>
                 <div className="friend-request-container">
-                  <div onClick={() => handleFriendRequest("accept", nextItem.sender, nextItem.id)}>&#x2713;</div>
-                  <div onClick={() => handleFriendRequest("deny", nextItem.sender, nextItem.id)}>&#x2717;</div>
+                  <div onClick={() => handleFriendRequest("accept", nextItem.sender, nextItem.id)}>&#x2714;</div>
+                  <div onClick={() => handleFriendRequest("deny", nextItem.sender, nextItem.id)}>&#x2716;</div>
                 </div>
+              </td>}
+              {((nextItem.type === "Friend Request Accepted") || (nextItem.type === "Friend Request Denied")) && <td className="fr-row">
+                <span>{nextItem.type}</span>
               </td>}
             </tr>
          );
@@ -403,6 +404,7 @@ export default function Global(props) {
 
   const toggleTabView = (tab) => {
     if(tab === "view") {
+      if(displayNotifications) friendsList();
       setDisplayViewFriends(true);
       setDisplayAddFriends(false);
       setDisplayNotifications(false);
@@ -447,8 +449,7 @@ export default function Global(props) {
             onClick={() => toggleTabView("view")}
             style={{
               backgroundColor: displayViewFriends ? (theme === "dark" ? "white" : "black") : "transparent",
-              color: displayViewFriends ? (theme === "dark" ? "black" : "white") : (theme === "dark" ? "white" : "black"),
-              border: displayViewFriends ? (theme === "dark" ? "1px solid black" : "1px solid white") : (theme === "dark" ? "1px solid white" : "1px solid black"),
+              color: displayViewFriends ? (theme === "dark" ? "black" : "white") : (theme === "dark" ? "white" : "black")
             }}
           >View Friends</div>
           <div 
@@ -466,7 +467,10 @@ export default function Global(props) {
               backgroundColor: displayNotifications ? (theme === "dark" ? "white" : "black") : "transparent",
               color: displayNotifications ? (theme === "dark" ? "black" : "white") : (theme === "dark" ? "white" : "black")
             }}
-          >Notifications</div>
+          >
+            Notifications
+            {(viewNotifications.contents.length >= 1) && <div className="notification-dot"><span>{viewNotifications.contents.length}</span></div>}
+          </div>
         </div>
         {displayViewFriends && <div className="view-friends-search-container">
             <span>Search:</span>
@@ -476,7 +480,15 @@ export default function Global(props) {
         {displayAddFriends && <div className="add-friend-container">
           <div className="email-input-container">
             <span>Search:</span>
-            <input type="email" value={friendsEmail} onChange={handleEmailInput} class="inp" placeholder="Type your friends email here" required/>
+            <input 
+              type="email"
+              onKeyUp={event => event.key === 'Enter' && addFriend(friendsEmail)}
+              value={friendsEmail}
+              onChange={handleEmailInput} 
+              class="inp"
+              placeholder="Type your friends email here"
+              required
+            />
           </div>
           <div className="invite-container">
             <div 

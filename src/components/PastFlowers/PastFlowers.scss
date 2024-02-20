@@ -29,6 +29,10 @@
     align-items: center;
   }
 
+  .send-flower-response {
+    width: 100%;
+  }
+
   @media only screen and (max-width: 720px) {
     padding-top: 1rem;
 
@@ -172,6 +176,7 @@
     }
   
     .flower-answer {
+      font-size: 18px;
       margin-bottom: 40px;
     }
   }
@@ -294,6 +299,8 @@
     }
   
     .flower-answer {
+      font-size: 18px;
+      margin-top: 10px;
       margin-bottom: 30px;
     }
   }
@@ -406,6 +413,8 @@
     }
   
     .flower-answer {
+      font-size: 18px;
+      margin-top: 10px;
       margin-bottom: 30px;
     }
   }

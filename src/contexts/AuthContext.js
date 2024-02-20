@@ -53,6 +53,28 @@ const AuthProvider = ({ children }) => {
     fire.auth().signInWithEmailAndPassword(email, password).catch(onError);
   };
 
+  // const updateUserEmail = (email) => {
+  //   const user = auth.currentUser;
+  //   user.providerData.forEach((profile) => {
+  //     if(profile.providerId == "google.com") {
+  //       console.log("Cannot change email when logged in with Google");
+  //       return false;
+  //     }
+  //   });
+  //   user.updateEmail(email).then(() => {
+  //     return true;
+  //   }).catch((error) => {
+  //     console.log(error.message);
+  //   });
+  // }
+
+  const updateUserPassword = (np, onSuccess, onError) => {
+    auth.currentUser
+    .updatePassword(np)
+    .then(onSuccess)
+    .catch(onError);
+  }
+
   const requestReset = (email, onSuccess, onError) => {
     fire
       .auth()
@@ -111,6 +133,8 @@ const AuthProvider = ({ children }) => {
           currentUser,
           googleLogin,
           logout,
+          // updateUserEmail,
+          updateUserPassword
         }}
       >
         {children}

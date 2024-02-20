@@ -1,7 +1,9 @@
 import { useContext, useState, useEffect } from "react";
-import { Container, Row, Form, Col, Button } from "react-bootstrap";
+import { Container, Row, Form, Col, Button, Alert } from "react-bootstrap";
 import fire from "../../config/fire";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
+import { AppThemeContext } from "../../contexts/AppThemeContext";
 const { database } = fire;
 
 const SettingsPage = ({
@@ -10,9 +12,14 @@ const SettingsPage = ({
   title = "Settings",
   introText = "Choose the day of your birth and receive a reminder each year to create a Flower. Provide a US zipcode and help visualize the world of flowers.",
 }) => {
-  const { currentUser } = useContext(AuthContext);
+  const { theme } = useContext(AppThemeContext);
+  const { currentUser, updateUserPassword } = useContext(AuthContext);
   const [userData, setUserData] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showPasswordUpdateSuccess, setShowPasswordUpdateSuccess] = useState(false);
+  const [message, setMessage] = useState(null);
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
   const getUser = async (user) => {
     const ref = database.collection("user").doc(user.uid);
@@ -30,6 +37,16 @@ const SettingsPage = ({
     getUser(currentUser);
   }, [currentUser]);
 
+  const passwordChangeHandler = (key) => {
+    return ({ target: { value } }) => {
+      if(key == "password") {
+        setPassword(value);
+      } else {
+        setPasswordConfirmation(value);
+      }
+    };
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await database.collection("user").doc(currentUser.uid).update(userData);
@@ -42,6 +59,44 @@ const SettingsPage = ({
     setTimeout(() => {
       setShowSuccess(false);
     }, 3000);
+  };
+
+  const handlePasswordUpdateSubmit = async (e) => {
+    e.preventDefault();
+
+    const hasError =
+      password === "" ||
+      passwordConfirmation === "" ||
+      passwordConfirmation !== password ||
+      password.length < 8;
+
+    if (hasError) {
+      setMessage(
+        <p>
+          All fields are required.
+          <br />
+          Password and confirmation must match.
+          <br />
+          Password must be at least 8 characters long.
+        </p>
+      );
+      // setTimeout(() => {
+      //   setState({ ...state, message: null });
+      // }, 3000);
+
+    } else {
+      updateUserPassword(
+        password,
+        () => {
+          setMessage(null);
+          setShowPasswordUpdateSuccess(true);
+        },
+        ({ message }) => {
+          setMessage(message);
+        }
+      );
+      
+    }
   };
 
   return (
@@ -116,6 +171,69 @@ const SettingsPage = ({
                 )}
               </Col>
             </Form.Row>
+          </Form>
+          <br/>
+          <br/>
+          <h5>Update Password</h5>
+          <Form className="align-items-center">
+            {message && <Alert variant="danger">{message}</Alert>}
+            <Form.Row className="align-items-center">
+              <Col xs="auto">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  style={
+                    message &&
+                    (password === "" ||
+                      password !== passwordConfirmation ||
+                      password.length < 8)
+                      ? { border: "1px solid red" }
+                      : {}
+                  }
+                  value={password}
+                  onChange={passwordChangeHandler("password")}
+                  type="password"
+                  className="mb-2"
+                  placeholder="Password"
+                />
+                </Col>
+            </Form.Row>
+            <Form.Row className="align-items-center">
+              <Col xs="auto">
+                <Form.Label>Password Confirmation</Form.Label>
+                <Form.Control
+                  style={
+                    message &&
+                    (passwordConfirmation === "" ||
+                      password !== passwordConfirmation ||
+                      password.length < 8)
+                      ? { border: "1px solid red" }
+                      : {}
+                  }
+                  value={passwordConfirmation}
+                  onChange={passwordChangeHandler("passwordConfirmation")}
+                  type="password"
+                  className="mb-2"
+                  placeholder="Confirm Password"
+                />
+                </Col>
+            </Form.Row>
+            {!showPasswordUpdateSuccess && (
+              <Button type="submit" onClick={handlePasswordUpdateSubmit} className="mt-4">
+                Update
+              </Button>
+            )}
+
+            {showPasswordUpdateSuccess && (
+              <p
+                style={{
+                  marginTop: "2.5rem",
+                  color: "green",
+                  fontWeight: "bold",
+                }}
+              >
+                Updated Password
+              </p>
+            )}
           </Form>
         </Col>
       </Row>

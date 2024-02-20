@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
   return (
     <div className="Layout d-flex flex-column min-vh-100">
       <Navbar className={`theme-${theme}`} bg="dark" expand="md">
-        <Navbar.Toggle className="navbar-dark" />
+        <Navbar.Toggle className={theme === "dark" ? "navbar-dark" : "navbar-light"} />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Link to="/">

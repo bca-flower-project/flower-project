@@ -6,7 +6,9 @@ admin.initializeApp();
 
 const SENDGRID_API_KEY = functions.config().sendgrid.key;
 const SENDGRID_SENDER = functions.config().sendgrid.sender;
-const NEW_FRIEND_REQUEST_TEMPLATE_ID = "d-97c526305ef74111b143a680617654dd";
+const SENT_FLOWER_TEMPLATE_ID = "d-4111b545c8264c5fbe5912cf7431b464";
+const INVITATION_TEMPLATE_ID = "d-97c526305ef74111b143a680617654dd";
+const NEW_FRIEND_REQUEST_TEMPLATE_ID = "d-edfef1c31d8e4fc59dd2c1e35136e7df";
 const NEW_USER_EMAIL_TEMPLATE_ID = "d-7a1bc4cdc3d84efdab47c7e2edf6909d";
 const NEW_FLOWER_TEMPLATE_ID = "d-dca0af08c28148b5975bdc311c557121";
 const HAPPY_BIRTHDAY_EMAIL_TEMPLATE_ID = "d-7930e6c61d964ab19f63ea031e312701";
@@ -24,7 +26,7 @@ exports.newInvitation = functions.firestore
       const msg = {
         to: invitationData.recipient,
         from: SENDGRID_SENDER,
-        templateId: NEW_FRIEND_REQUEST_TEMPLATE_ID,
+        templateId: INVITATION_TEMPLATE_ID,
         asm: {
           groupId: UNSUBSCRIBE_GROUP_ID,
         },
@@ -55,14 +57,12 @@ exports.newFriendRequest = functions.firestore
     const friendRequestData = snap.data();
     functions.logger.info(JSON.stringify({ friendRequestData, params: ctx.params }));
 
-    let recipientData;
-
-    await admin
+    let _recipientData = await admin
       .firestore()
       .collection("user")
-      .where('email', '==', friendRequestData.recipient).get().then( async (item) => {
-        recipientData = item.docs[0].data();
-      });
+      .where('email', '==', friendRequestData.recipient).get();
+      
+    const recipientData = _recipientData.docs[0].data();
 
     await admin
     .firestore()
@@ -112,15 +112,14 @@ exports.newFriendRequest = functions.firestore
     const sentFlowerData = snap.data();
     functions.logger.info(JSON.stringify({ sentFlowerData, params: ctx.params }));
 
-    let recipientData;
-    await admin
+    let _recipientData = await admin
       .firestore()
       .collection("user")
-      .where('uid', '==', sentFlowerData.toUid).get().then( async (item) => {
-        recipientData = item.docs[0].data();
-      });
+      .where('uid', '==', sentFlowerData.toUid).get()
+      
+    const recipientData = _recipientData.docs[0].data();
 
-    await admin
+    const rec_flower = await admin
       .firestore()
       .collection("user")
       .doc(recipientData.uid)
@@ -136,14 +135,15 @@ exports.newFriendRequest = functions.firestore
         read: false,
         name: sentFlowerData.fromName,
         date: sentFlowerData.createdAt,
-        type: "New Flower"
+        type: "New Flower",
+        flowerId: rec_flower.id
       })
 
     try {
       const msg = {
         to: recipientData.email,
         from: SENDGRID_SENDER,
-        templateId: NEW_FRIEND_REQUEST_TEMPLATE_ID,
+        templateId: SENT_FLOWER_TEMPLATE_ID,
         asm: {
           groupId: UNSUBSCRIBE_GROUP_ID,
         },
@@ -175,40 +175,64 @@ exports.newFriendRequest = functions.firestore
     const friendRequestData = change.after.data();
     functions.logger.info(JSON.stringify({ friendRequestData, params: ctx.params }));
 
+    const item = await admin
+      .firestore()
+      .collection("user")
+      .where('email', '==', friendRequestData.recipient).get()
+      
+    const recipientData = item.docs[0].data();
+
     if((oldFriendRequestData.status == 'Pending') && (friendRequestData.status == 'Accepted')) {
       await admin
       .firestore()
       .collection("user")
-      .where('email', '==', friendRequestData.recipient).get().then( async (item) => {
-        const recipientData = item.docs[0].data();
-
-        await admin.firestore().collection("user").doc(recipientData.uid).collection("friends").add({
-          uid: friendRequestData.sender,
-          name: friendRequestData.senderName,
-          dateOfBirth: friendRequestData.senderDOB
-        })
-
-        await admin.firestore().collection("user").doc(friendRequestData.sender).collection("friends").add({
-          uid: recipientData.uid,
-          name: recipientData.name,
-          dateOfBirth: recipientData.dateOfBirth
-        })
+      .doc(friendRequestData.sender)
+      .collection("notifications")
+      .add({
+        read: false,
+        name: recipientData.name,
+        date: admin.firestore.Timestamp.now(),
+        type: "Friend Request Accepted"
       })
 
+      await admin.firestore().collection("user").doc(recipientData.uid).collection("friends").add({
+        uid: friendRequestData.sender,
+        name: friendRequestData.senderName,
+        dateOfBirth: friendRequestData.senderDOB
+      })
+
+      await admin.firestore().collection("user").doc(friendRequestData.sender).collection("friends").add({
+        uid: recipientData.uid,
+        name: recipientData.name,
+        dateOfBirth: recipientData.dateOfBirth
+      })
+      
       return { success: true };
+    } else if((oldFriendRequestData.status == 'Pending') && (friendRequestData.status == 'Denied')) {
+      await admin
+      .firestore()
+      .collection("user")
+      .doc(friendRequestData.sender)
+      .collection("notifications")
+      .add({
+        read: false,
+        name: recipientData.name,
+        date: admin.firestore.Timestamp.now(),
+        type: "Friend Request Denied"
+      });
     }
   });
 
 exports.flowerOnCreate = functions.firestore
   .document("/user/{userId}/flower/{flowerId}")
   .onCreate(async (snap, ctx) => {
-    let userData;
-    await admin
+    let _userData = await admin
       .firestore()
       .collection("user")
       .doc(ctx.params.userId)
-      .get()
-      .then((doc) => (userData = doc.data()));
+      .get();
+
+    const userData = _userData.data();
 
     try {
       const msg = {
