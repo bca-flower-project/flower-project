@@ -40,7 +40,8 @@ export default function SendFlowerQuestionsAnswers(props) {
     answer,
     date,
     from,
-     category
+    to,
+    category
   } = props;
   return (
     <>
@@ -50,7 +51,7 @@ export default function SendFlowerQuestionsAnswers(props) {
         <h3 className="send-flower-date">
             {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}
         </h3>
-        <h4>{category === "sent-flowers" ? `To ${from}` : `From ${from}`}</h4>
+        <h4>{category === "sent-flowers" ? `To ${to}` : `From ${from}`}</h4>
       </div>
       { prompt ? <QandA q={prompt} a={answer} c={category}/> : <></>}
     </>

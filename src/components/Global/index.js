@@ -40,6 +40,8 @@ export default function Global(props) {
   const [displayViewFriends, setDisplayViewFriends] = useState(true);
   const [displayAddFriends, setDisplayAddFriends] = useState(false);
   const [displayNotifications, setDisplayNotifications] = useState(false);
+  const [sortName, setSortName] = useState("asc")
+  const [sortBirthDate, setSortBirthDate] = useState("asc");
 
 
   function notificationsList() {
@@ -128,7 +130,7 @@ export default function Global(props) {
         const ref = database.collection("ciee").doc(process.env.REACT_APP_FIREBASE_CIEE_DOC_ID);
         await ref.get().then((item) => {
           setBadEmail(false);
-          if(item.data().emails.includes(friendsEmail)) {
+          if(item.data().emails.includes(friendsEmail.toLowerCase())) {
             setCanInvite(false);
             setCanAdd(true);
           } else {
@@ -247,13 +249,52 @@ export default function Global(props) {
     return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
   }
 
+  const handleSortTable = (type) => {
+    const _items = viewFriends.contents;
+
+    if(type == "Name") {
+      if(sortName == "asc") {
+        _items.sort((a, b) => b.name.localeCompare(a.name));
+        setSortName("desc");
+      } else {
+        _items.sort((a, b) => a.name.localeCompare(b.name));
+        setSortName("asc");
+      }
+    } else {
+      if(sortBirthDate == "asc") {
+        _items.sort((a, b) => b.dateOfBirth.localeCompare(a.dateOfBirth));
+        setSortBirthDate("desc");
+      } else {
+        _items.sort((a, b) => a.dateOfBirth.localeCompare(b.dateOfBirth));
+        setSortBirthDate("asc");
+      }
+    }
+
+    setViewFriends({
+      headers: viewFriends.headers,
+      contents: _items
+    });
+  }
+
   const getTableContent = (obj) => {
     const iterateItem = (item) => {
        return item.map(function (nextItem, j) {
+        const today = new Date();
+        const currMonth = `${today.getMonth() + 1}`.padStart(2, "0");
+        const currDay = `${today.getDate()}`.padStart(2, "0");
+        const _dob = nextItem.dateOfBirth.split("-");
          return (
             <tr key={j}>
-              <td>{nextItem.name}</td>
-              <td>{formatDOB(nextItem.dateOfBirth)}</td>
+              <td><span
+                style={{
+                  color: ((currMonth == _dob[1]) && (currDay == _dob[2])) ? "green" : (theme == "dark" ? "white" : "black")
+                }}
+              >{nextItem.name}</span></td>
+              <td><span
+                style={{
+                  color: ((currMonth == _dob[1]) && (currDay == _dob[2])) ? "green" : (theme == "dark" ? "white" : "black")
+                }}
+              >{formatDOB(nextItem.dateOfBirth)}</span></td>
               <td>
                 <Link
                   to={
@@ -273,9 +314,20 @@ export default function Global(props) {
       return (
           <table key="view-friends">
           <thead>
-            {obj.headers.map((head, headID) => (
-              <th key={headID}>{head}</th>
-            ))}
+            {obj.headers.map(function(head, headID) {
+              if(head == "Birthday" || head == "Name") {
+                return <th key={headID} onClick={() => handleSortTable(head)} >
+                        <div className="birthday-header">
+                          {head}
+                          {(head == "Birthday") ? (sortBirthDate == "asc" ? <div className="sort-btn">&#9650;</div> : <div className="sort-btn">&#9660;</div>) :
+                           (sortName == "asc" ? <div className="sort-btn">&#9650;</div> : <div className="sort-btn">&#9660;</div>)
+                          }
+                        </div>
+                      </th>
+              } else { 
+                return <th key={headID}>{head}</th>
+              }
+            })}
           </thead>
             <tbody>
               {iterateItem(obj.contents)}
@@ -525,12 +577,17 @@ export default function Global(props) {
             </div>
           </div>
           {badEmail && <p className="set-bad-email-error">Please enter a valid email address.</p> }
-          {showSuccess && <p className="set-show-success">{showSuccess}</p> }
+          {showSuccess && <p 
+            className="set-show-success"
+            style={{
+              textAlign: "center"
+            }}
+          >{showSuccess}</p> }
         </div>}
         {
           displayNotifications && getNotificationsContent(viewNotifications)
         }
-        {(displayAddFriends || displayViewFriends || displayNotifications) && <div style={{
+        {/* {(displayAddFriends || displayViewFriends || displayNotifications) && <div style={{
           display: "flex",
           justifyContent: "center"
         }}>
@@ -540,14 +597,15 @@ export default function Global(props) {
           >
             Close ^
           </div>
-        </div>}
+        </div>} */}
         <br/>
         <br/>
         <Row style={{
-          marginBottom: "30px"
+          marginBottom: "30px",
+          marginTop: "30px"
         }}>
           {GlobalFlower.map((flower, index) => {
-            if(index < 30) {
+            // if(index < 30) {
               return (
                 <div className="flower-col col-4 col-lg-2">
                   <BlankFlower
@@ -560,7 +618,7 @@ export default function Global(props) {
                   />
                 </div>
               );
-            }
+            // }
           })}
         </Row>
       </Container>

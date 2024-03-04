@@ -271,6 +271,18 @@ exports.newUserEmail = functions.firestore
     const userData = snap.data();
     functions.logger.info(JSON.stringify({ userData, params: ctx.params }));
 
+    let cieeDocId;
+    const _cieeDoc = await admin.firestore().collection("ciee").get();
+    const items = _cieeDoc.docs.map((doc) => doc.data().emails)[0];
+    cieeDocId = _cieeDoc.docs.map((doc) => doc.id);
+
+    const finalItems = items.concat([userData.email]);
+    
+    await admin.firestore()
+            .collection("ciee")
+            .doc(cieeDocId[0])
+            .update({emails: admin.firestore.FieldValue.arrayUnion(...finalItems)}, { merge: true });
+
     try {
       const msg = {
         to: userData.email,

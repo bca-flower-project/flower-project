@@ -315,7 +315,7 @@ export default function PastFlowers(props) {
                     prompt={flower.prompt}
                     answer={flower.answer}
                     date={date}
-                    from={flower.fromName}
+                    to={flower.toName}
                     category={flower.category}
                   />
                 </div>
@@ -366,6 +366,7 @@ export default function PastFlowers(props) {
                       answer={flower.answer}
                       date={flower.createdAt}
                       from={flower.fromName}
+                      to={flower.toName}
                       category={flower.category}
                     />
                   </div>

@@ -45,7 +45,31 @@
     position: relative;
   }
 
+  .birthday-header {
+    cursor: pointer;
+  }
+
+  table, td, th, thead, tr, tbody {
+    border: 1px solid;
+  }
+
+  .box {
+    text-align: center;
+    position: relative;
+    padding: 5px 20px;
+  }
+
   @media only screen and (max-width: 720px) {
+    .birthday-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      div {
+        margin-left: 5px;
+      }
+    }
+
     .notification-dot {
       background-color: red;
       border-radius: 40px;
@@ -132,7 +156,6 @@
 
     .add-friend-container {
       font-size: 18px;
-      position: relative;
       border: 1px solid;
       display: flex;
       flex-direction: column;
@@ -142,24 +165,6 @@
 
     .email-input-container {
       margin-bottom: 30px;
-    }
-
-    .box {
-      text-align: center;
-      position: relative;
-      padding: 5px 20px;
-    }
-    
-    .box:before {
-      content: "";
-      position: absolute;
-      border: 1px solid;
-      
-      top: -4%; bottom: -11%; left: -3%; right: -3%;
-      z-index: -1;
-    
-      -webkit-transform: perspective(50em) rotateX(-30deg);
-      transform: perspective(5em) rotateX(-30deg);
     }
 
     .add-btn-container {
@@ -182,7 +187,6 @@
     }
     
     td, th {
-      border: 1px solid;
       text-align: center;
       padding: 8px;
     }
@@ -246,6 +250,16 @@
   }
 
   @media only screen and (min-width: 721px) and (max-width: 1160px) {
+    .birthday-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      div {
+        margin-left: 5px;
+      }
+    }
+
     .notification-dot {
       background-color: red;
       border-radius: 40px;
@@ -329,7 +343,6 @@
 
     .add-friend-container {
       font-size: 18px;
-      position: relative;
       border: 1px solid;
       display: flex;
       flex-direction: column;
@@ -339,24 +352,6 @@
 
     .email-input-container {
       margin-bottom: 30px;
-    }
-
-    .box {
-      text-align: center;
-      position: relative;
-      padding: 5px 20px;
-    }
-    
-    .box:before {
-      content: "";
-      position: absolute;
-      border: 1px solid;
-      
-      top: -4%; bottom: -11%; left: -3%; right: -3%;
-      z-index: -1;
-    
-      -webkit-transform: perspective(50em) rotateX(-30deg);
-      transform: perspective(5em) rotateX(-30deg);
     }
 
     .add-btn-container {
@@ -378,7 +373,6 @@
     }
     
     td, th {
-      border: 1px solid;
       text-align: center;
       padding: 8px;
     }
@@ -444,6 +438,16 @@
   }
 
   @media only screen and (min-width: 1161px) {
+    .birthday-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      div {
+        margin-left: 5px;
+      }
+    }
+    
     .notification-dot {
       background-color: red;
       border-radius: 40px;
@@ -527,7 +531,6 @@
 
     .add-friend-container {
       font-size: 18px;
-      position: relative;
       border: 1px solid;
       display: flex;
       flex-direction: column;
@@ -537,24 +540,6 @@
 
     .email-input-container {
       margin-bottom: 30px;
-    }
-
-    .box {
-      text-align: center;
-      position: relative;
-      padding: 5px 20px;
-    }
-    
-    .box:before {
-      content: "";
-      position: absolute;
-      border: 1px solid;
-      
-      top: -4%; bottom: -11%; left: -3%; right: -3%;
-      z-index: -1;
-    
-      -webkit-transform: perspective(50em) rotateX(-30deg);
-      transform: perspective(5em) rotateX(-30deg);
     }
 
     .add-btn-container {
@@ -576,7 +561,6 @@
     }
     
     td, th {
-      border: 1px solid;
       text-align: center;
       padding: 8px;
     }
