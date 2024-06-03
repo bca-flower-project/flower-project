@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const passwordLogin = (email, password, onError) => {
-    fire.auth().signInWithEmailAndPassword(email, password).catch(onError);
+    fire.auth().signInWithEmailAndPassword(email.toLowerCase(), password).catch(onError);
   };
 
   // const updateUserEmail = (email) => {
@@ -89,7 +89,7 @@ const AuthProvider = ({ children }) => {
   ) => {
     fire
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email.toLowerCase(), password)
       .then(async (result) => {
         // The signed-in user info.
         const user = result.user;
@@ -103,7 +103,7 @@ const AuthProvider = ({ children }) => {
           .set(
             {
               name: `${firstName} ${lastName}`,
-              email: user.email,
+              email: user.email.toLowerCase(),
               uid: user.uid,
             },
             { merge: true }

@@ -174,7 +174,7 @@ export default function Global(props) {
         sender: currentUser.uid,
         senderEmail: userData.email,
         senderName: userData.name,
-        recipient: friendsEmail
+        recipient: friendsEmail.toLowerCase()
       });
 
       setBadEmail(false);
@@ -189,7 +189,7 @@ export default function Global(props) {
           senderEmail: userData.email,
           senderName: userData.name,
           senderDOB: userData.dateOfBirth,
-          recipient: friendsEmail,
+          recipient: friendsEmail.toLowerCase(),
           status: 'Pending',
           createdAt: firebase.firestore.Timestamp.now()
         });
@@ -406,8 +406,18 @@ export default function Global(props) {
               {nextItem.type === "Friend Request" && <td className="fr-row">
                 <span>{nextItem.type}</span>
                 <div className="friend-request-container">
-                  <div onClick={() => handleFriendRequest("accept", nextItem.sender, nextItem.id)}>&#x2714;</div>
-                  <div onClick={() => handleFriendRequest("deny", nextItem.sender, nextItem.id)}>&#x2716;</div>
+                  <div 
+                    onClick={() => handleFriendRequest("accept", nextItem.sender, nextItem.id)}
+                    style={{
+                      color: theme === "dark" ? "white" : "black"
+                    }}
+                  >&#x2714;</div>
+                  <div 
+                    onClick={() => handleFriendRequest("deny", nextItem.sender, nextItem.id)}
+                    style={{
+                      color: theme === "dark" ? "white" : "black"
+                    }}
+                  >&#x2716;</div>
                 </div>
               </td>}
               {((nextItem.type === "Friend Request Accepted") || (nextItem.type === "Friend Request Denied")) && <td className="fr-row">
