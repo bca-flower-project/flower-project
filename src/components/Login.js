@@ -27,9 +27,9 @@ export default function Login() {
     e.preventDefault();
     passwordLogin(email, password, ({ message }) => {
       setState({ ...state, message });
-      setTimeout(() => {
-        setState({ ...state, message: null });
-      }, 3000);
+      // setTimeout(() => {
+      //   setState({ ...state, message: null });
+      // }, 3000);
     });
   };
 

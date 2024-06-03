@@ -1,13 +1,629 @@
-.flower-col {
-  @media only screen and (min-width: 721px) {
-    svg {
-      padding-bottom: 2rem;
-      height: 12vw;
+.Connect {
+  &.light {
+    .row {
+      a {
+        color: black !important;
+      }
+    }
+
+    .inp {
+      border-bottom: 1px solid black;
+      color: black;
+    }
+
+    ::placeholder {
+        color: black;
+        font-style: italic;
     }
   }
+
+  &.dark {
+    .row {
+        a {
+        color: white !important;
+        }
+    }
+
+    .inp {
+        border-bottom: 1px solid white;
+        color: white;
+    }
+
+    ::placeholder {
+        color: white;
+        font-style: italic;
+    }
+  }
+
+  margin-top: 2rem;
+
+  img {
+    height: 30px;
+  }
+
+  .notifications-tab {
+    position: relative;
+  }
+
+  .birthday-header {
+    cursor: pointer;
+  }
+
+  table, td, th, thead, tr, tbody {
+    border: 1px solid;
+  }
+
+  .box {
+    text-align: center;
+    position: relative;
+    padding: 5px 20px;
+  }
+
   @media only screen and (max-width: 720px) {
-    svg {
-      height: 25vw;
+    .birthday-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      div {
+        margin-left: 5px;
+      }
+    }
+
+    .notification-dot {
+      background-color: red;
+      border-radius: 40px;
+      color: white;
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      height: 25px;
+      width: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flower-col {
+      margin-bottom: 60px;
+    }
+
+    .view-friends-search-container {
+      display: flex;
+      justify-content: center;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      padding: 15px 10px;
+
+      .inp {
+          width: 310px;
+          text-align: center;
+      }
+    }
+
+    .inp {
+      margin-left: 10px;
+      padding: 0 !important;
+      border: none;
+      padding: 5px 10px;
+      background-color: transparent;
+      outline: none;
+      width: 260px;
+      text-align: center;
+    }
+
+    .set-bad-email-error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .set-show-success {
+      color: green;
+      margin-top: 10px;
+    }
+    
+    .tabs-container {
+      display: flex;
+      border-bottom: 1px solid;
+      justify-content: center;
+    }
+
+    .tab-child {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      padding: 5px 15px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-right: 1px solid;
+      border-left: 1px solid;
+      border-top: 1px solid;
+    }
+
+    .add-friends-tab {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .invite-container {
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+    }
+
+    .add-friend-container {
+      font-size: 18px;
+      border: 1px solid;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 0px;
+    }
+
+    .email-input-container {
+      margin-bottom: 30px;
+    }
+
+    .add-btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 60px;
+    }
+
+    .invite-btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 70px;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14px;
+    }
+    
+    td, th {
+      text-align: center;
+      padding: 8px;
+    }
+
+    .type-header {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .clear-notifications-container {
+      display: flex;
+      width: 135px;
+      margin-top: 10px;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: lighter;
+
+
+      div {
+        border: 1px solid;
+        height: 18px;
+        width: 18px;
+      }
+    }
+
+    .fr-row {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nf-row {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+
+      img {
+        margin-top: 10px;
+      }
+    }
+
+    .friend-request-container {
+      display: flex;
+      width: 155px;
+      justify-content: space-around;
+      align-items: center;
+      font-weight: lighter;
+
+
+      div {
+        cursor: pointer;
+        font-size: 14px;
+        border: 1px solid;
+        padding: 2px 8px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 721px) and (max-width: 1160px) {
+    .birthday-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      div {
+        margin-left: 5px;
+      }
+    }
+
+    .notification-dot {
+      background-color: red;
+      border-radius: 40px;
+      color: white;
+      font-size: 14px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flower-col {
+      margin-bottom: 60px;
+    }
+
+    .view-friends-search-container {
+      display: flex;
+      justify-content: center;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      padding: 15px 0px;
+
+      .inp {
+          width: 310px;
+          text-align: center;
+      }
+    }
+
+    .inp {
+      margin-left: 10px;
+      padding: 0 !important;
+      border: none;
+      padding: 5px 10px;
+      background-color: transparent;
+      outline: none;
+      width: 260px;
+      text-align: center;
+    }
+
+    .set-bad-email-error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .set-show-success {
+      color: green;
+      margin-top: 10px;
+    }
+    
+    .tabs-container {
+      display: flex;
+      border-bottom: 1px solid;
+      justify-content: center;
+    }
+
+    .tab-child {
+      font-size: 20px;
+      cursor: pointer;
+      padding: 10px 30px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-right: 1px solid;
+      border-left: 1px solid;
+      border-top: 1px solid;
+    }
+
+    .add-friends-tab {
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+
+    .invite-container {
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+    }
+
+    .add-friend-container {
+      font-size: 18px;
+      border: 1px solid;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 0px;
+    }
+
+    .email-input-container {
+      margin-bottom: 30px;
+    }
+
+    .add-btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 60px;
+    }
+
+    .invite-btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 70px;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      text-align: center;
+      padding: 8px;
+    }
+
+    .type-header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .clear-notifications-container {
+      position: absolute;
+      right: 0;
+      margin-right: 10px;
+      display: flex;
+      width: 155px;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: lighter;
+
+
+      div {
+        border: 1px solid;
+        height: 18px;
+        width: 18px;
+      }
+    }
+
+    .fr-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .nf-row {
+      cursor: pointer;
+      position: relative;
+
+      img {
+        position: absolute;
+        right: 60px;
+        top: 5px;
+        margin-right: 10px;
+      }
+    }
+
+    .friend-request-container {
+      right: 0;
+      margin-right: 10px;
+      display: flex;
+      width: 155px;
+      justify-content: space-around;
+      align-items: center;
+      font-weight: lighter;
+
+
+      div {
+        cursor: pointer;
+        font-size: 14px;
+        border: 1px solid;
+        padding: 2px 8px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1161px) {
+    .birthday-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      div {
+        margin-left: 5px;
+      }
+    }
+    
+    .notification-dot {
+      background-color: red;
+      border-radius: 40px;
+      color: white;
+      font-size: 14px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flower-col {
+      margin-bottom: 60px;
+    }
+
+    .view-friends-search-container {
+      display: flex;
+      justify-content: center;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      padding: 15px 0px;
+
+      .inp {
+          width: 310px;
+          text-align: center;
+      }
+    }
+
+    .inp {
+      margin-left: 10px;
+      padding: 0 !important;
+      border: none;
+      padding: 5px 10px;
+      background-color: transparent;
+      outline: none;
+      width: 260px;
+      text-align: center;
+    }
+
+    .set-bad-email-error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .set-show-success {
+      color: green;
+      margin-top: 10px;
+    }
+    
+    .tabs-container {
+      display: flex;
+      border-bottom: 1px solid;
+      justify-content: center;
+    }
+
+    .tab-child {
+      font-size: 20px;
+      cursor: pointer;
+      padding: 10px 30px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-right: 1px solid;
+      border-left: 1px solid;
+      border-top: 1px solid;
+    }
+
+    .add-friends-tab {
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+
+    .invite-container {
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+    }
+
+    .add-friend-container {
+      font-size: 18px;
+      border: 1px solid;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 0px;
+    }
+
+    .email-input-container {
+      margin-bottom: 30px;
+    }
+
+    .add-btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 60px;
+    }
+
+    .invite-btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 70px;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      text-align: center;
+      padding: 8px;
+    }
+
+    .type-header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .clear-notifications-container {
+      position: absolute;
+      right: 0;
+      margin-right: 10px;
+      display: flex;
+      width: 155px;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: lighter;
+
+
+      div {
+        border: 1px solid;
+        height: 18px;
+        width: 18px;
+      }
+    }
+
+    .fr-row {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nf-row {
+      cursor: pointer;
+      position: relative;
+
+      img {
+        position: absolute;
+        right: 60px;
+        top: 5px;
+        margin-right: 10px;
+      }
+    }
+
+    .friend-request-container {
+      position: absolute;
+      right: 0;
+      margin-right: 10px;
+      display: flex;
+      width: 155px;
+      justify-content: space-around;
+      align-items: center;
+      font-weight: lighter;
+
+
+      div {
+        cursor: pointer;
+        font-size: 14px;
+        border: 1px solid;
+        padding: 2px 8px;
+      }
     }
   }
 }

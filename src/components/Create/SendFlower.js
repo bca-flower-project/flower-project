@@ -1,0 +1,75 @@
+import React from "react";
+
+function SendFlower({ firstPetalColor, secondPetalColor }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="495.752" height="495.752" viewBox="0 0 495.752 495.752">
+        <g id="Group_8" data-name="Group 8" transform="translate(-749.923 -277.926)">
+            <g id="Group_1" data-name="Group 1">
+            <g id="Ellipse_1" data-name="Ellipse 1" transform="matrix(0.766, -0.643, 0.643, 0.766, 949.424, 561.35)" fill="none" stroke={`${firstPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            <g id="Ellipse_2" data-name="Ellipse 2" transform="matrix(0.766, -0.643, 0.643, 0.766, 796, 380.35)" fill="none" stroke={`${firstPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            </g>
+            <g id="Group_3" data-name="Group 3" transform="translate(954.257 -601.219) rotate(60)">
+            <g id="Ellipse_1-2" data-name="Ellipse 1" transform="matrix(0.766, -0.643, 0.643, 0.766, 949.424, 561.35)" fill="none" stroke={`${firstPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            <g id="Ellipse_2-2" data-name="Ellipse 2" transform="matrix(0.766, -0.643, 0.643, 0.766, 796, 380.35)" fill="none" stroke={`${firstPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            </g>
+            <g id="Group_5" data-name="Group 5" transform="translate(1952.056 -75.417) rotate(120)">
+            <g id="Ellipse_1-3" data-name="Ellipse 1" transform="matrix(0.766, -0.643, 0.643, 0.766, 949.424, 561.35)" fill="none" stroke={`${firstPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            <g id="Ellipse_2-3" data-name="Ellipse 2" transform="matrix(0.766, -0.643, 0.643, 0.766, 796, 380.35)" fill="none" stroke={`${firstPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            </g>
+        </g>
+        <g id="Group_7" data-name="Group 7" transform="translate(-749.923 -277.926)">
+            <g id="Group_2" data-name="Group 2" transform="translate(396.581 -428.455) rotate(30)">
+            <g id="Ellipse_1-4" data-name="Ellipse 1" transform="matrix(0.766, -0.643, 0.643, 0.766, 949.424, 561.35)" fill="none" stroke={`${secondPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            <g id="Ellipse_2-4" data-name="Ellipse 2" transform="matrix(0.766, -0.643, 0.643, 0.766, 796, 380.35)" fill="none" stroke={`${secondPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            </g>
+            <g id="Group_4" data-name="Group 4" transform="translate(1523.601 -471.998) rotate(90)">
+            <g id="Ellipse_1-5" data-name="Ellipse 1" transform="matrix(0.766, -0.643, 0.643, 0.766, 949.424, 561.35)" fill="none" stroke={`${secondPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            <g id="Ellipse_2-5" data-name="Ellipse 2" transform="matrix(0.766, -0.643, 0.643, 0.766, 796, 380.35)" fill="none" stroke={`${secondPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            </g>
+            <g id="Group_6" data-name="Group 6" transform="translate(2124.819 482.26) rotate(150)">
+            <g id="Ellipse_1-6" data-name="Ellipse 1" transform="matrix(0.766, -0.643, 0.643, 0.766, 949.424, 561.35)" fill="none" stroke={`${secondPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            <g id="Ellipse_2-6" data-name="Ellipse 2" transform="matrix(0.766, -0.643, 0.643, 0.766, 796, 380.35)" fill="none" stroke={`${secondPetalColor}`} stroke-width="6">
+                <ellipse cx="60.5" cy="122.5" rx="60.5" ry="122.5" stroke="none"/>
+                <ellipse cx="60.5" cy="122.5" rx="57.5" ry="119.5" fill="none"/>
+            </g>
+            </g>
+        </g>
+    </svg>
+
+  );
+}
+
+export default SendFlower;

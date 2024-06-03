@@ -1,23 +1,20 @@
 .NewUserExperience {
   &.light {
-    .row {
-      a {
-        color: black !important;
-      }
+    a {
+      color: black !important;
     }
   }
 
   &.dark {
-    .row {
-      a {
-        color: white !important;
-      }
+    a {
+      color: white !important;
     }
   }
   padding-top: 5rem;
 
-  .row {
+  .logos-container {
     text-align: center;
+    display: flex;
     justify-content: space-between;
   }
 
@@ -37,8 +34,26 @@
   @media only screen and (max-width: 720px) {
     padding-top: 1rem;
 
-    .home-logos {
+    .logos-container {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .home-logos-View {
       width: 150px;
+      margin-top: 10px;
+    }
+
+    .home-logos-Create {
+      width: 150px;
+      margin-top: 10px;
+    }
+
+    .home-logos-Connect {
+      width: 170px;
+      height: 150px;
       margin-top: 10px;
     }
 
@@ -50,8 +65,19 @@
   @media only screen and (min-width: 720px) and (max-width: 1160px) {
     padding-top: 1rem;
     
-    .home-logos {
+    .home-logos-View {
       width: 200px;
+      margin-top: 30px;
+    }
+
+    .home-logos-Create {
+      width: 200px;
+      margin-top: 30px;
+    }
+
+    .home-logos-Connect {
+      width: 220px;
+      height: 200px;
       margin-top: 30px;
     }
 
@@ -63,8 +89,19 @@
   @media only screen and (min-width: 1161px) {
     padding-top: 1rem;
 
-    .home-logos {
+    .home-logos-View {
       width: 350px;
+      margin-top: 30px;
+    }
+
+    .home-logos-Create {
+      width: 350px;
+      margin-top: 30px;
+    }
+
+    .home-logos-Connect {
+      width: 370px;
+      height: 350px;
       margin-top: 30px;
     }
 

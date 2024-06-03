@@ -14,7 +14,8 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     auth.signOut().then((x) => {
-      history.push("/");
+      // history.push("/");
+      // window.location.reload();
     });
   };
 
@@ -49,8 +50,30 @@ const AuthProvider = ({ children }) => {
   };
 
   const passwordLogin = (email, password, onError) => {
-    fire.auth().signInWithEmailAndPassword(email, password).catch(onError);
+    fire.auth().signInWithEmailAndPassword(email.toLowerCase(), password).catch(onError);
   };
+
+  // const updateUserEmail = (email) => {
+  //   const user = auth.currentUser;
+  //   user.providerData.forEach((profile) => {
+  //     if(profile.providerId == "google.com") {
+  //       console.log("Cannot change email when logged in with Google");
+  //       return false;
+  //     }
+  //   });
+  //   user.updateEmail(email).then(() => {
+  //     return true;
+  //   }).catch((error) => {
+  //     console.log(error.message);
+  //   });
+  // }
+
+  const updateUserPassword = (np, onSuccess, onError) => {
+    auth.currentUser
+    .updatePassword(np)
+    .then(onSuccess)
+    .catch(onError);
+  }
 
   const requestReset = (email, onSuccess, onError) => {
     fire
@@ -66,7 +89,7 @@ const AuthProvider = ({ children }) => {
   ) => {
     fire
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email.toLowerCase(), password)
       .then(async (result) => {
         // The signed-in user info.
         const user = result.user;
@@ -80,12 +103,12 @@ const AuthProvider = ({ children }) => {
           .set(
             {
               name: `${firstName} ${lastName}`,
-              email: user.email,
+              email: user.email.toLowerCase(),
               uid: user.uid,
             },
             { merge: true }
           );
-        await auth().getCurrentUser().reload();
+        await auth.currentUser.reload();
       })
       .catch(handleError);
   };
@@ -110,6 +133,8 @@ const AuthProvider = ({ children }) => {
           currentUser,
           googleLogin,
           logout,
+          // updateUserEmail,
+          updateUserPassword
         }}
       >
         {children}

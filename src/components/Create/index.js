@@ -7,7 +7,7 @@ import fire from "../../config/fire";
 import { Container, Row, Button, Form, Col } from "react-bootstrap";
 import "./Create.scss";
 import Flower from "./Flower.js";
-import { Link } from "react-router-dom/cjs/react-router-dom.min.js";
+import { AppThemeContext } from "../../contexts/AppThemeContext.js";
 
 const { database, firestore } = fire;
 
@@ -33,6 +33,7 @@ const INITIAL_STATE = {
 };
 
 const Create = (props) => {
+  const { theme } = useContext(AppThemeContext);
   const [state, setState] = useState(INITIAL_STATE);
   const [loading, setLoading] = useState(false);
   const [flowerLoaded, setFlowerLoaded] = useState(false);
@@ -45,30 +46,35 @@ const Create = (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if(firstFlowerIntroduction) {
-      const arr = [
-        "What have been the peak moments of your life?",
-        "What have been the greatest challenges of your life?",
-        "Who has influenced you and how?",
-        "What do you care about most and why?",
-        "What are your greatest strengths, skills, and joys?",
-        "What are your dreams and aspirations?"
-      ];
-      var dupe = {...state};
-      for (let [index, val] of arr.entries()) {
-        dupe = {
-          ...dupe,
-          petals: {
-            ...dupe.petals,
-            [index]: {
-              ...dupe.petals[index],
-              ["question"]: val,
-            },
+    const arr = firstFlowerIntroduction ? [
+      "What have been the peak moments of your life?",
+      "What have been the greatest challenges of your life?",
+      "Who has influenced you and how?",
+      "What do you care about most and why?",
+      "What are your greatest strengths, skills, and joys?",
+      "What are your dreams and aspirations?"
+    ] : [
+      "What were your peak experiences and accomplishments of the past year?",
+      "What were your biggest challenges of the past year?",
+      "What relationships have been most important to you this year and why?",
+      "What did you learn this year about yourself, others, and the world?",
+      "How have you grown in the past year?",
+      "How do you want to grow this year?"
+    ];
+    var dupe = {...state};
+    for (let [index, val] of arr.entries()) {
+      dupe = {
+        ...dupe,
+        petals: {
+          ...dupe.petals,
+          [index]: {
+            ...dupe.petals[index],
+            ["question"]: val,
           },
-        }
+        },
       }
-      setState({...dupe});
     }
+    setState({...dupe});
   }, []);
 
   // order should be:
@@ -78,10 +84,7 @@ const Create = (props) => {
       questionOptions: firstFlowerIntroduction ? [
        "What have been the peak moments of your life?"
       ] : [
-        "What were your peaks this year?",
-        "What have been the peak moments of your life?",
-        "What are your biggest accomplishments?",
-        "What are your happiest memories?",
+        "What were your peak experiences and accomplishments of the past year?"
       ],
     },
     {
@@ -89,10 +92,7 @@ const Create = (props) => {
       questionOptions: firstFlowerIntroduction ? [
         "What have been the greatest challenges of your life?"
       ] : [
-        "What were your challenges this year?",
-        "What do you struggle with the most?",
-        "What are the biggest challenges you've faced?",
-        "What have been the hardest times of your life?",
+        "What were your biggest challenges of the past year?"
       ],
     },
     {
@@ -100,10 +100,7 @@ const Create = (props) => {
       questionOptions: firstFlowerIntroduction ? [
         "Who has influenced you and how?"
        ] : [
-        "Who made an impact on you this year?",
-        "Who do you care about the most?",
-        "Who are the people that care for you?",
-        "Who are the most influential people in your life?",
+        "What relationships have been most important to you this year and why?"
       ],
     },
     {
@@ -111,10 +108,7 @@ const Create = (props) => {
       questionOptions: firstFlowerIntroduction ? [
         "What do you care about most and why?"
        ] : [
-        "What did you learn this year?",
-        "What are your principles?",
-        "What do you care about most in life?",
-        "What are your most deeply held beliefs?",
+        "What did you learn this year about yourself, others, and the world?"
       ],
     },
     {
@@ -122,10 +116,7 @@ const Create = (props) => {
       questionOptions: firstFlowerIntroduction ? [
         "What are your greatest strengths, skills, and joys?"
        ] : [
-        "How do you feel you've grown this year?",
-        "What do you feel you are good at?",
-        "What do you love to do?",
-        "What are your powers?",
+        "How have you grown in the past year?"
       ],
     },
     {
@@ -133,10 +124,7 @@ const Create = (props) => {
       questionOptions: firstFlowerIntroduction ? [
         "What are your dreams and aspirations?"
        ] : [
-        "What are your aspirations for the coming year?",
-        "What is your intention for the future?",
-        "What are your aspirations?",
-        "What are your goals?",
+        "How do you want to grow this year?"
       ],
     },
   ];
@@ -372,7 +360,7 @@ const Create = (props) => {
 
   return (
     <>
-      <Container className="Create"
+      <Container className={`Create ${theme}`}
         style={{
           marginBottom: "100px"
         }}
@@ -403,33 +391,7 @@ const Create = (props) => {
               <LightnessSlider handleChangeColor={handleChangeColor} color={color} />
             </div>
             <br />
-            { firstFlowerIntroduction &&  <p>{QUESTIONS[currentPetal].questionOptions[0]}</p>}
-            { !firstFlowerIntroduction && <Form.Control
-              as="select"
-              value={petals[currentPetal].question}
-              onChange={(e) => {
-                e.preventDefault();
-                setPetalValue(currentPetal, "question", e.target.value);
-              }}
-            >
-              { <option selected={!petals[currentPetal].question} disabled>
-                Please select a question below
-              </option> }
-              {QUESTIONS[currentPetal].questionOptions.map(
-                (question, index) => {
-                  return (
-                    <option
-                      key={question}
-                      value={question}
-                      selected={petals[currentPetal.question] === question}
-                    >
-                      {question}
-                    </option>
-                  );
-                }
-              )}
-              {handleiOS && <optgroup></optgroup>}
-            </Form.Control> }
+            <p>{QUESTIONS[currentPetal].questionOptions[0]}</p>
             <br />
             <Form.Control
               onChange={(e) => {

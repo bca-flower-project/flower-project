@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import { AuthContext } from "../contexts/AuthContext";
+import { Col } from "react-bootstrap";
 
 const SignupPage = () => {
   const [state, setState] = useState({
@@ -26,7 +27,7 @@ const SignupPage = () => {
     message,
   } = state;
 
-  const { doSignup } = useContext(AuthContext);
+  const { doSignup, googleLogin } = useContext(AuthContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -62,16 +63,16 @@ const SignupPage = () => {
           </p>
         ),
       });
-      setTimeout(() => {
-        setState({ ...state, message: null });
-      }, 3000);
+      // setTimeout(() => {
+      //   setState({ ...state, message: null });
+      // }, 3000);
 
     } else {
       doSignup({ firstName, lastName, email, password }, ({ message }) => {
         setState({ ...state, message });
-        setTimeout(() => {
-          setState({ ...state, message: null });
-        }, 3000);
+        // setTimeout(() => {
+        //   setState({ ...state, message: null });
+        // }, 3000);
       });
     }
   };
@@ -83,6 +84,20 @@ const SignupPage = () => {
           <h3 className="text-center mb-4">Sign Up</h3>
           <Card>
             <Card.Body>
+              <Button
+                onClick={googleLogin}
+                className="w-100"
+                style={{ background: "black" }}
+                type="submit"
+              >
+                Sign up with Google
+              </Button>
+              <br/>
+              <br/>
+              <Col align="center">
+                <span>OR</span>
+              </Col>
+              <br/>
               <Form onSubmit={handleSubmit}>
                 {message && <Alert variant="danger">{message}</Alert>}
                 <Form.Group controlId="formBasicEmail">

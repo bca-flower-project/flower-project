@@ -1,0 +1,367 @@
+.Send {
+    &.light {
+        .row {
+          a {
+            color: black !important;
+          }
+        }
+  
+        .inp {
+          border-bottom: 1px solid black;
+          color: black;
+        }
+
+        ::placeholder {
+            color: black;
+            font-style: italic;
+        }
+    }
+    
+    &.dark {
+        .row {
+            a {
+            color: white !important;
+            }
+        }
+
+        .inp {
+            border-bottom: 1px solid white;
+            color: white;
+        }
+
+        ::placeholder {
+            color: white;
+            font-style: italic;
+        }
+    }
+
+    .set-bad-email-error {
+        color: red;
+        margin-top: 10px;
+    }
+
+    .email-input-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .friend-select {
+      cursor: pointer;
+    }
+
+    .email-input-container-parent {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    @media only screen and (max-width: 720px) {
+        padding-top: 1rem;
+    
+        .inp {
+            margin-left: 10px;
+            padding: 0 !important;
+            border: none;
+            padding: 5px 10px;
+            background-color: transparent;
+            outline: none;
+        }
+    
+        .petal {
+          cursor: pointer;
+      
+          stroke: #000000;
+      
+          &.active {
+            stroke: lightgreen;
+          }
+      
+          &:hover {
+            fill-opacity: 75%;
+          }
+        }
+      
+        svg {
+          cursor: pointer;
+          height: 296px;
+          width: 296px;
+        }
+      
+        .buttonRow {
+          justify-content: space-between;
+          margin-bottom: 2rem;
+        }
+      
+        .right-button {
+          text-align: right;
+        }
+      
+        .hue {
+          input {
+            background: transparent;
+          }
+        }
+    
+        .email-input-container {
+            border: 2px solid;
+            padding: 5px 15px;
+            font-size: 14px;
+            width: 100%;
+
+            .inp {
+                width: 280px;
+                text-align: center;
+            }
+        }
+
+        .friend-search-container {
+            border: 2px solid;
+            padding: 5px 15px;
+            font-size: 14px;
+            width: 100%;
+        }
+      
+        .email-input-container-parent {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+    
+        .color-picker-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+    
+        .first-color-picker, .second-color-picker {
+            text-align: center;
+        }
+
+        .first-color-picker {
+            margin-bottom: 10px;
+        }
+    
+        .prompt {
+            margin-top: 25px;
+            text-align: center;
+        }
+    
+        .send-container {
+            display: flex;
+            justify-content: center;
+        }
+    
+        .send {
+            cursor: pointer;
+            border: 2px solid;
+            width: 100px;
+            text-align: center;
+            padding: 10px 0px;
+        }
+    }
+    
+    @media only screen and (min-width: 720px) and (max-width: 1160px) {
+        padding-top: 1rem;
+        
+        .inp {
+            margin-left: 10px;
+            padding: 0 !important;
+            border: none;
+            padding: 5px 10px;
+            background-color: transparent;
+            outline: none;
+        }
+    
+        .petal {
+          cursor: pointer;
+      
+          stroke: #000000;
+      
+          &.active {
+            stroke: lightgreen;
+          }
+      
+          &:hover {
+            fill-opacity: 75%;
+          }
+        }
+      
+        svg {
+          cursor: pointer;
+          height: 296px;
+        }
+      
+        .buttonRow {
+          justify-content: space-between;
+          margin-bottom: 2rem;
+        }
+      
+        .right-button {
+          text-align: right;
+        }
+      
+        .hue {
+          input {
+            background: transparent;
+          }
+        }
+    
+        .email-input-container {
+            align-items: end;
+            border: 2px solid;
+            padding: 10px 30px;
+    
+            .inp {
+                width: 210px;
+                text-align: center;
+            }
+        }
+
+        .friend-search-container {
+          border: 2px solid;
+          padding: 10px 30px;
+          font-size: 14px;
+          width: 388.01px;
+      }
+      
+        .email-input-container-parent {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+    
+        .color-picker-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+    
+        .first-color-picker, .second-color-picker {
+            text-align: center;
+        }
+
+        .first-color-picker {
+            margin-bottom: 10px;
+        }
+    
+        .prompt {
+            margin-top: 25px;
+            text-align: center;
+        }
+    
+        .send-container {
+            display: flex;
+            justify-content: center;
+        }
+    
+        .send {
+            cursor: pointer;
+            border: 2px solid;
+            width: 100px;
+            text-align: center;
+            padding: 10px 0px;
+        }
+    }
+    
+    @media only screen and (min-width: 1161px) {
+        padding-top: 1rem;
+    
+        .inp {
+            margin-left: 10px;
+            padding: 0 !important;
+            border: none;
+            padding: 5px 10px;
+            background-color: transparent;
+            outline: none;
+        }
+    
+        .petal {
+          cursor: pointer;
+      
+          stroke: #000000;
+      
+          &.active {
+            stroke: lightgreen;
+          }
+      
+          &:hover {
+            fill-opacity: 75%;
+          }
+        }
+      
+        svg {
+          cursor: pointer;
+          height: 296px;
+        }
+      
+        .buttonRow {
+          justify-content: space-between;
+          margin-bottom: 2rem;
+        }
+      
+        .right-button {
+          text-align: right;
+        }
+      
+        .hue {
+          input {
+            background: transparent;
+          }
+        }
+    
+        .email-input-container {
+            align-items: end;
+            border: 2px solid;
+            padding: 10px 30px;
+    
+            .inp {
+                width: 210px;
+                text-align: center;
+            }
+        }
+
+        .friend-search-container {
+          border: 2px solid;
+          padding: 10px 30px;
+          font-size: 14px;
+          width: 388.01px;
+      }
+      
+        .email-input-container-parent {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+    
+        .color-picker-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+    
+        .first-color-picker, .second-color-picker {
+            width: 45%;
+        }
+    
+        .second-color-picker {
+            text-align: end;
+        }
+    
+        .prompt {
+            margin-top: 25px;
+        }
+    
+        .send-container {
+            display: flex;
+            justify-content: end;
+        }
+    
+        .send {
+            cursor: pointer;
+            border: 2px solid;
+            width: 100px;
+            text-align: center;
+            padding: 10px 0px;
+        }
+      }
+  }
+  

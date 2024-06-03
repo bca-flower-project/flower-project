@@ -37,4 +37,11 @@
       }
     }
   }
+
+  @media only screen and (max-width: 720px) {
+    .home-nav-btn {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
 }

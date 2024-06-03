@@ -67,7 +67,7 @@ export default function NewUserExperience() {
     {
       imgSrc: theme === "dark" ? whiteFlower : blackflower,
       label: "Create",
-      to: "/create",
+      to: "/create-home",
       order: 2,
     },
     {
@@ -109,7 +109,7 @@ export default function NewUserExperience() {
               <p onClick={closeBanner} className="close-new-ux-banner">Close ^</p>
             </div> 
           }
-          <Row>
+          <div className="logos-container">
             {bits.map(({ imgSrc, label, to, order }) => {
               return (
                 <Col key={label} sm={{ order }}
@@ -118,13 +118,13 @@ export default function NewUserExperience() {
                   }}
                 >
                   <Link to={to}>
-                    <img className="home-logos" src={imgSrc} alt={label} />
+                    <img className={`home-logos-${label}`} src={imgSrc} alt={label} />
                     <h2 className="home-logos-caption">{label}</h2>
                   </Link>
                 </Col>
               );
             })}
-          </Row>
+          </div>
         </Container>
       );
     }
